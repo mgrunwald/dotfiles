@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE page SYSTEM "/home/ska/Laforge/XML/www.skamphausen.de/web.dtd">
+<page>
+  <info>
+	<title>XEmacs-Konfiguration: Pers&ouml;nliche Einstellungen</title>
+	<shorttitle>Pers&ouml;nliche Einstellungen</shorttitle>
+	<date>2002-01-06</date>
+	<description>Die pers&ouml;nlichen Einstellungen in der
+	Deutschsprachigen Einleitung zum XEmacs.</description>
+	<keywords>
+	  <key>XEmacs</key>
+	  <key>Hilfe</key>
+	  <key>Stefan Kamphausen</key>
+	  <key>XEmacs Corner</key>
+	  <key>.emacs</key>
+	  <key>customize</key>
+	  <key>konfigurieren</key>
+	  <key>Konfiguration</key>
+	  <key>Options</key>
+	</keywords>
+	<author>Stefan Kamphausen</author>
+  </info>
+  <content>
+	<xmlformat>
+	  <p>
+		Es wurde bereit mehrfach der Terminus "mein XEmacs" oder etwas
+		&auml;hnliches verwandt. Um nun zum eigenen XEmacs zu kommen, muss
+		man ihn nach den eigenen W&uuml;nschen konfigurieren. Dazu gibt es
+		mehrere M&ouml;glichkeiten:</p>
+	  <ul>
+		<li>Konfigurationsdateien</li>
+		<li>Customize</li>
+	  </ul>
+	  <p>Der erste Weg, &uuml;ber das Erstellen und Laden von
+		Konfigurationsdateien ist sicherlich f&uuml;r den reinen
+		Anwender der schwierigste, aber keine Angst: mit ein wenig
+		Phantasie kommt man den Dingen schnell auf die Spur und kann
+		sich seinen eigenen Code zusammenklauben. Auch der Autor ist
+		kein gro&szlig;er lisp-Programmierer und muss immer ein wenig
+		rumfuddeln, bis die Dinge so laufen, wie sie sollen. Auf diese
+		Art und Weise schafft man nat&uuml;rlich die beste Anpassung
+		und hat hinterher das coole Gef&uuml;hl, ein echter Uni*er zu
+		sein...
+	  </p>
+	  <p>
+		Der zweite Weg, &uuml;ber den Customize Mechanismus, und wird in
+		einer eigenen Datei erl&auml;utert.
+	  </p>
+	  
+	  <chapter title="Die Konfigurationsdateien">
+		Eine durchdachte Planung bei den Konfigdateien kann nicht
+		schaden. Zu oft hat sich der Autor seine m&uuml;hsam erstellte
+		Konfiguration zerschossen, weil er unbedacht die Options mittels 
+		"Save Options" abgespeichert hatte und somit die hei&szlig;geliebte
+		Datei &uuml;berschrieben wurde (das war in alten XEmacsen
+		so). Die derzeitige Organisation der Dateien wird 
+		<a href="index.html#Organisation der Files">gesondert</a>
+		beschrieben. F&uuml;r die Verwaltung sollte man eigentlich schon
+		ein Versions-Verwaltungs-Paket zu Rate ziehen
+		(<code>cvs</code> oder &auml;hnliches), doch so weit bin ich
+		noch nicht gekommen.
+		<p>Kommentare beginnen mit einem oder zwei &quot;;&quot;, je
+		  nachdem, wie sie einger&uuml;ckt werden sollen, oder wie eilig man es 
+		  gerade hat ;-).
+		  Die hier vorgestellten Dateien sind teilweise
+		  ge<em>folded</em>. Das meint, sie verwenden die Marker
+		  <code>;;{{{</code> und <code>;;}}}</code> um inhaltlich
+		  zusammenh&auml;ngende Bl&ouml;cke zu kennzeichnen, die dann ein- und
+		  ausgeklappt werden k&ouml;nnen. <br/>
+		  Zu beachten ist dabei, dass der Folding-Mode leider die Taste
+		  <keybind>C-b</keybind> &uuml;berschreibt, die ich seit Neuestem als eigenes
+		  Pr&auml;fix verwende. Wer gleich den ganzen Buffer sehen will sei auf
+		  <keybind>C-c @ C-o</keybind> oder <keybind>M-x fold-open-buffer</keybind>
+		  verwiesen. 
+		</p>
+	</chapter>
+	  <chapter title="Die zentrale personal.el">
+		Im hier vorgestellten Setup ist die zentrale Konfigurationsdatei
+		<p>
+		  <a href="personal.el"><code>~/[my-xemacs-dir]/config/personal.el</code></a>
+		</p>
+		<p>
+		  Nach dem &Ouml;ffnen dieser Datei wird man ausser der &uuml;blichen
+		  Pr&auml;ambel nicht viel sehen (folded, s.o.)
+		</p>
+		<p>
+		  Die Datei ist in vier Hauptbereiche aufgeteilt:
+		</p>
+		<ol>
+		  <li><em>PATHs, Filenames and Modules</em>. Hier werden einige
+			Verzeichnisse und Pfade gesetzt. Unter anderem erlaubt 
+			<pre>
+(setq load-path
+      (append
+	   (list
+		my-config-dir
+		my-templates-dir
+		my-lisp-dir
+		;;(concat my-lisp-dir "/psgml-1.2.2")
+		(concat my-lisp-dir "/xslide")
+		(concat my-lisp-dir "/friedman")
+		(concat my-lisp-dir "/gnuplot-mode"))
+	   load-path
+        ;; put later packages here...
+	   ))
+			</pre>
+			Das Bekanntmachen von selber installierten Paketen. Jenachdem
+			ob man sich vor oder hinter den systemweiten Standardpfad
+			setzen m&ouml;chte, muss man vor oder hinter <code>load-path</code>
+			auftauchen. Durch einfaches Ein- und Auskommentieren lassen
+			sich so Pakete testen und wieder verwerfen.
+			<p>
+			  Ein kleines Schmankerl ist hier noch eingebaut, dass die
+			  spezielle Anpassung an verschiedene Umgebungen erlaubt: Wenn
+			  im <code>config</code>-Verzeichnis eine Datei namens
+			  <code>[rechnername].el</code> oder
+			  <code>[domainname].el</code> gefunden wird, wird sie
+			  evaluiert.
+			</p>
+		  </li>
+		  <li><em>Major Modes</em>. Hier sind sog. Hooks f&uuml;r sehr viele
+			Major-Modes bereits vordefiniert. Eigene Anpassungen sollten
+			damit sehr leicht werden.</li>
+		  <li><em>Lisp-Packages</em>. Hier werden einige Pakete geladen
+			und konfiguriert, die sich als sehr n&uuml;tzlich erwiesen haben.
+		  </li>
+		  <li><em>MISCELLEANOUS SETTINGS</em>. Was noch &uuml;brig war...</li>
+		</ol>
+	  </chapter>
+	</xmlformat>
+  </content>
+</page>
+<!-- 
+Local Variables:
+time-stamp-start: "<date>"
+time-stamp-end: "</date>"
+time-stamp-format: "%y-%02m-%02d"
+End:
+-->
+

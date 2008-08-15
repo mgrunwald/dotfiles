@@ -1,0 +1,8 @@
+some settings are better in ~/.Xdefaults because of faster startup:
+
+Emacs*XlwMenu.resourceLabels:                   True
+Emacs*XlwMenu*foreground: black
+Emacs.default.attributeFont: -nil-profont-medium-r-normal--11-*-*-*-c-*-iso8859-1
+Emacs*menubar*font: -nil-profont-medium-r-normal--11-*-*-*-c-*-iso8859-1
+Emacs.toolBar: off
+

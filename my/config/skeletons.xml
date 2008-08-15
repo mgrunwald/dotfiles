@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE page SYSTEM "/home/ska/Laforge/XML/www.skamphausen.de/web.dtd">
+<page>
+  <info>
+	<title>XEmacs-Konfiguration: Templates/Skeletons</title>
+	<shorttitle>Skeletons</shorttitle>
+	<date>2002-02-07</date>
+	<description>Das Template-System in der deutschsprachigen
+	  Einleitung zum XEmacs</description> 
+	<keywords>
+	  <key>XEmacs</key>
+	  <key>Hilfe</key>
+	  <key>Stefan Kamphausen</key>
+	  <key>XEmacs Corner</key>
+	  <key>konfiguration</key>
+	  <key>Konfiguration</key>
+	  <key>configuration</key>
+	  <key>customize</key>
+	  <key>skeletons</key>
+	  <key>templates</key>
+	  <key>vm</key>
+	</keywords>
+	<author>Stefan Kamphausen</author>
+  </info>
+  <content>
+	<xmlformat>
+	  <chapter title="Einleitung">
+		So ziemlich jeder halbwegs ernstzunehmende Editor bietet die
+		F&auml;higkeit, bestimmte Textbausteine einf&uuml;gen zu
+		lassen. Nat&uuml;rlich bekommen wir XEmacs-User noch viel mehr
+		geboten. Mit den <em>Skeletons</em> steht uns ein sehr
+		leistungsf&auml;higer Mechanismus zur Verf&uuml;gung. 
+		<p>
+		  Die Dokumentation dazu liefert der XEmacs mit <keybind
+		  type="par">C-h f skeleton insert</keybind> Wer noch
+		  tiefergehendes Verst&auml;ndnis erwerben m&ouml;chte, sollte mal einen
+		  Blick die Dateien <progname>skeleton.el</progname> und
+		  <progname>sh-script.el</progname> werfen.
+		</p>
+	  </chapter>
+	  <chapter title="Features">
+		<subchapter title="Definition">
+		  <p>
+			Um ein Skeleton zu definieren dient die Funktion
+			<progname>define-skeleton</progname>.
+		  </p>
+		  <pre>
+(define-skeleton ska-skel-ruby-def
+  "Inserts a new ruby function definition at point."
+  "name: "
+  &lt; "def " str
+  "("
+  ("Argument, %s: "
+   str &amp; ", ") &amp; -2 &amp; ")" | -1
+   \n _ "\n"
+  "end" (progn (ruby-indent-command) "")
+)
+		  </pre>
+		  <p>Ihr gibt man den Namen
+			mit, den das Skeleton bekommen soll (hier
+			<code>ska-skel-ruby-def</code>), und den man sp&auml;ter als
+			vollwertige Funktion zur Verf&uuml;gung hat. Es folgt der
+			obligatorische Dokumentations-String: <code>"Inserts a new
+			  ruby function definition at point."</code>. 
+			Das n&auml;chste Argument ist 
+			entweder <code>nil</code> oder aber im Beispiel der
+			Fragetext f&uuml;r eine Anfrage beim Benutzer: <code>"name:
+			  "</code>.  Im zweiten Fall bekommt man den vom
+			Benutzer eingegebenen String in der Variablen <code>str</code>
+			geliefert, die man sp&auml;ter verwenden kann.
+		  </p>
+		  <p>
+			Alle Strings, also Zeichenketten, die in der
+			Skeleton-Definition in <code>"</code> eingefasst werden,
+			werden einfach so, wie sie dort stehen, eingef&uuml;gt.
+		  </p>
+		  <p>
+			M&ouml;chte
+			man gerne elisp-Code ausf&uuml;hren, fasst man jenen Code in
+			einen <code>progn</code>-Aufruf ein und liefert am Ende
+			einen leeren String zur&uuml;ckt: <code>(progn
+			  (ruby-indent-command) "")</code>.
+		  </p>
+		  <p>
+			Eine normale runde Klammer beginnt ein rekursives
+			Skeleton: Hier kann erneut eine Abfrage formuliert werden,
+			deren Antwort man in der Variablen <code>str</code>
+			erh&auml;lt. Im Beispiel werden die Argumente f&uuml;r eine
+			Ruby-Funktion erfragt. Ein solcher Block wird solange
+			durchlaufen, bis eine leere Eingabe erfolgt. F&uuml;r die
+			weitere Diskussion des Beispiels s. unten. 
+		  </p>
+		</subchapter>
+		<subchapter title="Sonderzeichen">
+		  <p>
+			Dann existieren noch einige Zeichen mit besonderer
+			Bedeutung:
+		  </p>
+		  <center>
+			<table width="90%" border="1" cellpadding="5">
+			  <tbody>
+				<tr>
+				  <th>Zeichen</th>
+				  <th>Bedeutung</th>
+				</tr>
+				<tr>
+				  <td><code>&gt;</code></td>
+				  <td>Einr&uuml;cken der aktuellen Zeile.</td>
+				</tr>
+				<tr>
+				  <td><code>\n</code></td>
+				  <td>Einr&uuml;cken der aktuellen Zeile und Wechsel in die
+					n&auml;chste.</td>
+				</tr>
+				<tr>
+				  <td><code>_</code></td>
+				  <td>Festlegen der Cursorposition <em>nach</em> dem
+					vollst&auml;ndigen Einf&uuml;gen des Templates. Achtung, das
+					klappt nicht immer so ganz richtig, speziell wenn man
+					elisp-Code ausf&uuml;hrt.</td>
+				</tr>
+				<tr>
+				  <td><code>&gt;</code></td>
+				  <td>Einr&uuml;cken der aktuellen Zeile.</td>
+				</tr>
+				<tr>
+				  <td><code>-3</code></td>
+				  <td>Das Minuszeichen gibt an, dass von der aktuellen
+				  Position die angegebene (3) Anzahl Zeichen gel&ouml;scht
+				  werden soll.</td>
+				</tr>
+			  </tbody>
+			</table>
+		  </center>
+		</subchapter>
+		<subchapter title="Bedingungen">
+		  <p>
+			In obiger Tabelle fehlen noch einige Sonderzeichen, die
+			jedoch gesondert behandelt werden sollen:
+			<code>&amp;</code> und <code>|</code>. Sie tauchen auch
+			bereits in obigem Beispiel auf und dienen zum Testen von
+			Bedingungen. 
+		  </p>
+		  <p>
+			Falls der vorherige Ausdruck die Cursorposition ver&auml;ndert
+			hat (z.B. durch Einf&uuml;gen des Inhalts der Variablen
+			<code>str</code> in den Buffer), wird ein mit
+			<code>&amp;</code> angeschlossener Teil behandelt. Falls
+			nicht, entf&auml;llt diese Bearbeitung. Somit ist also
+			<code>&amp;</code> ein logisches UND. Entsprechendes gilt f&uuml;r
+			<code>|</code>, das logische ODER.
+		  </p>
+		  <p>
+			Im Beispiel dient das dazu, f&uuml;r jedes weitere Argument,
+			das eingegeben wurde ein &quot;, &quot; in den Text
+			einzufügen, und wenn die Eingabe beendet wurde, jene
+			Zeichen zu löschen und dafür eine schliessende Klammer mit
+			einem Zeilenumbruch zu erzeugen. Falls hingegen keine
+			Argumente angegeben wurden, werden die Klammern entfernt.
+		  </p>
+		  <p>Somit ist also der Ausdruck <code>("Argument, %s: "
+   str &amp; ", ") &amp; -2 &amp; ")" | -1</code> wie folgt zu lesen:
+		  </p>
+		  <ol>
+			<li>Erfrage ein Argument: <code>("Argument, %s:
+			"</code></li>
+			<li>Schreib es in den Buffer und füge ein Komma und ein
+			Leerzeichen an: <code>str &amp; ", ")</code></li>
+			<li>Führe diese Aktion solange aus, bis der Anwender eine
+			leere Eingabe macht: das wird durch die Klammerung erreicht.</li>
+			<li>Wenn es eine Eingabe gegeben hat, lösche zwei Zeichen
+			(das Lerzeichen und das Komma): <code>&amp; -2</code></li>
+			<li>Und füge gleich noch die schliessende Klammer für die
+			  Argumentenliste ein: <code>&amp; ")"</code>.</li>
+			<li>Hat es hingegen keine Eingabe gegeben, lösche
+			lediglich ein Zeichen, nämlich die öffnende Klammer der
+			  Argumentenliste: <code>| -1</code></li>
+		  </ol>
+		</subchapter>
+	  </chapter>
+	  <chapter title="Meine Skeletons">
+		Momentan im Wesentlichen ohne Beschreibung aber ohnehin
+		dokumentiert und hoffentlich selbsterkl&auml;rend...
+
+		<subchapter title="Auto-Insert">
+		  Auto-Insert tritt in Kraft, wenn eine Datei ge&ouml;ffnet wird, die
+		  bestimmten Anforderungen gen&uuml;gt (z.B. einen bestimmten
+		  Major-Mode aufruft oder deren Dateiname auf ein Muster
+		  passt). Dann wird das angegebene Skeleton ausgef&uuml;hrt.
+		  <p>
+			<a href="ska-auto-insert.el"><code>
+				[my-xemacs-dir]/templates/ska-auto-insert.el</code></a>
+		  </p>
+		</subchapter>
+		<subchapter title="Reine Skeletons">
+		  <p>
+			<a href="ska-skel-c.el"><code>
+				[my-xemacs-dir]/templates/ska-skel-c.el</code></a>
+		  </p>
+		  <p>
+			<a href="ska-skel-mail.el"><code>
+				[my-xemacs-dir]/templates/ska-skel-mail.el</code></a>
+		  </p>
+		  <p>
+			<a href="ska-skel-perl.el"><code>
+				[my-xemacs-dir]/templates/ska-skel-perl.el</code></a>
+		  </p>
+		  <p>
+			<a href="ska-skel-ruby.el"><code>
+				[my-xemacs-dir]/templates/ska-skel-ruby.el</code></a>
+		  </p>
+		  <p>
+			<a href="ska-skel-sql.el"><code>
+				[my-xemacs-dir]/templates/ska-skel-sql.el</code></a>
+		  </p>
+		  <p>
+			<a href="ska-skel-utils.el"><code>
+				[my-xemacs-dir]/templates/ska-skel-utils.el</code></a>
+		  </p>
+		</subchapter>
+	  </chapter>
+	</xmlformat>
+  </content>
+</page>
+<!-- 
+Local Variables:
+time-stamp-start: "<date>"
+time-stamp-end: "</date>"
+time-stamp-format: "%y-%02m-%02d"
+End:
+-->

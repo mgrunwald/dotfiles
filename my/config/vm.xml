@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE page SYSTEM "/home/ska/Laforge/XML/www.skamphausen.de/web.dtd">
+<page>
+  <info>
+	<title>XEmacs-Konfiguration: VM Mailreader</title>
+	<shorttitle>VM</shorttitle>
+	<date>2002-01-06</date>
+	<description>Die Konfiguration des VM Mailreaders in der
+	deutschsprachigen Einleitung zum XEmacs</description> 
+	<keywords>
+	  <key>XEmacs</key>
+	  <key>Hilfe</key>
+	  <key>Stefan Kamphausen</key>
+	  <key>XEmacs Corner</key>
+	  <key>konfiguration</key>
+	  <key>Konfiguration</key>
+	  <key>configuration</key>
+	  <key>customize</key>
+	  <key>vm</key>
+	</keywords>
+	<author>Stefan Kamphausen</author>
+  </info>
+  <content>
+	<xmlformat>
+	  Momentan ohne Beschreibung aber ohnehin dokumentiert und
+	  hoffentlich selbsterkl&auml;rend...
+	  <p>
+		<a href="vm-init.el"><code>
+			[my-xemacs-dir]/config/vm-init.el</code></a>
+	  </p>
+	  <p>
+		Siehe dazu auch das 
+		<a href="..apps/vm.html">Kapitel über VM</a>
+		in den <a href="../apps/index.html">XEMacs-Anwendungen</a>
+	  </p>
+	</xmlformat>
+  </content>
+</page>
+<!-- 
+Local Variables:
+time-stamp-start: "<date>"
+time-stamp-end: "</date>"
+time-stamp-format: "%y-%02m-%02d"
+End:
+-->
