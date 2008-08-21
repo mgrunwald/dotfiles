@@ -2,7 +2,7 @@
 ;; Copyright (C) 2000-2001 Stefan Kamphausen
 
 ;; Author: Stefan Kamphausen <mail@skamphausen.de>
-;; Time-stamp: <28-Jul-2008 11:17:16 gru>
+;; Time-stamp: <11-Aug-2008 11:45:04 gru>
 
 ;; Keywords: 
 ;; This file is not part of XEmacs.
@@ -109,7 +109,9 @@ Argument MAP is c-mode-map or c++-mode-map."
   (define-key map '[(control j)]              'c-indent-new-comment-line)
   (define-key map '[(meta y)]                 'imenu)
   (define-key map '[(control v) (control l)]  'goto-line) 
-
+  (define-key map '[(meta n)]                 'c-beginning-of-defun)
+  (define-key map '[(meta m)]                 'c-end-of-defun)
+  
 ;  ;; XRef
 ;  (define-key map [(control v) (r)]  'xref-refactor)
 ;;;  (define-key map [(shift space)]    'xref-completion)
