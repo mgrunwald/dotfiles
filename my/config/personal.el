@@ -81,6 +81,12 @@ skeletons I use together with XEmacs."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Major Modes
 
+(add-hook 'before-save-hook
+          '(lambda ()
+             (whitespace-cleanup)
+             )
+          )
+
 
 (add-hook 'text-mode-hook
           '(lambda ()
