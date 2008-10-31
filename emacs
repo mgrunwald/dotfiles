@@ -198,8 +198,11 @@
 (desktop-load-default)
 (add-hook 'kill-emacs-hook 
           '(lambda ()
-                (desktop-truncate search-ring 3)
-                (desktop-truncate regexp-search-ring 3)))
+             (desktop-truncate search-ring 3)
+             (desktop-truncate regexp-search-ring 3)
+             (desktop-save)
+             )
+          )
 (desktop-read)
 ;;}}}
 ;;============================================================================
