@@ -30,12 +30,12 @@ skeletons I use together with XEmacs."
 (setq load-path
       (append
        (list
-        my-config-dir
-        my-templates-dir
-        my-lisp-dir
-        ;;(concat my-lisp-dir "psgml-1.2.2")
-        (concat my-lisp-dir "tools")
-        )
+	my-config-dir
+	my-templates-dir
+	my-lisp-dir
+	;;(concat my-lisp-dir "psgml-1.2.2")
+	(concat my-lisp-dir "tools")
+	)
        load-path
        )
       )
@@ -73,70 +73,77 @@ skeletons I use together with XEmacs."
 ;;}}}
 
 
-(load "kicking-the-habbit.el" )
+;;(load "kicking-the-habbit.el" )
 (load "ergonomic_keybinding_qwerty.el")
 (require 'ska-global-keys)
 (require 'ska-local-keys)
- 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Major Modes
 
-(add-hook 'before-save-hook
-          '(lambda ()
-             (whitespace-cleanup)
-             )
-          )
+;;; Remove the trailing white spaces
+;;; From Noah Friedman
+;;; http://www.splode.com/users/friedman/software/emacs-lisp/
+(autoload 'nuke-trailing-whitespace "nuke-trailing-whitespace" nil t)
+(add-hook 'mail-send-hook 'nuke-trailing-whitespace)
+(add-hook 'write-file-hooks 'nuke-trailing-whitespace)
 
 
 (add-hook 'text-mode-hook
-          '(lambda ()
-             (auto-fill-mode 1)
+	  '(lambda ()
+	     (auto-fill-mode 1)
 ;emacs22             (turn-on-filladapt-mode)
-             (abbrev-mode 1)
-             (load "ergonomic_keybinding_qwerty.el")
-             (message "==================== text-mode-hook ====================")
-             ))
+	     (abbrev-mode 1)
+;;	     (load "ergonomic_keybinding_qwerty.el")
+	     (message "==================== text-mode-hook ====================")
+	     ))
+
+(add-hook 'enriched-mode-hook
+	  '(lambda ()
+;;	     (load "ergonomic_keybinding_qwerty.el")
+	     (message "==================== enriched-mode-hook ====================")
+	     ))
 
 (add-hook 'cperl-mode-hook
-          '(lambda ()
-             (abbrev-mode 1)
-             ;; my keybindings
-             (ska-coding-keys cperl-mode-map)
-             (ska-cperl-mode-keys)
-             (auto-fill-mode 1)
-             ;; if you don't want tabs
-             ;;(setq indent-tabs-mode nil)
-             ;; full featured mode:
-             (setq cperl-hairy t)
-             ;; alternatively:
-             ;;(setq cperl-auto-newline-after-colon t)
-             ;;(setq cperl-electric-parens "({[")
-             (setq cperl-auto-newline nil)
-             (setq cperl-electric-linefeed t)
-             (cperl-set-style "C++")
-             (message "==================== cperl-mode-hook ====================")
-             ))
+	  '(lambda ()
+	     (abbrev-mode 1)
+	     ;; my keybindings
+	     (ska-coding-keys cperl-mode-map)
+	     (ska-cperl-mode-keys)
+	     (auto-fill-mode 1)
+	     ;; if you don't want tabs
+	     ;;(setq indent-tabs-mode nil)
+	     ;; full featured mode:
+	     (setq cperl-hairy t)
+	     ;; alternatively:
+	     ;;(setq cperl-auto-newline-after-colon t)
+	     ;;(setq cperl-electric-parens "({[")
+	     (setq cperl-auto-newline nil)
+	     (setq cperl-electric-linefeed t)
+	     (cperl-set-style "C++")
+	     (message "==================== cperl-mode-hook ====================")
+	     ))
 
 ;; Shell script
 (setq auto-mode-alist
       (append '(("\\.sh$" . shell-script-mode)) auto-mode-alist))
 (add-hook 'sh-mode-hook
-          '( lambda()
-             (ska-coding-keys sh-mode-map)
-             (message "==================== sh-mode-hook ====================")
-             )
-          )
+	  '( lambda()
+	     (ska-coding-keys sh-mode-map)
+	     (message "==================== sh-mode-hook ====================")
+	     )
+	  )
 
 ;; Lisp Mode
 (add-hook 'emacs-lisp-mode-hook
-          '(lambda ()
-             ;; meine Keybindings
-             (ska-coding-keys emacs-lisp-mode-map)
-             (ska-elisp-mode-keys)
-             (auto-fill-mode 1)
+	  '(lambda ()
+	     ;; meine Keybindings
+	     (ska-coding-keys emacs-lisp-mode-map)
+	     (ska-elisp-mode-keys)
+	     (auto-fill-mode 1)
 ;emacs22             (turn-on-filladapt-mode)
-             (message "==================== emacs-lisp-mode-hook ====================")
-             ))
+	     (message "==================== emacs-lisp-mode-hook ====================")
+	     ))
 
 ;; SQL Mode
 (autoload 'sql-mode "sql" "SQL Editing Mode" t)
@@ -145,75 +152,75 @@ skeletons I use together with XEmacs."
        '(("\\.sql$" . sql-mode))
        auto-mode-alist))
 (add-hook 'sql-mode-hook
-          '(lambda ()
-             (ska-coding-keys sql-mode-map)
-             (ska-sql-mode-keys)
-             (sql-highlight-oracle-keywords)
-             (message "==================== sql-mode-hook ====================")
-             ))
+	  '(lambda ()
+	     (ska-coding-keys sql-mode-map)
+	     (ska-sql-mode-keys)
+	     (sql-highlight-oracle-keywords)
+	     (message "==================== sql-mode-hook ====================")
+	     ))
 
 (add-hook 'c-mode-common-hook
-          '(lambda ()
+	  '(lambda ()
 ;emacs22             (require 'ctypes)
-             (require 'vvb-mode)
-             (imenu-add-menubar-index)
-             ;; highlight self-defined types
+	     (require 'vvb-mode)
+	     (imenu-add-menubar-index)
+	     ;; highlight self-defined types
 ;emacs22             (ctypes-auto-parse-mode 1)
-             '(c-indent-comments-syntactically-p nil)
-             (abbrev-mode 1)
-             (auto-fill-mode 1)
-             (setq fill-column 90)
-             (setq tab-width 4)
-             ;; explicitly load vc
-             ( load-library "vc" )
-             (setq tag-table-alist '( ("Dafit_Software/" . "/home/gru/projects/Dafit_Software/") ))
-             (which-function-mode)
-             (message "==================== c-mode-common-hook ====================")
-             ))
+	     '(c-indent-comments-syntactically-p nil)
+	     (abbrev-mode 1)
+	     (auto-fill-mode 1)
+	     (setq fill-column 90)
+	     (setq tab-width 4)
+	     ;; explicitly load vc
+	     ( load-library "vc" )
+	     (setq tag-table-alist '( ("Dafit_Software/" . "/home/gru/projects/Dafit_Software/") ))
+	     (which-function-mode)
+	     (message "==================== c-mode-common-hook ====================")
+	     ))
 
 (add-hook 'c-mode-hook
-          '(lambda ()
-             ;; my keybindings
-             (ska-coding-keys c-mode-map)
-             (ska-c-common-mode-keys c-mode-map)
-             (setq grep-find-command '"find . \\( -name \\*.c -o -name \\*.h \\) -print0 | xargs -0 -e grep -n " )
-             (message "==================== c-mode-hook ====================")
-             ))
+	  '(lambda ()
+	     ;; my keybindings
+	     (ska-coding-keys c-mode-map)
+	     (ska-c-common-mode-keys c-mode-map)
+	     (setq grep-find-command '"find . \\( -name \\*.c -o -name \\*.h \\) -print0 | xargs -0 -e grep -n " )
+	     (message "==================== c-mode-hook ====================")
+	     ))
 
 (add-hook 'c++-mode-hook
-          '(lambda ()
-             ;; my keybindings
-             (ska-coding-keys c++-mode-map)
-             (ska-c-common-mode-keys c++-mode-map)
-             (require 'doxymacs)
-             (doxymacs-mode)
+	  '(lambda ()
+	     ;; my keybindings
+	     (ska-coding-keys c++-mode-map)
+	     (ska-c-common-mode-keys c++-mode-map)
+	     (require 'doxymacs)
+	     (doxymacs-mode)
 ;;              (setq comment-start "// " )
 ;;              (setq comment-end "" )
-             (setq grep-find-command '"find . \\( -name \\*.cpp -o -name \\*.h \\) -print0 | xargs -0 -e grep -n " )
-             ;; qt keywords and stuff ...
-             ;; set up indenting correctly for new qt kewords
-             (setq c-protection-key (concat "\\<\\(public\\|public slot\\|protected"
-                                            "\\|protected slot\\|private\\|private slot"
-                                            "\\)\\>")
-                   c-C++-access-key (concat "\\<\\(signals\\|public\\|protected\\|private"
-                                            "\\|public slots\\|protected slots\\|private slots"
-                                            "\\)\\>[ \t]*:"))
-             ;; modify the colour of slots to match public, private, etc ...
-             (font-lock-add-keywords 'c++-mode
-                                     '(("\\<\\(slots\\|signals\\)\\>" . font-lock-type-face)))
-             ;; make new font for rest of qt keywords
-             (make-face 'qt-keywords-face)
-             (set-face-foreground 'qt-keywords-face "BlueViolet")
-             ;; qt keywords
-             (font-lock-add-keywords 'c++-mode
-                                     '(("\\<Q_OBJECT\\>" . 'qt-keywords-face)))
-             (font-lock-add-keywords 'c++-mode
-                                     '(("\\<SIGNAL\\|SLOT\\>" . 'qt-keywords-face)))
-             (font-lock-add-keywords 'c++-mode
-                                     '(("\\<Q[A-Z][A-Za-z]*" . 'qt-keywords-face)))
-             (modify-syntax-entry ?_ "w" ) ; _ is part of a word
-             (message "==================== c++-mode-hook ====================")
-             ) )
+	     (setq grep-find-command '"find . \\( -name \\*.cpp -o -name \\*.h \\) -print0 | xargs -0 -e grep -n " )
+	     ;; qt keywords and stuff ...
+	     ;; set up indenting correctly for new qt kewords
+	     (setq c-protection-key (concat "\\<\\(public\\|public slot\\|protected"
+					    "\\|protected slot\\|private\\|private slot"
+					    "\\)\\>")
+		   c-C++-access-key (concat "\\<\\(signals\\|public\\|protected\\|private"
+					    "\\|public slots\\|protected slots\\|private slots"
+					    "\\)\\>[ \t]*:"))
+	     ;; modify the colour of slots to match public, private, etc ...
+	     (font-lock-add-keywords 'c++-mode
+				     '(("\\<\\(slots\\|signals\\)\\>" . font-lock-type-face)))
+	     ;; make new font for rest of qt keywords
+	     (make-face 'qt-keywords-face)
+	     (set-face-foreground 'qt-keywords-face "BlueViolet")
+	     ;; qt keywords
+	     (font-lock-add-keywords 'c++-mode
+				     '(("\\<Q_OBJECT\\>" . 'qt-keywords-face)))
+	     (font-lock-add-keywords 'c++-mode
+				     '(("\\<SIGNAL\\|SLOT\\>" . 'qt-keywords-face)))
+	     (font-lock-add-keywords 'c++-mode
+				     '(("\\<Q[A-Z][A-Za-z]*" . 'qt-keywords-face)))
+	     (modify-syntax-entry ?_ "w" ) ; _ is part of a word
+	     (message "==================== c++-mode-hook ====================")
+	     ) )
 
 (setq auto-mode-alist
 	  (append
@@ -224,7 +231,7 @@ skeletons I use together with XEmacs."
 		  '(lambda ()
 			 ;; meine Keybindings
 			 (ska-coding-keys gnuplot-mode-map)
-                         (message "==================== gnuplot-mode-hook ====================")
+			 (message "==================== gnuplot-mode-hook ====================")
 			 ))
 
 ;;Visiting files
@@ -234,18 +241,18 @@ skeletons I use together with XEmacs."
 (add-hook 'find-file-hooks 'auto-insert)
 
 ;; Writing files
-(add-hook 'write-file-hooks 
+(add-hook 'write-file-hooks
 		  '(lambda ()
 			 (time-stamp)
 			 ))
 
 (add-hook 'speedbar-mode-hook
-          '(lambda()
-             (message "==================== speedbar-mode-hook start ====================")
-             ( ska-speedbar-keys speedbar-key-map )
-             ( setq case-fold-search t ) ; don't be case sensitive
-             (message "==================== speedbar-mode-hook end ====================")
-          ))
+	  '(lambda()
+	     (message "==================== speedbar-mode-hook start ====================")
+	     ( ska-speedbar-keys speedbar-key-map )
+	     ( setq case-fold-search t ) ; don't be case sensitive
+	     (message "==================== speedbar-mode-hook end ====================")
+	  ))
 
 ;; (add-hook 'speedbar-reconfigure-keymaps-hook
 ;;           '(lambda()
@@ -255,29 +262,33 @@ skeletons I use together with XEmacs."
 ;;           ))
 
 
-;; 		  '(lambda ()
-;; 			 (ska-speedbar-keys))
+;;		  '(lambda ()
+;;			 (ska-speedbar-keys))
 
 ;; Scilab Mode
 (load "scilab")
 (setq auto-mode-alist (cons '("\\(\\.sci$\\|\\.sce$\\)" . scilab-mode) auto-mode-alist))
 (setq scilab-mode-hook
       '(lambda ()
-         ;; my keybindings
-         (ska-coding-keys scilab-mode-map)
-         (setq fill-column 74)
-         (setq comment-start "// " )
-         (setq comment-end "" )
-         (message "==================== scilab-mode-hook ====================")
-         )
+	 ;; my keybindings
+	 (ska-coding-keys scilab-mode-map)
+	 (setq fill-column 74)
+	 (setq comment-start "// " )
+	 (setq comment-end "" )
+	 (message "==================== scilab-mode-hook ====================")
+	 )
       )
 
 ;; Comint mode ( Minor interpreters, shells, gdb, ... )
 (add-hook 'comint-mode-hook
-          (lambda ()
-            (load "ergonomic_keybinding_qwerty.el")
-            (message "==================== comint-mode-hook ====================")))
+	  (lambda ()
+;;	    (load "ergonomic_keybinding_qwerty.el")
+	    (message "==================== comint-mode-hook ====================")))
 
+(add-hook 'diff-mode-hook
+	  (lambda ()
+;;	    (load "ergonomic_keybinding_qwerty.el")
+	    (message "==================== diff-mode-hook ====================")))
 
 
 ;;
@@ -289,22 +300,34 @@ skeletons I use together with XEmacs."
 
 ;; isearch mode
 (add-hook 'isearch-mode-end-hook '(lambda ()
-                                    (when (and isearch-forward
-                                               isearch-other-end)
-                                      (goto-char isearch-other-end))))
+				    (when (and isearch-forward
+					       isearch-other-end)
+				      (goto-char isearch-other-end))))
 ;; sgml mode
 ( add-hook 'sgml-mode-hook
-           '(lambda ()
-              (setq sgml-quick-keys t)
-              )
-           )
+	   '(lambda ()
+	      (setq sgml-quick-keys t)
+	      )
+	   )
 
 ;; gdb mode
 (add-hook 'gdb-mode-hook
-          (lambda()
-            (shrink-window (- (window-height) 20 ) )
-            )
-          )
+	  (lambda()
+	    (shrink-window (- (window-height) 20 ) )
+	    )
+	  )
+
+;; ;; Prevent flyspell from finding mistakes in the code.
+;; ;; From Jim Meyering.
+;; (add-hook 'c-mode-hook          'flyspell-prog-mode 1)
+;; (add-hook 'c++-mode-hook        'flyspell-prog-mode 1)
+;; (add-hook 'cperl-mode-hook      'flyspell-prog-mode 1)
+;; (add-hook 'autoconf-mode-hook   'flyspell-prog-mode 1)
+;; (add-hook 'autotest-mode-hook   'flyspell-prog-mode 1)
+;; (add-hook 'sh-mode-hook         'flyspell-prog-mode 1)
+;; (add-hook 'makefile-mode-hook   'flyspell-prog-mode 1)
+;; (add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode 1)
+
 
 
 ;; hippie-expand
@@ -344,6 +367,13 @@ skeletons I use together with XEmacs."
 (require 'shebang)
 
 ( setenv "GREP_OPTIONS" "--color=never" )
+
+(load "auctex.el" nil t t)
+(load "preview-latex.el" nil t t)
+
+(defadvice vc-revert-buffer (after touch activate)
+  "Reset the visited file's modification time to the current time."
+  (shell-command (format "touch %s" buffer-file-name)))
 
 ;; Start emacs server so you can use emacsclient
 (server-start)
