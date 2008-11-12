@@ -375,5 +375,8 @@ skeletons I use together with XEmacs."
   "Reset the visited file's modification time to the current time."
   (shell-command (format "touch %s" buffer-file-name)))
 
+;; Filesets "remember" files for quick access
+(filesets-init)
+
 ;; Start emacs server so you can use emacsclient
 (server-start)
