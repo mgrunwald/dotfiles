@@ -2,9 +2,9 @@
 ;; Copyright (C) 2000-2001 Stefan Kamphausen
 
 ;; Author: Stefan Kamphausen <mail@skamphausen.de>
-;; Time-stamp: <11-Aug-2008 11:45:04 gru>
+;; Time-stamp: <17-Dez-2008 12:21:04 gru>
 
-;; Keywords: 
+;; Keywords:
 ;; This file is not part of XEmacs.
 
 ;; This program is free software; you can redistribute it and/or modify it
@@ -68,10 +68,10 @@ languages. Argument MAP is the local keymap (e.g. cperl-mode-map)."
 ;  (define-key map '[(control b) (d)]          'chb-insert-debug-output)
 ;;   (define-key map '[(control b) (\;)]         'chb-comment-region-or-line)
 ;;   (define-key map '[(control b) (\:)]         'chb-uncomment-region-or-line)
-;;   (define-key map '[(control b) (c)]          'chb-copy-and-comment-region-or-line) 
+;;   (define-key map '[(control b) (c)]          'chb-copy-and-comment-region-or-line)
   (define-key map '[(control \#)]             'indent-region )
   (define-key map '[(control h) (m)]          'woman)
-  (define-key map '[(control b) (v)]          'svn-status)  
+  (define-key map '[(control b) (v)]          'svn-status)
   )
 ;;}}}
 
@@ -108,10 +108,10 @@ Argument MAP is c-mode-map or c++-mode-map."
   (define-key map '[(control b) (d)]          'mg-skel-pt-dbgvar)
   (define-key map '[(control j)]              'c-indent-new-comment-line)
   (define-key map '[(meta y)]                 'imenu)
-  (define-key map '[(control v) (control l)]  'goto-line) 
+  (define-key map '[(control v) (control l)]  'goto-line)
   (define-key map '[(meta n)]                 'c-beginning-of-defun)
   (define-key map '[(meta m)]                 'c-end-of-defun)
-  
+
 ;  ;; XRef
 ;  (define-key map [(control v) (r)]  'xref-refactor)
 ;;;  (define-key map [(shift space)]    'xref-completion)
@@ -124,7 +124,7 @@ Argument MAP is c-mode-map or c++-mode-map."
 ;  (define-key map [(control v) (control f4)] 'xref-alternative-next-reference)
 ;  (define-key map [(control v) (f3)] 'xref-previous-reference)
 ;  (define-key map [(control v) (control f3)] 'xref-alternative-previous-reference)
-  
+
   ;; Skeletons
 ;;   (define-key map '[(control i) (h)]  'pt-skel-c-short)
 ;;   (define-key map '[(control i) (i)]  'pt-skel-c-integer)
@@ -142,7 +142,7 @@ Argument MAP is c-mode-map or c++-mode-map."
    (define-key map '[(control n) (q) (f)]  'kdab-insert-forward-decl)
    (define-key map '[(control n) (q) (t)]  'mg-skel-c-qt-tr)
   ;; skeletons and makros MIGHT use C-b C-s as prefix if they get too many
-  
+
   )
 
 ;;}}}
@@ -206,7 +206,9 @@ Argument MAP is c-mode-map or c++-mode-map."
 (defun ska-elisp-mode-keys ()
   "Set keys for elisp-mode."
   (local-set-key '[(control b) (control b)]  'eval-buffer)
-	)
+  (local-set-key '[(meta n)]                 'beginning-of-defun)
+  (local-set-key '[(meta m)]                 'end-of-defun)
+  )
 ;;}}}
 
 ;;{{{ VM and Mail

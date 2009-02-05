@@ -2,9 +2,9 @@
 ;; Copyright (C) 2000-2001 Stefan Kamphausen
 
 ;; Author: Markus Grunwald <markus.grunwald@gmx.de>
-;; Time-stamp: <16-Jun-2008 12:19:25 gru>
+;; Time-stamp: <23-Dez-2008 12:02:07 gru>
 
-;; Keywords: 
+;; Keywords:
 ;; This file is not part of XEmacs.
 
 ;; This code is free software; you can redistribute it and/or modify it
@@ -28,7 +28,7 @@
 
 ;; Here you can find all the more or less useful defuns I wrote or
 ;; stole (including this comment - stolen from ska...).
-;; Being not a lisp hacker it may contain ugly and stupid code,  
+;; Being not a lisp hacker it may contain ugly and stupid code,
 ;; please tell me, if you can approve anything
 
 ;;  To use:
@@ -37,7 +37,7 @@
 ;;  you should use them together (maybe).
 ;;
 ;;  Author:  Markus Grunwald
-;;           
+;;
 
 ;;; Code:
 
@@ -46,13 +46,18 @@
 ;; We need time-stamp!
 (require 'time-stamp)
 
+(defun mg-flymake-get-project-include-dirs( base )
+  ( "." "local_includes" "startscreen"
+  "/usr/local/arm/2.95.3/arm-linux/include" "/usr/local/include/pt"
+  "constants" "measbase" ) )
+
  (defun next-buffer ()
    "Switch to the next buffer in cyclic order."
    (interactive)
    (let ((buffer (current-buffer)))
      (switch-to-buffer (other-buffer buffer))
      (bury-buffer buffer)))
- 
+
  (defun previous-buffer ()
    "Switch to the previous buffer in cyclic order."
    (interactive)
@@ -166,18 +171,74 @@
    [?\C-r ?/ ?* ?* ?  ?\C-m ?\C-s ?* ?/ ?\C-m end ?\C-x ?\C-x S-delete ?\C-s ?\( ?\C-m ?\C-r ?  ?\C-m right ?\C-x ?\C-x C-insert  C-tab ?\C-v ?\C-o ?C ?P ?T tab S-insert return ?\C-r ?/ ?* ?* ?  ?\C-m ?\C-s ?* ?/ ?\C-m end ?\C-x ?\C-x C-insert C-tab home S-insert return ?\C-s ?\; ?\C-m end ?\C-r ?/ ?* ?* ?  ?\C-m ?\C-x ?\C-x ?\C-#])
 
 
-(defalias 'mg-copy-method (read-kbd-macro
-                           "C-r /**  RET C-@ M-C-e <down> <C-insert>"))
+(defun mg-copy-method ()
+  (interactive)
+  (save-excursion
+    (let ((beg (search-backward "/**")))
+      (c-end-of-defun)
+      (copy-region-as-kill beg (point)))
+      )
+    )
 
 
-(fset 'definition-to-deklaration
-   [?\C-\M-e end ?\C-@ ?\C-\M-a S-delete backspace ?\; ?\C-r ?: ?: ?\C-m right right C-backspace ?\C-r ?/ ?* ?* ?  ?\C-m ?\C-s ?\; ?\C-x ?\C-x ?\C-#])
+
+;; (fset 'definition-to-deklaration
+;;    [?\C-\M-e end ?\C-@ ?\C-\M-a S-delete backspace ?\; ?\C-r ?: ?: ?\C-m right right C-backspace ?\C-r ?/ ?* ?* ?  ?\C-m ?\C-s ?\; ?\C-x ?\C-x ?\C-#])
+
+(defun mg-definition-to-declatation ()
+  (interactive)
+  (search-backward "::")
+  (search-forward  "{")
+  (backward-char)
+  (forward-sexp )
+  (move-end-of-line nil)
+  (let ( (end (point)) )
+    (search-backward "{")
+    (move-beginning-of-line nil)
+    (kill-region (point) end)
+    )
+  (move-end-of-line 0)
+  (insert "\;")
+  (search-backward "::")
+  (forward-char 2)
+  (let ( (end (point)) )
+    (backward-word)
+    (kill-region (point) end)
+    )
+  )
 
 (defalias 'mg-narrow-to-method (read-kbd-macro
 "C-r /**  RET C-@ M-C-e <down> M-x narrow- to- region RET"))
 
-(defalias 'mg-update-header-comment (read-kbd-macro
-"C-s /** SPC < RET <down> <end> C-. C-r DESCRIPTION: RET 2*<C-right> <C-left> C-s ARGUMENTS: RET <up> <end> C-x C-x <C-insert> C-, <S-insert> C-k C-r /** SPC * RET C-s * SPC */ RET <down> <home> C-x C-x S-DEL <down> 3*<right>"))
+;; (defalias 'mg-update-header-comment (read-kbd-macro
+;; "C-s /** SPC < RET <down> <end> C-. C-r DESCRIPTION: RET 2*<C-right>3 <C-left> C-s ARGUMENTS: RET <up> <end> C-x C-x <C-insert> C-, <S-insert> C-k C-r /** SPC * RET C-s * SPC */ RET <down> <home> C-x C-x S-DEL <down> 3*<right>"))
+
+(defun mg-update-header-comment ()
+  "Update a new style function header comment from an old style comment directly above."
+  (interactive)
+  (search-backward "/** <")
+  (move-end-of-line 2)
+  (point-to-register 9)
+  (search-backward "DESCRIPTION: ")
+  (forward-word 2)
+  (backward-word 1)
+  ( let ((begin (point) ) )
+    (search-forward "ARGUMENTS: ")
+    (move-end-of-line 0)
+    (kill-ring-save begin (point) )
+    )
+  (jump-to-register 9)
+  (yank)
+  (mg-kill-entire-line)
+  (search-backward "/** *")
+  (let ((begin (point)))
+    (search-forward "* */")
+    (move-beginning-of-line 2)
+    (kill-region begin (point))
+    )
+  (next-line)
+  (forward-char 3)
+  )
 
 (defun ispell-toggle-dictionary ()
   "toogle between German and English dictionary"
@@ -187,7 +248,7 @@
              (message "changed ispell dictionary to german-old8"))
     (progn (ispell-change-dictionary "british" t)
            (message "changed ispell dictionary to british"))
-    ) 
+    )
   )
 
 ;; special home
@@ -216,7 +277,7 @@
 
 (defun point-in-comment-or-string ()
   "returns t if point is within a comment or a string"
-  ( or 
+  ( or
     (nth 3 (parse-partial-sexp 1 (point) ) )
     (nth 4 (parse-partial-sexp 1 (point) ) )
     )
@@ -277,7 +338,7 @@
   (add-to-list 'TeX-expand-list
 	       (list "%F" 'file "pdf" t))
   ;; some more printing handling
-  (mapcar (function 
+  (mapcar (function
 	    (lambda (arg)
 	      (add-to-list 'TeX-printer-list arg)))
 	  '(("Local" "dvips -f %s | lpr" "lpq")
@@ -294,20 +355,20 @@
 		   (place-new-in-list arg TeX-command-list))))
 	  (list (cons (list "PDFLaTeX" "pdflatex '\\nonstopmode\\input{%t}'"
 			    'TeX-run-LaTeX nil t)
-		      (list "LaTeX2e" "latex2e '\\nonstopmode\\input{%t}'" 
+		      (list "LaTeX2e" "latex2e '\\nonstopmode\\input{%t}'"
 			    'TeX-run-LaTeX nil t))
-		(cons (list "Ghostview" "ghostview %f" 
+		(cons (list "Ghostview" "ghostview %f"
 			    'TeX-run-background t nil)
 		      (list "View" "%v " 'TeX-run-silent t nil))
 		(cons (list "GV" "gv %f" 'TeX-run-background t nil)
-		      (list "Ghostview" "ghostview %f" 
+		      (list "Ghostview" "ghostview %f"
 			    'TeX-run-background t nil))
 		(cons (list "Acroread" "acroread %F" 'TeX-run-background t nil)
 		      (list "GV" "gv %f" 'TeX-run-background t nil))
 		(cons (list "xpdf" "xpdf %F" 'TeX-run-background t nil)
-		      (list "Acroread" "acroread %F" 
+		      (list "Acroread" "acroread %F"
 			    'TeX-run-background t nil))
-		(cons (list "Mini" "dvips %d | mini > %f" 
+		(cons (list "Mini" "dvips %d | mini > %f"
 			    'TeX-run-command t nil)
 		      (list "File" "dvips %d -o %f " 'TeX-run-command t nil))))
   ;; now show a new menu

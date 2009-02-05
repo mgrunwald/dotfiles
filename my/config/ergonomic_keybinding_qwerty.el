@@ -162,6 +162,11 @@
 (global-unset-key (kbd "C-_")) ; undo
 (global-unset-key (kbd "C-<backspace>")) ; backward-kill-word
 
+;;
+;; disable backspace to kick the habbit
+;;
+(global-set-key '[backspace]  '(lambda ()	  (interactive)	  (nil))  )
+
 (global-unset-key (kbd "C-<prior>")) ; scroll-right
 (global-unset-key (kbd "C-<next>")) ; scroll-left
 
@@ -272,7 +277,7 @@
 (global-set-key (kbd "C-w") 'close-current-buffer) ; Close
 (global-set-key (kbd "C-s") 'save-buffer) ; Save
 (global-set-key (kbd "C-S-n") 'write-file) ; Save As.
-(global-set-key (kbd "C-p") 'print-buffer) ; Print
+;;(global-set-key (kbd "C-p") 'print-buffer) ; Print
 (global-set-key (kbd "C-a") 'mark-whole-buffer) ; Select All
 
 (global-set-key (kbd "<delete>") 'delete-char) ; the Del key for forward delete. Needed if C-d is set to nil.
@@ -280,11 +285,11 @@
 (global-set-key (kbd "M-~") 'switch-to-previous-frame)
 (global-set-key (kbd "M-`") 'switch-to-next-frame)
 
-(global-set-key (kbd "C-<left>") 'previous-user-buffer)
-(global-set-key (kbd "C-<right>") 'next-user-buffer)
+;; (global-set-key (kbd "C-<left>") 'previous-user-buffer)
+;; (global-set-key (kbd "C-<right>") 'next-user-buffer)
 
-(global-set-key (kbd "C-S-<left>") 'previous-emacs-buffer)
-(global-set-key (kbd "C-S-<right>") 'next-emacs-buffer)
+;; (global-set-key (kbd "C-S-<left>") 'previous-emacs-buffer)
+;; (global-set-key (kbd "C-S-<right>") 'next-emacs-buffer)
 
 (global-set-key (kbd "M-5") 'query-replace)
 (global-set-key (kbd "M-%") 'query-replace-regexp)
@@ -382,6 +387,13 @@
 (add-hook 'enriched-mode-hook
  (lambda()
  (define-key enriched-mode-map (kbd "M-j") 'backward-char)
+ )
+)
+
+(add-hook 'diff-mode-hook
+ (lambda()
+ (define-key diff-mode-map (kbd "M-k") 'next-line)
+ (define-key diff-mode-map (kbd "M-K") 'scroll-up)
  )
 )
 

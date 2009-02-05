@@ -222,17 +222,34 @@ skeletons I use together with XEmacs."
 	     (message "==================== c++-mode-hook ====================")
 	     ) )
 
-(setq auto-mode-alist
-	  (append
-	   '(("\\.gp$" . gnuplot-mode)
-		 ("\\.gnu$" . gnuplot-mode))
-	   auto-mode-alist))
+;;--------------------------------------------------------------------
+;; Lines enabling gnuplot-mode
+
+;; move the files gnuplot.el to someplace in your lisp load-path or
+;; use a line like
+;;  (setq load-path (append (list "/path/to/gnuplot") load-path))
+
+;; these lines enable the use of gnuplot mode
+  (autoload 'gnuplot-mode "gnuplot" "gnuplot major mode" t)
+  (autoload 'gnuplot-make-buffer "gnuplot" "open a buffer in gnuplot mode" t)
+
+;; this line automatically causes all files with the .gp extension to
+;; be loaded into gnuplot mode
+  (setq auto-mode-alist (append '(("\\.gp$" . gnuplot-mode)) auto-mode-alist))
+
+;; This line binds the function-9 key so that it opens a buffer into
+;; gnuplot mode
+  (global-set-key [(f9)] 'gnuplot-make-buffer)
+
+;; end of line for gnuplot-mode
+;;--------------------------------------------------------------------
+
 (add-hook 'gnuplot-mode-hook
 		  '(lambda ()
-			 ;; meine Keybindings
-			 (ska-coding-keys gnuplot-mode-map)
 			 (message "==================== gnuplot-mode-hook ====================")
 			 ))
+
+
 
 ;;Visiting files
 (require 'autoinsert)
@@ -328,7 +345,20 @@ skeletons I use together with XEmacs."
 ;; (add-hook 'makefile-mode-hook   'flyspell-prog-mode 1)
 ;; (add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode 1)
 
+;; org mode
+(require 'remember-autoloads)
+(setq remember-annotation-functions '(org-remember-annotation))
+(setq remember-handler-functions '(org-remember-handler))
+(eval-after-load 'remember
+  '(add-hook 'remember-mode-hook 'org-remember-apply-template))
+(global-set-key (kbd "C-c r") 'remember) ;; (3)
 
+(require 'org)
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode)) ;; (4)
+(global-set-key (kbd "C-c a") 'org-agenda)             ;; (5)
+(setq org-todo-keywords '("TODO" "STARTED" "WAITING" "DONE")) ;; (6)
+(setq org-agenda-include-diary t)                             ;; (7)
+(setq org-agenda-include-all-todo t)
 
 ;; hippie-expand
 ;;expand text trying various ways to find its expansion.
@@ -370,6 +400,10 @@ skeletons I use together with XEmacs."
 
 (load "auctex.el" nil t t)
 (load "preview-latex.el" nil t t)
+
+(add-hook 'latex-mode-hook 'turn-on-reftex)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(setq reftex-plug-into-auctex t)
 
 (defadvice vc-revert-buffer (after touch activate)
   "Reset the visited file's modification time to the current time."
