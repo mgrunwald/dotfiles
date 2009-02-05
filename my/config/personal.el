@@ -345,20 +345,20 @@ skeletons I use together with XEmacs."
 ;; (add-hook 'makefile-mode-hook   'flyspell-prog-mode 1)
 ;; (add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode 1)
 
-;; org mode
-(require 'remember-autoloads)
-(setq remember-annotation-functions '(org-remember-annotation))
-(setq remember-handler-functions '(org-remember-handler))
-(eval-after-load 'remember
-  '(add-hook 'remember-mode-hook 'org-remember-apply-template))
-(global-set-key (kbd "C-c r") 'remember) ;; (3)
+;; ;; org mode
+;; (require 'remember-autoloads)
+;; (setq remember-annotation-functions '(org-remember-annotation))
+;; (setq remember-handler-functions '(org-remember-handler))
+;; (eval-after-load 'remember
+;;   '(add-hook 'remember-mode-hook 'org-remember-apply-template))
+;; (global-set-key (kbd "C-c r") 'remember) ;; (3)
 
-(require 'org)
-(add-to-list 'auto-mode-alist '("\\.org$" . org-mode)) ;; (4)
-(global-set-key (kbd "C-c a") 'org-agenda)             ;; (5)
-(setq org-todo-keywords '("TODO" "STARTED" "WAITING" "DONE")) ;; (6)
-(setq org-agenda-include-diary t)                             ;; (7)
-(setq org-agenda-include-all-todo t)
+;; (require 'org)
+;; (add-to-list 'auto-mode-alist '("\\.org$" . org-mode)) ;; (4)
+;; (global-set-key (kbd "C-c a") 'org-agenda)             ;; (5)
+;; (setq org-todo-keywords '("TODO" "STARTED" "WAITING" "DONE")) ;; (6)
+;; (setq org-agenda-include-diary t)                             ;; (7)
+;; (setq org-agenda-include-all-todo t)
 
 ;; hippie-expand
 ;;expand text trying various ways to find its expansion.
