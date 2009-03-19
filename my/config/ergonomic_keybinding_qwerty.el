@@ -310,8 +310,11 @@
   (define-key w3m-mode-map (kbd "<right>") 'forward-char) ; was w3m-view-this-url. Use Enter.
 ))
 
-(global-set-key (kbd "M-Y") '(lambda () (interactive)
-                               (buffer-menu t )))
+(global-set-key (kbd "M-Y") '(lambda () (interactive)  (buffer-menu t )))
+
+;; Not so ergonomic, but usefull:
+(global-set-key (kbd "C-`") '(lambda () (interactive)  (menu-bar-mode t) (accelerate-menu)))
+(global-set-key (kbd "M->") 'tab-to-tab-stop)
 
 
 ;;; --------------------------------------------------
