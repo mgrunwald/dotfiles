@@ -311,8 +311,7 @@
 ))
 
 (global-set-key (kbd "M-Y") '(lambda () (interactive)
-                               (list-buffers t )
-                               (other-window 1)))
+                               (buffer-menu t )))
 
 
 ;;; --------------------------------------------------
