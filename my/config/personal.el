@@ -484,3 +484,6 @@ skeletons I use together with XEmacs."
 
 ;; Start emacs server so you can use emacsclient
 (server-start)
+
+;; menu bar takes only place
+(menu-bar-mode 0)
