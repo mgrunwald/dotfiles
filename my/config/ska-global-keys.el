@@ -2,9 +2,9 @@
 ;; Copyright (C) 2000 Stefan Kamphausen <mail@skamphausen.de>
 
 ;; Author: Stefan Kamphausen <mail@skamphausen.de>
-;; Time-stamp: <27-Jun-2008 15:35:08 gru>
+;; Time-stamp: <09-Apr-2009 09:22:15 gru>
 
-;; Keywords: 
+;; Keywords:
 ;; This file is not part of XEmacs.
 
 ;; This program is free software; you can redistribute it and/or modify it
@@ -39,7 +39,7 @@
 (require 'mg-utils)
 (require 'chb-util)
 (require 'redo)
- 
+
 ;; My own prefix for globally available commands: C-v
 ;; (just like C-x and C-c for xemacs' defaults)
 (global-unset-key '[(control v)])
@@ -177,12 +177,11 @@
 											   (+ (frame-height) 1))))
 ;; The function keys with higher numbers seem to be used by some
 ;; packages so I won't rely on them
-(global-set-key '[(shift f9)]              'repeat-complex-command) 
+(global-set-key '[(shift f9)]              'repeat-complex-command)
 ;;}}}
 
 ;;{{{ Text Operation: Insert, Expand, ...
 ;; ---------------------------------------
-(global-set-key '[(control \`)]            'accelerate-menu)
 (global-set-key '[(control t)]             'mg-delete-whitespace)
 (global-set-key '[(control v) (control a)] 'chb-align-to-char-in-previous-line)
 (global-set-key '[(control v) (control c)] 'set-justification-center)
@@ -209,6 +208,9 @@
 (global-set-key '[(control x) (F) (f)    ] 'facemenu-set-foreground )
 (global-set-key '[(control x) (F) (a)    ] 'facemenu-set-background )
 ;;}}}
+
+
+(global-set-key "\e#" 'calc-dispatch)
 
 
 (provide 'ska-global-keys)

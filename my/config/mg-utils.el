@@ -2,7 +2,7 @@
 ;; Copyright (C) 2000-2001 Stefan Kamphausen
 
 ;; Author: Markus Grunwald <markus.grunwald@gmx.de>
-;; Time-stamp: <23-Dez-2008 12:02:07 gru>
+;; Time-stamp: <09-Apr-2009 09:17:39 gru>
 
 ;; Keywords:
 ;; This file is not part of XEmacs.
@@ -186,25 +186,25 @@
 ;;    [?\C-\M-e end ?\C-@ ?\C-\M-a S-delete backspace ?\; ?\C-r ?: ?: ?\C-m right right C-backspace ?\C-r ?/ ?* ?* ?  ?\C-m ?\C-s ?\; ?\C-x ?\C-x ?\C-#])
 
 (defun mg-definition-to-declatation ()
-  (interactive)
-  (search-backward "::")
-  (search-forward  "{")
-  (backward-char)
+ (interactive)
+ (search-backward "::")
+ (search-forward  "{")
+ (backward-char)
+ (let ( (start (point)) )
   (forward-sexp )
   (move-end-of-line nil)
   (let ( (end (point)) )
-    (search-backward "{")
-    (move-beginning-of-line nil)
-    (kill-region (point) end)
-    )
+   (kill-region start end)
+   )
+  )
   (move-end-of-line 0)
   (insert "\;")
   (search-backward "::")
   (forward-char 2)
   (let ( (end (point)) )
-    (backward-word)
-    (kill-region (point) end)
-    )
+   (backward-word)
+   (kill-region (point) end)
+   )
   )
 
 (defalias 'mg-narrow-to-method (read-kbd-macro
