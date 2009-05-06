@@ -219,6 +219,7 @@ skeletons I use together with XEmacs."
 	     (font-lock-add-keywords 'c++-mode
 				     '(("\\<Q[A-Z][A-Za-z]*" . 'qt-keywords-face)))
 	     (modify-syntax-entry ?_ "w" ) ; _ is part of a word
+         (c-subword-mode t)
 	     (message "==================== c++-mode-hook ====================")
 	     ) )
 
