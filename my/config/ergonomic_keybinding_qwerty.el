@@ -70,6 +70,11 @@
 ;; version 1.0, 2007-08-01. first version.
 
 
+;;; Todo:
+;; - close actual frame (C-x 5 0)
+;; - close actual buffer ( keep all but this, contrary to M-1 )
+
+
 ;;; Code:
 
 ;; --------------------------------------------------
@@ -336,6 +341,7 @@
  (define-key isearch-mode-map (kbd "M-c") 'kill-ring-save) ; was isearch-toggle-case-fold
  (define-key isearch-mode-map (kbd "M-r") 'kill-word) ; was isearch-toggle-regexp
  (define-key isearch-mode-map (kbd "M-e") 'backward-kill-word) ; was isearch-edit-string
+ (define-key isearch-mode-map (kbd "M-d") 'isearch-delete-char)
  )
 )
 
