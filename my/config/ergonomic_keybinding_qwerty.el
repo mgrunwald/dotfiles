@@ -349,7 +349,9 @@
 (define-key minibuffer-local-map (kbd "M-p") 'recenter) ; was previous-history-element. Use ↑ key or f11.
 (define-key minibuffer-local-map (kbd "M-n") 'nil) ; was next-history-element. Use ↓ key or f12.
 (define-key minibuffer-local-map (kbd "M-r") 'kill-word) ; was previous-matching-history-element.
-(define-key minibuffer-local-map (kbd "M-s") 'other-window) ; was nest-matching-history-element
+(define-key minibuffer-local-map (kbd "M-s") 'move-cursor-next-pane) ; was nest-matching-history-element
+(define-key minibuffer-local-map (kbd "M-i") 'previous-history-element)
+(define-key minibuffer-local-map (kbd "M-k") 'next-history-element)
 
 (define-key minibuffer-local-map (kbd "<f11>") 'previous-history-element)
 (define-key minibuffer-local-map (kbd "<f12>") 'next-history-element)
