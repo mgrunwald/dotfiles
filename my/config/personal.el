@@ -184,6 +184,7 @@ skeletons I use together with XEmacs."
 	     (ska-coding-keys c-mode-map)
 	     (ska-c-common-mode-keys c-mode-map)
 	     (setq grep-find-command '"find . \\( -name \\*.c -o -name \\*.h \\) -print0 | xargs -0 -e grep -n " )
+         (c-subword-mode t)
 	     (message "==================== c-mode-hook ====================")
 	     ))
 
@@ -192,8 +193,8 @@ skeletons I use together with XEmacs."
 	     ;; my keybindings
 	     (ska-coding-keys c++-mode-map)
 	     (ska-c-common-mode-keys c++-mode-map)
-	     (require 'doxymacs)
-	     (doxymacs-mode)
+	     ;; emacs23 (require 'doxymacs)
+	     ;; emacs23  (doxymacs-mode)
 ;;              (setq comment-start "// " )
 ;;              (setq comment-end "" )
 	     (setq grep-find-command '"find . \\( -name \\*.cpp -o -name \\*.h \\) -print0 | xargs -0 -e grep -n " )
@@ -218,7 +219,7 @@ skeletons I use together with XEmacs."
 				     '(("\\<SIGNAL\\|SLOT\\>" . 'qt-keywords-face)))
 	     (font-lock-add-keywords 'c++-mode
 				     '(("\\<Q[A-Z][A-Za-z]*" . 'qt-keywords-face)))
-	     (modify-syntax-entry ?_ "w" ) ; _ is part of a word
+	     ;; emacs23 (modify-syntax-entry ?_ "w" ) ; _ is part of a word
          (c-subword-mode t)
 	     (message "==================== c++-mode-hook ====================")
 	     ) )
@@ -240,7 +241,7 @@ skeletons I use together with XEmacs."
 
 ;; This line binds the function-9 key so that it opens a buffer into
 ;; gnuplot mode
-  (global-set-key [(f9)] 'gnuplot-make-buffer)
+;;  (global-set-key [(f9)] 'gnuplot-make-buffer)
 
 ;; end of line for gnuplot-mode
 ;;--------------------------------------------------------------------
@@ -476,6 +477,13 @@ skeletons I use together with XEmacs."
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-auctex t)
 
+;; (setq TeX-parse-self t) ; Enable parse on load.
+;; (setq TeX-auto-save t) ; Enable parse on save.
+
+;; (add-hook 'TeX-language-de-hook
+;;      	  (lambda () (ispell-change-dictionary "german")))
+
+
 (defadvice vc-revert-buffer (after touch activate)
   "Reset the visited file's modification time to the current time."
   (shell-command (format "touch %s" buffer-file-name)))
@@ -488,3 +496,7 @@ skeletons I use together with XEmacs."
 
 ;; menu bar takes only place
 (menu-bar-mode 0)
+
+;; w3m browser
+(setq browse-url-browser-function 'w3m-browse-url)
+(autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
