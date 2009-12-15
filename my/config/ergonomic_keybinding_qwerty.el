@@ -370,6 +370,10 @@
 
    (define-key comint-mode-map (kbd "<f11>") 'comint-previous-input)
    (define-key comint-mode-map (kbd "<f12>") 'comint-next-input)
+   (define-key comint-mode-map (kbd "M-i") 'comint-previous-input)
+   (define-key comint-mode-map (kbd "M-k") 'comint-next-input)
+   (define-key comint-mode-map (kbd "<up>") 'previous-line)
+   (define-key comint-mode-map (kbd "<down>") 'next-line)
    (define-key comint-mode-map (kbd "S-<f11>") 'comint-previous-matching-input)
    (define-key comint-mode-map (kbd "S-<f12>") 'comint-next-matching-input)
 ))
@@ -453,6 +457,7 @@
 
   (define-key w3m-mode-map (kbd "M-i") 'previous-line) ; was w3m-save-image
   (define-key w3m-mode-map (kbd "M-k") 'next-line) ; was w3m-cookie
+  (define-key w3m-mode-map (kbd "M-s") 'other-window) ; was w3m-session-select
 ))
 
 (add-hook 'rcirc-mode-hook
