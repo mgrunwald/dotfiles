@@ -2,7 +2,7 @@
 ;; Copyright (C) 2000-2001 Stefan Kamphausen
 
 ;; Author: Markus Grunwald <markus.grunwald@gmx.de>
-;; Time-stamp: <09-Apr-2009 09:17:39 gru>
+;; Time-stamp: <08-Dec-2009 08:43:03 gru>
 
 ;; Keywords:
 ;; This file is not part of XEmacs.
@@ -91,6 +91,7 @@
     ( setenv "LD_LIBRARY_PATH" "/opt/qt/arm/qt3/lib" )
     ( setenv "QMAKESPEC" "qws/linux-arm-g++" )
     ( setenv "QMAKE_TARGET" "arm" )
+    (setq compile-command "NetMake -k -j11 -s" )
     ( message "Environment set to arm" )
     )
   )
@@ -111,6 +112,37 @@
     )
   )
 
+(defun set-vxp2-environment()
+  "Set environment variables so that compilation for pxa/vxp2 is possible"
+  (interactive)
+  (progn
+    ( setenv "QTDIR" "/opt/qt/arm/qt-embedded-free-3.3.8-patched" )
+    ( setenv "LD_LIBRARY_PATH" "/opt/qt/arm/qt-embedded-free-3.3.8-patched/lib" )
+    ( setenv "QMAKESPEC" "qws/linux-arm-g++-43" )
+    ( setenv "QMAKE_TARGET" "arm" )
+    (setq compile-command "NetMake -k -j11 -s" )
+    ( message "Environment set to pxa" )
+    )
+  )
+
+(defun set-vxp2()
+  "Set environment variables so that compilation for arm is possible and update Makefile"
+  (interactive)
+  (progn
+    ( set-vxp2-environment )
+    ( let ( (qmake ( concat ( getenv "QTDIR" ) "/bin/qmake" ) ) )
+      ( message ( concat "Running " qmake ) )
+      ( call-process "rm" nil ( get-buffer "*scratch*" ) t "-fv" ( concat ( getenv "VXP2" ) "/Makefile" ) )
+      ( call-process qmake nil ( get-buffer "*scratch*" ) t
+                     ( concat ( getenv "VXP2" ) "/zmainarm.pro" )
+                     "-o"
+                     ( concat ( getenv "VXP2" ) "/Makefile" )
+                     )
+      ( message "Makefile set to pxa" )
+      )
+    )
+  )
+
 (defun set-debugx86-environment()
   "Set environment variables so that compilation for x86 and debugging qt is possible"
   (interactive)
@@ -125,6 +157,7 @@
                    "-o"
                    ( concat ( getenv "DAFIT" ) "/Makefile" )
                    )
+    (setq compile-command "NetMake -k -j11 -s" )
     ( message "Environment set to x86" )
     )
   )
@@ -137,6 +170,7 @@
     ( setenv "LD_LIBRARY_PATH" "/opt/qt/x86/qt3/lib" )
     ( setenv "QMAKESPEC" )
     ( setenv "QMAKE_TARGET" "x86" )
+    (setq compile-command "NetMake -k -j11 -s" )
     ( message "Environment set to x86" )
     )
   )
@@ -156,6 +190,20 @@
     ( message "Makefile set to x86" )
     )
   )
+
+(defun set-pxa-kernel-environment()
+  "Set environment variables so that compilation for vxp2 kernel is possible"
+  (interactive)
+  (progn
+    (setenv "CROSS_COMPILE" "/usr/local/arm/4.3.4/usr/bin/arm-linux-" )
+    (setenv "ARCH" "arm")
+    (setenv "VXP2_MBUFF_DIR" "/home/gru/projects/vxp/trunk/mbuff" )
+    (setenv "VXP2_KERNEL_DIR" "/home/gru/projects/vxp2/kernel/pxa-linux" )
+    (setq compile-command "make" )
+    ( message "Environment set to cross compile pxa" )
+    )
+  )
+
 
 (defun mg-copy-position ()
   "Copy a string of the form filename:linenumber into the clipboard"
