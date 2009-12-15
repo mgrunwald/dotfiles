@@ -221,9 +221,9 @@
 
 (define-abbrev-table 'c-mode-abbrev-table '(
     ("if" "" mg-skel-c-if 0)
-    ("while" "while" c-electric-continued-statement 0)
+    ("while" "" mg-skel-c-while 0)
     ("do" "" mg-skel-c-do 0)
-    ("else" "else" c-electric-continued-statement 0)
+    ("else" "" mg-skel-c-else 0)
     ("switch" "" mg-skel-c-switch 0)
     ("for" "" mg-skel-c-for 0)
     ("case" "" mg-skel-c-case 0)
@@ -231,9 +231,9 @@
 
 (define-abbrev-table 'c++-mode-abbrev-table '(
     ("if" "" mg-skel-c-if 3)
-    ("while" "while" c-electric-continued-statement 1)
+    ("while" "" mg-skel-c-while 1)
     ("do" "" mg-skel-c-do 0)
-    ("else" "else" c-electric-continued-statement 0)
+    ("else" "" mg-skel-c-else 0)
     ("switch" "" mg-skel-c-switch 1)
     ("catch" "catch" c-electric-continued-statement 0)
     ("for" "" mg-skel-c-for 0)
@@ -510,4 +510,3 @@
 
 (define-abbrev-table 'global-abbrev-table '(
     ))
-
