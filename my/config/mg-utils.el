@@ -2,7 +2,7 @@
 ;; Copyright (C) 2000-2001 Stefan Kamphausen
 
 ;; Author: Markus Grunwald <markus.grunwald@gmx.de>
-;; Time-stamp: <08-Dec-2009 08:43:03 gru>
+;; Time-stamp: <11-Jan-2010 15:15:52 gru>
 
 ;; Keywords:
 ;; This file is not part of XEmacs.
@@ -149,16 +149,18 @@
   (progn
     ( setenv "QTDIR" "/opt/qt/x86/qt-x11-commercial-3.3.2-debug" )
     ( setenv "LD_LIBRARY_PATH" "/opt/qt/x86/qt-x11-commercial-3.3.2-debug/lib" )
-    ( setenv "QMAKESPEC" )
-    ( message "Running qmake" )
-    ( call-process "rm" nil ( get-buffer "*scratch*" ) t "-fv" ( concat ( getenv "DAFIT" ) "/Makefile" ) )
-    ( call-process "qmake" nil ( get-buffer "*scratch*" ) t
-                   ( concat ( getenv "DAFIT" ) "/zmain.pro" )
-                   "-o"
-                   ( concat ( getenv "DAFIT" ) "/Makefile" )
-                   )
-    (setq compile-command "NetMake -k -j11 -s" )
-    ( message "Environment set to x86" )
+    ( setenv "QMAKESPEC" "linux-g++-2.95" )
+    ( let ( (qmake ( concat ( getenv "QTDIR" ) "/bin/qmake" ) ) )
+      ( message ( concat "Running " qmake ) )
+      ( call-process "rm" nil ( get-buffer "*scratch*" ) t "-fv" ( concat ( getenv "DAFIT" ) "/Makefile" ) )
+      ( call-process qmake nil ( get-buffer "*scratch*" ) t
+                     ( concat ( getenv "DAFIT" ) "/zmain.pro" )
+                     "-o"
+                     ( concat ( getenv "DAFIT" ) "/Makefile" )
+                     )
+      (setq compile-command "NetMake -k -j11 -s" )
+      ( message "Environment set to x86" )
+      )
     )
   )
 
@@ -168,9 +170,9 @@
   (progn
     ( setenv "QTDIR" "/opt/qt/x86/qt3" )
     ( setenv "LD_LIBRARY_PATH" "/opt/qt/x86/qt3/lib" )
-    ( setenv "QMAKESPEC" )
+    ( setenv "QMAKESPEC" "linux-g++-2.95")
     ( setenv "QMAKE_TARGET" "x86" )
-    (setq compile-command "NetMake -k -j11 -s" )
+    ( setq compile-command "NetMake -k -j11 -s" )
     ( message "Environment set to x86" )
     )
   )
@@ -180,14 +182,16 @@
   (interactive)
   (progn
     ( set-x86-environment )
-    ( message "Running qmake" )
-    ( call-process "rm" nil ( get-buffer "*scratch*" ) t "-fv" ( concat ( getenv "DAFIT" ) "/Makefile" ) )
-    ( call-process "qmake" nil ( get-buffer "*scratch*" ) t
-                   ( concat ( getenv "DAFIT" ) "/zmain.pro" )
-                   "-o"
-                   ( concat ( getenv "DAFIT" ) "/Makefile" )
-                   )
-    ( message "Makefile set to x86" )
+    ( let ( (qmake ( concat ( getenv "QTDIR" ) "/bin/qmake" ) ) )
+      ( message ( concat "Running " qmake ) )
+      ( call-process "rm" nil ( get-buffer "*scratch*" ) t "-fv" ( concat ( getenv "DAFIT" ) "/Makefile" ) )
+      ( call-process "qmake" nil ( get-buffer "*scratch*" ) t
+                     ( concat ( getenv "DAFIT" ) "/zmain.pro" )
+                     "-o"
+                     ( concat ( getenv "DAFIT" ) "/Makefile" )
+                     )
+      ( message "Makefile set to x86" )
+      )
     )
   )
 
