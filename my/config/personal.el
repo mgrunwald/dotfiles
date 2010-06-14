@@ -511,3 +511,5 @@ skeletons I use together with XEmacs."
 ;; (require 'skype)
 ;; (setq skype--my-user-handle "markus.grunwald-pt-skype")
 ;; ------------------------------
+
+( global-hl-line-mode 1 )
