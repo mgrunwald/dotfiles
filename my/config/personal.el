@@ -355,12 +355,18 @@ skeletons I use together with XEmacs."
 ;;   '(add-hook 'remember-mode-hook 'org-remember-apply-template))
 ;; (global-set-key (kbd "C-c r") 'remember) ;; (3)
 
-;; (require 'org)
-;; (add-to-list 'auto-mode-alist '("\\.org$" . org-mode)) ;; (4)
-;; (global-set-key (kbd "C-c a") 'org-agenda)             ;; (5)
+(require 'org-install)
+ (add-to-list 'auto-mode-alist '("\\.org$" . org-mode)) ;; (4)
+ (define-key global-map "\C-cl" 'org-store-link)
+ (define-key global-map "\C-ca" 'org-agenda)
 ;; (setq org-todo-keywords '("TODO" "STARTED" "WAITING" "DONE")) ;; (6)
 ;; (setq org-agenda-include-diary t)                             ;; (7)
 ;; (setq org-agenda-include-all-todo t)
+(setq org-log-done t)
+(setq org-agenda-files (list "~/org/work.org"
+                             "~/org/private.org"))
+
+
 
 ;; hippie-expand
 ;;expand text trying various ways to find its expansion.
@@ -500,3 +506,8 @@ skeletons I use together with XEmacs."
 ;; w3m browser
 (setq browse-url-browser-function 'w3m-browse-url)
 (autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
+
+;; ------------------------------
+;; (require 'skype)
+;; (setq skype--my-user-handle "markus.grunwald-pt-skype")
+;; ------------------------------
