@@ -358,12 +358,13 @@ skeletons I use together with XEmacs."
 (require 'org-install)
  (add-to-list 'auto-mode-alist '("\\.org$" . org-mode)) ;; (4)
  (define-key global-map "\C-cl" 'org-store-link)
- (define-key global-map "\C-ca" 'org-agenda)
+(define-key global-map "\C-ca" 'org-agenda)
 ;; (setq org-todo-keywords '("TODO" "STARTED" "WAITING" "DONE")) ;; (6)
 ;; (setq org-agenda-include-diary t)                             ;; (7)
 ;; (setq org-agenda-include-all-todo t)
-(setq org-log-done t)
-(setq org-agenda-files (list "~/org/work.org"
+ (setq org-log-done t)
+ (setq org-agenda-include-diary t)
+ (setq org-agenda-files (list "~/org/work.org"
                              "~/org/private.org"))
 
 
