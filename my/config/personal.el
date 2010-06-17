@@ -84,10 +84,14 @@ skeletons I use together with XEmacs."
 ;;; Remove the trailing white spaces
 ;;; From Noah Friedman
 ;;; http://www.splode.com/users/friedman/software/emacs-lisp/
-(autoload 'nuke-trailing-whitespace "nuke-trailing-whitespace" nil t)
-(add-hook 'mail-send-hook 'nuke-trailing-whitespace)
-(add-hook 'write-file-hooks 'nuke-trailing-whitespace)
-
+;; (autoload 'nuke-trailing-whitespace "nuke-trailing-whitespace" nil t)
+;; (add-hook 'mail-send-hook 'nuke-trailing-whitespace)
+;; (add-hook 'write-file-hooks 'nuke-trailing-whitespace)
+;; (add-hook 'write-file-hooks nil)
+;;
+;; (setq write-file-hooks nil)  for emergencies
+;;
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (add-hook 'text-mode-hook
 	  '(lambda ()
