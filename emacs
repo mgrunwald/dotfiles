@@ -37,8 +37,8 @@
 ;;============================================================================
 ;;{{{ Personal Settings
 ;;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-;; I´m getting tired of dealing with options and custom and getting my
-;; customizations messed up. So I put them all in an extra file, which 
+;; IÂ´m getting tired of dealing with options and custom and getting my
+;; customizations messed up. So I put them all in an extra file, which
 ;; gets loaded here
 (load (concat my-emacs-dir "config/personal.el") nil nil 1)
 ;;}}}
@@ -52,27 +52,33 @@
 ;(set-face-background 'default' "white" )
 ;(set-face-background 'buffers-tab' "Gray90" )
 (custom-set-variables
-  ;; custom-set-variables was added by Custom -- don't edit or cut/paste it!
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(Buffer-menu-buffer+size-width 40)
+ '(Buffer-menu-mode-width 8)
+ '(Info-additional-directory-list (quote ("/opt/emacs23/share/info/")))
  '(Info-auto-generate-directory (quote if-outdated))
  '(Info-button1-follows-hyperlink t)
  '(Info-save-auto-generated-dir (quote always))
+ '(LaTeX-command "latex -shell-escape")
  '(TeX-close-quote "\"'")
  '(TeX-open-quote "\"`")
- '(all-christian-calendar-holidays t t)
+ '(TeX-quote-language-alist (quote (("" "``" "''" t) ("german" "\"`" "\"'" t))))
+ '(ange-ftp-try-passive-mode t)
  '(bar-cursor (quote (quote other)))
- '(browse-url-browser-function (quote browse-url-firefox-new-tab) t)
- '(browse-url-galeon-new-window-is-tab t)
  '(buffers-menu-max-size nil)
  '(c-basic-offset 4)
  '(c-default-style (quote ((java-mode . "java") (other . "gnu"))))
  '(c-echo-syntactic-information-p nil)
  '(c-label-minimum-indentation 0)
  '(c-offsets-alist (quote ((substatement-open . 0) (case-label . +))))
- '(calc-gnuplot-name "gnuplot" t)
- '(calendar-latitude [48 8 north] t)
- '(calendar-longitude [11 43 east] t)
- '(calendar-week-start-day 1 t)
+ '(calc-gnuplot-name "gnuplot")
+ '(calendar-latitude [48 8 north])
+ '(calendar-location-name "Ismaning")
+ '(calendar-longitude [11 43 east])
+ '(calendar-week-start-day 1)
  '(case-fold-search t)
  '(cc-other-file-alist (quote (("\\.cc$" (".hh" ".h")) ("\\.hh$" (".cc" ".C")) ("\\.c$" (".h")) ("\\.h$" (".c" ".cc" ".C" ".CC" ".cxx" ".cpp")) ("\\.C$" (".H" ".hh" ".h")) ("\\.H$" (".C" ".CC")) ("\\.CC$" (".HH" ".H" ".hh" ".h")) ("\\.HH$" (".CC")) ("\\.cxx$" (".hh" ".h")) ("\\.cpp$" (".h" ".hh")))))
  '(change-log-default-name "~/ChangeLog.Work")
@@ -81,43 +87,61 @@
  '(compilation-read-command nil)
  '(compilation-scroll-output t)
  '(compilation-window-height 15)
- '(compile-command "NetMake -k -j9")
+ '(compile-command "NetMake -s -k -j9")
  '(current-language-environment "Latin-1")
  '(dabbrev-case-fold-search nil)
  '(dabbrev-case-replace nil)
  '(debug-on-error nil)
  '(default-input-method "latin-1-prefix")
- '(diff-switches "-u" t)
+ '(diary-display-function (quote diary-simple-display))
+ '(diary-list-entries-hook (quote (diary-sort-entries)))
+ '(diff-switches "-u")
  '(doxymacs-doxygen-dirs (quote (("/home/gru/projects/vxp/trunk" "/home/gru/doc/dafit/trunk/dafit.xml" "file:///home/gru/doc/dafit/trunk/html") ("/home/gru/projects/vxp/branches" "/home/gru/doc/dafit/trunk/dafit.xml" "file:///home/gru/doc/dafit/trunk/html"))))
+ '(doxymacs-external-xml-parser-executable "/usr/local/bin/doxymacs_parser")
+ '(doxymacs-function-comment-template (quote ((let ((next-func (doxymacs-find-next-func))) (if next-func (list (quote l) "/** <!-------------------------------------------------------------------------->" (quote >) (quote n) " * " (quote p) (quote >) (quote n) " * " (quote >) (quote n) (doxymacs-parm-tempo-element (cdr (assoc (quote args) next-func))) (unless (string-match (regexp-quote (cdr (assoc (quote return) next-func))) doxymacs-void-types) (quote (l " * " > n " * " (doxymacs-doxygen-command-char) "return " (p "Returns: ") > n))) " <!---------------------------------------------------------------------------> */" (quote >) (quote n)) (progn (error "Can't find next function declaration.") nil))))))
  '(doxymacs-use-external-xml-parser t)
  '(ediff-use-toolbar-p t)
  '(efs-ftp-program-args (quote ("-i" "-n" "-g" "-v" "-p")))
- '(european-calendar-style t t)
+ '(european-calendar-style t)
  '(ff-ignore-include t)
+ '(filesets-cache-save-often-flag nil)
+ '(filesets-data (quote (("damian" (:files "/home/gru/text/damian-scratch.txt")) ("VXP" (:files "/mnt/net/CM_Entwicklung/xchg/VIBXPERT/changelog.txt" "/10.1.2.34:/tmp/VibXpert.log")))))
  '(find-file-compare-truenames t)
  '(fume-max-items 50)
  '(global-font-lock-mode t nil (font-lock))
  '(global-hl-line-mode t nil (hl-line))
+ '(gnus-select-method (quote (nntp "news.arcor.de")))
  '(gnuserv-program (concat exec-directory "/gnuserv"))
+ '(gud-gdb-command-name "gdb --annotate=3 -x ~/dbg-dafit.gdb ")
  '(gutter-buffers-tab-visible-p nil)
  '(home-end-enable nil)
  '(imenu-sort-function (quote imenu--sort-by-name))
  '(indent-tabs-mode nil)
- '(ispell-dictionary-alist (quote ((nil "[A-Za-z]" "[^A-Za-z]" "[']" nil ("-B") nil iso-8859-1) ("american" "[A-Za-z]" "[^A-Za-z]" "[']" nil ("-B") nil iso-8859-1) ("brasileiro" "[A-ZÁÉÍÓÚÀÈÌÒÙÃÕÇÜÂÊÔa-záéíóúàèìòùãõçüâêô]" "[^A-ZÁÉÍÓÚÀÈÌÒÙÃÕÇÜÂÊÔa-záéíóúàèìòùãõçüâêô]" "[']" nil ("-d" "brasileiro") nil iso-8859-1) ("british" "[A-Za-z]" "[^A-Za-z]" "[']" nil ("-B" "-d" "british") nil iso-8859-1) ("castellano" "[A-ZÁÉÍÑÓÚÜa-záéíñóúü]" "[^A-ZÁÉÍÑÓÚÜa-záéíñóúü]" "[-]" nil ("-B" "-d" "castellano") "~tex" iso-8859-1) ("castellano8" "[A-ZÁÉÍÑÓÚÜa-záéíñóúü]" "[^A-ZÁÉÍÑÓÚÜa-záéíñóúü]" "[-]" nil ("-B" "-d" "castellano") "~latin1" iso-8859-1) ("czech" "[A-Za-zÁÉÌÍÓÚÙİ®©ÈØÏ«Òáéìíóúùı¾¹èøï»ò]" "[^A-Za-zÁÉÌÍÓÚÙİ®©ÈØÏ«Òáéìíóúùı¾¹èøï»ò]" "" nil ("-B" "-d" "czech") nil iso-8859-2) ("dansk" "[A-ZÆØÅa-zæøå]" "[^A-ZÆØÅa-zæøå]" "[']" nil ("-C") nil iso-8859-1) ("deutsch" "[a-zA-Z\"]" "[^a-zA-Z\"]" "[']" t ("-C") "~tex" iso-8859-1) ("deutsch8" "[a-zA-ZÄÖÜäößü]" "[^a-zA-ZÄÖÜäößü]" "[']" t ("-C" "-d" "deutsch") "~latin1" iso-8859-1) ("english" "[A-Za-z]" "[^A-Za-z]" "[']" nil ("-B") nil iso-8859-1) ("esperanto" "[A-Za-z¦¬¶¼ÆØİŞæøış]" "[^A-Za-z¦¬¶¼ÆØİŞæøış]" "[-']" t ("-C") "~latin3" iso-8859-1) ("esperanto-tex" "[A-Za-z^\\]" "[^A-Za-z^\\]" "[-'`\"]" t ("-C" "-d" "esperanto") "~tex" iso-8859-1) ("francais7" "[A-Za-z]" "[^A-Za-z]" "[`'^---]" t nil nil iso-8859-1) ("francais" "[A-Za-zÀÂÆÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[^A-Za-zÀÂÆÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü]" "[-']" t nil "~list" iso-8859-1) ("francais-tex" "[A-Za-zÀÂÆÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü\\]" "[^A-Za-zÀÂÆÇÈÉÊËÎÏÔÙÛÜàâçèéêëîïôùûü\\]" "[-'^`\"]" t nil "~tex" iso-8859-1) ("ogerman" "[a-zA-Z\"]" "[^a-zA-Z\"]" "[']" t ("-C") "~tex" iso-8859-1) ("ogerman8" "[a-zA-ZÄÖÜäößü]" "[^a-zA-ZÄÖÜäößü]" "[']" t ("-C" "-d" "ogerman") "~latin1" iso-8859-1) ("italiano" "[A-ZÀÁÈÉÌÍÒÓÙÚa-zàáèéìíóùú]" "[^A-ZÀÁÈÉÌÍÒÓÙÚa-zàáèéìíóùú]" "[-]" nil ("-B" "-d" "italian") "~tex" iso-8859-1) ("nederlands" "[A-Za-zÀ-ÅÇÈ-ÏÒ-ÖÙ-Üà-åçè-ïñò-öù-ü]" "[^A-Za-zÀ-ÅÇÈ-ÏÒ-ÖÙ-Üà-åçè-ïñò-öù-ü]" "[']" t ("-C") nil iso-8859-1) ("nederlands8" "[A-Za-zÀ-ÅÇÈ-ÏÒ-ÖÙ-Üà-åçè-ïñò-öù-ü]" "[^A-Za-zÀ-ÅÇÈ-ÏÒ-ÖÙ-Üà-åçè-ïñò-öù-ü]" "[']" t ("-C") nil iso-8859-1) ("norsk" "[A-Za-zÅÆÇÈÉÒÔØåæçèéòôø]" "[^A-Za-zÅÆÇÈÉÒÔØåæçèéòôø]" "[\"]" nil ("-d" "norsk") "~list" iso-8859-1) ("norsk7-tex" "[A-Za-z{}\\'^`]" "[^A-Za-z{}\\'^`]" "[\"]" nil ("-d" "norsk") "~plaintex" iso-8859-1) ("polish" "[A-Za-z¡£¦¬¯±³¶¼¿ÆÊÑÓæêñó]" "[^A-Za-z¡£¦¬¯±³¶¼¿ÆÊÑÓæêñó]" "" nil ("-d" "polish") nil iso-8859-2) ("russian" "[áâ÷çäå³öúéêëìíîïğòóôõæèãşûıøùÿüàñÁÂ×ÇÄÅ£ÖÚÉÊËÌÍÎÏĞÒÓÔÕÆÈÃŞÛİØÙßÜÀÑ]" "[^áâ÷çäå³öúéêëìíîïğòóôõæèãşûıøùÿüàñÁÂ×ÇÄÅ£ÖÚÉÊËÌÍÎÏĞÒÓÔÕÆÈÃŞÛİØÙßÜÀÑ]" "" nil ("-d" "russian") nil koi8-r) ("svenska" "[A-Za-zåäöéàüèæøçÅÄÖÉÀÜÈÆØÇ]" "[^A-Za-zåäöéàüèæøçÅÄÖÉÀÜÈÆØÇ]" "[']" nil ("-C") "~list" iso-8859-1) ("portugues" "[a-zA-ZÁÂÉÓàáâéêíóãú]" "[^a-zA-ZÁÂÉÓàáâéêíóãú]" "[']" t ("-C" "-d" "portugues") "~latin1" iso-8859-1) ("slovak" "[A-Za-zÁÄÉÍÓÚÔÀÅ¥İ®©ÈÏ«Òáäéíóúôàåµı¾¹èï»ò]" "[^A-Za-zÁÄÉÍÓÚÔÀÅ¥İ®©ÈÏ«Òáäéíóúôàåµı¾¹èï»ò]" "" nil ("-B" "-d" "slovak") nil iso-8859-2))) t)
+ '(ispell-dictionary-alist (quote ((nil "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en" "--encoding=utf-8") nil utf-8) ("english" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en" "--encoding=utf-8") nil utf-8) ("english-wo_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en-wo_accents" "--encoding=utf-8") nil utf-8) ("english-w_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en-w_accents" "--encoding=utf-8") nil utf-8) ("english-variant_2" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en-variant_2" "--encoding=utf-8") nil utf-8) ("english-variant_1" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en-variant_1" "--encoding=utf-8") nil utf-8) ("english-variant_0" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en-variant_0" "--encoding=utf-8") nil utf-8) ("canadian" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_CA" "--encoding=utf-8") nil utf-8) ("canadian-wo_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_CA-wo_accents" "--encoding=utf-8") nil utf-8) ("canadian-w_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_CA-w_accents" "--encoding=utf-8") nil utf-8) ("british" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_GB" "--encoding=utf-8") nil utf-8) ("british-wo_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_GB-wo_accents" "--encoding=utf-8") nil utf-8) ("british-w_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_GB-w_accents" "--encoding=utf-8") nil utf-8) ("british-ize" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_GB-ize" "--encoding=utf-8") nil utf-8) ("british-ize-wo_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_GB-ize-wo_accents" "--encoding=utf-8") nil utf-8) ("british-ize-w_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_GB-ize-w_accents" "--encoding=utf-8") nil utf-8) ("british-ise" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_GB-ise" "--encoding=utf-8") nil utf-8) ("british-ise-wo_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_GB-ise-wo_accents" "--encoding=utf-8") nil utf-8) ("british-ise-w_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_GB-ise-w_accents" "--encoding=utf-8") nil utf-8) ("american" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_US" "--encoding=utf-8") nil utf-8) ("american-wo_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_US-wo_accents" "--encoding=utf-8") nil utf-8) ("american-w_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_US-w_accents" "--encoding=utf-8") nil utf-8) ("en" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en" "--encoding=utf-8") nil utf-8) ("en-variant_0" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en-variant_0" "--encoding=utf-8") nil utf-8) ("en-variant_1" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en-variant_1" "--encoding=utf-8") nil utf-8) ("en-variant_2" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en-variant_2" "--encoding=utf-8") nil utf-8) ("en-w_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en-w_accents" "--encoding=utf-8") nil utf-8) ("en-wo_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en-wo_accents" "--encoding=utf-8") nil utf-8) ("en_CA" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_CA" "--encoding=utf-8") nil utf-8) ("en_CA-w_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_CA-w_accents" "--encoding=utf-8") nil utf-8) ("en_CA-wo_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_CA-wo_accents" "--encoding=utf-8") nil utf-8) ("en_GB" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_GB" "--encoding=utf-8") nil utf-8) ("en_GB-ise" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_GB-ise" "--encoding=utf-8") nil utf-8) ("en_GB-ise-w_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_GB-ise-w_accents" "--encoding=utf-8") nil utf-8) ("en_GB-ise-wo_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_GB-ise-wo_accents" "--encoding=utf-8") nil utf-8) ("en_GB-ize" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_GB-ize" "--encoding=utf-8") nil utf-8) ("en_GB-ize-w_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_GB-ize-w_accents" "--encoding=utf-8") nil utf-8) ("en_GB-ize-wo_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_GB-ize-wo_accents" "--encoding=utf-8") nil utf-8) ("en_GB-w_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_GB-w_accents" "--encoding=utf-8") nil utf-8) ("en_GB-wo_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_GB-wo_accents" "--encoding=utf-8") nil utf-8) ("en_US" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_US" "--encoding=utf-8") nil utf-8) ("en_US-w_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_US-w_accents" "--encoding=utf-8") nil utf-8) ("en_US-wo_accents" "[[:alpha:]]" "[^[:alpha:]]" "'" t ("-d" "en_US-wo_accents" "--encoding=utf-8") nil utf-8) (nil "[A-Za-z]" "[^A-Za-z]" "[']" nil ("-B") nil iso-8859-1) ("brasileiro" "[A-ZÃÃ‰ÃÃ“ÃšÃ€ÃˆÃŒÃ’Ã™ÃƒÃ•Ã‡ÃœÃ‚ÃŠÃ”a-zÃ¡Ã©Ã­Ã³ÃºÃ Ã¨Ã¬Ã²Ã¹Ã£ÃµÃ§Ã¼Ã¢ÃªÃ´]" "[^A-ZÃÃ‰ÃÃ“ÃšÃ€ÃˆÃŒÃ’Ã™ÃƒÃ•Ã‡ÃœÃ‚ÃŠÃ”a-zÃ¡Ã©Ã­Ã³ÃºÃ Ã¨Ã¬Ã²Ã¹Ã£ÃµÃ§Ã¼Ã¢ÃªÃ´]" "[']" nil ("-d" "brasileiro") nil iso-8859-1) ("castellano" "[A-ZÃÃ‰ÃÃ‘Ã“ÃšÃœa-zÃ¡Ã©Ã­Ã±Ã³ÃºÃ¼]" "[^A-ZÃÃ‰ÃÃ‘Ã“ÃšÃœa-zÃ¡Ã©Ã­Ã±Ã³ÃºÃ¼]" "[-]" nil ("-B" "-d" "castellano") "~tex" iso-8859-1) ("castellano8" "[A-ZÃÃ‰ÃÃ‘Ã“ÃšÃœa-zÃ¡Ã©Ã­Ã±Ã³ÃºÃ¼]" "[^A-ZÃÃ‰ÃÃ‘Ã“ÃšÃœa-zÃ¡Ã©Ã­Ã±Ã³ÃºÃ¼]" "[-]" nil ("-B" "-d" "castellano") "~latin1" iso-8859-1) ("czech" "[A-Za-zÃÃ‰ÃŒÃÃ“ÃšÃ™ÃÂ®Â©ÃˆÃ˜ÃÂ«Ã’Ã¡Ã©Ã¬Ã­Ã³ÃºÃ¹Ã½Å¸Â¹Ã¨Ã¸Ã¯Â»Ã²]" "[^A-Za-zÃÃ‰ÃŒÃÃ“ÃšÃ™ÃÂ®Â©ÃˆÃ˜ÃÂ«Ã’Ã¡Ã©Ã¬Ã­Ã³ÃºÃ¹Ã½Å¸Â¹Ã¨Ã¸Ã¯Â»Ã²]" "" nil ("-B" "-d" "czech") nil iso-8859-2) ("dansk" "[A-ZÃ†Ã˜Ã…a-zÃ¦Ã¸Ã¥]" "[^A-ZÃ†Ã˜Ã…a-zÃ¦Ã¸Ã¥]" "[']" nil ("-C") nil iso-8859-1) ("deutsch" "[a-zA-Z\"]" "[^a-zA-Z\"]" "[']" t ("-C") "~tex" iso-8859-1) ("deutsch8" "[a-zA-ZÃ„Ã–ÃœÃ¤Ã¶ÃŸÃ¼]" "[^a-zA-ZÃ„Ã–ÃœÃ¤Ã¶ÃŸÃ¼]" "[']" t ("-C" "-d" "de-alt") "~latin1" iso-8859-1) ("esperanto" "[A-Za-zÅ Â¬Â¶Å’Ã†Ã˜ÃÃÃ¦Ã¸Ã½Ã¾]" "[^A-Za-zÅ Â¬Â¶Å’Ã†Ã˜ÃÃÃ¦Ã¸Ã½Ã¾]" "[-']" t ("-C") "~latin3" iso-8859-1) ("esperanto-tex" "[A-Za-z^\\]" "[^A-Za-z^\\]" "[-'`\"]" t ("-C" "-d" "esperanto") "~tex" iso-8859-1) ("francais7" "[A-Za-z]" "[^A-Za-z]" "[`'^---]" t nil nil iso-8859-1) ("francais" "[A-Za-zÃ€Ã‚Ã†Ã‡ÃˆÃ‰ÃŠÃ‹ÃÃÃ”Ã™Ã›ÃœÃ Ã¢Ã§Ã¨Ã©ÃªÃ«Ã®Ã¯Ã´Ã¹Ã»Ã¼]" "[^A-Za-zÃ€Ã‚Ã†Ã‡ÃˆÃ‰ÃŠÃ‹ÃÃÃ”Ã™Ã›ÃœÃ Ã¢Ã§Ã¨Ã©ÃªÃ«Ã®Ã¯Ã´Ã¹Ã»Ã¼]" "[-']" t nil "~list" iso-8859-1) ("francais-tex" "[A-Za-zÃ€Ã‚Ã†Ã‡ÃˆÃ‰ÃŠÃ‹ÃÃÃ”Ã™Ã›ÃœÃ Ã¢Ã§Ã¨Ã©ÃªÃ«Ã®Ã¯Ã´Ã¹Ã»Ã¼\\]" "[^A-Za-zÃ€Ã‚Ã†Ã‡ÃˆÃ‰ÃŠÃ‹ÃÃÃ”Ã™Ã›ÃœÃ Ã¢Ã§Ã¨Ã©ÃªÃ«Ã®Ã¯Ã´Ã¹Ã»Ã¼\\]" "[-'^`\"]" t nil "~tex" iso-8859-1) ("german" "[a-zA-Z\"]" "[^a-zA-Z\"]" "[']" t ("-C") "~tex" iso-8859-1) ("german8" "[a-zA-ZÃ„Ã–ÃœÃ¤Ã¶ÃŸÃ¼]" "[^a-zA-ZÃ„Ã–ÃœÃ¤Ã¶ÃŸÃ¼]" "[']" t ("-C" "-d" "german") "~latin1" iso-8859-1) ("italiano" "[A-ZÃ€ÃÃˆÃ‰ÃŒÃÃ’Ã“Ã™Ãša-zÃ Ã¡Ã¨Ã©Ã¬Ã­Ã³Ã¹Ãº]" "[^A-ZÃ€ÃÃˆÃ‰ÃŒÃÃ’Ã“Ã™Ãša-zÃ Ã¡Ã¨Ã©Ã¬Ã­Ã³Ã¹Ãº]" "[-]" nil ("-B" "-d" "italian") "~tex" iso-8859-1) ("nederlands" "[A-Za-zÃ€-Ã…Ã‡Ãˆ-ÃÃ’-Ã–Ã™-ÃœÃ -Ã¥Ã§Ã¨-Ã¯Ã±Ã²-Ã¶Ã¹-Ã¼]" "[^A-Za-zÃ€-Ã…Ã‡Ãˆ-ÃÃ’-Ã–Ã™-ÃœÃ -Ã¥Ã§Ã¨-Ã¯Ã±Ã²-Ã¶Ã¹-Ã¼]" "[']" t ("-C") nil iso-8859-1) ("nederlands8" "[A-Za-zÃ€-Ã…Ã‡Ãˆ-ÃÃ’-Ã–Ã™-ÃœÃ -Ã¥Ã§Ã¨-Ã¯Ã±Ã²-Ã¶Ã¹-Ã¼]" "[^A-Za-zÃ€-Ã…Ã‡Ãˆ-ÃÃ’-Ã–Ã™-ÃœÃ -Ã¥Ã§Ã¨-Ã¯Ã±Ã²-Ã¶Ã¹-Ã¼]" "[']" t ("-C") nil iso-8859-1) ("norsk" "[A-Za-zÃ…Ã†Ã‡ÃˆÃ‰Ã’Ã”Ã˜Ã¥Ã¦Ã§Ã¨Ã©Ã²Ã´Ã¸]" "[^A-Za-zÃ…Ã†Ã‡ÃˆÃ‰Ã’Ã”Ã˜Ã¥Ã¦Ã§Ã¨Ã©Ã²Ã´Ã¸]" "[\"]" nil ("-d" "norsk") "~list" iso-8859-1) ("norsk7-tex" "[A-Za-z{}\\'^`]" "[^A-Za-z{}\\'^`]" "[\"]" nil ("-d" "norsk") "~plaintex" iso-8859-1) ("polish" "[A-Za-zÂ¡Â£Å Â¬Â¯Â±Â³Â¶Å’Â¿Ã†ÃŠÃ‘Ã“Ã¦ÃªÃ±Ã³]" "[^A-Za-zÂ¡Â£Å Â¬Â¯Â±Â³Â¶Å’Â¿Ã†ÃŠÃ‘Ã“Ã¦ÃªÃ±Ã³]" "" nil ("-d" "polish") nil iso-8859-2) ("russian" "[Ã¡Ã¢Ã·Ã§Ã¤Ã¥Â³Ã¶ÃºÃ©ÃªÃ«Ã¬Ã­Ã®Ã¯Ã°Ã²Ã³Ã´ÃµÃ¦Ã¨Ã£Ã¾Ã»Ã½Ã¸Ã¹Ã¿Ã¼Ã Ã±ÃÃ‚Ã—Ã‡Ã„Ã…Â£Ã–ÃšÃ‰ÃŠÃ‹ÃŒÃÃÃÃÃ’Ã“Ã”Ã•Ã†ÃˆÃƒÃÃ›ÃÃ˜Ã™ÃŸÃœÃ€Ã‘]" "[^Ã¡Ã¢Ã·Ã§Ã¤Ã¥Â³Ã¶ÃºÃ©ÃªÃ«Ã¬Ã­Ã®Ã¯Ã°Ã²Ã³Ã´ÃµÃ¦Ã¨Ã£Ã¾Ã»Ã½Ã¸Ã¹Ã¿Ã¼Ã Ã±ÃÃ‚Ã—Ã‡Ã„Ã…Â£Ã–ÃšÃ‰ÃŠÃ‹ÃŒÃÃÃÃÃ’Ã“Ã”Ã•Ã†ÃˆÃƒÃÃ›ÃÃ˜Ã™ÃŸÃœÃ€Ã‘]" "" nil ("-d" "russian") nil koi8-r) ("svenska" "[A-Za-zÃ¥Ã¤Ã¶Ã©Ã Ã¼Ã¨Ã¦Ã¸Ã§Ã…Ã„Ã–Ã‰Ã€ÃœÃˆÃ†Ã˜Ã‡]" "[^A-Za-zÃ¥Ã¤Ã¶Ã©Ã Ã¼Ã¨Ã¦Ã¸Ã§Ã…Ã„Ã–Ã‰Ã€ÃœÃˆÃ†Ã˜Ã‡]" "[']" nil ("-C") "~list" iso-8859-1) ("portugues" "[a-zA-ZÃÃ‚Ã‰Ã“Ã Ã¡Ã¢Ã©ÃªÃ­Ã³Ã£Ãº]" "[^a-zA-ZÃÃ‚Ã‰Ã“Ã Ã¡Ã¢Ã©ÃªÃ­Ã³Ã£Ãº]" "[']" t ("-C" "-d" "portugues") "~latin1" iso-8859-1) ("slovak" "[A-Za-zÃÃ„Ã‰ÃÃ“ÃšÃ”Ã€Ã…Â¥ÃÂ®Â©ÃˆÃÂ«Ã’Ã¡Ã¤Ã©Ã­Ã³ÃºÃ´Ã Ã¥ÂµÃ½Å¸Â¹Ã¨Ã¯Â»Ã²]" "[^A-Za-zÃÃ„Ã‰ÃÃ“ÃšÃ”Ã€Ã…Â¥ÃÂ®Â©ÃˆÃÂ«Ã’Ã¡Ã¤Ã©Ã­Ã³ÃºÃ´Ã Ã¥ÂµÃ½Å¸Â¹Ã¨Ã¯Â»Ã²]" "" nil ("-B" "-d" "slovak") nil iso-8859-2))) t)
  '(ispell-local-dictionary "british")
  '(kill-whole-line t)
  '(lazy-lock-stealth-time 60)
  '(line-number-mode t)
  '(make-tags-files-invisible t)
- '(mark-diary-entries-in-calendar t t)
- '(mark-holidays-in-calendar t t)
- '(minibuffer-electric-file-name-behavior t nil (minibuf-electric))
+ '(mark-diary-entries-in-calendar t)
+ '(mark-holidays-in-calendar t)
  '(mode-compile-always-save-buffer-p t)
  '(mode-compile-never-edit-command-p t)
  '(modifier-keys-are-sticky nil)
  '(modifier-keys-sticky-time 750 t)
  '(mouse-wheel-mode t nil (mwheel))
  '(mouse-yank-at-point t)
+ '(newsticker-html-renderer (quote w3m-region))
+ '(newsticker-url-list (quote (("XBOX 360" "http://www.dreisechzig.net/wp/feed/" nil nil nil))))
+ '(newsticker-url-list-defaults (quote (("Emacs Wiki" "http://www.emacswiki.org/cgi-bin/wiki.pl?action=rss" nil 3600) ("LWN (Linux Weekly News)" "http://lwn.net/headlines/rss") ("slashdot" "http://slashdot.org/index.rss" nil 3600) ("Heise News (german)" "http://www.heise.de/newsticker/heise.rdf") ("Tagesschau (german)" "http://www.tagesschau.de/newsticker.rdf" nil 1800))))
+ '(org-agenda-files (quote ("~/organize.org")))
+ '(org-hide-leading-stars t)
+ '(org-remember-templates (quote ((116 "* TODO %?
+  %i
+  %a" "~/organize.org") (97 "* Appointment: %?
+%^T
+%i
+  %a" "~/organize.org"))))
  '(paren-mode (quote blink-paren) nil (paren))
  '(preview-default-document-pt 12)
  '(printer-name "kopierer")
@@ -135,7 +159,8 @@
  '(recentf-mode t nil (recentf))
  '(require-final-newline (quote ask))
  '(save-place t nil (saveplace))
- '(scroll-margin 3)
+ '(scroll-margin 0)
+ '(server-switch-hook (quote ((lambda nil (let ((server-buf (current-buffer))) (bury-buffer) (switch-to-buffer-other-frame server-buf))))))
  '(show-paren-mode t nil (paren))
  '(signal-error-on-buffer-boundary nil)
  '(speedbar-directory-button-trim-method (quote trim))
@@ -149,11 +174,12 @@
  '(tags-auto-read-changed-tag-files t)
  '(tags-check-parent-directories-for-tag-files nil)
  '(tags-exuberant-ctags-optimization-p t)
- '(tex-close-quote "\"'" t)
- '(tex-open-quote "\"`" t)
+ '(tex-close-quote "\"'")
+ '(tex-open-quote "\"`")
  '(toolbar-visible-p nil)
  '(tooltip-gud-tips-p t)
  '(track-eol t)
+ '(tramp-default-method-alist (quote (("" "%" "smb") ("" "\\`\\(anonymous\\|ftp\\)\\'" "ftp") ("\\`ftp\\." "" "ftp") ("\\`localhost\\'" "\\`root\\'" "su") ("\\`10.1.2" "" "ftp"))))
  '(transient-mark-mode t)
  '(truncate-lines t)
  '(undo-high-threshold 300000)
@@ -162,7 +188,7 @@
  '(url-news-server nil)
  '(url-personal-mail-address nil)
  '(url-privacy-level (quote paranoid))
- '(url-proxy-services (quote (("no_proxy" . "\\(localhost\\)") ("http" . "172.17.5.46:8000"))))
+ '(url-proxy-services nil)
  '(url-show-status nil)
  '(url-use-hypertext-gopher nil)
  '(user-mail-address "markus.grunwald@pruftechnik.com")
@@ -177,7 +203,9 @@
  '(w3-icon-format nil)
  '(w3-maximum-line-length 100)
  '(w3-min-img-size 5)
+ '(w3m-use-cookies t)
  '(whitespace-auto-cleanup t)
+ '(whitespace-check-spacetab-whitespace nil)
  '(woman-cache-filename "~/.emacs.d/woman-cache.el
 ")
  '(woman-imenu t)
@@ -185,27 +213,34 @@
 
 
 (custom-set-faces
-  ;; custom-set-faces was added by Custom -- don't edit or cut/paste it!
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
- '(default ((t (:stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 116 :width normal :family "Profont"))))
+  ;; If there is more than one, they won't work right.
+ '(default ((default nil) (nil nil)))
+ '(buffer-menu-buffer ((t (:foreground "blue"))))
  '(cursor ((t (:background "blue"))))
  '(highlight ((((class color) (background light)) (:background "gray95"))))
- '(mode-line ((((type x w32 mac) (class color)) (:background "grey75" :foreground "black" :box (:line-width -1 :style released-button) :height 100)))))
+ '(mode-line ((((type x w32 mac) (class color)) (:background "grey75" :foreground "black" :box (:line-width -1 :style released-button)))))
+ '(org-hide ((((background light)) (:foreground "gray90"))))
+ '(w3m-form ((((class color) (background light)) (:foreground "red" :underline t)))))
 
 ;;============================================================================                                                                                           ;;{{{ Desktop for saving whole sessions
 ;;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ;; this should be near the end of my .xemacs-options
 (desktop-load-default)
-(add-hook 'kill-emacs-hook 
+(add-hook 'kill-emacs-hook
           '(lambda ()
-             (desktop-truncate search-ring 3)
-             (desktop-truncate regexp-search-ring 3)
-             (desktop-save)
-             )
-          )
+                (desktop-truncate search-ring 3)
+                (desktop-truncate regexp-search-ring 3)
+                (desktop-save-in-desktop-dir)
+                (desktop-release-lock )
+                ))
 (desktop-read)
 ;;}}}
 ;;============================================================================
 
 
 (put 'narrow-to-region 'disabled nil)
+
+(put 'upcase-region 'disabled nil)
