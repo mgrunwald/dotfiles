@@ -351,14 +351,6 @@ skeletons I use together with XEmacs."
 ;; (add-hook 'makefile-mode-hook   'flyspell-prog-mode 1)
 ;; (add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode 1)
 
-;; ;; org mode
-;; (require 'remember-autoloads)
-;; (setq remember-annotation-functions '(org-remember-annotation))
-;; (setq remember-handler-functions '(org-remember-handler))
-;; (eval-after-load 'remember
-;;   '(add-hook 'remember-mode-hook 'org-remember-apply-template))
-;; (global-set-key (kbd "C-c r") 'remember) ;; (3)
-
 (require 'org-install)
  (add-to-list 'auto-mode-alist '("\\.org$" . org-mode)) ;; (4)
  (define-key global-map "\C-cl" 'org-store-link)
@@ -368,7 +360,8 @@ skeletons I use together with XEmacs."
 ;; (setq org-agenda-include-all-todo t)
  (setq org-log-done t)
 
-
+(org-remember-insinuate)
+(define-key global-map "\C-cr" 'org-remember)
 
 ;; hippie-expand
 ;;expand text trying various ways to find its expansion.

@@ -136,7 +136,15 @@
  '(newsticker-url-list-defaults (quote (("Emacs Wiki" "http://www.emacswiki.org/cgi-bin/wiki.pl?action=rss" nil 3600) ("LWN (Linux Weekly News)" "http://lwn.net/headlines/rss") ("slashdot" "http://slashdot.org/index.rss" nil 3600) ("Heise News (german)" "http://www.heise.de/newsticker/heise.rdf") ("Tagesschau (german)" "http://www.tagesschau.de/newsticker.rdf" nil 1800))))
  '(org-agenda-files (quote ("~/org/work.org" "~/org/private.org")))
  '(org-agenda-include-diary t)
+ '(org-default-notes-file "~/org/notes.org")
  '(org-hide-leading-stars t)
+ '(org-remember-templates (quote (("private" 112 "* TODO %?
+  %i
+  %a" "~/org/private.org" "Unsortiert" nil) ("work" 119 "* TODO %?
+  %i
+  %a" "~/org/work.org" "Unsortiert" nil))))
+ '(org-return-follows-link t)
+ '(org-tab-follows-link t)
  '(paren-mode (quote blink-paren) nil (paren))
  '(preview-default-document-pt 12)
  '(printer-name "kopierer")
