@@ -367,9 +367,6 @@ skeletons I use together with XEmacs."
 ;; (setq org-agenda-include-diary t)                             ;; (7)
 ;; (setq org-agenda-include-all-todo t)
  (setq org-log-done t)
- (setq org-agenda-include-diary t)
- (setq org-agenda-files (list "~/org/work.org"
-                             "~/org/private.org"))
 
 
 

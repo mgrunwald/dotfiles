@@ -134,14 +134,9 @@
  '(newsticker-html-renderer (quote w3m-region))
  '(newsticker-url-list (quote (("XBOX 360" "http://www.dreisechzig.net/wp/feed/" nil nil nil))))
  '(newsticker-url-list-defaults (quote (("Emacs Wiki" "http://www.emacswiki.org/cgi-bin/wiki.pl?action=rss" nil 3600) ("LWN (Linux Weekly News)" "http://lwn.net/headlines/rss") ("slashdot" "http://slashdot.org/index.rss" nil 3600) ("Heise News (german)" "http://www.heise.de/newsticker/heise.rdf") ("Tagesschau (german)" "http://www.tagesschau.de/newsticker.rdf" nil 1800))))
- '(org-agenda-files (quote ("~/organize.org")))
+ '(org-agenda-files (quote ("~/org/work.org" "~/org/private.org")))
+ '(org-agenda-include-diary t)
  '(org-hide-leading-stars t)
- '(org-remember-templates (quote ((116 "* TODO %?
-  %i
-  %a" "~/organize.org") (97 "* Appointment: %?
-%^T
-%i
-  %a" "~/organize.org"))))
  '(paren-mode (quote blink-paren) nil (paren))
  '(preview-default-document-pt 12)
  '(printer-name "kopierer")
