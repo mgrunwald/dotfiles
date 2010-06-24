@@ -137,6 +137,39 @@
  '(org-agenda-files (quote ("~/org/work.org" "~/org/private.org")))
  '(org-agenda-include-diary t)
  '(org-default-notes-file "~/org/notes.org")
+ '(org-export-latex-classes (quote (("scrartcl" "\\documentclass{scrartcl}
+\\KOMAoptions{fontsize=11pt}
+\\KOMAoptions{pagesize=pdftex}
+\\KOMAoptions{paper=a4}
+\\usepackage[T1]{fontenc}
+\\usepackage{ae}
+\\usepackage{latexsym}
+\\usepackage[german]{babel}
+\\usepackage[utf8]{inputenc}
+\\usepackage[
+            plainpages=false,
+            colorlinks=true, %Links mit farbigem Text
+            linkcolor=blue,
+            hyperindex=true,
+            bookmarks=true,  %Bookmarks für einzelne Abschnitte
+           ]{hyperref}
+" ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}") ("\\paragraph{%s}" . "\\paragraph*{%s}") ("\\subparagraph{%s}" . "\\subparagraph*{%s}")) ("article" "\\documentclass[11pt]{article}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage{graphicx}
+\\usepackage{longtable}
+\\usepackage{hyperref}" ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}") ("\\paragraph{%s}" . "\\paragraph*{%s}") ("\\subparagraph{%s}" . "\\subparagraph*{%s}")) ("report" "\\documentclass[11pt]{report}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage{graphicx}
+\\usepackage{longtable}
+\\usepackage{hyperref}" ("\\part{%s}" . "\\part*{%s}") ("\\chapter{%s}" . "\\chapter*{%s}") ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}")) ("book" "\\documentclass[11pt]{book}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage{graphicx}
+\\usepackage{longtable}
+\\usepackage{hyperref}" ("\\part{%s}" . "\\part*{%s}") ("\\chapter{%s}" . "\\chapter*{%s}") ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))))
+ '(org-export-latex-default-class "scrartcl")
  '(org-hide-leading-stars t)
  '(org-remember-templates (quote (("private" 112 "* TODO %?
   %i
