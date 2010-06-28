@@ -227,7 +227,6 @@
  '(url-proxy-services nil)
  '(url-show-status nil)
  '(url-use-hypertext-gopher nil)
- '(user-mail-address "markus.grunwald@pruftechnik.com")
  '(vc-mode-face (quote highlight))
  '(visible-bell t)
  '(vvb-column 100 t)

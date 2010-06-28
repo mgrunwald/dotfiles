@@ -1,7 +1,7 @@
 ;;; user.el --- user specific settings
 ;; Copyright (C) 2001 by Novel Science Int.
 ;; Author: Stefan Kamphausen <mail@skamphausen.de>
-;; Keywords: 
+;; Keywords:
 ;; This file is not part of XEmacs.
 
 ;; This program is free software; you can redistribute it and/or modify it
@@ -26,7 +26,6 @@
 
 ;;; Code:
 ;; email
-(defvar user-mail-address "markus.grunwald@pruftechnik.de")
 (defvar my-copyright-holder "")
 (provide 'user)
 

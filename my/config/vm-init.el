@@ -2,7 +2,7 @@
 ;; .vm
 
 ;; Author: Stefan Kamphausen <mail@skamphausen.de>
-;; Time-stamp: <17-Jul-2002 20:37:08 markus>
+;; Time-stamp: <28-Jun-2010 21:31:33 markus>
 
 ;; This file is not part of XEmacs.
 
@@ -26,7 +26,7 @@
 ;; Commentary:
 ;; These are the settings for the VM Mailreader.
 ;; Much of the code in this file is derived or copied from other
-;; contributors. I have tried to note the source wherever possible 
+;; contributors. I have tried to note the source wherever possible
 
 ;; To use:
 ;; This file usually gets loaded automatically by VM. Nevertheless
@@ -132,7 +132,7 @@
 					 1 t)
 					(delete-region (point) end)))))))
   )
-  
+
 (add-hook 'vm-reply-hook
 		  '(lambda ()
 			 (citation-yank-kill-sig)
@@ -150,11 +150,10 @@
 
 ;;----------------------------------------------------------------------------
 ;;{{{ Miscellanous Settings
-(setq vm-forwarding-digest-type nil)     ; how to forward a messg 
+(setq vm-forwarding-digest-type nil)     ; how to forward a messg
 (setq mail-signature t)                  ; always sign with .signature
 
 ;;(defvar user-full-name "Donald Hunter")
-;;(setq user-mail-address "dhunter@my.domain.com")
 ;;}}}
 
 ;;----------------------------------------------------------------------------
@@ -169,7 +168,7 @@
 ;For internal mail sendmail is used otherwise we use SMTP.
 ;As a side effect the user mail adress is set, too"
 ;  (save-excursion
-;    (if (not (string-match 
+;    (if (not (string-match
 ;			  "\@"
 ;			  (vm-mail-mode-get-header-contents "To:")))
 ;		(setq send-mail-function 'sendmail-send-it
@@ -212,7 +211,7 @@
 
 ;(add-hook 'vm-mail-mode-hook
 ;		  (function (lambda ()
-;					  (delete-nsci-domain)					  
+;					  (delete-nsci-domain)
 ;					  )))
 ;;}}}
 
@@ -272,7 +271,7 @@
 ;;============================================================================
 ;;{{{ Miscellanous Settings
 (setq vm-preview-lines nil)              ; disable previewing (nil != 0 !!)
-(setq vm-url-browser 'vm-mouse-send-url-to-netscape-new-window) ; 
+(setq vm-url-browser 'vm-mouse-send-url-to-netscape-new-window) ;
 ;;}}}
 
 ;;----------------------------------------------------------------------------
@@ -332,7 +331,7 @@
 
 ;;}}}
 
-;;}}} 
+;;}}}
 ;;============================================================================
 
 ;;============================================================================
@@ -345,7 +344,7 @@
 
 (setq vm-frame-per-composition nil)      ; Don't use multiple frames
 (setq vm-frame-per-folder nil)           ; ..
-(setq vm-frame-per-edit nil)             ; .. 
+(setq vm-frame-per-edit nil)             ; ..
 (setq vm-frame-per-summary nil)          ; ..
 
 (setq vm-highlighted-header-regexp "From:\\|Subject:")
@@ -365,7 +364,7 @@
 		autofile file
 		print
 		reply compose
-		mime visit 
+		mime visit
 		help quit))
 (fset 'vm-toolbar-getmail-command 'vm-get-new-mail)
 
@@ -391,7 +390,7 @@
 ;;   '(("From"
 ;;      ("<\\([^ \t\n\f@%()<>]+\\)[@%]\\([^ \t\n\f<>()]+\\)>" .
 ;;       (buffer-substring (match-beginning 1) (match-end 1)))
-;;      ("<\\([^>]+\\)>" . 
+;;      ("<\\([^>]+\\)>" .
 ;;       (buffer-substring (match-beginning 1) (match-end 1)))
 ;;      ("\\([^ \t\n\f@%()<>]+\\)\\([@%]\\([^ \t\n\f<>()]+\\)\\)?" .
 ;;       (buffer-substring (match-beginning 1) (match-end 1)))

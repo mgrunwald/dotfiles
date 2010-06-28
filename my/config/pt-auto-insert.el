@@ -2,8 +2,6 @@
 ;; Copyright (C) 2004 Markus Grunwald
 
 
-(defvar user-mail-address "markus.grunwald@pruftechnik.de")
-
 ;; This is the copyright holder
 (if (boundp 'my-copyright-holder)
     (setq auto-insert-copyright my-copyright-holder)
@@ -221,7 +219,17 @@
          ;;        "")
          )
 
-
+        ((org-mode . "org mode" )
+         nil
+         "#+OPTIONS:    H:3 num:nil toc:t \\n:nil @:t ::t |:t ^:t -:t f:t *:t TeX:t LaTeX:t skip:nil d:(HIDE) tags:not-in-toc\n"
+         "#+STARTUP:    align fold nodlcheck hidestars oddeven lognotestate\n"
+         "#+SEQ_TODO:   TODO(t) INPROGRESS(i) WAITING(w@) | DONE(d) CANCELED(c@)\n"
+         "#+TAGS:       telephon(t) kaufen(k) brief(b)\n"
+         "#+TITLE:      \n"
+         "#+AUTHOR:     "(user-full-name)"\n"
+         "#+EMAIL:      "(progn user-mail-address)"\n"
+         "#+LANGUAGE:   en\n\n" _
+         )
         ))
 ;; Local variables:
 ;; mode: emacs-lisp
