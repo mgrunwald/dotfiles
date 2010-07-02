@@ -2,7 +2,7 @@
 ;; Copyright (C) 2000-2001 Stefan Kamphausen
 
 ;; Author: Markus Grunwald <markus.grunwald@gmx.de>
-;; Time-stamp: <20-Apr-2010 12:23:42 gru>
+;; Time-stamp: <02-Jul-2010 11:21:48 gru>
 
 ;; Keywords:
 ;; This file is not part of XEmacs.
@@ -311,6 +311,12 @@
       (beginning-of-line)
     ( beginning-of-line-text ) ) )
 
+
+(defun mg-split-window-auto()
+  "Split the window according to its geometry"
+  (interactive)
+  (if (> (window-height) (/ (window-width) 2 ) ) (split-window-vertically)
+  (split-window-horizontally) ) )
 
 (defun mg-gdb-dafit ()
   "Start gdb with the actual dafit binary"

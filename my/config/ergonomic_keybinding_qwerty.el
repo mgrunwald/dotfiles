@@ -303,7 +303,8 @@
 (global-set-key (kbd "M-!") 'delete-window)
 
 (global-set-key (kbd "M-2") 'split-window-vertically)
-(global-set-key (kbd "M-@") 'split-window-horizontally)
+(global-set-key (kbd "M-\"") 'split-window-horizontally)
+(global-set-key (kbd "M-3") 'mg-split-window-auto)
 
 (global-set-key (kbd "M-8") 'extend-selection)
 
@@ -376,6 +377,13 @@
    (define-key comint-mode-map (kbd "<down>") 'next-line)
    (define-key comint-mode-map (kbd "S-<f11>") 'comint-previous-matching-input)
    (define-key comint-mode-map (kbd "S-<f12>") 'comint-next-matching-input)
+))
+
+;; reclaim some binding used by scilab-mode.
+(add-hook 'scilab-mode-hook
+ (lambda ()
+   (define-key scilab-mode-map (kbd "M-;") 'isearch-repeat-forward)
+   (define-key scilab-mode-map (kbd "M-:") 'isearch-repeat-backward)
 ))
 
 (add-hook 'dired-mode-hook
