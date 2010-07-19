@@ -58,7 +58,7 @@
   ;; If there is more than one, they won't work right.
  '(Buffer-menu-buffer+size-width 40)
  '(Buffer-menu-mode-width 8)
- '(Info-additional-directory-list (quote ("/opt/emacs23/share/info/")))
+ '(Info-additional-directory-list (quote ("/opt/emacs23/share/info/" "/home/gru/info")))
  '(Info-auto-generate-directory (quote if-outdated))
  '(Info-button1-follows-hyperlink t)
  '(Info-save-auto-generated-dir (quote always))

@@ -1,0 +1,947 @@
+This is C99-gram.info, produced by makeinfo version 4.11 from
+./semantic/doc/C99-gram.texi.
+
+Copyright (C) 2003 David Ponce
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.1 or any later version published by the Free Software
+     Foundation; with the Invariant Sections being list their titles,
+     with the Front-Cover Texts being list, and with the Back-Cover
+     Texts being list.  A copy of the license is included in the
+     section entitled "GNU Free Documentation License".
+
+INFO-DIR-SECTION Emacs
+START-INFO-DIR-ENTRY
+* C99: (C99-gram).	The C99 context free grammar
+END-INFO-DIR-ENTRY
+
+
+File: C99-gram.info,  Node: Top,  Next: Lexical grammar,  Up: (dir)
+
+The C99 context free grammar
+****************************
+
+This document contains the C context free grammar in Wisent's input
+grammar format, for the C programming language as defined in `ISO/IEC
+9899:1999 - Annex A - Language syntax summary'.
+
+* Menu:
+
+* Lexical grammar::
+* Phrase structure grammar::
+* Preprocessing directives::
+* Index::
+
+ --- The Detailed Node Listing ---
+
+Lexical grammar
+
+* Lexical elements::
+* Keywords::
+* Identifiers::
+* Universal character names::
+* Constants::
+* String literals::
+* Punctuators::
+* Header names::
+* Preprocessing numbers::
+
+Phrase structure grammar
+
+* Expressions::
+* Declarations::
+* Statements::
+* External definitions::
+
+
+File: C99-gram.info,  Node: Lexical grammar,  Next: Phrase structure grammar,  Prev: Top,  Up: Top
+
+1 Lexical grammar
+*****************
+
+* Menu:
+
+* Lexical elements::
+* Keywords::
+* Identifiers::
+* Universal character names::
+* Constants::
+* String literals::
+* Punctuators::
+* Header names::
+* Preprocessing numbers::
+
+
+File: C99-gram.info,  Node: Lexical elements,  Next: Keywords,  Up: Lexical grammar
+
+1.1 Lexical elements
+====================
+
+     token:
+         keyword
+       | identifier
+       | constant
+       | string-literal
+       | punctuator
+       ;
+
+     preprocessing-token:
+         header-name
+       | identifier
+       | pp-number
+       | character-constant
+       | string-literal
+       | punctuator
+       | ;; each non-white-space character that cannot be one of the above
+       ;
+
+
+File: C99-gram.info,  Node: Keywords,  Next: Identifiers,  Prev: Lexical elements,  Up: Lexical grammar
+
+1.2 Keywords
+============
+
+     keyword:
+         `auto'     | `_Bool'   | `_Complex' | `_Imaginary' | `break'
+       | `case'     | `char'    | `const'    | `continue'   | `default'
+       | `do'       | `double'  | `else'     | `enum'       | `extern'
+       | `float'    | `for'     | `goto'     | `if'         | `inline'
+       | `int'      | `long'    | `register' | `restrict'   | `return'
+       | `short'    | `signed'  | `sizeof'   | `static'     | `struct'
+       | `switch'   | `typedef' | `union'    | `unsigned'   | `void'
+       | `volatile' | `while'
+       ;
+
+
+File: C99-gram.info,  Node: Identifiers,  Next: Universal character names,  Prev: Keywords,  Up: Lexical grammar
+
+1.3 Identifiers
+===============
+
+     identifier:
+         identifier-nondigit
+       | identifier identifier-nondigit
+       | identifier digit
+       ;
+
+     identifier-nondigit:
+         nondigit
+       | universal-character-name
+       | ;; other implementation-defined characters
+       ;
+
+     nondigit:
+         `[_a-zA-Z]'
+       ;
+
+     digit:
+         `[0-9]'
+       ;
+
+
+File: C99-gram.info,  Node: Universal character names,  Next: Constants,  Prev: Identifiers,  Up: Lexical grammar
+
+1.4 Universal character names
+=============================
+
+     universal-character-name:
+         `\u' hex-quad
+       | `\U' hex-quad hex-quad
+       ;
+
+     hex-quad:
+         hexadecimal-digit hexadecimal-digit
+         hexadecimal-digit hexadecimal-digit
+       ;
+
+
+File: C99-gram.info,  Node: Constants,  Next: String literals,  Prev: Universal character names,  Up: Lexical grammar
+
+1.5 Constants
+=============
+
+     constant:
+         integer-constant
+       | floating-constant
+       | enumeration-constant
+       | character-constant
+       ;
+
+     integer-constant:
+         decimal-constant integer-suffix-opt
+       | octal-constant integer-suffix-opt
+       | hexadecimal-constant integer-suffix-opt
+       ;
+
+     decimal-constant:
+         nonzero-digit
+       | decimal-constant digit
+       ;
+
+     octal-constant:
+         `0'
+       | octal-constant octal-digit
+       ;
+
+     hexadecimal-constant:
+         hexadecimal-prefix hexadecimal-digit
+       | hexadecimal-constant hexadecimal-digit
+       ;
+
+     hexadecimal-prefix:
+        `0x' | `0X'
+       ;
+
+     nonzero-digit:
+         `[1-9]'
+       ;
+
+     octal-digit:
+         `[0-7]'
+       ;
+
+     hexadecimal-digit:
+         `[0-9a-fA-F]'
+       ;
+
+     integer-suffix:
+         unsigned-suffix long-suffix-opt
+       | unsigned-suffix long-long-suffix
+       | long-suffix unsigned-suffix-opt
+       | long-long-suffix unsigned-suffix-opt
+       ;
+
+     unsigned-suffix:
+         `[uU]'
+       ;
+
+     long-suffix:
+         `[lL]'
+       ;
+
+     long-long-suffix:
+         `ll' | `LL'
+       ;
+
+     floating-constant:
+         decimal-floating-constant
+       | hexadecimal-floating-constant
+       ;
+
+     decimal-floating-constant:
+         fractional-constant exponent-part-opt floating-suffix-opt
+       | digit-sequence exponent-part floating-suffix-opt
+       ;
+
+     hexadecimal-floating-constant:
+         hexadecimal-prefix hexadecimal-fractional-constant
+         binary-exponent-part floating-suffix-opt
+       | hexadecimal-prefix hexadecimal-digit-sequence
+         binary-exponent-part floating-suffix-opt
+       ;
+
+     fractional-constant:
+         digit-sequence-opt `.' digit-sequence
+       | digit-sequence `.'
+       ;
+
+     exponent-part:
+         `e' sign-opt digit-sequence
+       | `E' sign-opt digit-sequence
+       ;
+
+     sign:
+         `[+-]'
+       ;
+
+     digit-sequence:
+         digit
+       | digit-sequence digit
+       ;
+
+     hexadecimal-fractional-constant:
+         hexadecimal-digit-sequence-opt `.' hexadecimal-digit-sequence
+       | hexadecimal-digit-sequence `.'
+       ;
+
+     binary-exponent-part:
+         `p' sign-opt digit-sequence
+       | `P' sign-opt digit-sequence
+       ;
+
+     hexadecimal-digit-sequence:
+         hexadecimal-digit
+       | hexadecimal-digit-sequence hexadecimal-digit
+       ;
+
+     floating-suffix:
+         `[flFL]'
+       ;
+
+     enumeration-constant:
+         identifier
+       ;
+
+     character-constant:
+         `'' c-char-sequence `''
+       | `L'' c-char-sequence `''
+       ;
+
+     c-char-sequence:
+         c-char
+       | c-char-sequence c-char
+       ;
+
+     c-char:
+      ;; any member of the source character set except the
+      ;; single-quote ', backslash \, or new-line character
+       | escape-sequence
+       ;
+
+     escape-sequence:
+         simple-escape-sequence
+       | octal-escape-sequence
+       | hexadecimal-escape-sequence
+       | universal-character-name
+       ;
+
+     simple-escape-sequence:
+         `\'' | `\"' | `\?' | `\\'
+       | `\a' | `\b' | `\f' | `\n' | `\r' | `\t' | `\v'
+       ;
+
+     octal-escape-sequence:
+         `\' octal-digit
+       | `\' octal-digit octal-digit
+       | `\' octal-digit octal-digit octal-digit
+       ;
+
+     hexadecimal-escape-sequence:
+         `\x' hexadecimal-digit
+       | hexadecimal-escape-sequence hexadecimal-digit
+       ;
+
+
+File: C99-gram.info,  Node: String literals,  Next: Punctuators,  Prev: Constants,  Up: Lexical grammar
+
+1.6 String literals
+===================
+
+     string-literal:
+         `"' s-char-sequence-opt `"'
+       | `L"' s-char-sequence-opt `"'
+       ;
+
+     s-char-sequence:
+         s-char
+       | s-char-sequence s-char
+       ;
+
+     s-char:
+      ;; any member of the source character set except the
+      ;; double-quote ", backslash \, or new-line character
+       | escape-sequence
+       ;
+
+
+File: C99-gram.info,  Node: Punctuators,  Next: Header names,  Prev: String literals,  Up: Lexical grammar
+
+1.7 Punctuators
+===============
+
+     punctuator:
+       | `['   | `]'   | `('  | `)'  | `{'  | `}'   | `.'  | `->'
+       | `++'  | `--'  | `&'  | `*'  | `+'  | `-'   | `~'  | `!'
+       | `/'   | `%'   | `<<' | `>>' | `<'  | `>'   | `<=' | `>='
+       | `=='  | `!='  | `^'  | `|'  | `&&' | `||'  | `?'  | `:'
+       | `;'   | `...' | `='  | `*=' | `/=' | `%='  | `+=' | `-='
+       | `<<=' | `>>=' | `&=' | `^=' | `|=' | `,'   | `#'  | `##'
+       | `<:'  | `:>'  | `<%' | `%>' | `%:' | `%:%:'
+       ;
+
+
+File: C99-gram.info,  Node: Header names,  Next: Preprocessing numbers,  Prev: Punctuators,  Up: Lexical grammar
+
+1.8 Header names
+================
+
+     header-name:
+         `<' h-char-sequence `>'
+       | `"' q-char-sequence `"'
+       ;
+
+     h-char-sequence:
+         h-char
+       | h-char-sequence h-char
+       ;
+
+     h-char:
+      ;; any member of the source character set except
+      ;; the new-line character and >
+       ;
+
+     q-char-sequence:
+         q-char
+       | q-char-sequence q-char
+       ;
+
+     q-char:
+      ;; any member of the source character set except
+      ;; the new-line character and '
+       ;
+
+
+File: C99-gram.info,  Node: Preprocessing numbers,  Prev: Header names,  Up: Lexical grammar
+
+1.9 Preprocessing numbers
+=========================
+
+     pp-number:
+         digit
+       | `.' digit
+       | pp-number digit
+       | pp-number identifier-nondigit
+       | pp-number `e' sign
+       | pp-number `E' sign
+       | pp-number `p' sign
+       | pp-number `P' sign
+       | pp-number `.'
+       ;
+
+
+File: C99-gram.info,  Node: Phrase structure grammar,  Next: Preprocessing directives,  Prev: Lexical grammar,  Up: Top
+
+2 Phrase structure grammar
+**************************
+
+* Menu:
+
+* Expressions::
+* Declarations::
+* Statements::
+* External definitions::
+
+
+File: C99-gram.info,  Node: Expressions,  Next: Declarations,  Up: Phrase structure grammar
+
+2.1 Expressions
+===============
+
+     primary-expr:
+         identifier
+       | constant
+       | string-literal
+       | `(' expression `)'
+       ;
+
+     postfix-expr:
+         primary-expr
+       | postfix-expr `[' expression `]'
+       | postfix-expr `(' argument-expr-list-opt `)'
+       | postfix-expr `.'  identifier
+       | postfix-expr `->' identifier
+       | postfix-expr `++'
+       | postfix-expr `--'
+       | `(' type-name `)' `{' initializer-list `}'
+       | `(' type-name `)' `{' initializer-list `,' `}'
+       ;
+
+     argument-expr-list:
+         assignment-expr
+       | argument-expr-list `,' assignment-expr
+       ;
+
+     unary-expr:
+         postfix-expr
+       | `++' unary-expr
+       | `--' unary-expr
+       | unary-operator cast-expr
+       | `sizeof' unary-expr
+       | `sizeof' `(' type-name `)'
+       ;
+
+     unary-operator:
+         `&' | `*' | `+' | `-' | `~' | `!'
+       ;
+
+     cast-expr:
+         unary-expr
+       | `(' type-name `)' cast-expr
+       ;
+
+     multiplicative-expr:
+         cast-expr
+       | multiplicative-expr `*' cast-expr
+       | multiplicative-expr `/' cast-expr
+       | multiplicative-expr `%' cast-expr
+       ;
+
+     additive-expr:
+         multiplicative-expr
+       | additive-expr `+' multiplicative-expr
+       | additive-expr `-' multiplicative-expr
+       ;
+
+     shift-expr:
+         additive-expr
+       | shift-expr `<<' additive-expr
+       | shift-expr `>>' additive-expr
+       ;
+
+     relational-expr:
+         shift-expr
+       | relational-expr `<'  shift-expr
+       | relational-expr `>'  shift-expr
+       | relational-expr `<=' shift-expr
+       | relational-expr `>=' shift-expr
+       ;
+
+     equality-expr:
+         relational-expr
+       | equality-expr `==' relational-expr
+       | equality-expr `!=' relational-expr
+       ;
+
+     AND-expr:
+         equality-expr
+       | AND-expr `&' equality-expr
+       ;
+
+     exclusive-OR-expr:
+         AND-expr
+       | exclusive-OR-expr `^' AND-expr
+       ;
+
+     inclusive-OR-expr:
+         exclusive-OR-expr
+       | inclusive-OR-expr `|' exclusive-OR-expr
+       ;
+
+     logical-AND-expr:
+         inclusive-OR-expr
+       | logical-AND-expr `&&' inclusive-OR-expr
+       ;
+
+     logical-OR-expr:
+         logical-AND-expr
+       | logical-OR-expr `||' logical-AND-expr
+       ;
+
+     conditional-expr:
+         logical-OR-expr
+       | logical-OR-expr `?' expression `:' conditional-expr
+       ;
+
+     assignment-expr:
+         conditional-expr
+       | unary-expr assignment-operator assignment-expr
+       ;
+
+     assignment-operator:
+         `='   | `*='  | `/=' | `%=' | `+=' | `-='
+       | `<<=' | `>>=' | `&=' | `^=' | `|='
+       ;
+
+     expression:
+         assignment-expr
+       | expression `,' assignment-expr
+       ;
+
+     constant-expr:
+         conditional-expr
+       ;
+
+
+File: C99-gram.info,  Node: Declarations,  Next: Statements,  Prev: Expressions,  Up: Phrase structure grammar
+
+2.2 Declarations
+================
+
+     declaration:
+         declaration-specifiers init-declarator-list-opt `;'
+       ;
+
+     declaration-specifiers:
+         storage-class-specifier declaration-specifiers-opt
+       | type-specifier declaration-specifiers-opt
+       | type-qualifier declaration-specifiers-opt
+       | function-specifier declaration-specifiers-opt
+       ;
+
+     init-declarator-list:
+         init-declarator
+       | init-declarator-list `,' init-declarator
+       ;
+
+     init-declarator:
+         declarator
+       | declarator `=' initializer
+       ;
+
+     storage-class-specifier:
+         `typedef' | `extern' | `static' | `auto' | `register'
+       ;
+
+     type-specifier:
+         `void'     | `char'  | `short'    | `int'
+       | `long'     | `float' | `double'   | `signed'
+       | `unsigned' | `_Bool' | `_Complex' | `_Imaginary'
+       | struct-or-union-specifier
+       | enum-specifier
+       | typedef-name
+       ;
+
+     struct-or-union-specifier:
+         struct-or-union identifier-opt `{' struct-declaration-list `}'
+       | struct-or-union identifier
+       ;
+
+     struct-or-union:
+         `struct' | `union'
+       ;
+
+     struct-declaration-list:
+         struct-declaration
+       | struct-declaration-list struct-declaration
+       ;
+
+     struct-declaration:
+         specifier-qualifier-list struct-declarator-list `;'
+       ;
+
+     specifier-qualifier-list:
+         type-specifier specifier-qualifier-list-opt
+       | type-qualifier specifier-qualifier-list-opt
+       ;
+
+     struct-declarator-list:
+         struct-declarator
+       | struct-declarator-list `,' struct-declarator
+       ;
+
+     struct-declarator:
+         declarator
+       | declarator-opt `:' constant-expr
+       ;
+
+     enum-specifier:
+         `enum' identifier-opt `{' enumerator-list `}'
+       | `enum' identifier-opt `{' enumerator-list `,' `}'
+       | `enum' identifier
+       ;
+
+     enumerator-list:
+         enumerator
+       | enumerator-list `,' enumerator
+       ;
+
+     enumerator:
+         enumeration-constant
+       | enumeration-constant `=' constant-expr
+       ;
+
+     type-qualifier:
+         `const' | `restrict' | `volatile'
+       ;
+
+     function-specifier:
+         `inline'
+       ;
+
+     declarator:
+         pointer-opt direct-declarator
+       ;
+
+     direct-declarator:
+         identifier
+       | `(' declarator `)'
+       | direct-declarator `[' type-qualifier-list-opt assignment-expr-opt `]'
+       | direct-declarator `[' `static' type-qualifier-list-opt assignment-expr `]'
+       | direct-declarator `[' type-qualifier-list `static'  assignment-expr `]'
+       | direct-declarator `[' type-qualifier-list-opt `*' `]'
+       | direct-declarator `(' parameter-type-list `)'
+       | direct-declarator `(' identifier-list-opt `)'
+       ;
+
+     pointer:
+         `*' type-qualifier-list-opt
+       | `*' type-qualifier-list-opt pointer
+       ;
+
+     type-qualifier-list:
+         type-qualifier
+       | type-qualifier-list type-qualifier
+       ;
+
+     parameter-type-list:
+         parameter-list
+       | parameter-list `,' `...'
+       ;
+
+     parameter-list:
+         parameter-declaration
+       | parameter-list `,' parameter-declaration
+       ;
+
+     parameter-declaration:
+         declaration-specifiers declarator
+       | declaration-specifiers abstract-declarator-opt
+       ;
+
+     identifier-list:
+         identifier
+       | identifier-list `,' identifier
+       ;
+
+     type-name:
+         specifier-qualifier-list abstract-declarator-opt
+       ;
+
+     abstract-declarator:
+         pointer
+       | pointer-opt direct-abstract-declarator
+       ;
+
+     direct-abstract-declarator:
+         `(' abstract-declarator `)'
+       | direct-abstract-declarator-opt `[' assignment-expr-opt `]'
+       | direct-abstract-declarator `[' `*' `]'
+       | direct-abstract-declarator-opt `(' parameter-type-list-opt `)'
+       ;
+
+     typedef-name:
+         identifier
+       ;
+
+     initializer:
+         assignment-expr
+       | `{' initializer-list `}'
+       | `{' initializer-list `,' `}'
+       ;
+
+     initializer-list:
+         designation-opt initializer
+       | initializer-list `,' designation-opt initializer
+       ;
+
+     designation:
+         designator-list `='
+       ;
+
+     designator-list:
+         designator
+       | designator-list designator
+       ;
+
+     designator:
+         `[' constant-expr `]'
+       | `.' identifier
+       ;
+
+
+File: C99-gram.info,  Node: Statements,  Next: External definitions,  Prev: Declarations,  Up: Phrase structure grammar
+
+2.3 Statements
+==============
+
+     statement:
+         labeled-statement
+       | compound-statement
+       | expression-statement
+       | selection-statement
+       | iteration-statement
+       | jump-statement
+       ;
+
+     labeled-statement:
+         identifier `:' statement
+       | `case' constant-expr `:' statement
+       | `default' `:' statement
+       ;
+
+     compound-statement:
+         `{' block-item-list-opt `}'
+       ;
+
+     block-item-list:
+         block-item
+       | block-item-list block-item
+       ;
+
+     block-item:
+         declaration
+       | statement
+       ;
+
+     expression-statement:
+         expr-opt `;'
+       ;
+
+     selection-statement:
+         `if' `(' expression `)' statement
+       | `if' `(' expression `)' statement `else' statement
+       | `switch' `(' expression `)' statement
+       ;
+
+     iteration-statement:
+         `while' `(' expression `)' statement
+       | `do' statement `while' `(' expression `)' `;'
+       | `for' `(' expr-opt `;' expr-opt `;' expr-opt `)' statement
+       | `for' `(' declaration expr-opt `;' expr-opt `)' statement
+       ;
+
+     jump-statement:
+         `goto' identifier `;'
+       | `continue' `;'
+       | `break' `;'
+       | `return' expr-opt `;'
+       ;
+
+
+File: C99-gram.info,  Node: External definitions,  Prev: Statements,  Up: Phrase structure grammar
+
+2.4 External definitions
+========================
+
+     translation-unit:
+         external-declaration
+       | translation-unit external-declaration
+       ;
+
+     external-declaration:
+         function-definition
+       | declaration
+       ;
+
+     function-definition:
+         declaration-specifiers declarator
+         declaration-list-opt compound-statement
+       ;
+
+     declaration-list:
+         declaration
+       | declaration-list declaration
+       ;
+
+
+File: C99-gram.info,  Node: Preprocessing directives,  Next: Index,  Prev: Phrase structure grammar,  Up: Top
+
+3 Preprocessing directives
+**************************
+
+     preprocessing-file:
+         group-opt
+       ;
+
+     group:
+         group-part
+       | group group-part
+       ;
+
+     group-part:
+         if-section
+       | control-line
+       | text-line
+       | `#' non-directive
+       ;
+
+     if-section:
+         if-group elif-groups-opt else-group-opt endif-line
+       ;
+
+     if-group:
+         `#' `if'     constant-expr new-line group-opt
+       | `#' `ifdef'  identifier new-line group-opt
+       | `#' `ifndef' identifier new-line group-opt
+       ;
+
+     elif-groups:
+         elif-group
+       | elif-groups elif-group
+       ;
+
+     elif-group:
+         `#' `elif'   constant-expr new-line group-opt
+       ;
+
+     else-group:
+         `#' `else'   new-line group-opt
+       ;
+
+     endif-line:
+         `#' `endif'  new-line
+       ;
+
+     control-line:
+         `#' `include' pp-tokens new-line
+       | `#' `define'  identifier replacement-list new-line
+       | `#' `define'  identifier lparen identifier-list-opt `)'
+         replacement-list new-line
+       | `#' `define'  identifier lparen `...' `)'
+         replacement-list new-line
+       | `#' `define'  identifier lparen identifier-list `,' `...' `)'
+         replacement-list new-line
+       | `#' `undef'   identifier new-line
+       | `#' `line'    pp-tokens new-line
+       | `#' `error'   pp-tokens-opt new-line
+       | `#' `pragma'  pp-tokens-opt new-line
+       | `#'           new-line
+       ;
+
+     text-line:
+         pp-tokens-opt new-line
+       ;
+
+     non-directive:
+         pp-tokens new-line
+       ;
+
+     lparen:
+      ;; a `(' character not immediately preceded by white-space
+       ;
+
+     replacement-list:
+         pp-tokens-opt
+       ;
+
+     pp-tokens:
+         preprocessing-token
+         pp-tokens preprocessing-token
+       ;
+
+     new-line:
+      ;; the new-line character
+       ;
+
+
+File: C99-gram.info,  Node: Index,  Prev: Preprocessing directives,  Up: Top
+
+Index
+*****
+
+ [index ]
+* Menu:
+
+
+Tag Table:
+Node: Top701
+Node: Lexical grammar1443
+Node: Lexical elements1765
+Node: Keywords2259
+Node: Identifiers2942
+Node: Universal character names3438
+Node: Constants3827
+Node: String literals7423
+Node: Punctuators7924
+Node: Header names8541
+Node: Preprocessing numbers9178
+Node: Phrase structure grammar9586
+Node: Expressions9847
+Node: Declarations12776
+Node: Statements17325
+Node: External definitions18699
+Node: Preprocessing directives19269
+Node: Index21276
+
+End Tag Table
