@@ -2,7 +2,7 @@
 ;; Copyright (C) 2000-2001 Stefan Kamphausen
 
 ;; Author: Stefan Kamphausen <mail@skamphausen.de>
-;; Time-stamp: <01-Jun-2010 11:39:58 gru>
+;; Time-stamp: <09-Jul-2010 14:53:00 gru>
 
 ;; Keywords:
 ;; This file is not part of XEmacs.
@@ -97,8 +97,6 @@ languages. Argument MAP is the local keymap (e.g. cperl-mode-map)."
 (defun ska-c-common-mode-keys (map)
   "Set my personal keys for C and C++.
 Argument MAP is c-mode-map or c++-mode-map."
-  (define-key map  [S-iso-lefttab]            'ff-find-other-file)
-  (define-key map  [S-tab]            'ff-find-other-file)
   (define-key map '[(control b) (control b)]  'compile)
   (define-key map '[(f9)]                     'compile)
   (define-key map '[(control f9)]             'kill-compilation)
@@ -112,6 +110,12 @@ Argument MAP is c-mode-map or c++-mode-map."
   (define-key map '[(control v) (control l)]  'goto-line)
   (define-key map '[(meta n)]                 'c-beginning-of-defun)
   (define-key map '[(meta m)]                 'c-end-of-defun)
+
+;; Semantic & co
+  (define-key map  [S-iso-lefttab]            'eassist-switch-h-cpp)
+  (define-key map  [S-tab]                    'eassist-switch-h-cpp)
+  (define-key map  [(meta .)]                 'semantic-ia-fast-jump)
+
 
 ;  ;; XRef
 ;  (define-key map [(control v) (r)]  'xref-refactor)
@@ -245,5 +249,4 @@ Argument MAP is c-mode-map or c++-mode-map."
 ;;; local-keys.el ends here
 ;; Local variables:
 ;; mode: emacs-lisp
-;; folded-file: t
 ;; end:
