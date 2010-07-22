@@ -2,7 +2,7 @@
 ;; Copyright (C) 2000-2001 Stefan Kamphausen
 
 ;; Author: Markus Grunwald <markus.grunwald@gmx.de>
-;; Time-stamp: <02-Jul-2010 11:21:48 gru>
+;; Time-stamp: <22-Jul-2010 14:21:43 gru>
 
 ;; Keywords:
 ;; This file is not part of XEmacs.
@@ -83,6 +83,17 @@
   ( while ( < (current-column) col ) (insert " " ) )
   )
 
+(defun mg-force-qmake-project()
+  ( message ( concat "Running " qmake ) )
+  ( call-process "rm" nil ( get-buffer "*messages*" ) t "-fv" ( concat projectdir "/Makefile" ) )
+  ( call-process qmake nil ( get-buffer "*messages*" ) t
+                 ( concat projectdir "/" projectfile )
+                 "-o"
+                 ( concat projectdir "/Makefile" )
+                 )
+  )
+
+
 (defun set-arm-environment()
   "Set environment variables so that compilation for arm is possible"
   (interactive)
@@ -96,19 +107,22 @@
     )
   )
 
+
+
 (defun set-arm()
   "Set environment variables so that compilation for arm is possible and update Makefile"
   (interactive)
   (progn
     ( set-arm-environment )
-    ( message "Running qmake" )
-    ( call-process "rm" nil ( get-buffer "*scratch*" ) t "-fv" ( concat ( getenv "DAFIT" ) "/Makefile" ) )
-    ( call-process "qmake" nil ( get-buffer "*scratch*" ) t
-                   ( concat ( getenv "DAFIT" ) "/zmainarm.pro" )
-                   "-o"
-                   ( concat ( getenv "DAFIT" ) "/Makefile" )
-                   )
-    ( message "Makefile set to arm" )
+    ( let ( (qmake ( concat ( getenv "QTDIR" ) "/bin/qmake" ) )
+            (projectfile "zmainarm.pro" )
+            (projectdir ( getenv "DAFIT" ) )
+            )
+
+      (mg-force-qmake-project)
+
+      ( message "Makefile set to arm" )
+      )
     )
   )
 
@@ -130,15 +144,14 @@
   (interactive)
   (progn
     ( set-vxp2-environment )
-    ( let ( (qmake ( concat ( getenv "QTDIR" ) "/bin/qmake" ) ) )
-      ( message ( concat "Running " qmake ) )
-      ( call-process "rm" nil ( get-buffer "*Messages*" ) t "-fv" ( concat ( getenv "VXP2" ) "/Makefile" ) )
-      ( call-process qmake nil ( get-buffer "*Messages*" ) t
-                     ( concat ( getenv "VXP2" ) "/zmainarm.pro" )
-                     "-o"
-                     ( concat ( getenv "VXP2" ) "/Makefile" )
-                     )
-      ( message "Makefile set to pxa" )
+    ( let ( (qmake ( concat ( getenv "QTDIR" ) "/bin/qmake" ) )
+            (projectfile "zmainarm.pro" )
+            (projectdir ( getenv "VXP2" ) )
+            )
+
+      (mg-force-qmake-project)
+
+      ( message "Makefile set to vxp2" )
       )
     )
   )
@@ -150,16 +163,15 @@
     ( setenv "QTDIR" "/opt/qt/x86/qt-x11-commercial-3.3.2-debug" )
     ( setenv "LD_LIBRARY_PATH" "/opt/qt/x86/qt-x11-commercial-3.3.2-debug/lib" )
     ( setenv "QMAKESPEC" "linux-g++-2.95" )
-    ( let ( (qmake ( concat ( getenv "QTDIR" ) "/bin/qmake" ) ) )
-      ( message ( concat "Running " qmake ) )
-      ( call-process "rm" nil ( get-buffer "*scratch*" ) t "-fv" ( concat ( getenv "DAFIT" ) "/Makefile" ) )
-      ( call-process qmake nil ( get-buffer "*scratch*" ) t
-                     ( concat ( getenv "DAFIT" ) "/zmain.pro" )
-                     "-o"
-                     ( concat ( getenv "DAFIT" ) "/Makefile" )
-                     )
-      ( setq compile-command "NetMake -k -j11 -s --directory=${DAFIT}" )
-      ( message "Environment set to x86" )
+    ( setq compile-command "NetMake -k -j11 -s --directory=${DAFIT}" )
+    ( let ( (qmake ( concat ( getenv "QTDIR" ) "/bin/qmake" ) )
+            (projectfile "zmain.pro" )
+            (projectdir ( getenv "DAFIT" ) )
+            )
+
+      (mg-force-qmake-project)
+
+      ( message "Environment set to qt debug x86" )
       )
     )
   )
@@ -182,14 +194,13 @@
   (interactive)
   (progn
     ( set-x86-environment )
-    ( let ( (qmake ( concat ( getenv "QTDIR" ) "/bin/qmake" ) ) )
-      ( message ( concat "Running " qmake ) )
-      ( call-process "rm" nil ( get-buffer "*scratch*" ) t "-fv" ( concat ( getenv "DAFIT" ) "/Makefile" ) )
-      ( call-process "qmake" nil ( get-buffer "*scratch*" ) t
-                     ( concat ( getenv "DAFIT" ) "/zmain.pro" )
-                     "-o"
-                     ( concat ( getenv "DAFIT" ) "/Makefile" )
-                     )
+    ( let ( (qmake ( concat ( getenv "QTDIR" ) "/bin/qmake" ) )
+            (projectfile "zmain.pro" )
+            (projectdir ( getenv "DAFIT" ) )
+            )
+
+      ( mg-force-qmake-project)
+
       ( message "Makefile set to x86" )
       )
     )
