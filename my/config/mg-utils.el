@@ -2,7 +2,7 @@
 ;; Copyright (C) 2000-2001 Stefan Kamphausen
 
 ;; Author: Markus Grunwald <markus.grunwald@gmx.de>
-;; Time-stamp: <22-Jul-2010 14:21:43 gru>
+;; Time-stamp: <22-Jul-2010 14:51:28 gru>
 
 ;; Keywords:
 ;; This file is not part of XEmacs.
@@ -83,7 +83,7 @@
   ( while ( < (current-column) col ) (insert " " ) )
   )
 
-(defun mg-force-qmake-project()
+(defun mg-force-qmake-project( qmake projectdir projectfile )
   ( message ( concat "Running " qmake ) )
   ( call-process "rm" nil ( get-buffer "*messages*" ) t "-fv" ( concat projectdir "/Makefile" ) )
   ( call-process qmake nil ( get-buffer "*messages*" ) t
@@ -94,7 +94,7 @@
   )
 
 
-(defun set-arm-environment()
+(defun set-vxp1-arm-environment()
   "Set environment variables so that compilation for arm is possible"
   (interactive)
   (progn
@@ -103,30 +103,24 @@
     ( setenv "QMAKESPEC" "qws/linux-arm-g++" )
     ( setenv "QMAKE_TARGET" "arm" )
     ( setq compile-command "NetMake -k -j11 -s --directory=${DAFIT}" )
-    ( message "Environment set to arm" )
+    ( message "Environment set to vxp1 arm" )
     )
   )
 
-
-
-(defun set-arm()
+(defun set-vxp1-arm()
   "Set environment variables so that compilation for arm is possible and update Makefile"
   (interactive)
   (progn
-    ( set-arm-environment )
-    ( let ( (qmake ( concat ( getenv "QTDIR" ) "/bin/qmake" ) )
-            (projectfile "zmainarm.pro" )
-            (projectdir ( getenv "DAFIT" ) )
-            )
+    ( set-vxp1-arm-environment )
 
-      (mg-force-qmake-project)
-
-      ( message "Makefile set to arm" )
-      )
-    )
+    (mg-force-qmake-project
+     (concat ( getenv "QTDIR" )"/bin/qmake")
+     ( getenv "DAFIT" )
+     "zmainarm.pro" )
+    ( message "Makefile set to vxp1 arm" ) )
   )
 
-(defun set-vxp2-environment()
+(defun set-vxp2-arm-environment()
   "Set environment variables so that compilation for pxa/vxp2 is possible"
   (interactive)
   (progn
@@ -135,28 +129,27 @@
     ( setenv "QMAKESPEC" "qws/linux-arm-g++-43" )
     ( setenv "QMAKE_TARGET" "arm" )
     ( setq compile-command "NetMake -k -j11 -s --directory=${VXP2}" )
-    ( message "Environment set to pxa" )
+    ( message "Environment set to vxp2 arm" )
     )
   )
 
-(defun set-vxp2()
+(defun set-vxp2-arm()
   "Set environment variables so that compilation for arm is possible and update Makefile"
   (interactive)
   (progn
-    ( set-vxp2-environment )
-    ( let ( (qmake ( concat ( getenv "QTDIR" ) "/bin/qmake" ) )
-            (projectfile "zmainarm.pro" )
-            (projectdir ( getenv "VXP2" ) )
-            )
+    ( set-vxp2-arm-environment )
 
-      (mg-force-qmake-project)
+    (mg-force-qmake-project
+     ( concat ( getenv "QTDIR" ) "/bin/qmake" )
+     ( getenv "VXP2" )
+     "zmainarm.pro"
+     )
 
-      ( message "Makefile set to vxp2" )
-      )
+    ( message "Makefile set to vxp2" )
     )
   )
 
-(defun set-debugx86-environment()
+(defun set-vxp1-debugx86-environment()
   "Set environment variables so that compilation for x86 and debugging qt is possible"
   (interactive)
   (progn
@@ -164,19 +157,27 @@
     ( setenv "LD_LIBRARY_PATH" "/opt/qt/x86/qt-x11-commercial-3.3.2-debug/lib" )
     ( setenv "QMAKESPEC" "linux-g++-2.95" )
     ( setq compile-command "NetMake -k -j11 -s --directory=${DAFIT}" )
-    ( let ( (qmake ( concat ( getenv "QTDIR" ) "/bin/qmake" ) )
-            (projectfile "zmain.pro" )
-            (projectdir ( getenv "DAFIT" ) )
-            )
-
-      (mg-force-qmake-project)
-
-      ( message "Environment set to qt debug x86" )
-      )
+    ( message "Environment set to vxp1 qtdebug x86" )
     )
   )
 
-(defun set-x86-environment()
+(defun set-debugx86-environment()
+  "Set environment variables so that compilation for x86 and debugging qt is possible"
+  (interactive)
+  (progn
+    (set-vxp1-debugx86-environment)
+
+    (mg-force-qmake-project
+     ( concat ( getenv "QTDIR" ) "/bin/qmake" )
+     ( getenv "DAFIT" )
+     "zmain.pro"
+     )
+
+    ( message "Environment set to qt debug x86" )
+    )
+  )
+
+(defun set-vxp1-x86-environment()
   "Set environment variables so that compilation for x86 is possible"
   (interactive)
   (progn
@@ -189,20 +190,19 @@
     )
   )
 
-(defun set-x86()
+(defun set-vxp1-x86()
   "Set environment variables so that compilation for x86 is possible and update Makefile"
   (interactive)
   (progn
-    ( set-x86-environment )
-    ( let ( (qmake ( concat ( getenv "QTDIR" ) "/bin/qmake" ) )
-            (projectfile "zmain.pro" )
-            (projectdir ( getenv "DAFIT" ) )
-            )
+    ( set-vxp1-x86-environment )
 
-      ( mg-force-qmake-project)
+    (mg-force-qmake-project
+     ( concat ( getenv "QTDIR" ) "/bin/qmake" )
+     ( getenv "DAFIT" )
+     "zmain.pro"
+     )
 
-      ( message "Makefile set to x86" )
-      )
+    ( message "Makefile set to x86" )
     )
   )
 
