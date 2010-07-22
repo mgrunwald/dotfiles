@@ -2,7 +2,7 @@
 ;; Copyright (C) 2000-2001 Stefan Kamphausen
 
 ;; Author: Markus Grunwald <markus.grunwald@gmx.de>
-;; Time-stamp: <22-Jul-2010 14:51:28 gru>
+;; Time-stamp: <22-Jul-2010 14:58:27 gru>
 
 ;; Keywords:
 ;; This file is not part of XEmacs.
@@ -107,19 +107,6 @@
     )
   )
 
-(defun set-vxp1-arm()
-  "Set environment variables so that compilation for arm is possible and update Makefile"
-  (interactive)
-  (progn
-    ( set-vxp1-arm-environment )
-
-    (mg-force-qmake-project
-     (concat ( getenv "QTDIR" )"/bin/qmake")
-     ( getenv "DAFIT" )
-     "zmainarm.pro" )
-    ( message "Makefile set to vxp1 arm" ) )
-  )
-
 (defun set-vxp2-arm-environment()
   "Set environment variables so that compilation for pxa/vxp2 is possible"
   (interactive)
@@ -131,6 +118,45 @@
     ( setq compile-command "NetMake -k -j11 -s --directory=${VXP2}" )
     ( message "Environment set to vxp2 arm" )
     )
+  )
+
+(defun set-vxp1-debugx86-environment()
+  "Set environment variables so that compilation for x86 and debugging qt is possible"
+  (interactive)
+  (progn
+    ( setenv "QTDIR" "/opt/qt/x86/qt-x11-commercial-3.3.2-debug" )
+    ( setenv "LD_LIBRARY_PATH" "/opt/qt/x86/qt-x11-commercial-3.3.2-debug/lib" )
+    ( setenv "QMAKESPEC" "linux-g++-2.95" )
+    ( setq compile-command "NetMake -k -j11 -s --directory=${DAFIT}" )
+    ( message "Environment set to vxp1 qtdebug x86" )
+    )
+  )
+
+(defun set-vxp1-x86-environment()
+  "Set environment variables so that compilation for x86 is possible"
+  (interactive)
+  (progn
+    ( setenv "QTDIR" "/opt/qt/x86/qt3" )
+    ( setenv "LD_LIBRARY_PATH" "/opt/qt/x86/qt3/lib" )
+    ( setenv "QMAKESPEC" "linux-g++-2.95")
+    ( setenv "QMAKE_TARGET" "x86" )
+    ( setq compile-command "NetMake -k -j11 -s --directory=${DAFIT}" )
+    ( message "Environment set to x86" )
+    )
+  )
+
+
+(defun set-vxp1-arm()
+  "Set environment variables so that compilation for arm is possible and update Makefile"
+  (interactive)
+  (progn
+    ( set-vxp1-arm-environment )
+
+    (mg-force-qmake-project
+     (concat ( getenv "QTDIR" )"/bin/qmake")
+     ( getenv "DAFIT" )
+     "zmainarm.pro" )
+    ( message "Makefile set to vxp1 arm" ) )
   )
 
 (defun set-vxp2-arm()
@@ -149,19 +175,7 @@
     )
   )
 
-(defun set-vxp1-debugx86-environment()
-  "Set environment variables so that compilation for x86 and debugging qt is possible"
-  (interactive)
-  (progn
-    ( setenv "QTDIR" "/opt/qt/x86/qt-x11-commercial-3.3.2-debug" )
-    ( setenv "LD_LIBRARY_PATH" "/opt/qt/x86/qt-x11-commercial-3.3.2-debug/lib" )
-    ( setenv "QMAKESPEC" "linux-g++-2.95" )
-    ( setq compile-command "NetMake -k -j11 -s --directory=${DAFIT}" )
-    ( message "Environment set to vxp1 qtdebug x86" )
-    )
-  )
-
-(defun set-debugx86-environment()
+(defun set-vxp1-debugx86()
   "Set environment variables so that compilation for x86 and debugging qt is possible"
   (interactive)
   (progn
@@ -177,19 +191,6 @@
     )
   )
 
-(defun set-vxp1-x86-environment()
-  "Set environment variables so that compilation for x86 is possible"
-  (interactive)
-  (progn
-    ( setenv "QTDIR" "/opt/qt/x86/qt3" )
-    ( setenv "LD_LIBRARY_PATH" "/opt/qt/x86/qt3/lib" )
-    ( setenv "QMAKESPEC" "linux-g++-2.95")
-    ( setenv "QMAKE_TARGET" "x86" )
-    ( setq compile-command "NetMake -k -j11 -s --directory=${DAFIT}" )
-    ( message "Environment set to x86" )
-    )
-  )
-
 (defun set-vxp1-x86()
   "Set environment variables so that compilation for x86 is possible and update Makefile"
   (interactive)
@@ -199,6 +200,23 @@
     (mg-force-qmake-project
      ( concat ( getenv "QTDIR" ) "/bin/qmake" )
      ( getenv "DAFIT" )
+     "zmain.pro"
+     )
+
+    ( message "Makefile set to x86" )
+    )
+  )
+
+(defun set-vxp2-x86()
+  "Set environment variables so that compilation for x86 is possible and update Makefile"
+  (interactive)
+  (progn
+    ( set-vxp1-x86-environment )
+    ( setq compile-command "NetMake -k -j11 -s --directory=${VXP2}" )
+
+    (mg-force-qmake-project
+     ( concat ( getenv "QTDIR" ) "/bin/qmake" )
+     ( getenv "VXP2" )
      "zmain.pro"
      )
 
