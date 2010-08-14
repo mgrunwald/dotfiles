@@ -104,6 +104,7 @@
  '(efs-ftp-program-args (quote ("-i" "-n" "-g" "-v" "-p")))
  '(european-calendar-style t)
  '(ff-ignore-include t)
+ '(file-coding-system-alist (quote (("\\.dz\\'" no-conversion . no-conversion) ("\\.g?z\\(~\\|\\.~[0-9]+~\\)?\\'" no-conversion . no-conversion) ("\\.\\(?:tgz\\|svgz\\|sifz\\)\\(~\\|\\.~[0-9]+~\\)?\\'" no-conversion . no-conversion) ("\\.tbz2?\\'" no-conversion . no-conversion) ("\\.bz2\\(~\\|\\.~[0-9]+~\\)?\\'" no-conversion . no-conversion) ("\\.Z\\(~\\|\\.~[0-9]+~\\)?\\'" no-conversion . no-conversion) ("\\.elc\\'" . utf-8-emacs) ("\\.utf\\(-8\\)?\\'" . utf-8) ("\\.xml\\'" . xml-find-file-coding-system) ("\\(\\`\\|/\\)loaddefs.el\\'" raw-text . raw-text-unix) ("\\.tar\\'" no-conversion . no-conversion) ("\\.po[tx]?\\'\\|\\.po\\." . po-find-file-coding-system) ("\\.\\(tex\\|ltx\\|dtx\\|drv\\)\\'" . latexenc-find-file-coding-system) ("\\.org\\'" . utf-8) ("utf-8" undecided))))
  '(filesets-cache-save-often-flag nil)
  '(filesets-data (quote (("damian" (:files "/home/gru/text/damian-scratch.txt")) ("VXP" (:files "/mnt/net/CM_Entwicklung/xchg/VIBXPERT/changelog.txt" "/10.1.2.34:/tmp/VibXpert.log")))))
  '(find-file-compare-truenames t)
