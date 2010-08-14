@@ -78,6 +78,8 @@ skeletons I use together with XEmacs."
 (require 'ska-global-keys)
 (require 'ska-local-keys)
 
+(load "emacs-rc-cedet.el")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Major Modes
 
@@ -298,6 +300,9 @@ skeletons I use together with XEmacs."
 	 (setq fill-column 74)
 	 (setq comment-start "// " )
 	 (setq comment-end "" )
+     (define-key scilab-mode-map (kbd "M-;") 'isearch-forward)
+     (define-key scilab-mode-map (kbd "M-:") 'isearch-backward)
+
 	 (message "==================== scilab-mode-hook ====================")
 	 )
       )
