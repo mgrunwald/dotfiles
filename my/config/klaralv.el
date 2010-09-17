@@ -28,7 +28,7 @@
 ;; (global-set-key [(shift f5)] 'kdab-insert-forward-decl)
 ;; (setq kdab-qt-documentation "file://usr/local/qt/html/doc/XXX.html")
 ;; (global-set-key [(control f5)] 'kdab-lookup-qt-documentation)
-;; 
+;;
 ;; If you use QTopia, and do not want include files to be prefixed with qpe/,
 ;; as in qpe/qpeapplication, then insert the following code in your setup
 ;; (setq kdab-prefix-qpe nil)
@@ -36,12 +36,12 @@
 ;; ------------------------------ CONFIGURATION ------------------------------
 (defvar kdab-qt-documentation
   "file:/opt/qt/x86/qt3/doc/html/XXX.html"
-  "URL for Qt documentation. XXX must be in the string. 
+  "URL for Qt documentation. XXX must be in the string.
   Example: file:/packages/kde-src/qt-copy/doc/html/XXX.html")
 
 (defvar kdab-qpe-documentation
   "file:/opt/qtopia/doc/XXX.html"
-  "URL for QTopia documentatin. XXX must be in the string. 
+  "URL for QTopia documentatin. XXX must be in the string.
   Example: file:/opt/qtopia/doc/XXX.html")
 
 
@@ -51,15 +51,15 @@
 ;; special case for include files
 ;; Please notify blackie@klaralvdalens-datakonsult.se with any modification to this variable!
 (defvar kdab-special-includes
-  '( 
+  '(
     (qlayout.h QHBoxLayout QVBoxLayout QGridLayout QBoxLayout)
     (qlistview.h QListViewItem QCheckListItem QListViewItemIterator)
     (qiconview.h QIconViewItem QIconDragItem QIconDrag)
     (qdragobject.h QTextDrag QStoredDrag QUriDag QColorDrag QImageDrag QDragManager)
     (qmime.h QMimeSource QMimeSourceFactory QWindowsMime)
     (qptrlist.h QPtrListIterator)
-    (qevent.h QTimerEvent QMouseEvent QWheelEvent QTabletEvent QKeyEvent 
-              QFocusEvent QPaintEvent QMoveEvent QResizeEvent QCloseEvent 
+    (qevent.h QTimerEvent QMouseEvent QWheelEvent QTabletEvent QKeyEvent
+              QFocusEvent QPaintEvent QMoveEvent QResizeEvent QCloseEvent
               QShowEvent QHideEvent QContextMenuEvent QIMEvent QDropEvent
               QDragMoveEvent QDragEnterEvent QDragResponseEvent QDragLeaveEvent
               QChildEvent QCustomEvent)
@@ -77,10 +77,10 @@
                QCanvasPolygon QCanvasEllipse QCanvasText QCanvasLine
                QCanvasChunk QCanvas QCanvasItem QCanvasView QCanvasPixmap)
     (qgl.h QGLFormat QGL QGLContext QGLWidget QGLColormap)
-    (qtable.h QTableSelection QTableItem QComboTableItem QCheckTableItem) 
+    (qtable.h QTableSelection QTableItem QComboTableItem QCheckTableItem)
     (qmutex.h QMutexLocker)
 
-    
+
     ; Qt/Embedded
     (qcopchannel_qws.h QCopChannel)
     (qdirectpainter_qws.h QDirectPainter)
@@ -91,13 +91,13 @@
     (qgfxlinuxfb_qws.h QLinuxFbScreen)
     (qgfxmatroxdefs_qws.h QQnxFbGfx QQnxScreen)
     (qgfxraster_qws.h QGfxRasterBase QGfxRaster)
-    (qgfxvnc_qws.h QRfbRect QRfbPixelFormat QRfbServerInit QRfbSetEncodings 
+    (qgfxvnc_qws.h QRfbRect QRfbPixelFormat QRfbServerInit QRfbSetEncodings
                    QRfbFrameBufferUpdateRequest QRfbKeyEvent QRfbPointerEvent QRfbClientCutText QVNCServer)
     (qkeyboard_qws.h QWSKeyboardHandler)
     (qlock_qws.h QLock QLockHolder)
     (qmemorymanager_qws.h QMemoryManagerPixmap QMemoryManager)
     (qsoundqss_qws.h QWSSoundServer QWSSoundClient QWSSoundServerClient QWSSoundServerSocket)
-    (qwindowsystem_qws.h QWSInternalWindowInfo QWSScreenSaver QWSWindow QWSSoundServer 
+    (qwindowsystem_qws.h QWSInternalWindowInfo QWSScreenSaver QWSWindow QWSSoundServer
                          QWSServer QWSServer KeyboardFilter QWSClient)
     (qwsbeosdecoration_qws.h QWSBeOSDecoration)
     (qwscursor_qws.h QWSCursor)
@@ -108,9 +108,9 @@
     (qwskde2decoration_qws.h QWSKDE2Decoration)
     (qwskdedecoration_qws.h QWSKDEDecoration)
     (qwsmanager_qws.h QWSManager QWSButton)
-    (qwsmouse_qws.h QWSPointerCalibrationData QWSMouseHandler QCalibratedMouseHandler 
-                    QAutoMouseHandlerPrivate QWSMouseHandlerPrivate QVrTPanelHandlerPrivate 
-                    QTPanelHandlerPrivate QYopyTPanelHandlerPrivate QCustomTPanelHandlerPrivate 
+    (qwsmouse_qws.h QWSPointerCalibrationData QWSMouseHandler QCalibratedMouseHandler
+                    QAutoMouseHandlerPrivate QWSMouseHandlerPrivate QVrTPanelHandlerPrivate
+                    QTPanelHandlerPrivate QYopyTPanelHandlerPrivate QCustomTPanelHandlerPrivate
                     QVFbMouseHandlerPrivate)
     (qwsproperty_qws.h QWSPropertyManager)
     (qwsregionmanager_qws.h QWSRegionManager)
@@ -154,7 +154,7 @@
     )
     "List of special include files which do not follow the normal scheme")
 
-(defvar kdab-qpe-includes 
+(defvar kdab-qpe-includes
   '(
     (alarmserver.h AlarmServer)
     (applnk.h AppLnk DocLnk AppLnkSet DocLnkSet)
@@ -237,7 +237,7 @@
         (symbol-name found)
       nil)  ; return value
     ))
-        
+
 
 
 ;--------------------------------------------------------------------------------
@@ -271,7 +271,7 @@
                     (t (concat word ".h"))))
            header is-local)
 
-      
+
       ;; decide on the header file.
       ( if (string-match ".*CPT.*" word-with-case)
           (progn
@@ -293,7 +293,7 @@
       (kdab-insert-include-file header is-local t))))
 
 ;--------------------------------------------------------------------------------
-; Insert header file for header. If is-local insert it with "" 
+; Insert header file for header. If is-local insert it with ""
 ; otherwise insert it with <>
 ;--------------------------------------------------------------------------------
 (defun kdab-insert-include-file (header is-local show-message)
@@ -307,7 +307,7 @@
           (replace-match "\\1")
           (when show-message
             (message (concat "commented in #include for " header))))
-      
+
       (if (not (re-search-forward (concat "# *include *[\"<][ \t]*" header "[ \t]*[\">]") nil t))
           (progn
                                         ; No include existed
@@ -315,13 +315,13 @@
             (if (not (re-search-backward "^# *include *[\"<][^\">]+\.h *[\">]" nil t))
                 (beginning-of-buffer)
                 (progn (end-of-line) (forward-char 1)))
-                
+
             ;; Now insert the header
             (beginning-of-buffer)
             ( if (re-search-forward "// --- includes --- *" nil t)
                 ( progn (end-of-line)
-                         (forward-char 1) ) ) 
-                
+                         (forward-char 1) ) )
+
             ( let ((start (point)))
               (progn
                 (insert (concat include-file "\n"))
@@ -329,7 +329,7 @@
                 (sort-lines nil start (point) )
                 )
               )
-            
+
             (when show-message
               (message (concat "inserted " include-file))))
         (when show-message
@@ -364,7 +364,7 @@
                 (if (re-search-backward "#include" nil t)
                     (progn (end-of-line) (forward-char 1))
                   (beginning-of-buffer)))
-              
+
               (beginning-of-buffer)
               ( if (re-search-forward "// --- forward declarations --- *" nil t)
                   ( progn (end-of-line) (forward-char 1) ) )
@@ -377,9 +377,9 @@
                   (message (concat "inserted class " word ";"))
                   )
                 ))
-          
+
           (message (concat "forward decl for \"" word "\" already exists")))))))
-  
+
 
 (defun is-qpe-class (class)
   (let ((list kdab-qpe-includes) classes (found nil))
@@ -391,7 +391,7 @@
         (setq classes (cdr classes)))
       (setq list (cdr list)))
     found))
-        
+
 ;--------------------------------------------------------------------------------
 ; Start konqueror with documentation for the class under point.
 ; set `kdab-qt-documentation' and `kdab-qpe-documentation'
@@ -407,9 +407,9 @@
            (url (if (not (string-match "XXX" doc))
                    (error "didn't find three X's in kdab-qt-documentation or kdab-qpe-documentation")
                  (replace-match word t t doc))))
-      (start-process "qt documentation" nil "opera" "-remote" "openURL" url)
-;      (split-window-vertically)
-;      (w3-fetch url)
+;      (start-process "qt documentation" nil "opera" "-remote" "openURL" url)
+      (split-window-vertically)
+      (w3m-browse-url url t )
       (message (concat "Loading " url)))))
 
 (provide 'klaralv)
