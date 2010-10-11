@@ -104,6 +104,7 @@
  '(efs-ftp-program-args (quote ("-i" "-n" "-g" "-v" "-p")))
  '(european-calendar-style t)
  '(ff-ignore-include t)
+ '(file-coding-system-alist (quote (("\\.dz\\'" no-conversion . no-conversion) ("\\.g?z\\(~\\|\\.~[0-9]+~\\)?\\'" no-conversion . no-conversion) ("\\.\\(?:tgz\\|svgz\\|sifz\\)\\(~\\|\\.~[0-9]+~\\)?\\'" no-conversion . no-conversion) ("\\.tbz2?\\'" no-conversion . no-conversion) ("\\.bz2\\(~\\|\\.~[0-9]+~\\)?\\'" no-conversion . no-conversion) ("\\.Z\\(~\\|\\.~[0-9]+~\\)?\\'" no-conversion . no-conversion) ("\\.elc\\'" . utf-8-emacs) ("\\.utf\\(-8\\)?\\'" . utf-8) ("\\.xml\\'" . xml-find-file-coding-system) ("\\(\\`\\|/\\)loaddefs.el\\'" raw-text . raw-text-unix) ("\\.tar\\'" no-conversion . no-conversion) ("\\.po[tx]?\\'\\|\\.po\\." . po-find-file-coding-system) ("\\.\\(tex\\|ltx\\|dtx\\|drv\\)\\'" . latexenc-find-file-coding-system) ("\\.org\\'" . utf-8) ("" undecided))))
  '(filesets-cache-save-often-flag nil)
  '(filesets-data (quote (("damian" (:files "/home/gru/text/damian-scratch.txt")) ("VXP" (:files "/mnt/net/CM_Entwicklung/xchg/VIBXPERT/changelog.txt" "/10.1.2.34:/tmp/VibXpert.log")))))
  '(find-file-compare-truenames t)
@@ -113,7 +114,7 @@
  '(global-semantic-tag-folding-mode t nil (semantic-util-modes))
  '(gnus-select-method (quote (nntp "news.arcor.de")))
  '(gnuserv-program (concat exec-directory "/gnuserv"))
- '(gud-gdb-command-name "gdb --annotate=3 -x ~/dbg-dafit.gdb ")
+ '(gud-gdb-command-name "gdb --annotate=3 ")
  '(gutter-buffers-tab-visible-p nil)
  '(home-end-enable nil)
  '(imenu-sort-function (quote imenu--sort-by-name))
@@ -255,7 +256,7 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(default ((default nil) (nil nil)))
+ '(default ((t (:stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "unknown" :family "ProFont"))))
  '(buffer-menu-buffer ((t (:foreground "blue"))))
  '(cursor ((t (:background "blue"))))
  '(highlight ((((class color) (background light)) (:background "gray80"))))

@@ -55,8 +55,8 @@
 (add-hook 'erlang-mode-hook 'mg/cedet-hook)
 
 (defun mg/c-mode-cedet-hook ()
-  (local-set-key "." 'semantic-complete-self-insert)
-  (local-set-key ">" 'semantic-complete-self-insert)
+  ;; (local-set-key "." 'semantic-complete-self-insert)
+  ;; (local-set-key ">" 'semantic-complete-self-insert)
   (local-set-key "\C-ct" 'eassist-switch-h-cpp)
   (local-set-key "\C-xt" 'eassist-switch-h-cpp)
   (local-set-key "\C-ce" 'eassist-list-methods)
@@ -91,6 +91,9 @@
 (semantic-add-system-include "/opt/qt/x86/qt3/include" 'c++-mode)
 (semantic-add-system-include "/usr/local/include/pt" 'c++-mode)
 
+
+(add-to-list 'auto-mode-alist '("/opt/qt/x86/qt3/include" . c++-mode))
+(add-to-list 'semantic-lex-c-preprocessor-symbol-file "/opt/qt/x86/qt3/include/qconfig.h")
 
 ;;(semantic-add-system-include "/exp/include" 'c-mode)
 

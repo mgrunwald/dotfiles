@@ -482,6 +482,11 @@
   (define-key awk-mode-map (kbd "M-e") 'backward-kill-word) ; was c-end-of-statement
  ))
 
+(add-hook 'buffer-menu-mode-hook
+ (lambda ()
+   (define-key Buffer-menu-mode-map (kbd "M-s") 'other-window) ; was prefix-command
+))
+
 ;; nothing to fix: c-mode, c++-mode, java, sh, js, perl, php, python
 
 ;;; --------------------------------------------------
