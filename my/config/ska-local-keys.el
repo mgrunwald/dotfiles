@@ -2,7 +2,7 @@
 ;; Copyright (C) 2000-2001 Stefan Kamphausen
 
 ;; Author: Stefan Kamphausen <mail@skamphausen.de>
-;; Time-stamp: <09-Jul-2010 14:53:00 gru>
+;; Time-stamp: <23-Nov-2010 11:02:17 gru>
 
 ;; Keywords:
 ;; This file is not part of XEmacs.
@@ -98,7 +98,7 @@ languages. Argument MAP is the local keymap (e.g. cperl-mode-map)."
   "Set my personal keys for C and C++.
 Argument MAP is c-mode-map or c++-mode-map."
   (define-key map '[(control b) (control b)]  'compile)
-  (define-key map '[(f9)]                     'compile)
+  (define-key map '[(f9)]                     'mg/compile)
   (define-key map '[(control f9)]             'kill-compilation)
   (define-key map '[(control b) (control c)]  'mg-copy-method)
   (define-key map '[(control b) (control l)]  'add-change-log-entry)
@@ -114,7 +114,7 @@ Argument MAP is c-mode-map or c++-mode-map."
 ;; Semantic & co
   (define-key map  [S-iso-lefttab]            'eassist-switch-h-cpp)
   (define-key map  [S-tab]                    'eassist-switch-h-cpp)
-  (define-key map  [(meta .)]                 'semantic-ia-fast-jump)
+  ;; (define-key map  [(meta .)]                 'semantic-ia-fast-jump)
 
 
 ;  ;; XRef
