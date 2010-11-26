@@ -252,7 +252,7 @@
   (save-excursion
     (let* ((word-at-point (if prefix
                               (read-from-minibuffer "Class: ")
-                            (if (string-match "^CPT" (concat (current-word) ".h" ) )
+                            (if (string-match "^[CE]PT" (concat (current-word) ".h" ) )
                                 (read-from-minibuffer "Header: " (concat (current-word) ".h" ) )
                               (current-word)))))
       (kdab-insert-header-non-interactive word-at-point))))
@@ -273,7 +273,7 @@
 
 
       ;; decide on the header file.
-      ( if (string-match ".*CPT.*" word-with-case)
+      ( if (string-match ".*[CE]PT.*" word-with-case)
           (progn
             (setq header word-with-case)
             (setq is-local t )
