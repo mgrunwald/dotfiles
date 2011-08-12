@@ -487,6 +487,12 @@
    (define-key Buffer-menu-mode-map (kbd "M-s") 'other-window) ; was prefix-command
 ))
 
+(add-hook 'svn-status-mode-hook
+ (lambda()
+   (define-key svn-status-mode-map (kbd "M-s") 'other-window) ; was svn-status-update
+))
+
+
 ;; nothing to fix: c-mode, c++-mode, java, sh, js, perl, php, python
 
 ;;; --------------------------------------------------
