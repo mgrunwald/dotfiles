@@ -2,7 +2,7 @@
 ;; Copyright (C) 2000-2001 Stefan Kamphausen
 
 ;; Author: Stefan Kamphausen <mail@skamphausen.de>
-;; Time-stamp: <23-Nov-2010 11:02:17 gru>
+;; Time-stamp: <04-Jul-2011 11:47:54 gru>
 
 ;; Keywords:
 ;; This file is not part of XEmacs.
@@ -140,6 +140,7 @@ Argument MAP is c-mode-map or c++-mode-map."
 ;;   (define-key map '[(control i) (d)]  'pt-skel-c-double)
    (define-key map '[(control n) (s)]  'pt-skel-c-qstring)
    (define-key map '[(control n) (m)]  'pt-skel-c-method)
+   (define-key map '[(control n) (f)]  'pt-skel-c-function)
    (define-key map '[(control n) (o)]  'mg-skel-c-loud-comment)
    (define-key map '[(control n) (e)]  'mg-skel-c-middle-comment)
    (define-key map '[(control n) (q) (c)]  'mg-skel-c-qt-connect)
