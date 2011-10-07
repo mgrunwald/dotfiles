@@ -2,7 +2,7 @@
 ;; Copyright (C) 2000-2001 Stefan Kamphausen
 
 ;; Author: Markus Grunwald <markus.grunwald@gmx.de>
-;; Time-stamp: <22-Jul-2010 14:58:27 gru>
+;; Time-stamp: <07-Oct-2011 15:27:10 gru>
 
 ;; Keywords:
 ;; This file is not part of XEmacs.
@@ -460,6 +460,15 @@
 		      (list "File" "dvips %d -o %f " 'TeX-run-command t nil))))
   ;; now show a new menu
   (redefine-TeX-mode-menu))
+
+
+(defun python-send-buffer-with-my-args (args)
+  (interactive "sPython arguments: ")
+  (let ((source-buffer (current-buffer)))
+    (with-temp-buffer
+      (insert "import sys; sys.argv = '''" args "'''.split()\n")
+      (insert-buffer-substring source-buffer)
+      (python-send-buffer))))
 
 
 (message "mg-utils OK")
