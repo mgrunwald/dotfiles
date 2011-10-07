@@ -21,7 +21,7 @@
 
 
 ;;; Commentary:
-;; 
+;;
 
 ;;; Code:
 (require 'skeleton)
@@ -145,12 +145,12 @@
   ( interactive "*" )
   ( let ( ( vartype (mg-skel-pt-vartype) )
           ( case-fold-search nil ) )
-    ( cond 
+    ( cond
            (
             (string-match "osz" vartype )
             ( mg-skel-dbg-qstr (current-word) )
             )
-           
+
            (
             (string-match "sz" vartype )
             ( mg-skel-dbg-str (current-word) )
@@ -160,7 +160,7 @@
             (string-match "x?u?[nsc]\\|by" vartype )
             ( mg-skel-dbg-int (current-word) )
             )
-           
+
            (
             (string-match "x?u?l" vartype )
             ( mg-skel-dbg-long (current-word) )
@@ -170,17 +170,17 @@
             (string-match "u?l?[fd]" vartype )
             ( mg-skel-dbg-float (current-word) )
             )
-           
+
            (
             (string-match "p.*" vartype )
             ( mg-skel-dbg-ptr (current-word) )
             )
-           
+
            (
             (string-match "^b$" vartype )
             ( mg-skel-dbg-bool (current-word) )
             )
-           
+
            ( t (mg-skel-dbg-free) )
            )
     )
@@ -206,7 +206,7 @@
      '(  nil
          "if(" _ "  )"  '(progn (indent-according-to-mode) nil)
          \n "{"  '(progn (indent-according-to-mode) nil)
-         \n 
+         \n
          \n "}" '(progn (indent-according-to-mode) nil)
          )
      )
@@ -236,13 +236,13 @@
      '(  nil
          "for(" _ "  )"  '(progn (indent-according-to-mode) nil)
          \n "{"  '(progn (indent-according-to-mode) nil)
-         \n 
+         \n
          \n "}" '(progn (indent-according-to-mode) nil)
          )
      )
     )
   )
- 
+
 (defun mg-skel-c-while ()
   "Inserts a while statement (outside of a comment).\nThis should be called from an abbrev."
   (if (point-in-comment-or-string)
@@ -251,7 +251,7 @@
      '(  nil
          "while("_"  )  "  '(progn (indent-according-to-mode) nil)
          \n "{"  '(progn (indent-according-to-mode) nil)
-         \n 
+         \n
          \n "}" '(progn (indent-according-to-mode) nil)
          )
      )
@@ -266,7 +266,7 @@
      '(  nil
          "do "  '(progn (indent-according-to-mode) nil)
          \n "{"  '(progn (indent-according-to-mode) nil)
-         \n 
+         \n
          \n "} whi" _ "le (  );" '(progn (indent-according-to-mode)
                                          nil)           )
      )
@@ -301,7 +301,7 @@
      )
     )
   )
-  
+
 (defun mg-skel-c-switch ()
   "Inserts a switch statement"
   ( if (point-in-comment-or-string)
@@ -329,7 +329,7 @@
      )
    )
   )
-  
+
 (defun mg-skel-c-qt-tr ( STRING COMMENT )
   "Inserts a Qt \"tr\" string"
   (interactive "sString: \nsComment: ")
@@ -381,7 +381,7 @@
     ( insert "RUNTIME" )
     ( next-line 2)
     ( insert ( concat member " = " parameter ";" ) )
-    ( indent-according-to-mode) 
+    ( indent-according-to-mode)
     ( insert "\n" )
     ( next-line 1)
     ( end-of-line )
@@ -414,8 +414,23 @@
     ( end-of-line )
     )
   )
-   
-  
+
+(defun pt-insert-line ()
+  ( case mg-auto-insert-style
+    ( dafit
+      (insert "<!-------------------------------------------------------------------------->"
+              )
+      )
+    ( damian
+      (insert "<!-------------------------------------------------------------------------------------------->"
+              )
+      )
+    (otherwise
+     (insert "<!-------------------------------------------------------------------------------------------->"
+              )
+     )
+    )
+  )
 
 (defun pt-skel-c-method (NAME PARAMETERS RETURNS )
   "Inserts a method implementation according to pt styleguide."
@@ -427,10 +442,10 @@
                              buffer-file-name))) ) ; in .cpp file
            (skeleton-insert
             '(nil                                 ; Don't prompt
-              > "/** <!-------------------------------------------------------------------------->" \n
+              > "/** " (pt-insert-line) \n
               > "* " (progn (indent-according-to-mode) nil) _  \n
               > "*" \n
-              '( if plain-params
+              '( if (> (length PARAMETERS) 0 )
                    ( progn
                      (mapcar (lambda (param)
                                ( progn ( insert "* @param   " param " \n" )
@@ -440,7 +455,7 @@
                      ( mg-kill-entire-line )
                      nil ) )
               > '( if ( not ( string-match RETURNS "" ) ) ( insert "* @return \n") )
-              > "<!---------------------------------------------------------------------------> */"\n
+              > (pt-insert-line) " */"\n
               > "" '( cond ( ( and (string= RETURNS "" ) (not(string= classname NAME)) ) ( insert "void " ) )
                            ( t ( insert RETURNS " ") ) )
               classname"::"NAME"( "PARAMETERS" )" '(progn (indent-according-to-mode) nil)\n
@@ -453,18 +468,18 @@
                           )
                  ( insert "\nDBG_RETURN( LOG_ );" )
                  )
-              '(progn (indent-according-to-mode) nil) \n              
-              "} // END " NAME 
+              '(progn (indent-according-to-mode) nil) \n
+              "} // END " NAME
               '(progn (indent-according-to-mode) nil) \n
               '(progn (indent-according-to-mode) nil) \n
               ) ) )
      ( let ( ( plain-params ( mg-filter-variables PARAMETERS ) ) )  ; in .h file
        (skeleton-insert
         '(nil                                  ; Don't prompt
-              > "/** <!---------------------------------------------------------------------->"\n
+              > "/** " (pt-insert-line) \n
               > "* " _ \n
               > "*" \n
-              '( if plain-params
+              '( if (> (length PARAMETERS) 0 )
                    ( progn
                      (mapcar (lambda (param)
                                ( progn ( insert "* @param   " param " \n" )
@@ -474,12 +489,44 @@
                      ( mg-kill-entire-line )
                      nil ) )
               > '( if ( not ( string-match RETURNS "" ) ) ( insert "* @return \n") )
-              > "<!-----------------------------------------------------------------------> */"\n
+              > (pt-insert-line) "*/"\n
                   > "" '( cond ( ( string-match RETURNS "" ) ( insert "void" ) )
                                ( t ( insert RETURNS ) ) )
                   " " NAME"( "PARAMETERS" );" '(progn
                   (indent-according-to-mode) ) \n ))
        )))
+
+(defun pt-skel-c-function (NAME PARAMETERS RETURNS )
+  "Inserts a function implementation according to pt styleguide."
+   (interactive "sFunction name: \nsParameter list: \nsReturns: ")
+   (if (not (vectorp (c-at-toplevel-p)))
+       ( let ( ( plain-params ( mg-filter-variables PARAMETERS ) ) ) ; in .c file
+           (skeleton-insert
+            '(nil                                 ; Don't prompt
+              > "/** " (pt-insert-line) \n
+              > "* " (progn (indent-according-to-mode) nil) _  \n
+              > "*" \n
+              '( if  (> (length PARAMETERS) 0 )
+                   ( progn
+                     (mapcar (lambda (param)
+                               ( progn ( insert "* @param   " param " \n" )
+                                       (indent-according-to-mode )
+                                       nil )
+                               ) plain-params )
+                     ( mg-kill-entire-line )
+                     nil ) )
+              > '( if ( not ( string-match RETURNS "" ) ) ( insert "* @return \n") )
+              > (pt-insert-line) " */"\n
+              > "" '( cond ( (string= RETURNS "" ) ( insert "void " ) )
+                             ( t ( insert RETURNS " ") ) )
+              NAME"( "PARAMETERS" )" '(progn (indent-according-to-mode) nil)\n
+              >"{" '(progn (indent-according-to-mode) nil)\n
+              '(progn (indent-according-to-mode) nil) \n
+              "} // END " NAME
+              '(progn (indent-according-to-mode) nil) \n
+              '(progn (indent-according-to-mode) nil) \n
+              ) ) )
+     ( (message "Won't work in header file!" ) )))
 
 (define-skeleton mg-skel-c-loud-comment
   "Inserts a loud comment"
@@ -501,65 +548,65 @@
   "Inserts a short according to pt styleguide."
    (interactive "sShort name: \n")
    (skeleton-insert '(nil                                  ; Don't prompt
-      > (progn (if (vectorp (c-at-toplevel-p)) (insert "//\n"))) 
+      > (progn (if (vectorp (c-at-toplevel-p)) (insert "//\n")))
       > "short " (progn (if (vectorp (c-at-toplevel-p)) (insert "m_"))) "s" NAME ";" _ \n
-      )))    
+      )))
 
 (defun pt-skel-c-integer ( NAME )
   "Inserts an int according to pt styleguide."
    (interactive "sInteger name: \n")
    (skeleton-insert '(nil                                  ; Don't prompt
-      > (progn (if (vectorp (c-at-toplevel-p)) (insert "//\n"))) 
+      > (progn (if (vectorp (c-at-toplevel-p)) (insert "//\n")))
       > "int " (progn (if (vectorp (c-at-toplevel-p)) (insert "m_"))) "n" NAME ";" _ \n
-      )))    
+      )))
 
 (defun pt-skel-c-long ( NAME )
   "Inserts a long int according to pt styleguide."
    (interactive "sLonginteger name: \n")
    (skeleton-insert '(nil                                  ; Don't prompt
-      > (progn (if (vectorp (c-at-toplevel-p)) (insert "//\n"))) 
+      > (progn (if (vectorp (c-at-toplevel-p)) (insert "//\n")))
       > "long " (progn (if (vectorp (c-at-toplevel-p)) (insert "m_"))) "l" NAME ";" _ \n
-      )))    
+      )))
 
 (defun pt-skel-c-bool ( NAME )
   "Inserts a bool according to pt styleguide."
    (interactive "sBool name: \n")
    (skeleton-insert '(nil                                  ; Don't prompt
-      > (progn (if (vectorp (c-at-toplevel-p)) (insert "//\n"))) 
+      > (progn (if (vectorp (c-at-toplevel-p)) (insert "//\n")))
       > "bool " (progn (if (vectorp (c-at-toplevel-p)) (insert "m_"))) "b" NAME ";" _ \n
-      )))    
+      )))
 
 (defun pt-skel-c-char ( NAME )
   "Inserts a character according to pt styleguide."
    (interactive "sCharacter name: \n")
    (skeleton-insert '(nil                                  ; Don't prompt
-      > (progn (if (vectorp (c-at-toplevel-p)) (insert "//\n"))) 
+      > (progn (if (vectorp (c-at-toplevel-p)) (insert "//\n")))
       > "char " (progn (if (vectorp (c-at-toplevel-p)) (insert "m_"))) "c" NAME ";" _ \n
-      )))    
+      )))
 
 (defun pt-skel-c-float ( NAME )
   "Inserts a float according to pt styleguide."
    (interactive "sFloat name: \n")
    (skeleton-insert '(nil                                  ; Don't prompt
-      > (progn (if (vectorp (c-at-toplevel-p)) (insert "//\n"))) 
+      > (progn (if (vectorp (c-at-toplevel-p)) (insert "//\n")))
       > "float " (progn (if (vectorp (c-at-toplevel-p)) (insert "m_"))) "f" NAME ";" _ \n
-      )))    
+      )))
 
 (defun pt-skel-c-double ( NAME )
   "Inserts a double according to pt styleguide."
    (interactive "sDouble name: \n")
    (skeleton-insert '(nil                                  ; Don't prompt
-      > (progn (if (vectorp (c-at-toplevel-p)) (insert "//\n"))) 
+      > (progn (if (vectorp (c-at-toplevel-p)) (insert "//\n")))
       > "double " (progn (if (vectorp (c-at-toplevel-p)) (insert "m_"))) "d" NAME ";" _ \n
-      )))    
+      )))
 
 (defun pt-skel-c-qstring ( NAME )
   "Inserts a QString according to pt styleguide."
    (interactive "sString name: \n")
    (skeleton-insert '(nil                                  ; Don't prompt
-      > (progn (if (vectorp (c-at-toplevel-p)) (insert "//\n"))) 
+      > (progn (if (vectorp (c-at-toplevel-p)) (insert "//\n")))
       > "QString " (progn (if (vectorp (c-at-toplevel-p)) (insert "m_"))) "osz" NAME ";" _ \n
-      )))    
+      )))
 
 
 (provide 'mg-skel-c)
