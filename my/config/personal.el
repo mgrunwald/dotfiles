@@ -165,6 +165,9 @@ skeletons I use together with XEmacs."
 	     (message "==================== sql-mode-hook ====================")
 	     ))
 
+(autoload 'gtags-mode "gtags" "" t)
+
+
 (add-hook 'c-mode-common-hook
 	  '(lambda ()
 ;emacs22             (require 'ctypes)
@@ -181,16 +184,19 @@ skeletons I use together with XEmacs."
 	     ( load-library "vc" )
 	     (setq tag-table-alist '( ("Dafit_Software/" . "/home/gru/projects/Dafit_Software/") ))
 	     (which-function-mode)
+         (gtags-mode)
 	     (message "==================== c-mode-common-hook ====================")
 	     ))
 
 (add-hook 'c-mode-hook
 	  '(lambda ()
 	     ;; my keybindings
+         (define-key c-mode-map '[(control n) (m)]  'pt-skel-c-function)
 	     (ska-coding-keys c-mode-map)
 	     (ska-c-common-mode-keys c-mode-map)
 	     (setq grep-find-command '"find . \\( -name \\*.c -o -name \\*.h \\) -print0 | xargs -0 -e grep -n " )
-         (c-subword-mode t)
+         (subword-mode t)
+         (define-key c-mode-map '[(control n) (m)]  'pt-skel-c-function)
 	     (message "==================== c-mode-hook ====================")
 	     ))
 
@@ -226,9 +232,15 @@ skeletons I use together with XEmacs."
 	     (font-lock-add-keywords 'c++-mode
 				     '(("\\<Q[A-Z][A-Za-z]*" . 'qt-keywords-face)))
 	     ;; emacs23 (modify-syntax-entry ?_ "w" ) ; _ is part of a word
-         (c-subword-mode t)
+         (subword-mode t)
 	     (message "==================== c++-mode-hook ====================")
 	     ) )
+
+(add-hook 'lua-mode-hook
+	  '(lambda ()
+	     (message "==================== lua-mode-hook ====================")
+	     ))
+
 
 ;;--------------------------------------------------------------------
 ;; Lines enabling gnuplot-mode
@@ -320,7 +332,7 @@ skeletons I use together with XEmacs."
 
 
 ;;
-(load "wide-edit.el")
+;; (load "wide-edit.el") doesn't work anymore :(
 ;;(wide-edit-insinuate-grep 't)
 
 ;; qmake project file mode
@@ -344,6 +356,13 @@ skeletons I use together with XEmacs."
 	    (shrink-window (- (window-height) 20 ) )
 	    )
 	  )
+
+(add-hook 'w3m-mode-hook
+          (lambda()
+            (vvb-mode nil )
+            )
+          )
+
 
 ;; ;; Prevent flyspell from finding mistakes in the code.
 ;; ;; From Jim Meyering.
@@ -386,6 +405,12 @@ skeletons I use together with XEmacs."
 ;; this just shows the syntax
 (load "pt-auto-insert" nil nil nil)
 
+
+(require 'cmake-mode)
+(setq auto-mode-alist
+      (append '(("CMakeLists\\.txt\\'" . cmake-mode)
+                ("\\.cmake\\'" . cmake-mode))
+              auto-mode-alist))
 
 ;; Customisations for german calendar:
 
@@ -541,3 +566,18 @@ skeletons I use together with XEmacs."
 ;; something always turns this off again :(
 ;;
 ( global-hl-line-mode 1 )
+
+;; -- auto complete
+(require 'auto-complete)
+(add-to-list 'ac-dictionary-directories "/usr/share/auto-complete/dict/")
+(require 'auto-complete-config)
+(ac-config-default)
+
+;;
+;; full-ack: http://nschum.de/src/emacs/full-ack/
+;;
+(add-to-list 'load-path "/path/to/full-ack")
+(autoload 'ack-same "full-ack" nil t)
+(autoload 'ack "full-ack" nil t)
+(autoload 'ack-find-same-file "full-ack" nil t)
+(autoload 'ack-find-file "full-ack" nil t)
