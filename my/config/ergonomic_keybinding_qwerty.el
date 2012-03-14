@@ -278,7 +278,7 @@
 (setq mac-pass-command-to-system nil) ; so that Cmd+H won't activate Hide Current App and Cmd+Shift+q won't logout user.
 
 (global-set-key (kbd "C-n") 'new-empty-buffer) ; Open New File
-(global-set-key (kbd "C-o") 'find-file) ; Open
+(global-set-key (kbd "C-o") 'find-file-at-point) ; Open
 (global-set-key (kbd "C-w") 'close-current-buffer) ; Close
 (global-set-key (kbd "C-s") 'save-buffer) ; Save
 (global-set-key (kbd "C-S-n") 'write-file) ; Save As.

@@ -6,3 +6,4 @@ Emacs.default.attributeFont: -nil-profont-medium-r-normal--11-*-*-*-c-*-iso8859-
 Emacs*menubar*font: -nil-profont-medium-r-normal--11-*-*-*-c-*-iso8859-1
 Emacs.toolBar: off
 
+bmkp-last-as-first-bookmark-file "/home/gru/.emacs.bmk"

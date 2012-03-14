@@ -432,6 +432,35 @@
     )
   )
 
+(defun pt-insert-log-block ( RETURNS )
+    ( case mg-auto-insert-style
+      ( dafit
+        (progn
+          (let ( (start (point)) )
+
+            ( insert "DBG_START_QOBJ( LOG_ );\n" )
+            (if (string= RETURNS "ErrorCode")
+                ( progn (insert "DEFINE_NSUCCESS;\n\n")
+                        (insert "DONE:\n")
+                        (insert "DBG_RETURN( LOG_ ) nSuccess;")
+                        )
+              ( insert "\nDBG_RETURN( LOG_ );" )
+              )
+            (indent-region start (point))
+            )
+          )
+        )
+        ( damian
+          (insert ""
+                  )
+          )
+        (otherwise
+         (insert ""
+                 )
+         )
+        )
+  )
+
 (defun pt-skel-c-method (NAME PARAMETERS RETURNS )
   "Inserts a method implementation according to pt styleguide."
    (interactive "sMethod name: \nsParameter list: \nsReturns: ")
@@ -460,14 +489,7 @@
                            ( t ( insert RETURNS " ") ) )
               classname"::"NAME"( "PARAMETERS" )" '(progn (indent-according-to-mode) nil)\n
               >"{" '(progn (indent-according-to-mode) nil)\n
-              >"DBG_START_QOBJ( LOG_ );" '(progn (indent-according-to-mode) nil)\n
-              '(if (string= RETURNS "ErrorCode")
-                   ( progn (insert "DEFINE_NSUCCESS;\n\n")
-                           (insert "DONE:\n")
-                           (insert "DBG_RETURN( LOG_ ) nSuccess;")
-                          )
-                 ( insert "\nDBG_RETURN( LOG_ );" )
-                 )
+              > (pt-insert-log-block RETURNS )
               '(progn (indent-according-to-mode) nil) \n
               "} // END " NAME
               '(progn (indent-according-to-mode) nil) \n

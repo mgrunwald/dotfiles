@@ -69,6 +69,7 @@
  '(ange-ftp-try-passive-mode t)
  '(auto-hscroll-mode t)
  '(bar-cursor (quote (quote other)))
+ '(bmkp-last-as-first-bookmark-file "/home/gru/.emacs.bmk")
  '(buffers-menu-max-size nil)
  '(c-basic-offset 4)
  '(c-default-style (quote ((java-mode . "java") (other . "gnu"))))
@@ -264,12 +265,13 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(default ((t (:stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "unknown" :family "ProFont"))))
+ '(default ((t (:stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 80 :width normal :foundry "unknown" :family "ProFont"))))
  '(buffer-menu-buffer ((t (:foreground "blue"))))
  '(cursor ((t (:background "blue"))))
  '(highlight ((((class color) (background light)) (:background "gray80"))))
  '(mode-line ((((type x w32 mac) (class color)) (:background "grey75" :foreground "black" :box (:line-width -1 :style released-button)))))
  '(org-hide ((((background light)) (:foreground "gray90"))))
+ '(show-paren-match ((((class color) (background light)) (:inverse-video t))))
  '(w3m-form ((((class color) (background light)) (:foreground "red" :underline t)))))
 
 ;;============================================================================                                                                                           ;;{{{ Desktop for saving whole sessions

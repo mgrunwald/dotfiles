@@ -30,12 +30,13 @@ skeletons I use together with XEmacs."
 (setq load-path
       (append
        (list
-	my-config-dir
-	my-templates-dir
-	my-lisp-dir
-	;;(concat my-lisp-dir "psgml-1.2.2")
-	(concat my-lisp-dir "tools")
-	)
+        my-config-dir
+        my-templates-dir
+        my-lisp-dir
+        ;;(concat my-lisp-dir "psgml-1.2.2")
+        (concat my-lisp-dir "tools")
+        (concat my-lisp-dir "bookmark+")
+        )
        load-path
        )
       )
@@ -525,8 +526,10 @@ skeletons I use together with XEmacs."
 ;; Start emacs server so you can use emacsclient
 (server-start)
 
-;; menu bar takes only place
+;; menu bar takes only place. So does the scrollbar.
 (menu-bar-mode 0)
+(scroll-bar-mode 0)
+
 
 ;; w3m browser
 (setq browse-url-browser-function 'w3m-browse-url)
@@ -581,3 +584,10 @@ skeletons I use together with XEmacs."
 (autoload 'ack "full-ack" nil t)
 (autoload 'ack-find-same-file "full-ack" nil t)
 (autoload 'ack-find-file "full-ack" nil t)
+
+;;
+;; Bookmark+
+;;
+(require 'bookmark+)
+(edit-bookmarks)
+(switch-to-buffer "*Bookmark List*")

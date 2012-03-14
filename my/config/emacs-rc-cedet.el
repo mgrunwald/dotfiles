@@ -35,7 +35,7 @@
 ;; (setq-mode-local erlang-mode semanticdb-find-default-throttle
 ;;                  '(project unloaded system recursive))
 
-;; (require 'eassist)
+(require 'eassist)
 
 ;; ;; customisation of modes
 ;; (defun mg/cedet-hook ()
@@ -59,11 +59,30 @@
 ;; (add-hook 'emacs-lisp-mode-hook 'mg/cedet-hook)
 ;; (add-hook 'erlang-mode-hook 'mg/cedet-hook)
 
+
+(setq eassist-header-switches
+      '(("h" . ("cpp" "cxx" "c++" "CC" "cc" "C" "c" "mm" "m"))
+        ("hh" . ("cc" "CC" "cpp" "cxx" "c++" "C"))
+        ("hpp" . ("cpp" "cxx" "c++" "cc" "CC" "C"))
+        ("hxx" . ("cxx" "cpp" "c++" "cc" "CC" "C"))
+        ("h++" . ("c++" "cpp" "cxx" "cc" "CC" "C"))
+        ("H" . ("C" "CC" "cc" "cpp" "cxx" "c++" "mm" "m"))
+        ("HH" . ("CC" "cc" "C" "cpp" "cxx" "c++"))
+        ("cpp" . ("hpp" "hxx" "h++" "HH" "hh" "H" "h"))
+        ("cxx" . ("hxx" "hpp" "h++" "HH" "hh" "H" "h"))
+        ("c++" . ("h++" "hpp" "hxx" "HH" "hh" "H" "h"))
+        ("CC" . ("HH" "hh" "hpp" "hxx" "h++" "H" "h"))
+        ("cc" . ("hh" "HH" "hpp" "hxx" "h++" "H" "h"))
+        ("C" . ("hpp" "hxx" "h++" "HH" "hh" "H" "h"))
+        ("c" . ("h"))
+        ("m" . ("h"))
+        ("mm" . ("h"))))
+
 ;; (defun mg/c-mode-cedet-hook ()
 ;;   ;; (local-set-key "." 'semantic-complete-self-insert)
 ;;   ;; (local-set-key ">" 'semantic-complete-self-insert)
-;;   (local-set-key "\C-ct" 'eassist-switch-h-cpp)
-;;   (local-set-key "\C-xt" 'eassist-switch-h-cpp)
+;;   ;; (local-set-key "\C-ct" 'eassist-switch-h-cpp)
+;;   ;; (local-set-key "\C-xt" 'eassist-switch-h-cpp)
 ;;   (local-set-key "\C-ce" 'eassist-list-methods)
 ;;   ;; (local-set-key "\C-c\C-r" 'semantic-symref)
 ;;   )
