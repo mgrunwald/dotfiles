@@ -97,6 +97,7 @@
  '(dabbrev-case-replace nil)
  '(debug-on-error nil)
  '(default-input-method "latin-1-prefix")
+ '(desktop-save (quote ask))
  '(desktop-save-mode t)
  '(diary-display-function (quote diary-simple-display))
  '(diary-file "~/org/diary")
