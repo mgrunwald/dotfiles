@@ -75,7 +75,7 @@
  '(c-default-style (quote ((java-mode . "java") (other . "gnu"))))
  '(c-echo-syntactic-information-p nil)
  '(c-label-minimum-indentation 0)
- '(c-offsets-alist (quote ((substatement-open . 0) (case-label . +))))
+ '(c-offsets-alist (quote ((brace-list-open . 0) (substatement-open . 0) (case-label . +))))
  '(calc-gnuplot-name "gnuplot")
  '(calendar-latitude [48 8 north])
  '(calendar-location-name "Ismaning")
