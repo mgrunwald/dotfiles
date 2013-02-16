@@ -12,7 +12,7 @@ We hardlink any files into this repo. This seems to satisfy the need to 1) track
 
 ## list of dotfiles
 
-* .bash_alias
+* .bash_aliases
 > aliases to make our shells easier
 
 * .xbindkeysrc
@@ -26,5 +26,5 @@ We hardlink any files into this repo. This seems to satisfy the need to 1) track
 
 2) Clone it:
 
-	git clone git@github.com:wesleywerner/dotfiles.git ~/.dotfiles
+	git clone git://github.com/wesleywerner/dotfiles.git ~/.dotfiles
 
