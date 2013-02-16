@@ -1,0 +1,164 @@
+# For the benefit of emacs users: -*- shell-script -*-
+###########################
+# xbindkeys configuration #
+###########################
+#
+# Version: 1.8.5
+#
+# If you edit this file, do not forget to uncomment any lines
+# that you change.
+# The pound(#) symbol may be used anywhere for comments.
+#
+# To specify a key, you can use 'xbindkeys --key' or
+# 'xbindkeys --multikey' and put one of the two lines in this file.
+#
+# The format of a command line is:
+#    "command to start"
+#       associated key
+#
+#
+# A list of keys is in /usr/include/X11/keysym.h and in
+# /usr/include/X11/keysymdef.h
+# The XK_ is not needed.
+#
+# List of modifier:
+#   Release, Control, Shift, Mod1 (Alt), Mod2 (NumLock),
+#   Mod3 (CapsLock), Mod4, Mod5 (Scroll).
+#
+
+# The release modifier is not a standard X modifier, but you can
+# use it if you want to catch release events instead of press events
+
+# By defaults, xbindkeys does not pay attention with the modifiers
+# NumLock, CapsLock and ScrollLock.
+# Uncomment the lines above if you want to pay attention to them.
+
+#keystate_numlock = enable
+#keystate_capslock = enable
+#keystate_scrolllock= enable
+
+# Examples of commands:
+
+#"xbindkeys_show" 
+#  control+shift + q
+
+# set directly keycode (here control + f with my keyboard)
+#"xterm"
+#  c:41 + m:0x4
+
+# specify a mouse button
+#"xterm"
+#  control + b:2
+
+#"xterm -geom 50x20+20+20"
+#   Shift+Mod2+alt + s
+#
+## set directly keycode (here control+alt+mod2 + f with my keyboard)
+#"xterm"
+#  alt + c:0x29 + m:4 + mod2
+#
+## Control+Shift+a  release event starts rxvt
+#"rxvt"
+#  release+control+shift + a
+#
+## Control + mouse button 2 release event starts rxvt
+#"rxvt"
+#  Control + b:2 + Release
+
+##################################
+# End of xbindkeys configuration #
+##################################
+#								#
+#################################
+
+# show the 'halt' dialogue
+
+"terminator --title 'HALT ?' -x ~/bin/halt-prompt"
+	control+shift + q
+
+# sound levels with ^Ins and ^Del
+
+"amixer -c 0 set Master 3-"
+	Control + Mod2 + Delete
+
+"amixer -c 0 set Master 3+"
+	Control + Mod2 + Insert
+
+# sound levels with multimedia buttons
+
+"amixer -c 0 set Master 3-"
+	Mod2 + XF86AudioLowerVolume
+
+"amixer -c 0 set Master 3+"
+	Mod2 + XF86AudioRaiseVolume
+
+# mpd music control
+
+"ncmpcpp toggle"
+	Mod2 + XF86AudioPlay
+
+"ncmpcpp stop"
+	Mod2 + XF86AudioStop
+
+"ncmpcpp next"
+	Mod2 + XF86AudioNext
+
+"ncmpcpp prev"
+	Mod2 + XF86AudioPrev
+
+"terminator -x ncmpcpp"
+	Control+Alt+Mod2 + m
+
+# file manager
+
+"terminator --title filemanager -x ranger"
+	Mod2+Mod4 + f
+
+# info bar mode switching
+
+"echo 'mode1' > /tmp/clis-mode"
+	Mod2 + Mod4 + F1
+"echo 'mode2' > /tmp/clis-mode"
+	Mod2 + Mod4 + F2
+"echo 'mode3' > /tmp/clis-mode"
+	Mod2 + Mod4 + F3
+"echo 'mode4' > /tmp/clis-mode"
+	Mod2 + Mod4 + F4
+"echo 'mode5' > /tmp/clis-mode"
+	Mod2 + Mod4 + F5
+
+# commonly used applications
+
+"geany"
+	Super_L + Mod4 + e
+
+"google-chrome"
+	Super_L + Mod4 + w
+
+"terminator"
+	Shift + Mod4 + Return
+
+"viewnior"
+	Super_L + Mod4 + v
+
+"terminator --title unmounter -x cun"
+	Super_L + Mod4 + u
+
+# scrot the screen, move it to images, place the file path in clipboard, and open the image for viewing
+"scrot '%Y%m%d-%s.png' -e 'mv $f ~/images/scrot/ && echo ~/images/scrot/$f | xclip -sel clip && viewnior ~/images/scrot/$f'"
+	Mod4 + Print
+
+"xfce4-screenshooter"
+	Print
+
+"terminator --title networks -x wicd-curses"
+	Super_L + Mod4 + n
+
+"terminator --title 'calendar and todo' -e calcurse"
+	Control+Alt+Mod2 + c
+
+"cb-lock"
+	Control + Alt + l
+
+"connect3G > /tmp/clis-notify"
+    Control + Alt + 3 
