@@ -2,7 +2,7 @@
 ;; Copyright (C) 2000-2001 Stefan Kamphausen
 
 ;; Author: Markus Grunwald <markus.grunwald@gmx.de>
-;; Time-stamp: <07-Oct-2011 15:27:10 gru>
+;; Time-stamp: <28-Sep-2012 10:47:58 gru>
 
 ;; Keywords:
 ;; This file is not part of XEmacs.
@@ -238,6 +238,61 @@
   )
 
 
+(defun mg-set-damian-icecc-arm()
+  "Set environment variables so that compilation for arm with icecc is possible"
+  (interactive)
+  (progn
+    (setenv "PATH"
+            "/usr/lib/icecc/bin:/opt/damian/toolchain-arm/usr/bin:/home/gru/bin:/usr/local/bin:/usr/bin:/bin:/opt/ti/xdctools_3_22_01_21:." )
+    (setenv "ICECC" "yes" )
+    (setenv "ICECC_CC" "arm-none-linux-gnueabi-gcc" )
+    (setenv "ICECC_CXX" "arm-none-linux-gnueabi-g++" )
+    (setenv "ICECC_DEBUG" "warnings" )
+    (setenv "ICECC_VERSION"
+            "i686:/opt/damian/toolchain-arm/var/icecc/host-i686-target-arm-charly1.tar.gz")
+    (setenv "MAKEFLAGS" "-k -j 17" )
+    ;; (if (not (string-match "arm" (mg-makefile-qmake-path
+    ;;                               (concat
+    ;;                                (mg-ede-current-project-root-dir)
+    ;;                                "Makefile") ) ) )
+    ;;     (progn
+    ;;       (message "Path = %s" (getenv "PATH" ) )
+    ;;       (cd (mg-ede-current-project-root-dir) )
+    ;;       ( call-process "which" nil ( get-buffer "*Messages*" ) t
+    ;;                      "qmake" )
+    ;;       ( call-process "qmake" nil ( get-buffer "*Messages*" ) t
+    ;;              "-r" "CONFIG+=debug" )
+    ;;       (message "yo.")
+    ;;       )
+    ;;   (message "bäh.")
+    ;;   )
+
+    ;; ( message "Environment set to damian-icecc-arm PATH=%s" (getenv
+    ;;                                                          "PATH" )  )
+    )
+  )
+
+(defun mg-set-damian-icecc-x86()
+  "Set environment variables so that compilation for x86 with icecc is possible"
+  (interactive)
+  (progn
+    (setenv "PATH"
+            "/usr/lib/icecc/bin:/home/gru/bin:/usr/local/bin:/usr/bin:/bin:/opt/ti/xdctools_3_22_01_21:." )
+    (setenv "ICECC" "yes" )
+    (setenv "ICECC_CC" nil )
+    (setenv "ICECC_CXX" nil )
+    (setenv "ICECC_DEBUG" "debug" )
+    (setenv "ICECC_VERSION"
+            "/var/icecc/host-i686-target-i686-gru-2012-08-01-01.tar.gz")
+    (setenv "MAKEFLAGS" "-k -j 17" )
+    ( message "Environment set to damian-icecc-x86 PATH=%s" (getenv
+                                                             "PATH" ) )
+    )
+  )
+
+
+
+
 (defun mg-copy-position ()
   "Copy a string of the form filename:linenumber into the clipboard"
   (interactive)
@@ -469,6 +524,29 @@
       (insert "import sys; sys.argv = '''" args "'''.split()\n")
       (insert-buffer-substring source-buffer)
       (python-send-buffer))))
+
+(defun mg-ede-current-project-root-dir ()
+  "Get the root dir of the current ede project"
+  (let* ((current-dir (file-name-directory
+                       (or (buffer-file-name (current-buffer)) default-directory)))
+         (prj (ede-current-project current-dir)))
+         (ede-project-root-directory prj)))
+
+
+(defun mg-makefile-qmake-path (makefile)
+  "Return the current compilation target for this project"
+  (interactive "sMakefile:")
+  (with-current-buffer (find-file-noselect makefile )
+    (save-excursion
+      (goto-char (point-min))
+      (let ( (split (re-search-forward "QMAKE[ \t]*=[ \t]" (point) t) ) )
+        (end-of-line)
+        (if split
+            (buffer-substring-no-properties split (point))
+          ""   ) ))))
+
+;;(mg-makefile-qmake-path "~/projects/damian/trunk/MPC/firmware/src/Makefile" )
+
 
 
 (message "mg-utils OK")
