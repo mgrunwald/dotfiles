@@ -1,0 +1,14 @@
+--- bookmark+-1.el	2012-02-14 12:33:27.000767931 +0100
++++ /home/gru/tmp/bookmark+-1.el	2012-02-09 00:56:14.000000000 +0100
+@@ -6766,10 +6766,7 @@
+ (defun bmkp-set-desktop-bookmark (desktop-file) ; Bound globally to `C-x p K', `C-x r K', `C-x p c K'
+   "Save the desktop as a bookmark.
+ You are prompted for the desktop-file location and the bookmark name."
+-  (interactive (list (read-file-name "Save desktop in file: "
+-                                     default-directory
+-                                     desktop-base-file-name nil
+-                                     desktop-base-file-name )))
++  (interactive (list (read-file-name "Save desktop in file: ")))
+   (set-text-properties 0 (length desktop-file) nil desktop-file)
+   (unless (file-name-absolute-p desktop-file) (setq desktop-file  (expand-file-name desktop-file)))
+   (unless (condition-case nil (require 'desktop nil t) (error nil))
