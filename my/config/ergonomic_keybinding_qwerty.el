@@ -443,12 +443,14 @@
    (define-key ibuffer-mode-map (kbd "M-o") 'forward-word) ; was ibuffer-visit-buffer-1-window
 ))
 
+;; reclaim bindings from html mode
 (add-hook 'html-mode-hook
  (lambda ()
  (define-key html-mode-map (kbd "M-s") 'other-window)
  )
 )
 
+;; reclaim bindings from xml mode
 (add-hook 'nxml-mode-hook
  (lambda ()
  (define-key nxml-mode-map (kbd "M-h") 'move-beginning-of-line) ; was nxml-mark-paragraph
@@ -456,6 +458,7 @@
  )
 )
 
+;; reclaim bindings from w3m
 (add-hook 'w3m-mode-hook
  (lambda ()
   (define-key w3m-mode-map (kbd "M-a") 'execute-extended-command) ; was w3m-bookmark-add-this-url
@@ -468,6 +471,7 @@
   (define-key w3m-mode-map (kbd "M-s") 'other-window) ; was w3m-session-select
 ))
 
+;; reclaim bindings from rcirc (???)
 (add-hook 'rcirc-mode-hook
  (lambda ()
   (define-key rcirc-mode-map (kbd "M-p") 'recenter) ; was rcirc-insert-prev-input
@@ -476,22 +480,38 @@
   (define-key rcirc-mode-map (kbd "<f12>") 'rcirc-insert-prev-input)
  ))
 
+;; reclaim bindings from awk
 (add-hook 'awk-mode-hook
  (lambda ()
   (define-key awk-mode-map (kbd "M-a") 'execute-extended-command) ; was c-beginning-of-statement
   (define-key awk-mode-map (kbd "M-e") 'backward-kill-word) ; was c-end-of-statement
  ))
 
+;; reclaim bindings from buffer menu
 (add-hook 'buffer-menu-mode-hook
  (lambda ()
    (define-key Buffer-menu-mode-map (kbd "M-s") 'other-window) ; was prefix-command
 ))
 
+;; reclaim bindings from svn status
 (add-hook 'svn-status-mode-hook
  (lambda()
    (define-key svn-status-mode-map (kbd "M-s") 'other-window) ; was svn-status-update
 ))
 
+;; reclaim bindings from magit status
+(add-hook 'magit-mode-hook
+          (lambda()
+            (define-key magit-status-mode-map (kbd "M-s") 'other-window) ; was magit-show-level-4
+            (define-key magit-show-branches-mode-map (kbd "M-s") 'other-window) ; was magit-show-level-4
+            ))
+
+;; reclaim bindings from bookmark+
+(add-hook 'bookmark-bmenu-mode-hook
+          (lambda()
+            (define-key bookmark-bmenu-mode-map (kbd "M-s") 'other-window) ; was prefix
+            (define-key bookmark-bmenu-mode-map (kbd "M-a") 'execute-extended-command) ; was bookmark-bmenu-show-all-annotations
+            ))
 
 ;; nothing to fix: c-mode, c++-mode, java, sh, js, perl, php, python
 
