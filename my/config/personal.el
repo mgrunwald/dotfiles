@@ -79,6 +79,8 @@ skeletons I use together with XEmacs."
 (require 'ska-global-keys)
 (require 'ska-local-keys)
 
+
+
 (load "emacs-rc-cedet.el")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -331,10 +333,6 @@ skeletons I use together with XEmacs."
 ;;	    (load "ergonomic_keybinding_qwerty.el")
 	    (message "==================== diff-mode-hook ====================")))
 
-
-;;
-;; (load "wide-edit.el") doesn't work anymore :(
-;;(wide-edit-insinuate-grep 't)
 
 ;; qmake project file mode
 (add-to-list 'auto-mode-alist '("\\.pro\\>" . text-mode))
@@ -592,24 +590,12 @@ skeletons I use together with XEmacs."
 (edit-bookmarks)
 (switch-to-buffer "*Bookmark List*")
 
-;;
-;; Mew
-;;
-(autoload 'mew "mew" nil t)
-(autoload 'mew-send "mew" nil t)
+(require 'smooth-scrolling)
 
-;; Optional setup (Read Mail menu):
-(setq read-mail-command 'mew)
+(speedbar-get-focus)
 
-;; Optional setup (e.g. C-xm for sending a message):
-(autoload 'mew-user-agent-compose "mew" nil t)
-(if (boundp 'mail-user-agent)
-    (setq mail-user-agent 'mew-user-agent))
-(if (fboundp 'define-mail-user-agent)
-    (define-mail-user-agent
-      'mew-user-agent
-      'mew-user-agent-compose
-      'mew-draft-send-message
-      'mew-draft-kill
-      'mew-send-hook))
+
+(require 'dir-locals )
+(require 'grep-edit)
+
 
