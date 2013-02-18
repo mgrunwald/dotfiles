@@ -16,7 +16,7 @@
  '(ange-ftp-try-passive-mode t)
  '(auto-hscroll-mode t)
  '(bar-cursor (quote (quote other)))
- '(bmkp-last-as-first-bookmark-file "/home/gru/.emacs.bmk")
+ '(bmkp-last-as-first-bookmark-file "~/.emacs.bmk")
  '(buffers-menu-max-size nil)
  '(c-basic-offset 4)
  '(c-default-style (quote ((java-mode . "java") (other . "gnu"))))
@@ -50,6 +50,7 @@
  '(diary-file "~/org/diary")
  '(diary-list-entries-hook (quote (diary-sort-entries)))
  '(diff-switches "-u")
+ '(dir-locals-mode t)
  '(doxymacs-doxygen-dirs (quote (("/home/gru/projects/damian/trunk/MPC/lib/libdspcom" "/usr/local/share/doc/ti/tagfile.xml" "file:///usr/local/share/doc/ti/html") ("/home/gru/projects/damian/trunk/DSP" "/usr/local/share/doc/ti/tagfile.xml" "file:///usr/local/share/doc/ti/html"))))
  '(doxymacs-external-xml-parser-executable "/usr/lib/doxymacs/doxymacs_parser")
  '(doxymacs-function-comment-template (quote ((let ((next-func (doxymacs-find-next-func))) (if next-func (list (quote l) "/** <!-------------------------------------------------------------------------->" (quote >) (quote n) " * " (quote p) (quote >) (quote n) " * " (quote >) (quote n) (doxymacs-parm-tempo-element (cdr (assoc (quote args) next-func))) (unless (string-match (regexp-quote (cdr (assoc (quote return) next-func))) doxymacs-void-types) (quote (l " * " > n " * " (doxymacs-doxygen-command-char) "return " (p "Returns: ") > n))) " <!---------------------------------------------------------------------------> */" (quote >) (quote n)) (progn (error "Can't find next function declaration.") nil))))))
@@ -202,8 +203,7 @@
  '(w3m-use-cookies t)
  '(whitespace-auto-cleanup t)
  '(whitespace-check-spacetab-whitespace nil)
- '(woman-cache-filename "~/.emacs.d/woman-cache.el
-")
+ '(woman-cache-filename "~/.emacs.d/woman-cache.el")
  '(woman-imenu t)
  '(woman-use-own-frame nil))
 (custom-set-faces
@@ -211,7 +211,7 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(default ((t (:stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 80 :width normal :foundry "unknown" :family "ProFont"))))
+ '(default ((t (:stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "ProFont"))))
  '(buffer-menu-buffer ((t (:foreground "blue"))))
  '(cursor ((t (:background "blue"))))
  '(highlight ((((class color) (background light)) (:background "gray80"))))
