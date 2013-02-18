@@ -185,7 +185,7 @@
 
 (setq damian-firmware-project
       (ede-cpp-root-project "damian-firmware-project"
-                            :file "~/projects/damian/trunk/MPC/firmware/src/firmware/firmware.pro"
+                            :file "~/projects/damian/trunk/MPC/firmware/src/damian.pro"
                             :local-variables (list
                                               (cons 'compile-command
                                                     'mg/gen-std-compile-string
@@ -196,9 +196,9 @@
                             )
       )
 
-(setq damian-meastree-project
-      (ede-cpp-root-project "damian-meastree-project"
-                            :file "~/projects/damian/trunk/DSP/pt/lib/measurement_tree/CPTMeasureTree.cpp"
+(setq damian-gitsvn-firmware-project
+      (ede-cpp-root-project "damian-gitsvn-firmware-project"
+                            :file "~/projects/damian-git-svn/DMN/MPC/firmware/src/damian.pro"
                             :local-variables (list
                                               (cons 'compile-command
                                                     'mg/gen-std-compile-string
