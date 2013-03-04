@@ -598,4 +598,10 @@ skeletons I use together with XEmacs."
 (require 'dir-locals )
 (require 'grep-edit)
 
-
+;;
+;; Magit: enable svn extensions
+;; Disabled because it leads to strange "unpulled commits (svn)"
+;;  messages that I don't untderstand. I have no unpulled commits.)
+;; Later: Ok, I /had/ unpulled commits in the branch.
+;;
+(add-hook 'magit-mode-hook 'turn-on-magit-svn)
