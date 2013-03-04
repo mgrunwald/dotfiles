@@ -188,7 +188,7 @@
                             :file "~/projects/damian/trunk/MPC/firmware/src/damian.pro"
                             :local-variables (list
                                               (cons 'compile-command
-                                                    'mg/gen-std-compile-string
+                                                    'mg/gen-damian-fw-compile-string
                                                     )
                                               (cons 'indent-tabs-mode t )
                                               (cons  'mg-auto-insert-style 'damian )
@@ -201,7 +201,7 @@
                             :file "~/projects/damian-git-svn/DMN/MPC/firmware/src/damian.pro"
                             :local-variables (list
                                               (cons 'compile-command
-                                                    'mg/gen-std-compile-string
+                                                     'mg/gen-damian-fw-compile-string
                                                     )
                                               (cons 'indent-tabs-mode t )
                                               (cons  'mg-auto-insert-style 'damian )
@@ -296,6 +296,18 @@
          (root-dir (ede-project-root-directory prj))
          )
     (concat "cd " root-dir "; make DEBUG=1")
+    )
+  )
+
+;;
+(defun mg/gen-damian-fw-compile-string ()
+  "Generates compile string for compiling a project in debug mode"
+  (let* ((current-dir (file-name-directory
+                       (or (buffer-file-name (current-buffer)) default-directory)))
+         (prj (ede-current-project current-dir))
+         (root-dir (ede-project-root-directory prj))
+         )
+    (concat "cd " root-dir "; make -k -j 6 sub-firmware")
     )
   )
 
