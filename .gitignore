@@ -3,3 +3,6 @@ woman-cache.el
 
 /auto-save-list/
 *~
+/.org-id-locations
+/TAGS
+/ac-comphist.dat
