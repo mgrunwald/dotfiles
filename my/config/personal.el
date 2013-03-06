@@ -1,4 +1,5 @@
 ;;; personal.el --- Setup modes, hooks and other personal stuff
+(require 'diminish)
 
 (defvar my-lisp-dir
   (concat my-emacs-dir "lisp/")
@@ -175,6 +176,7 @@ skeletons I use together with XEmacs."
 	  '(lambda ()
 ;emacs22             (require 'ctypes)
 	     (require 'vvb-mode)
+	     (diminish 'vvb-mode)
 	     (imenu-add-menubar-index)
 	     ;; highlight self-defined types
 ;emacs22             (ctypes-auto-parse-mode 1)
@@ -187,7 +189,8 @@ skeletons I use together with XEmacs."
 	     ( load-library "vc" )
 	     (setq tag-table-alist '( ("Dafit_Software/" . "/home/gru/projects/Dafit_Software/") ))
 	     (which-function-mode)
-         (gtags-mode)
+	     (gtags-mode)
+	     (diminish 'gtags-mode "Gtgs")
 	     (message "==================== c-mode-common-hook ====================")
 	     ))
 
@@ -236,6 +239,7 @@ skeletons I use together with XEmacs."
 				     '(("\\<Q[A-Z][A-Za-z]*" . 'qt-keywords-face)))
 	     ;; emacs23 (modify-syntax-entry ?_ "w" ) ; _ is part of a word
          (subword-mode t)
+         (setq mode-name "C++")
 	     (message "==================== c++-mode-hook ====================")
 	     ) )
 
@@ -592,9 +596,6 @@ skeletons I use together with XEmacs."
 
 (require 'smooth-scrolling)
 
-(speedbar-get-focus)
-
-
 (require 'dir-locals )
 (require 'grep-edit)
 
@@ -605,3 +606,13 @@ skeletons I use together with XEmacs."
 ;; Later: Ok, I /had/ unpulled commits in the branch.
 ;;
 (add-hook 'magit-mode-hook 'turn-on-magit-svn)
+
+;;
+;; diminish.el: get a shorter modeline
+;;
+(diminish 'abbrev-mode)
+(diminish 'auto-fill-function)
+(diminish 'auto-complete-mode)
+
+
+(speedbar-get-focus)
