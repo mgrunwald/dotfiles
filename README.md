@@ -20,6 +20,9 @@ The first phase is to create the structure for our files. The second phase would
 * .keynavrc
 > for keynav, controlling your mouse with the keyboard
 
+* .i3/
+> i3wm configuration directory
+
 ## how to get it
 
 1) Download the repo from github and extract it to ~/.dotfiles
