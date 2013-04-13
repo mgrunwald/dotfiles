@@ -63,4 +63,10 @@ Then pull changes into any other machines via:
 
     ~/dotfiles/:$ git pull
 
+## automatic syncing
+
+Included is sync.sh which will pull and commit any changed dotfiles. Add this to your crontab (crontab -e). This syncs every hour:
+
+    @hourly	sh ~/dotfiles/sync.sh
+
 That is all.
