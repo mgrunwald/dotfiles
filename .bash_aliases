@@ -1,6 +1,9 @@
+# coding
+alias code='cd ~/coding/games/aliverl/data/'
+alias mvc='cd ~/coding/mvc-game-design/'
+
 # terminal recording
 alias recordterm='export TERM=vt100; ttyrec ~/ttyrecordings/`date +%Y-%m-%d_@_%H:%M:%S`'
-alias welcome='export PS1="\r\nuser \W $ "; typewriter "find more monkey tricks at darknet.co.za"'
 
 # ls with color for humans
 alias ls='ls -hp --color=auto'
@@ -48,8 +51,9 @@ alias convert-ogg-to-mp3='for f in *.ogg; do ffmpeg -i "$f" -acodec libmp3lame "
 alias convert-wma-to-mp3='for f in *.wma; do ffmpeg -i "$f" -acodec libmp3lame "${f%%.wma}.mp3"; done'
 
 # system power commands
-# note: add a line in sudoers to allow these calls without root privs
 alias reboot="sudo reboot"
 alias poweroff="sudo poweroff"
 alias halt="sudo halt"
 
+# reload xbindkeys config
+alias xbindkeysreloadconf='killall -HUP xbindkeys'

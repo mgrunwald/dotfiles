@@ -86,10 +86,10 @@
 
 # sound levels with multimedia buttons
 
-"amixer -c 0 set Master 3-"
+"amixer -c 0 set Master 3- && sleep 0.2"
 	Mod2 + XF86AudioLowerVolume
 
-"amixer -c 0 set Master 3+"
+"amixer -c 0 set Master 3+ && sleep 0.2"
 	Mod2 + XF86AudioRaiseVolume
 
 # mpd music control
@@ -106,7 +106,7 @@
 "ncmpcpp prev"
 	Mod2 + XF86AudioPrev
 
-"terminator -x ncmpcpp"
+"terminator --profile=music -x ncmpcpp"
 	Control+Alt+Mod2 + m
 
 # file manager
@@ -142,7 +142,7 @@
 	Super_L + Mod4 + v
 
 "terminator --title unmounter -x cun"
-	Super_L + Mod4 + u
+	Control + Alt + u
 
 # scrot the screen, move it to images, place the file path in clipboard, and open the image for viewing
 "scrot '%Y%m%d-%s.png' -e 'mv $f ~/images/scrot/ && echo ~/images/scrot/$f | xclip -sel clip && viewnior ~/images/scrot/$f'"
