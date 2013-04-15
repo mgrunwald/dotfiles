@@ -2,7 +2,7 @@
 ;; Copyright (C) 2000-2001 Stefan Kamphausen
 
 ;; Author: Markus Grunwald <markus.grunwald@gmx.de>
-;; Time-stamp: <04-Mar-2013 08:28:13 gru>
+;; Time-stamp: <27-Mar-2013 16:11:50 gru>
 
 ;; Keywords:
 ;; This file is not part of XEmacs.
@@ -246,6 +246,7 @@
                     "/opt/damian/toolchain-arm/usr/bin"
                     "/home/gru/bin" "/usr/local/bin" "/usr/bin" "/bin"
                     "/opt/ti/xdctools_3_22_01_21" ".") )
+    (setenv "PATH" (mapconcat 'identity exec-path ":" ) )
     (setenv "ICECC" "yes" )
     (setenv "ICECC_CC" "arm-none-linux-gnueabi-gcc" )
     (setenv "ICECC_CXX" "arm-none-linux-gnueabi-g++" )
@@ -259,7 +260,7 @@
         (progn
           (setq default-directory (mg-ede-current-project-root-dir) )
           (message "Running qmake…")
-          (call-process "qmake" nil (get-buffer-create " *qmake*") t
+          (call-process "/opt/damian/toolchain-arm/usr/bin/qmake" nil (get-buffer-create " *qmake*") t
                  "-r" "CONFIG+=debug" )
           (message "qmake done")
           )
@@ -276,6 +277,7 @@
     (setq exec-path '("/usr/lib/icecc/bin" "/home/gru/bin"
                       "/usr/local/bin" "/usr/bin" "/bin"
                       "/opt/ti/xdctools_3_22_01_21" ".") )
+    (setenv "PATH" (mapconcat 'identity exec-path ":" ) )
     (setenv "ICECC" "yes" )
     (setenv "ICECC_CC" nil )
     (setenv "ICECC_CXX" nil )
@@ -544,14 +546,14 @@
 (defun mg-makefile-qmake-path (makefile)
   "Return the current compilation target for this project"
   (interactive "sMakefile:")
-  (with-current-buffer (find-file-noselect makefile )
-    (save-excursion
+  (with-temp-buffer
+    (insert-file-contents  makefile )
       (goto-char (point-min))
       (let ( (split (re-search-forward "QMAKE[ \\t]*=[ \\t]" nil t) ) )
         (end-of-line)
         (if split
             (buffer-substring-no-properties split (point))
-          ""   ) ))))
+          ""   ) )))
 
 ;;(mg-makefile-qmake-path "~/projects/damian-git-svn/DMN/MPC/firmware/src/Makefile" )
 
