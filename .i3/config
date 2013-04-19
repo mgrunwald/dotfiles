@@ -171,8 +171,16 @@ focus_follows_mouse no
 # + remove the border
 for_window [class="Xfce4-notifyd"] floating enable focus tiling border none
 
+# float these windows too
+for_window [class="milkytracker"] floating enable
+for_window [class="XCalc"] floating enable
+
 # mod tab back and forth between workspaces
 bindsym $mod+Tab workspace back_and_forth
+
+# show and hide scratchpad windows
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
 
 # prev next workspaces
 bindsym $mod+$alt+j workspace prev
