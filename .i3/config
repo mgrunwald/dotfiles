@@ -161,6 +161,7 @@ bar {
 
 # automatic window assignments
 assign [class="Google-chrome"] 5: web
+assign [class="Gimp"] 4: gimp
 
 # do not follow the white rabbit
 focus_follows_mouse no
