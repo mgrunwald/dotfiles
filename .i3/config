@@ -175,6 +175,10 @@ for_window [class="Xfce4-notifyd"] floating enable focus tiling border none
 # float these windows too
 for_window [class="milkytracker"] floating enable
 for_window [class="XCalc"] floating enable
+for_window [class="MPlayer"] floating enable
+for_window [class="Eclipse"] floating enable
+for_window [class="ADT"] floating enable
+for_window [class="mplayer2"] floating enable
 
 # mod tab back and forth between workspaces
 bindsym $mod+Tab workspace back_and_forth
