@@ -91,7 +91,7 @@ do
     case "$ACTION" in
     mode2)
         # now playing
-        INFOLINE="Listening to `ncmpcpp --now-playing '{{%t, by %a, from %b}}|{{%f}}'`"
+        INFOLINE="`ncmpcpp --now-playing '{{%t, by %a, from %b}}|{{%f}}'`"
         ;;
     mode3)
         # top processes
