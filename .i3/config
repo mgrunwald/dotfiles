@@ -78,16 +78,16 @@ bindsym $mod+a focus parent
 #bindcode $mod+d focus child
 
 # customize workspace names
-set $ws1 "1: terminals"
-set $ws2 "2: code"
-set $ws3 "3: design"
-set $ws4 "4: gimp"
-set $ws5 "5: web"
-set $ws6 "6: comms"
-set $ws7 "7: music"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1 1: terminals
+set $ws2 2: coding
+set $ws3 3: design
+set $ws4 4: gimp
+set $ws5 5: surf
+set $ws6 6: comms
+set $ws7 7: music
+set $ws8 8: video
+set $ws9 9: transcoding
+set $ws10 10
 
 # switch to workspace
 #bindsym $mod+1 workspace 1: terminals
@@ -160,8 +160,10 @@ bar {
 }
 
 # automatic window assignments
-assign [class="Google-chrome"] 5: web
-assign [class="Gimp"] 4: gimp
+assign [class="Google-chrome"] $ws5
+assign [class="Gimp"] $ws4
+assign [class="Geany"] $ws2
+assign [class="Dvdrip"] $ws9
 
 # do not follow the white rabbit
 focus_follows_mouse no
@@ -195,8 +197,8 @@ bindsym $mod+$alt+j workspace prev
 bindsym $mod+$alt+k workspace next
 
 # colors
-# class             border      background      text        indicator
-client.focused      #00dd00     #00bb00         #000000     #00dddd
+# class             	border      background      text        indicator
+client.focused      	#00dd00     #00bb00         #000000     #00dddd
 client.focused_inactive #003300     #002200         #888888     #003333
-client.unfocused    #003300     #002200         #888888     #003333
+client.unfocused    	#003300     #002200         #888888     #003333
 
