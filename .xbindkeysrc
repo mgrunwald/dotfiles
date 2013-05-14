@@ -162,3 +162,6 @@
 
 "connect3G > /tmp/clis-notify"
     Control + Alt + 3 
+
+"sxiv ~/images/wallpapers/*"
+	Control + Alt + i
