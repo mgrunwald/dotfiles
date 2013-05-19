@@ -184,6 +184,7 @@ for_window [class="mplayer2"] floating enable
 for_window [class="Qemu-launcher"] floating enable
 for_window [class="kvm"] floating enable
 for_window [class="qemu-system-i386"] floating enable
+for_window [class="Gcolor2"] floating enable
 
 # mod tab back and forth between workspaces
 bindsym $mod+Tab workspace back_and_forth
