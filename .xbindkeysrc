@@ -144,16 +144,11 @@
 "terminator --title unmounter -x cun"
 	Control + Alt + u
 
-# scrot the screen, move it to images, place the file path in clipboard, and open the image for viewing
-"scrot '%Y%m%d-%s.png' -e 'mv $f ~/images/scrot/ && echo ~/images/scrot/$f | xclip -sel clip && viewnior ~/images/scrot/$f'"
-	Mod4 + Print
+"scrotshot --focused"
+	Alt+Mod2 + Print
 
-"xfce4-screenshooter"
-	Print
-
-# screenshooter rework:
-# shoot window: scrot --focused /filename
-# add a border: convert a.png -bordercolor Black -border 2x2 a2.png
+"scrotshot"
+	Mod2 + Print	
 
 "terminator --title networks -x wicd-curses"
 	Super_L + Mod4 + n
@@ -167,5 +162,5 @@
 "connect3G > /tmp/clis-notify"
     Control + Alt + 3 
 
-"sxiv ~/images/wallpapers/*"
+"viewnior ~/images/wallpapers/"
 	Mod2+Mod4 + i
