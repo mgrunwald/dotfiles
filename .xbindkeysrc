@@ -151,6 +151,10 @@
 "xfce4-screenshooter"
 	Print
 
+# screenshooter rework:
+# shoot window: scrot --focused /filename
+# add a border: convert a.png -bordercolor Black -border 2x2 a2.png
+
 "terminator --title networks -x wicd-curses"
 	Super_L + Mod4 + n
 
