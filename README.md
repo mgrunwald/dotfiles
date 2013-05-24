@@ -25,19 +25,17 @@ The first phase is to create the structure for our files. The second phase would
 
 ## how to get it
 
-1) Download the repo from github and extract it to ~/.dotfiles
+1) Download the repo from github and extract it to `~/dotfiles`
 
 	https://github.com/wesleywerner/dotfiles
 
 2) Clone it:
 
-	git clone git://github.com/wesleywerner/dotfiles.git ~/.dotfiles
+	git clone git://github.com/wesleywerner/dotfiles.git ~/
 
 ## how to link dotfiles
 
-We hardlink dotfiles out of this repo. This seems to satisfy the need to 1) track the content of files changed, and 2) not break links if one or the other disappears.
-
-Backup current dotfiles:
+Backup current dotfiles (if any):
 
     mv ~/.bash_aliases ~/.bash_aliases.dotfilebak
     mv ~/.xbindkeysrc ~/.xbindkeysrc.dotfilebak
@@ -46,12 +44,12 @@ Backup current dotfiles:
 
 Hard link the new files in:
 
-    ln ~/dotfiles/.bash_aliases ~/
-    ln ~/dotfiles/.xbindkeysrc ~/
-    ln ~/dotfiles/.keynavrc ~/
-    ln ~/dotfiles/.bash_profile ~/
+    ln -s ~/dotfiles/.bash_aliases ~/
+    ln -s ~/dotfiles/.xbindkeysrc ~/
+    ln -s ~/dotfiles/.keynavrc ~/
+    ln -s ~/dotfiles/.bash_profile ~/
 
-Thus any changes to your dotfiles will show up in the ~/dotfiles repo automatically. 
+Thus any changes to your dotfiles will show up in the repo automatically. 
 
 ## syncing changes between machines
 
@@ -68,7 +66,7 @@ Then pull changes into any other machines via:
 
 ## automatic syncing
 
-Included is sync.sh which will pull and commit any changed dotfiles. Add this to your crontab (crontab -e). This syncs every hour:
+Included is [sync.sh](sync.sh) which will pull and commit any changed dotfiles. Add this to your cron jobs (crontab -e). This syncs every hour:
 
     @hourly	sh ~/dotfiles/sync.sh
 
