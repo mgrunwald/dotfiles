@@ -42,7 +42,7 @@ Backup current dotfiles (if any):
     mv ~/.keynavrc ~/.keynavrc.dotfilebak
     mv ~/.bash_profile ~/.bash_profile.dotfilebak
 
-Hard link the new files in:
+Link the new files in:
 
     ln -s ~/dotfiles/.bash_aliases ~/
     ln -s ~/dotfiles/.xbindkeysrc ~/

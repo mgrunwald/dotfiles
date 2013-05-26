@@ -54,7 +54,7 @@
 ################################################################################
 
 # help text lists the modes available
-HELPLINE="S-F2 Now Playing S-F3 Conky S-F4 Todo"
+HELPLINE="S-F2 Now Playing S-F3 Top S-F4 Todo"
 
 # append to help text the WM shortcuts
 HELPLINE=""$HELPLINE
