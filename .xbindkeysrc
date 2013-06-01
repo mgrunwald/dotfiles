@@ -138,9 +138,6 @@
 "terminator"
 	Shift + Mod4 + Return
 
-"viewnior"
-	Super_L + Mod4 + v
-
 "terminator --title unmounter -x cun"
 	Control + Alt + u
 
@@ -162,5 +159,5 @@
 "connect3G > /tmp/clis-notify"
     Control + Alt + 3 
 
-"viewnior ~/images/wallpapers/"
+"nitrogen --sort=rtime ~/images/wallpapers"
 	Mod2+Mod4 + i
