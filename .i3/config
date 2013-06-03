@@ -153,11 +153,17 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    #status_command i3status
-    #status_command i3status
+    colors {
+        background #FFFFFF
+        statusline #004242
+        #separator #666666
+        focused_workspace  #007070 #004242 #00FFFF
+        active_workspace   #00FFFF #5f676a #ffffff
+        inactive_workspace #FFFFFF #FFFFFF #004242
+        urgent_workspace   #2f343a #900000 #ffffff
+    }
     status_command ~/.i3/clisi3.sh
-    position top
-    #font -*-clean-*-*-*-*-12-*-*-*-*-*-*-*
+    position bottom
     font pango:DejaVu Sans Mono 10
 }
 
@@ -202,9 +208,15 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+$alt+j workspace prev
 bindsym $mod+$alt+k workspace next
 
-# colors
+# green colors
 # class             	border      background      text        indicator
-client.focused      	#00dd00     #00bb00         #000000     #00dddd
-client.focused_inactive #003300     #002200         #888888     #003333
-client.unfocused    	#003300     #002200         #888888     #003333
+#client.focused      	#00dd00     #00bb00         #000000     #00dddd
+#client.focused_inactive #003300     #002200         #888888     #003333
+#client.unfocused    	#003300     #002200         #888888     #003333
+
+# cyan colors
+# class             	border      background      text        indicator
+client.focused      	#004242     #00FFFF         #004242     #00dddd
+client.focused_inactive #004242     #004242         #00FFFF     #003333
+client.unfocused    	#004242     #004242         #00FFFF     #003333
 
