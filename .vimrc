@@ -47,6 +47,17 @@ let g:SuperTabDefaultCompletionType = "context"
 " file browser
 map <leader>n :NERDTreeToggle<CR>
 
+" goto definition and rename cleverly
+map <leader>j :RopeGotoDefinition<CR>
+map <leader>r :RopeRename<CR>
+
+" fuzzy text search
+nmap <leader>a <Esc>:Ack!
+
+" git support
+"set statusline="%t %{fugitive#statusline()}"
+set statusline=%t
+
 " Uncomment the next line to make Vim more Vi-compatible
 " NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
 " options, so any other options should be set AFTER setting 'compatible'.
