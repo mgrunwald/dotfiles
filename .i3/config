@@ -217,7 +217,7 @@ bindsym $mod+$alt+k workspace next
 
 # cyan colors
 # class             	border      background      text        indicator
-client.focused      	#004242     #00FFFF         #004242     #00dddd
-client.focused_inactive #004242     #004242         #00FFFF     #003333
-client.unfocused    	#004242     #004242         #00FFFF     #003333
+client.focused      	#004242     #00FFFF         #004242     #dddd00
+client.focused_inactive #004242     #004242         #00FFFF     #333300
+client.unfocused    	#004242     #004242         #00FFFF     #333300
 

@@ -42,7 +42,8 @@ let g:pep8_map='<leader>8'
 
 " tab completion and documentation
 au FileType python set omnifunc=pythoncomplete#Complete
-let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType = "c-n"
+"let g:SuperTabDefaultCompletionType = "context"
 
 " file browser
 map <leader>n :NERDTreeToggle<CR>
@@ -55,8 +56,7 @@ map <leader>r :RopeRename<CR>
 nmap <leader>a <Esc>:Ack!
 
 " git support
-"set statusline="%t %{fugitive#statusline()}"
-set statusline=%t
+set statusline="%t %{fugitive#statusline()}"
 
 " Uncomment the next line to make Vim more Vi-compatible
 " NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
