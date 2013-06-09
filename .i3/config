@@ -154,12 +154,19 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
     colors {
-        background #FFFFFF
-        statusline #004242
-        #separator #666666
-        focused_workspace  #007070 #004242 #00FFFF
+        # cyans
+        #background #FFFFFF
+        #statusline #004242
+        #focused_workspace  #007070 #004242 #00FFFF
+        #active_workspace   #00FFFF #5f676a #ffffff
+        #inactive_workspace #FFFFFF #FFFFFF #004242
+        
+        # golds
+        background #160902
+        statusline #7E6E35
+        focused_workspace  #160902 #7E6E35 #160902
         active_workspace   #00FFFF #5f676a #ffffff
-        inactive_workspace #FFFFFF #FFFFFF #004242
+        inactive_workspace #7E6E35 #160902 #7E6E35
         urgent_workspace   #2f343a #900000 #ffffff
     }
     status_command ~/.i3/clisi3.sh
@@ -209,6 +216,12 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+$alt+j workspace prev
 bindsym $mod+$alt+k workspace next
 
+# gold colors
+# class             	border      background      text        indicator
+client.focused      	#160902     #7E6E35         #FFFFFF     #dddd00
+client.focused_inactive #7E6E35     #160902         #7E6E35     #333300
+client.unfocused    	#7E6E35     #160902         #7E6E35     #333300
+
 # green colors
 # class             	border      background      text        indicator
 #client.focused      	#00dd00     #00bb00         #000000     #00dddd
@@ -217,7 +230,7 @@ bindsym $mod+$alt+k workspace next
 
 # cyan colors
 # class             	border      background      text        indicator
-client.focused      	#004242     #00FFFF         #004242     #dddd00
-client.focused_inactive #004242     #004242         #00FFFF     #333300
-client.unfocused    	#004242     #004242         #00FFFF     #333300
+#client.focused      	#004242     #00FFFF         #004242     #dddd00
+#client.focused_inactive #004242     #004242         #00FFFF     #333300
+#client.unfocused    	#004242     #004242         #00FFFF     #333300
 
