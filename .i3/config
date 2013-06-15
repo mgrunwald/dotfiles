@@ -219,6 +219,8 @@ for_window [class="Unetbootin"] floating enable
 for_window [class="Nitrogen"] floating enable
 for_window [class="dosbox"] floating enable
 for_window [class="Geany" title="Commit"] floating disable
+for_window [title="Alive"] floating enable
+for_window [title="Crunchbang Project"] floating enable
 
 # mod tab back and forth between workspaces
 bindsym $mod+Tab workspace back_and_forth
