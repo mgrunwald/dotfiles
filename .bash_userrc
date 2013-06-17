@@ -15,7 +15,7 @@ case $command in
     log)
         # grab the days value or default to 1
         days=${2-1}
-        git log --pretty=format:"%ar by %an (%h):%n  %s%n" --since "$days days ago"
+        git --no-pager log --pretty=format:"%ar by %an (%h):%n  %s%n" --since "$days days ago"
         ;;
     *)
         echo -e "git helper commands:\n"
