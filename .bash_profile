@@ -12,3 +12,4 @@ export EDITOR=vim
 # see http://pythonic.pocoo.org/2008/3/28/using-pygments-with-less
 export LESSOPEN="|lesspipe.sh %s"
 export LESS=' -R '
+
