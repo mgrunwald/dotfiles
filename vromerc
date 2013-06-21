@@ -1,0 +1,11 @@
+" home row hints
+set useletters=1
+set hintkeys=jlkhfsdag
+
+" increase scroll size
+map j 5j
+map k 5k
+
+" restore default control-F behaviour
+map <C-f> <C-v><C-f>
+unmap /
