@@ -20,8 +20,8 @@ runtime! debian.vim
 "      <leader>td is todo list
 "
 filetype off
-call pathogen#incubate()
-call pathogen#helptags()
+"call pathogen#incubate()
+"call pathogen#helptags()
 set foldmethod=indent
 set foldlevel=99
 
