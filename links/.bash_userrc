@@ -1,12 +1,15 @@
 # to include these commands place this in you .bashrc: source ~/.bash_userrc
 
-# sync bash history across all open terms
-# void duplicates..
-export HISTCONTROL=ignoredups:erasedups  
-# append history entries..
-shopt -s histappend
-# After each command, save and reload history
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+# have a nice prompt
+PS1='\n\w\n╒══════════════╕\n╘:\$ '
+
+## sync bash history across all open terms
+## void duplicates..
+#export HISTCONTROL=ignoredups:erasedups  
+## append history entries..
+#shopt -s histappend
+## After each command, save and reload history
+#export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # helper functions for speedy git use
 gg() {
