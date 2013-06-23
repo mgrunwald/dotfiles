@@ -9,3 +9,6 @@ map k 5k
 " restore default control-F behaviour
 map <C-f> <C-v><C-f>
 unmap /
+
+" Disable Vrome in those sites, Multiple URLs can be separated with ','
+set disablesites=mail.google.com, reader.google.com
