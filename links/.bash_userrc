@@ -3,6 +3,9 @@
 # have a nice prompt
 PS1='\n\w\n╒══════════════╕\n╘:\$ '
 
+# lynx home
+export WWW_HOME=https://www.google.com
+
 ## sync bash history across all open terms
 ## void duplicates..
 #export HISTCONTROL=ignoredups:erasedups  
