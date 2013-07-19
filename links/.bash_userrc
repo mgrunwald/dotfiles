@@ -4,7 +4,7 @@
 PS1='\n\w\n╒══════════════╕\n╘:\$ '
 
 # lynx home
-export WWW_HOME=https://www.google.com
+export WWW_HOME=~/
 
 ## sync bash history across all open terms
 ## void duplicates..
