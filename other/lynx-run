@@ -1,0 +1,6 @@
+#!/bin/sh
+# run lynx with the "text need activation" option
+# place in /usr/local/bin/lynx-run and add to alternatives for the default browser:
+#     sudo update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/local/bin/lynx-run 150
+#     sudo update-alternatives --config x-www-browser
+terminator -x lynx -tna $@

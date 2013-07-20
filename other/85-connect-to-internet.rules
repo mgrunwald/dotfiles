@@ -1,1 +1,2 @@
-/etc/udev/rules.d/85-connect-to-internet.rules
+# place in /etc/udev/rules.d/ and copy the connect script to /usr/local/bin/
+ACTION=="add", SUBSYSTEM=="net", ATTRS{idVendor}=="0af0", ATTRS{idProduct}=="7401", RUN+="/usr/local/bin/connect3G"
