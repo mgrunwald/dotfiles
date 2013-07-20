@@ -56,4 +56,4 @@ alias poweroff="sudo poweroff"
 alias halt="sudo halt"
 
 # reload xbindkeys config
-alias xbindkeysreloadconf='killall -HUP xbindkeys'
+alias xbindkeysreloadconf='killall xbindkeys && xbindkeys &'
