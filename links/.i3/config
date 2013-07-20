@@ -235,7 +235,7 @@ bindsym $mod+$alt+k workspace next
 
 # grays
 # class             	border      background      text        indicator
-client.focused      	#7777AA     #2E2E3F         #7777AA     #66AA63
+client.focused      	#7777AA     #7777AA         #AAAAAA     #66AA63
 client.focused_inactive #2E2E3F     #2E2E3F         #4B4B6B     #003333
 client.unfocused    	#2E2E3F     #2E2E3F         #4B4B6B     #003333
 
