@@ -29,3 +29,4 @@ case $command in
         ;;
 esac
 }
+source /usr/share/autojump/autojump.sh
