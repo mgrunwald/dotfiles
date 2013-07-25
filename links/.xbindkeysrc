@@ -132,7 +132,8 @@
 "geany"
 	Super_L + Mod4 + e
 
-"google-chrome"
+#"google-chrome"
+"terminator --title=lynx --profile=lynx -x screen lynx -tna"
 	Super_L + Mod4 + w
 
 "terminator"
@@ -156,8 +157,11 @@
 "cb-lock"
 	Control + Alt + l
 
-"connect3G > /tmp/clis-notify"
+"~/bin/connect3G"
     Control + Alt + 3 
 
 "nitrogen --sort=rtime ~/images/wallpapers"
 	Mod2+Mod4 + i
+
+"terminator -x cmatrix -C blue"
+    Mod2+Mod4 + m
