@@ -68,100 +68,99 @@
 ##################################
 # End of xbindkeys configuration #
 ##################################
-#								#
+#                               #
 #################################
 
 # show the 'halt' dialogue
 
-"terminator --title 'HALT ?' -x ~/bin/halt-prompt"
-	control+shift + q
+"i3-sensible-terminal -e ~/bin/halt-prompt"
+    control+shift + q
 
 # sound levels with ^Ins and ^Del
 
 "amixer -c 0 set Master 3-"
-	Control + Mod2 + Delete
+    Control + Mod2 + Delete
 
 "amixer -c 0 set Master 3+"
-	Control + Mod2 + Insert
+    Control + Mod2 + Insert
 
 # sound levels with multimedia buttons
 
 "amixer -c 0 set Master 3- && sleep 0.2"
-	Mod2 + XF86AudioLowerVolume
+    Mod2 + XF86AudioLowerVolume
 
 "amixer -c 0 set Master 3+ && sleep 0.2"
-	Mod2 + XF86AudioRaiseVolume
+    Mod2 + XF86AudioRaiseVolume
 
 # mpd music control
 
 "ncmpcpp toggle"
-	Mod2 + XF86AudioPlay
+    Mod2 + XF86AudioPlay
 
 "ncmpcpp stop"
-	Mod2 + XF86AudioStop
+    Mod2 + XF86AudioStop
 
 "ncmpcpp next"
-	Mod2 + XF86AudioNext
+    Mod2 + XF86AudioNext
 
 "ncmpcpp prev"
-	Mod2 + XF86AudioPrev
+    Mod2 + XF86AudioPrev
 
-"terminator --profile=music -x ncmpcpp"
-	Control+Alt+Mod2 + m
+"i3-sensible-terminal -e ncmpcpp"
+    Control+Alt+Mod2 + m
 
 # file manager
 
-"terminator --title filemanager -x ranger"
-	Mod2+Mod4 + f
+"i3-sensible-terminal -e ranger"
+    Control+Alt+Mod2 + f
 
 # info bar mode switching
 
 "echo 'mode1' > /tmp/clis-mode"
-	Mod2 + Mod4 + F1
+    Mod2 + Mod4 + F1
 "echo 'mode2' > /tmp/clis-mode"
-	Mod2 + Mod4 + F2
+    Mod2 + Mod4 + F2
 "echo 'mode3' > /tmp/clis-mode"
-	Mod2 + Mod4 + F3
+    Mod2 + Mod4 + F3
 "echo 'mode4' > /tmp/clis-mode"
-	Mod2 + Mod4 + F4
+    Mod2 + Mod4 + F4
 "echo 'mode5' > /tmp/clis-mode"
-	Mod2 + Mod4 + F5
+    Mod2 + Mod4 + F5
 
 # commonly used applications
 
 "geany"
-	Super_L + Mod4 + e
+    Super_L + Mod4 + e
 
-#"google-chrome"
-"terminator --title=lynx --profile=lynx -x screen lynx -tna"
-	Super_L + Mod4 + w
+"i3-sensible-terminal -e screen lynx -tna"
+    Control+Alt+Mod2 + w
 
-#"terminator"
-#	Shift + Mod4 + Return
-
-"terminator --title unmounter -x cun"
-	Control + Alt + u
+"i3-sensible-terminal -e cun"
+    Control + Alt + u
 
 "scrotshot --focused"
-	Alt+Mod2 + Print
+    Alt+Mod2 + Print
 
 "scrotshot"
-	Mod2 + Print	
+    Mod2 + Print    
 
-"terminator --title networks -x wicd-curses"
-	Super_L + Mod4 + n
+"i3-sensible-terminal -e wicd-curses"
+    Control+Alt+Mod2 + n
 
-"terminator --title 'calendar and todo' -e calcurse"
-	Control+Alt+Mod2 + c
+"i3-sensible-terminal -e calcurse"
+    Control+Alt+Mod2 + c
+
+"i3-sensible-terminal -e htop"
+    Control+Alt+Mod2 + t
 
 "cb-lock"
-	Control + Alt + l
+    Control + Alt + l
 
 "~/bin/connect3G"
     Control + Alt + 3 
 
 "nitrogen --sort=rtime ~/images/wallpapers"
-	Mod2+Mod4 + i
+    Mod2+Mod4 + i
 
-"terminator -x cmatrix -C blue"
-    Mod2+Mod4 + m
+"i3-sensible-terminal -e cmatrix -C blue"
+    Control+Alt+Mod2 + a
