@@ -19,8 +19,8 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 floating_modifier $mod
 
 # start a terminal
-#bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec terminator --title=terminal
+bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec terminator --title=terminal
 
 # kill focused window
 bindsym $mod+Shift+Q kill
@@ -263,3 +263,5 @@ client.unfocused    	#2E2E3F     #2E2E3F         #4B4B6B     #003333
 #client.focused_inactive #004242     #004242         #00FFFF     #333300
 #client.unfocused    	#004242     #004242         #00FFFF     #333300
 
+# auto start apps
+exec ~/bin/auto-start
