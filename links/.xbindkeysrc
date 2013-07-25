@@ -135,8 +135,8 @@
 "google-chrome"
 	Super_L + Mod4 + w
 
-"terminator"
-	Shift + Mod4 + Return
+#"terminator"
+#	Shift + Mod4 + Return
 
 "terminator --title unmounter -x cun"
 	Control + Alt + u
