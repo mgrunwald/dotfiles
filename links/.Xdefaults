@@ -28,4 +28,6 @@ URxvt.color15: #cacbcb
 URxvt.scrollBar: false
 #URxvt.scrollstyle: plain
 # font
-#URxvt.font: 
+URxvt*font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
+#URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=10:antialias=true:hinting=true
+
