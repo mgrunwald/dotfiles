@@ -116,7 +116,7 @@ do
     # append the time
     #INFOLINE="$INFOLINE #! `date +%T`"
     INFOLINE="$INFOLINE [#!]"
-    
+
     # emit the i3status text along with our custom string
     dat="[{ \"full_text\": \"${INFOLINE}\" },"
     echo "${line/[/$dat}" || exit 1
