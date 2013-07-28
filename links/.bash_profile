@@ -13,3 +13,5 @@ export EDITOR=vim
 export LESSOPEN="|lesspipe.sh %s"
 export LESS=' -R '
 
+# source bashrc if in a login shell so tmux gets our aliases
+case $- in *i*) . ~/.bashrc;; esac
