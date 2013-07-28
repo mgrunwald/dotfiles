@@ -1,7 +1,7 @@
 # to include these commands place this in you .bashrc: source ~/.bash_userrc
 
 # let's use tmux more often
-[[ -z "$TMUX" ]] && exec tmux
+#[[ -z "$TMUX" ]] && exec tmux
 
 # have a nice prompt
 PS1='\n\w\n╒══════════════╕\n╘:\$ '

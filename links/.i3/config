@@ -264,4 +264,5 @@ client.unfocused    	#2E2E3F     #2E2E3F         #4B4B6B     #003333
 #client.unfocused    	#004242     #004242         #00FFFF     #333300
 
 # auto start apps
-exec ~/bin/auto-start
+exec /home/kbmonkey/bin/auto-start
+
