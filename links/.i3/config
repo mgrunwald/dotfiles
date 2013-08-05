@@ -191,7 +191,7 @@ bar {
 # automatic window assignments
 assign [class="Google-chrome"] $ws5
 assign [class="Gimp"] $ws4
-assign [class="Geany"] $ws2
+#assign [class="Geany"] $ws2
 assign [class="Dvdrip"] $ws9
 
 # do not follow the white rabbit
