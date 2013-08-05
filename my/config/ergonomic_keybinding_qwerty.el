@@ -170,7 +170,7 @@
 ;;
 ;; disable backspace to kick the habbit
 ;;
-(global-set-key '[backspace]  '(lambda ()	  (interactive)	  (nil))  )
+;(global-set-key '[backspace]  '(lambda ()	  (interactive)	  (nil))  )
 
 (global-unset-key (kbd "C-<prior>")) ; scroll-right
 (global-unset-key (kbd "C-<next>")) ; scroll-left
@@ -278,7 +278,7 @@
 (setq mac-pass-command-to-system nil) ; so that Cmd+H won't activate Hide Current App and Cmd+Shift+q won't logout user.
 
 (global-set-key (kbd "C-n") 'new-empty-buffer) ; Open New File
-(global-set-key (kbd "C-o") 'find-file-at-point) ; Open
+(global-set-key (kbd "C-o") 'find-file) ; Open
 (global-set-key (kbd "C-w") 'close-current-buffer) ; Close
 (global-set-key (kbd "C-s") 'save-buffer) ; Save
 (global-set-key (kbd "C-S-n") 'write-file) ; Save As.
@@ -503,7 +503,7 @@
 (add-hook 'magit-mode-hook
           (lambda()
             (define-key magit-status-mode-map (kbd "M-s") 'other-window) ; was magit-show-level-4
-            (define-key magit-show-branches-mode-map (kbd "M-s") 'other-window) ; was magit-show-level-4
+;;            (define-key magit-branche-manager-mode-map (kbd "M-s") 'other-window) ; was magit-show-level-4
             ))
 
 ;; reclaim bindings from bookmark+
@@ -512,6 +512,13 @@
             (define-key bookmark-bmenu-mode-map (kbd "M-s") 'other-window) ; was prefix
             (define-key bookmark-bmenu-mode-map (kbd "M-a") 'execute-extended-command) ; was bookmark-bmenu-show-all-annotations
             ))
+
+;; reclaim bindings from ido menu buffer
+(add-hook 'ido-minibuffer-setup-hook
+          (function
+           (lambda()
+             (define-key ido-completion-map (kbd "M-d" ) 'delete-backward-char) ; was ido-wide-find-dir-or-delete-dir
+)))
 
 ;; nothing to fix: c-mode, c++-mode, java, sh, js, perl, php, python
 
