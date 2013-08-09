@@ -209,34 +209,6 @@
                             )
       )
 
-(setq damian-msgq-project
-      (ede-cpp-root-project "damian-msgq-project"
-                            :file "~/projects/damian/trunk/DSP/pt/msgq/package.bld"
-                            :local-variables (list
-                                              (cons 'compile-command
-                                                    'mg/gen-xdc-compile-string
-                                                    )
-                                              (cons 'indent-tabs-mode t )
-                                              (cons  'mg-auto-insert-style 'damian )
-                                              )
-                            )
-      )
-
-(setq damian-libdspcom-project
-      (ede-cpp-root-project "damian-libdspcom-project"
-                            :file "~/projects/damian/trunk/MPC/lib/libdspcom/Makefile"
-                            :local-variables (list
-                                              (cons 'compile-command
-                                                    'mg/gen-std-compile-string
-                                                    )
-                                              (cons 'indent-tabs-mode t )
-                                              (cons  'mg-auto-insert-style 'damian )
-
-                                              )
-                            )
-      )
-
-
 
 ;; (setq damian-test-project
 ;;       (ede-cpp-root-project "damian-test-project"
