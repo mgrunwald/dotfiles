@@ -615,4 +615,40 @@ skeletons I use together with XEmacs."
 (diminish 'auto-complete-mode)
 
 
+;;
+;; octave
+;;
+(autoload 'octave-mode "octave-mod" nil t)
+(setq auto-mode-alist
+      (cons '("\\.m$" . octave-mode) auto-mode-alist))
+
+(add-hook 'octave-mode-hook
+          (lambda ()
+            (abbrev-mode 1)
+            (auto-fill-mode 1)))
+
+;; And finally, inferior-octave-mode-hook is run after starting the process
+;; and putting its buffer into Inferior Octave mode. Hence, if you like
+;; the up and down arrow keys to behave in the interaction buffer as in
+;; the shell, and you want this buffer to use nice colors:
+
+(add-hook 'inferior-octave-mode-hook
+          (lambda ()
+            (turn-on-font-lock)
+            (define-key inferior-octave-mode-map [up]
+              'comint-previous-input)
+            (define-key inferior-octave-mode-map [down]
+              'comint-next-input)))
+
+;;
+;; IDO Mode
+;;
+(ido-mode 1)
+
+;; If `gnuserv' is installed, add the lines
+(autoload 'octave-help "octave-hlp" nil t)
+(require 'gnuserv)
+(gnuserv-start)
+
 (speedbar-get-focus)
+
