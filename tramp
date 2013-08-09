@@ -1,4 +1,4 @@
-;; -*- emacs-lisp -*- <13/02/08 16:56:25 /home/gru/.emacs.d/tramp>
+;; -*- emacs-lisp -*- <13/07/05 17:44:54 /home/gru/.emacs.d/tramp>
 ;; Tramp connection history.  Don't change this file.
 ;; You can delete it, forcing Tramp to reapply the checks.
 
@@ -87,7 +87,9 @@
   ("remote-encoding" "base64")
   ("remote-decoding" "base64 -d -i")
   ("inline-compress" "gzip")
-  ("inline-decompress" "gzip -d"))
+  ("inline-decompress" "gzip -d")
+  ("~" "/home/gru")
+  ("uid-integer" 510))
  (["scpc" "root" "172.17.76.65" nil]
   ("uname" "Linux 2.6.35.7-vxp2")
   ("test" "test")
@@ -148,26 +150,27 @@
   ("local-encoding" base64-encode-region)
   ("local-decoding" base64-decode-region)
   ("remote-encoding" "base64")
-  ("remote-decoding" "base64 -d -i"))
+  ("remote-decoding" "base64 -d -i")
+  ("inline-compress" "gzip")
+  ("inline-decompress" "gzip -d"))
  (["scpc" nil "dmn-gru" nil]
-  ("uname" "Linux 2.6.37")
+  ("uname" "Linux 2.6.37-kk-5050200")
+  ("test" "test")
   ("remote-path"
    ("/bin" "/usr/bin" "/usr/sbin"))
   ("remote-shell" "/bin/sh")
-  ("readlink" nil)
   ("perl" nil)
-  ("stat" nil)
-  ("test" "test")
-  ("file-exists" "test -e")
   ("ls" "/bin/ls --color=never")
+  ("readlink" nil)
+  ("stat" nil)
+  ("file-exists" "test -e")
   ("id" "/usr/bin/id")
   ("gid-integer" 0)
+  ("~" "/root")
+  ("uid-integer" 0)
   ("local-encoding" tramp-uuencode-region)
   ("local-decoding" uudecode-decode-region)
   ("remote-encoding" "uuencode xxx")
-  ("remote-decoding" "uudecode -o -")
-  ("uid-integer" 0))
- (["scpc" nil "10.1.17.34" nil]
-  nil)
- (["scpc" nil "vxp4" nil]
+  ("remote-decoding" "uudecode -o -"))
+ (["scpc" nil "scpc" nil]
   nil))
