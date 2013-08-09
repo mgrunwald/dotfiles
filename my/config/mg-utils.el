@@ -252,7 +252,7 @@
     (setenv "ICECC_CXX" "arm-none-linux-gnueabi-g++" )
     (setenv "ICECC_DEBUG" "warnings" )
     (setenv "ICECC_VERSION"
-            "i686:/opt/damian/toolchain-arm/var/icecc/host-i686-target-arm-charly1.tar.gz")
+            "i686:/opt/damian/toolchain-arm/var/icecc/host-i686-target-arm_20130701.tar.gz")
     (if (not (string-match "arm" (mg-makefile-qmake-path
                                   (concat
                                    (mg-ede-current-project-root-dir)
@@ -281,7 +281,7 @@
     (setenv "ICECC" "yes" )
     (setenv "ICECC_CC" nil )
     (setenv "ICECC_CXX" nil )
-    (setenv "ICECC_DEBUG" "debug" )
+    (setenv "ICECC_DEBUG" "warnings" )
     (setenv "ICECC_VERSION"
             "/var/icecc/host-i686-target-i686-gru-2012-08-01-01.tar.gz")
     (if (not (string-match "^/usr/bin/qmake" (mg-makefile-qmake-path
