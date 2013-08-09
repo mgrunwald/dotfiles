@@ -186,6 +186,7 @@
 (global-unset-key (kbd "C-x 0")) ; delete-window
 (global-unset-key (kbd "C-x 1")) ; delete-other-windows
 
+(global-unset-key (kbd "M-S-SPC")) ; mark-paragraph
 
 ;;; --------------------------------------------------
 ;;; CURSOR MOVEMENTS
@@ -307,6 +308,7 @@
 (global-set-key (kbd "M-3") 'mg-split-window-auto)
 
 (global-set-key (kbd "M-8") 'extend-selection)
+(global-set-key (kbd "M-S-SPC") 'extend-selection)
 
 (add-hook 'w3m-mode-hook
  (lambda ()
@@ -518,7 +520,16 @@
           (function
            (lambda()
              (define-key ido-completion-map (kbd "M-d" ) 'delete-backward-char) ; was ido-wide-find-dir-or-delete-dir
-)))
+             (define-key ido-completion-map (kbd "M-l" ) 'ido-next-match) ; was ido-toggle-literal
+             (define-key ido-completion-map (kbd "M-j" ) 'ido-prev-match) ; was ido-???
+             )))
+
+;; reclaim bindings from org mode
+(add-hook 'org-mode-hook
+          (function
+           (lambda ()
+             (define-key org-mode-map (kbd "M-e") 'backward-kill-word ) ; was org-forward-sentence
+             )))
 
 ;; nothing to fix: c-mode, c++-mode, java, sh, js, perl, php, python
 
