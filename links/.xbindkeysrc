@@ -132,7 +132,8 @@
 "geany"
     Super_L + Mod4 + e
 
-"i3-sensible-terminal -e screen lynx -tna"
+# "i3-sensible-terminal -e screen lynx -tna"
+"x-www-browser"
     Control+Alt+Mod2 + w
 
 "i3-sensible-terminal -e cun"
