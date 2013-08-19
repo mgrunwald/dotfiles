@@ -1,0 +1,5 @@
+# Do not warn about old skel dot-files anymore
+GRML_WARN_SKEL=0
+
+NOTITLE=1
+DONTSETRPROMPT=1

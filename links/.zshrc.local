@@ -1,0 +1,108 @@
+# set colors for use in prompts {{{
+if zrcautoload colors && colors 2>/dev/null ; then
+    BLUE="%{${fg[blue]}%}"
+    RED="%{${fg_bold[red]}%}"
+    GREEN="%{${fg[green]}%}"
+    CYAN="%{${fg[cyan]}%}"
+    MAGENTA="%{${fg[magenta]}%}"
+    YELLOW="%{${fg[yellow]}%}"
+    WHITE="%{${fg[white]}%}"
+    NO_COLOUR="%{${reset_color}%}"
+else
+    BLUE=$'%{\e[1;34m%}'
+    RED=$'%{\e[1;31m%}'
+    GREEN=$'%{\e[1;32m%}'
+    CYAN=$'%{\e[1;36m%}'
+    WHITE=$'%{\e[1;37m%}'
+    MAGENTA=$'%{\e[1;35m%}'
+    YELLOW=$'%{\e[1;33m%}'
+    NO_COLOUR=$'%{\e[0m%}'
+fi
+
+
+export DAFIT=/home/gru/projects/vxp/branches/branch-0-2-30-X/Dafit_Code
+export DAFIT2=$DAFIT/dafit2/dafit2
+export VXP2=/home/gru/projects/vxp/trunk/Dafit_Code
+
+alias quota="ssh pt-agcmlx1 quota"
+alias aptitude="sudo aptitude"
+alias b2d='bin2base 10'
+alias b2h='bin2base 16'
+alias d2b='base2bin 10'
+alias d2h='dec2base 16'
+alias d2o='dec2base 8'
+alias h2b='base2bin 16'
+alias h2d='base2dec 16'
+alias o2d='base2dec 8'
+alias gnuplot='rlwrap -a -c gnuplot'
+
+eval $(dircolors ~/.dircolors)
+set bell-style visible
+set page-completions off
+
+
+
+bindkey "\eh" beginning-of-line
+bindkey "\eH" end-of-line
+bindkey "\eu" vi-backward-word
+bindkey "\eo" vi-forward-word
+bindkey "\eI" history-search-backward
+bindkey "\eK" history-search-forward
+bindkey "\ej" backward-char
+bindkey "\el" forward-char
+bindkey "\ei" history-beginning-search-backward
+bindkey "\ek" history-beginning-search-forward
+bindkey "\e[5~" history-beginning-search-backward
+bindkey "\e[6~" history-beginning-search-forward
+bindkey "\ef" delete-char
+bindkey "\ed" backward-delete-char
+bindkey "\er" kill-word
+bindkey "\ee" vi-backward-kill-word
+bindkey "\ev" yank
+bindkey "\eV" yank-pop
+bindkey -s "\e[24~" "d-upload\n"
+
+bindkey "èh" beginning-of-line
+bindkey "ÈH" end-of-line
+bindkey "õu" backward-word
+bindkey "ïo" forward-word
+bindkey "ÉI" history-search-backward
+bindkey "ËK" history-search-forward
+bindkey "êj" backward-char
+bindkey "ìl" forward-char
+bindkey "éi" history-beginning-search-backward
+bindkey "ëk" history-beginning-search-forward
+bindkey "æf" delete-char
+bindkey "äd" backward-delete-char
+bindkey "òr" kill-word
+bindkey "åe" backward-kill-word
+
+
+
+
+chpwd () { print -Pn ']2;%$(($COLUMNS - 30))<...<%~%<<' }
+
+function help { bash -c "help $@" }
+
+# don't use colors on dumb terminals (like emacs):
+if [[ "$TERM" == dumb ]] ; then
+    PROMPT="${EXITCODE}${debian_chroot:+($debian_chroot)}%n@%m %40<...<%B%~%b%<< "'${VCS_INFO_message_0_}'"%# "
+else
+    # only if $GRMLPROMPT is set (e.g. via 'GRMLPROMPT=1 zsh') use the extended prompt
+    # set variable identifying the chroot you work in (used in the prompt below)
+    if [[ $GRMLPROMPT -gt 0 ]] ; then
+        PROMPT="${RED}${EXITCODE}${CYAN}[%j running job(s)] ${GREEN}{history#%!} ${RED}%(3L.+.) ${BLUE}%* %D ${BLUE}%n${NO_COLOUR}@%m %40<...<%B%~%b%<< "'${VCS_INFO_message_0_}'"%# "
+    else
+        # This assembles the primary prompt string
+        if (( EUID != 0 )); then
+            PROMPT="${RED}${EXITCODE}${WHITE}${debian_chroot:+($debian_chroot)}${YELLOW}%n${NO_COLOUR}@%m "'${VCS_INFO_message_0_}'"%# "
+        else
+            PROMPT="${BLUE}${EXITCODE}${WHITE}${debian_chroot:+($debian_chroot)}${RED}%n${NO_COLOUR}@%m "'${VCS_INFO_message_0_}'"%# "
+        fi
+    fi
+fi
+
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+#export LANG=en_GB.ISO-8859-15
+
