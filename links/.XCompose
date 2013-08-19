@@ -1,0 +1,8 @@
+include "%H/.XCompose_master"
+
+<Multi_key> <quotedbl> <a> 			: "ä"
+<Multi_key> <quotedbl> <o> 			: "ö"
+<Multi_key> <quotedbl> <u> 			: "ü"
+<Multi_key> <quotedbl> <A> 			: "Ä"
+<Multi_key> <quotedbl> <O> 			: "Ö"
+<Multi_key> <quotedbl> <U> 			: "Ü"
