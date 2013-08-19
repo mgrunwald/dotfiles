@@ -1,6 +1,6 @@
-# kbmonkey's dotfiles
+# mgrunwalds dotfiles
 
-This repo contains configs and bash scripts.
+This repo contains configs and bash/zsh scripts.
 
 It is a means to backup and synchronize my dotfiles between existing and future machines.
 
