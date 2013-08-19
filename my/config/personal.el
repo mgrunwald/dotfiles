@@ -645,6 +645,12 @@ skeletons I use together with XEmacs."
 ;;
 (ido-mode 1)
 
+;;
+;; Markdown Mode
+;;
+(setq auto-mode-alist (cons '("\\.md$" . markdown-mode) auto-mode-alist))
+
+
 ;; If `gnuserv' is installed, add the lines
 (autoload 'octave-help "octave-hlp" nil t)
 (require 'gnuserv)
