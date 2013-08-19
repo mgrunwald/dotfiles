@@ -1,2 +1,10 @@
 *.swp
 *.bak
+filesets-cache.el
+woman-cache.el
+/auto-save-list/
+*~
+/.org-id-locations
+/TAGS
+/ac-comphist.dat
+/delme.patch
