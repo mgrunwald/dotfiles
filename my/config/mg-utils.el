@@ -557,7 +557,10 @@
 
 ;;(mg-makefile-qmake-path "~/projects/damian-git-svn/DMN/MPC/firmware/src/Makefile" )
 
-
+(defun mg-erc ()
+  (interactive)
+  (erc :server "irc.freenode.net" :port "6667"
+       :nick "Lupe" :password "TwarjEz0" ))
 
 (message "mg-utils OK")
 (provide 'mg-utils)
