@@ -1,53 +1,392 @@
-URxvt.background: #1a1b1c
-URxvt.foreground: #808080
-!Black
-URxvt.color0: #484848
-URxvt.color8: #666767
-!Red
-URxvt.color1: #a1756c
-URxvt.color9: #d1aca3
-!Green
-URxvt.color2:  #719171
-URxvt.color10: #aad1ac
-!Yellow
-URxvt.color3:  #9c9869
-URxvt.color11: #c3c49f
-!Blue
-URxvt.color4:  #7186a6
-URxvt.color12: #a6c0de
-!Magenta
-URxvt.color5:  #876794
-URxvt.color13: #bea2cf
-!Cyan
-URxvt.color6:  #628c85
-URxvt.color14: #a1d4c2
-!White
-URxvt.color7:  #8f8f8f
-URxvt.color15: #cacbcb
-!no scrollbar
+! ===========================================================================
+!  OpenWindows Olwm Olvwn
+! ===========================================================================
+!
+           OpenWindows.AutoRaise:	false
+  OpenWindows.AutoReReadMenuFile:	true
+                OpenWindows.Beep:	never
+  OpenWindows.ClickMoveThreshold:	5
+   OpenWindows.DragRightDistance:	50
+       OpenWindows.DragThreshold:	5
+       OpenWindows.FocusLenience:	true
+      OpenWindows.IconFlashCount:	3
+        OpenWindows.IconLocation:	bottom
+        OpenWindows.MinimalDecor:	Virtual xload xmem xsysinfo xosview xbiff xclock xeyes
+   OpenWindows.MultiClickTimeout:	4
+      OpenWindows.PaintWorkspace:	true
+     OpenWindows.PopupJumpCursor:	true
+ OpenWindows.RubberBandThickness:	1
+  OpenWindows.ScrollbarPlacement:	right
+  OpenWindows.SelectDisplaysMenu:	False
+OpenWindows.SelectToggleStacking:	true
+       OpenWindows.SelectWindows:	true
+         OpenWindows.ServerGrabs:	true
+            OpenWindows.SetInput:	followmouse
+    OpenWindows.ShowMoveGeometry:	true
+  OpenWindows.ShowResizeGeometry:	true
+          OpenWindows.SnapToGrid:	true
+               OpenWindows.Use3D:	true
+         OpenWindows.Use3DFrames:	true
+         OpenWindows.Use3DResize:	true
+      OpenWindows.VirtualDesktop:	2x2
+         OpenWindows.VirtualGrid:	none
+       OpenWindows.VirtualSticky:	Virtual xload xmem xsysinfo xosview xbiff xclock swissclock
+!OpenWindows.WindowColor:	#b2b2b2
+!OpenWindows.WorkspaceColor:	gray
+
+           *printCommand: lpr
+
+Mwm.interactivePlacement:	false
+
+      grok*ColSheet: black
+
+    xterm*background:	#f0f0f0
+    xterm*foreground:       black
+ xterm.eightBitInput:	true
+   xterm*multiScroll:	on
+    xterm*jumpScroll:	on
+! xterm*font:	-adobe-courier-bold-r-normal--14-140-75-75-m-90-iso8859-1
+     xterm*ScrollBar: on
+     xterm*SaveLines: 2000
+    xterm*VisualBell: true
+xterm.eightBitOutput:	true
+
+Scrollbar.JumpCursor:	True
+
+
+            Ghostview.pageMedia:  A4
+
+*XConsole*text.scrollHorizontal:         False
+            *XConsole*text.wrap: line
+
+!
+! XSysinfo
+!
+               XSysinfo*.font:                 fixed
+        XSysinfo*.title.label:          Linx System Info
+        XSysinfo*.title.width:          200
+    XSysinfo*.load.name.label:      CPU Load:
+    XSysinfo*.idle.name.label:      CPU Idle:
+     XSysinfo*.mem.name.label:       Memory:
+    XSysinfo*.swap.name.label:      Swap:
+! set foreground colors for load
+ XSysinfo*load*bar.foreground:   RosyBrown1
+XSysinfo*load*bar.foreground1:  IndianRed1
+XSysinfo*load*bar.foreground2:  OrangeRed1
+XSysinfo*load*bar.foreground3:  firebrick1
+XSysinfo*load*bar.foreground4:  pink1
+XSysinfo*load*bar.foreground5:  HotPink1
+XSysinfo*load*bar.foreground6:  DeepPink2
+XSysinfo*load*bar.foreground7:  maroon1
+ XSysinfo*load*bar.segmentGap:   1
+
+! set idle gauge color
+XSysinfo*idle*bar.foreground:   green
+ XSysinfo*idle*bar.backgroud:   red
+
+! set mem info gauge colors
+ XSysinfo*mem*bar.foreground:    tomato
+XSysinfo*mem*bar.foreground1:   green3
+XSysinfo*mem*bar.foreground2:   orchid
+
+! set swap gauge color
+ XSysinfo*swap*bar.foreground:   hotpink1
+
+! set background
+         XSysinfo*.background:           gray50
+XSysinfo*.BarGauge.background:  white
+
+
+  *basicLocale:	C
+   *timeFormat:	C
+      *numeric:	C
+  *displayLang:	C
+    *inputLang:	C
+
+#ifdef COLOR
+                   *customization:	-color
+#endif
+
+
+
+
+!Here are the Xaw3D definitions that reside within my .Xdefaults file.
+!It took me a while to make everything look like the true Motif feel, so
+!put it into your .Xdefaults file and enjoy this cool xterm!
+!
+! Good Xaw3d Defaults
+#ifdef COLOR
+                 *Form.background:			grey67
+*TransientShell*Dialog.background:	grey67
+              *Command.background:		grey77
+           *MenuButton.background:		grey77
+           *MenuButton.foreground:		black
+           *SimpleMenu*background:		grey77
+           *SimpleMenu*foreground:		black
+             *ScrollbarBackground:		grey67
+             *ScrollbarForeground:		grey37
+            *Scrollbar*background:		grey77
+            *Scrollbar*foreground:      grey37
+
+          *Scrollbar*pointerColor:	black
+*Scrollbar*pointerColorBackground:	white
+                *beNiceToColormap:		False
+#else
+                 *Form.background:			black
+                 *Form.foreground:			white
+*TransientShell*Dialog.background:	black
+*TransientShell*Dialog.foreground:	white
+              *Command.background:		black
+              *Command.foreground:		white
+           *MenuButton.background:		black
+           *MenuButton.foreground:		white
+           *SimpleMenu*background:		black
+           *SimpleMenu*foreground:		white
+             *ScrollbarBackground:		black
+             *ScrollbarForeground:		white
+            *Scrollbar*background:		black
+            *Scrollbar*foreground:		white
+          *Scrollbar*pointerColor:	black
+*Scrollbar*pointerColorBackground:	white
+                *beNiceToColormap:		True
+#endif
+            XTerm*Scrollbar*width:		16
+           XTerm*Scrollbar*height:		16
+      XTerm*Scrollbar*shadowWidth:	2
+      XTerm*Scrollbar*borderWidth:	3
+                 *Scrollbar*width:		15
+                *Scrollbar*height:		15
+           *Scrollbar*shadowWidth:		2
+           *Scrollbar*borderWidth:		2
+            *Scrollbar*cursorName:		top_left_arrow
+             *Scrollbar*pushThumb:		false
+               *Label*shadowWidth:		2
+               *Label*borderWidth:		2
+                      *shapeStyle:			Rectangle
+                     *shadowWidth:			2
+              *SmeBSB*shadowWidth:		2
+       *Toggle*highlightThickness:	2
+   *MenuButton*highlightThickness:	2
+      *Command*highlightThickness:	2
+          *Panner*shadowThickness:	2
+      *SimpleMenu*shadowThickness:	2
+               *topShadowContrast:		20
+            *bottomShadowContrast:		45
+                       *PushThumb:			False
+
+! ===========================================================================
+!                               Motif
+! ===========================================================================
+
+     *XmText.translations: #override\n\
+           <Key>osfDelete: delete-next-character()\n\
+        <Key>osfBackSpace: delete-previous-character()\n
+
+                 *XmTextField.translations: #override\n\
+                            <Key>osfDelete: delete-next-character()\n\
+                         <Key>osfBackSpace: delete-previous-character()\n
+
+
+! ===========================================================================
+!                               XTerm
+! ===========================================================================
+!*vt100.translations: #override \
+!        <Key>Home:      string("[1~") \n\
+!        <Key>Insert:    string("[2~") \n\
+!        <Key>BackSpace: string("[3~") \n\
+!        <Key>End:       string("[4~")
+
+! !
+! !----------------------------------------------------------------------
+! ! Gnuplot parameters
+! !----------------------------------------------------------------------
+! !
+! *rxvt.translations:  #override\n\
+!         <Key>Up:        string("^P")\n\
+!         <Key>Down:      string("^N")\n\
+!         Ctrl<Key>Left:  string("^[b")\n\
+!         <Key>Left:      string("^B")\n\
+!         Ctrl<Key>Right: string("^[f")\n\
+!         <Key>Right:     string("^F")\n\
+!         Ctrl<Key>Home:  string("^[<")\n\
+!         <Key>Home:      string("^B")\n\
+!         Ctrl<Key>End:   string("^[>")\n\
+!         <Key>End:       string("^E")\n\
+!         <Key>Delete:    string("^D")\n
+
+
+
+!Emacs*EmacsFrame.geometry: 101x66-0+0
+                 Emacs*EmacsFrame.geometry: 110x105-0+0
+                            Emacs*geometry: 110x106-0+0
+.xemacs.shell.container.menubar.background: gray77
+!   .xemacs.shell.container.menubar.fontSet: -nil-profont-medium-r-normal--11-*-*-*-c-*-iso8859-1
+!-xos4-terminus-medium-r-normal-*-*-120-*-*-c-*-iso8859-15
+!-b&h-luxi sans-medium-r-normal-*-10-90-*-*-p-*-iso8859-15
+!-*-lucida-medium-r-normal-*-10-*-*-*-*-*-iso8859-15
+
+!        Emacs*XlwMenu*fontSet: -*-helvetica-medium-r-normal-*-*-120-*-*-*-*-*-*
+     Emacs*XlwMenu*foreground: black
+Emacs*XlwMenu*shadowThickness: 1
+
+! Emacs.default.attributeFont: -nil-profont-medium-r-normal-*-*-110-*-*-c-*-iso8859-1
+!          Emacs*menubar*font: -nil-profont-medium-r-normal--11-*-*-*-c-*-iso8859-1
+!Emacs.modeline.attributeFont: fixed
+!	   Emacs*Font: -nil-profont-medium-r-normal--12-120-72-72-c-60-iso8859-1
+              Emacs.toolBar: off
+
+              gnuplot*line1Color:  red
+              gnuplot*line2Color:  blue
+              gnuplot*line3Color:  brown
+              gnuplot*line4Color:  coral
+              gnuplot*line5Color:  magenta
+              gnuplot*line6Color:  sienna
+              gnuplot*line7Color:  orange
+              gnuplot*line8Color:  cyan
+
+Xscilab*vpane.Vtsci.translations: #override\n\
+                       <Key>Home:      string("") \n\
+                        <Key>End:       string("") \n\
+                  <Key>BackSpace: string("") \n\
+                     <Key>Delete: string("")\n
+
+          tkinfo*font: lucidasanstypewriter-12
+
+!           Aterm*font:            fixed
+           Aterm*font: -xos4-terminus-medium-r-normal-*-*-120-*-*-c-*-iso8859-15
+     Aterm*foreground:      white
+     Aterm*background:      black
+        Aterm*tinting:         #0000ff
+    Aterm*tintingType:     and
+    Aterm*transparent:     true
+Aterm*transpscrollbar: true
+     Aterm*visualBell:      true
+      Aterm*saveLines:       4000
+
+!    urxvt*background: blue
+!          urxvt*font: -xos4-terminus-medium-r-normal-*-*-120-*-*-c-*-iso8859-15
+!    urxvt*foreground: white
+!     urxvt*saveLines: 4000
+!     urxvt*tintColor: blue
+! urxvt*inheritPixmap: true
+!    urxvt*visualBell: true
+!        urxvt*fading: 10
+!     urxvt*fadeColor: blue
+!  urxvt*pointerColor: yellow
+! urxvt*pointerColor2: gold
+!   urxvt*borderColor: blue
+
+URxvt.saveLines: 10000
 URxvt.scrollBar: false
-#URxvt.scrollstyle: plain
+URxvt.inheritPixmap: true
+URxvt.tintColor: blue
+URxvt.shading: 40
+URxvt.foreground: white
+URxvt.background: black
+URxvt.secondaryScroll: true
+! URxvt*font: xft:Bitstream Vera Sans Mono:pixelsize=12:antialias=true:hinting=true
+! URxvt*boldFont: xft:Bitstream Vera Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
+URxvt*font: xft:DejaVu Sans Mono:pixelsize=11:antialias=true:hinting=true
+URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=11:antialias=true:hinting=true
+! URxvt*font: xft:Liberation Mono:pixelsize=12:antialias=true:hinting=true
+! URxvt*boldFont: xft:Liberation Mono:bold:pixelsize=12:antialias=true:hinting=true
+! URxvt*font: xft:terminus:pixelsize=14
+! URxvt*boldFont: xft:terminus:bold:pixelsize=14
+! URxvt*font:-*-courier-medium-r-normal-*-14-*-*-*-*-*-iso8859-1
+! URxvt*boldFont:-*-courier-bold-r-normal-*-14-*-*-*-*-*-iso8859-1
+! URxvt.font: xft:Terminus:pixelsize=12
+! URxvt*boldFont: xft:terminus:bold:pixelsize=12
+URxvt*visualBell: true
+URxvt*fading: 50
+URxvt*fadeColor: black
+URxvt*pointerColor: yellow
+URxvt*pointerColor2: black
+URxvt*borderColor: black
+URxvt.perl-ext-common: default,url-select,keyboard-select
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.urlLauncher: firefox
+! URxvt.matcher.button: 1
+! URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
+URxvt.urgentOnBell: True
+URxvt*color4: RoyalBlue
+URxvt*color12: RoyalBlue
+URxvt.perl-lib: /usr/local/lib/urxvt/perl/urxvt-perls
 
-# font
-URxvt*font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
-#URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=10:antialias=true:hinting=true
+    dclock*militaryTime:    true
+           dclock*width:    124
+          dclock*height:    65
+      dclock*foreground:    lightblue
+         dclock*led_off:    navy
+      dclock*background:    black
 
-## FOR SOME REASON ONLY ONE OF THESE WORK AT A TIME - CANT ENABLE ALL TOGETHER
-# clipboard copy and paste with alt-c and alt-v
-URxvt.perl-ext-common: ...,clipboard
-URxvt.keysym.M-c:   perl:clipboard:copy
-URxvt.keysym.M-v:   perl:clipboard:paste
-URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-URxvt.clipboard.copycmd:  xclip -i -selection clipboard
-URxvt.clipboard.pastecmd: xclip -o -selection clipboard
-# keyboard selection
-#URxvt.perl-ext-common: ...,keyboard-select
-#URxvt.keysym.M-Escape: perl:keyboard-select:activate
-#URxvt.keysym.M-s: perl:keyboard-select:search
-# url selection
-#URxvt.perl-ext-common: ...,url-select
-#URxvt.keysym.M-u: perl:url-select:select_next
+      xosview*transparent:        False
+  xosview*meterLabelColor:        wheat
+       xosview*usedlabels:        True
+   xosview*usedLabelColor:        yellow
+      xosview*borderwidth:        0
+             xosview*font:        7x13bold
+       xosview*background:        black
+       xosview*foreground:        navy
 
-URxvt*.transparent: true
-! URxvt*.shading: 0 to 99 darkens, 101 to 200 lightens
-URxvt*.shading: 20
+! CPU Meter Resources
+
+              xosview*cpu:       True
+     xosview*cpuUserColor:       blue
+     xosview*cpuNiceColor:       yellow
+   xosview*cpuSystemColor:       orange
+xosview*cpuInterruptColor:       red
+     xosview*cpuWaitColor:       lightblue
+     xosview*cpuFreeColor:       green
+      xosview*cpuPriority:       5
+         xosview*cpuDecay:       true
+         xosview*cpuGraph:       false
+
+! Memory Meter Resources
+! Not all of these are used by a specific platform.
+
+              xosview*mem:                True
+   xosview*memKernelColor:     yellow
+     xosview*memUsedColor:     seagreen
+   xosview*memSharedColor:     SkyBlue
+   xosview*memBufferColor:     orange
+    xosview*memCacheColor:     red
+     xosview*memFreeColor:     green
+     xosview*memTextColor:     blue
+    xosview*memOtherColor:     range
+   xosview*memActiveColor:     blue
+ xosview*memInactiveColor:     lightblue
+      xosview*memPriority:     10
+         xosview*memDecay:     False
+         xosview*memGraph:     False
+    xosview*memUsedFormat:     autoscale
+
+! Swap Meter Resources
+
+             xosview*swap:               True
+    xosview*swapUsedColor:      seagreen
+    xosview*swapFreeColor:      green
+xosview*swapReservedColor:  yellow
+     xosview*swapPriority:       10
+        xosview*swapDecay:          False
+        xosview*swapGraph:          False
+   xosview*swapUsedFormat:	    autoscale
+
+
+! Network Meter Resources
+
+             xosview*net:		    False
+    xosview*netBandwidth:   10000000  ! for 100Mbit/s Ethernet (could be 12500000)
+      xosview*netInColor:         SkyBlue
+     xosview*netOutColor:         SlateBlue1
+   xosview*netBackground:         green
+     xosview*netPriority:         2
+        xosview*netDecay:         false
+        xosview*netGraph:         false
+   xosview*netUsedFormat:	       autoscale
+        xosview*netIface:         False
+
+
+xosview*horizontalMargin:      1
+  xosview*verticalMargin:      10
+ xosview*verticalSpacing:      10

@@ -93,7 +93,7 @@ set incsearch		" Incremental search
 "set autowrite		" Automatically save before commands like :next and :make
 "set hidden             " Hide buffers when they are abandoned
 "set mouse=a		" Enable mouse usage (all modes)
-set number		" show line numbers. can also be 'set nu'. append ! to disable at runtime.
+"set number		" show line numbers. can also be 'set nu'. append ! to disable at runtime.
 set tabstop=4
 set shiftwidth=4
 set expandtab   " use spaces instead of tab characters
