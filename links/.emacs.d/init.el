@@ -41,6 +41,9 @@
 ;; customizations messed up. So I put them all in an extra file, which
 ;; gets loaded here
 (load (concat my-emacs-dir "config/personal.el") nil nil 1)
+;; load per host configuration. Hosts that share this configuration
+;; can do this with links.
+(load (concat my-emacs-dir "config/" (system-name)  ".el" ) )
 ;;}}}
 ;;============================================================================
 
@@ -68,8 +71,8 @@
 
 
 (put 'narrow-to-region 'disabled nil)
-
 (put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
@@ -82,4 +85,3 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
-(put 'downcase-region 'disabled nil)

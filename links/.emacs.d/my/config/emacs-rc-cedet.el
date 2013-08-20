@@ -6,8 +6,8 @@
 ;;
 ;; Geklaut und für mich angepasst von markus grunwald
 ;;
+(message "loading emacs-rc-cedet.el")
 
-(load-file "~/.emacs.d/my/lisp/cedet/common/cedet.el")
 
 ;; (semantic-load-enable-minimum-features) ;; enables only minimum of necessary features
 ;; (semantic-load-enable-code-helpers) ;;enables senator-minor-mode for navigation in buffer, semantic-mru-bookmark-mode for storing positions of visited tags, and semantic-idle-summary-mode, that shows information about tag under point;
@@ -329,3 +329,4 @@
 
 ;;; emacs-rc-cedet.el ends here
 
+(message "finished emacs-rc-cedet.el")

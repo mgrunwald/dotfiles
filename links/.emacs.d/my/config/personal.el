@@ -25,6 +25,8 @@ skeletons I use together with XEmacs."
   "This directory contains all data XEmacs likes to store."
   )
 
+(load-file "~/.emacs.d/my/lisp/cedet/common/cedet.el")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;    Setting paths and list
 
@@ -79,10 +81,6 @@ skeletons I use together with XEmacs."
 (load "ergonomic_keybinding_qwerty.el")
 (require 'ska-global-keys)
 (require 'ska-local-keys)
-
-
-
-(load "emacs-rc-cedet.el")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Major Modes
@@ -402,13 +400,6 @@ skeletons I use together with XEmacs."
 		try-complete-lisp-symbol-partially
 		try-expand-line))
 
-;; autoinsert.el
-;; automatic insertion of text into new files.
-;; Find appropriate skeletons for various modes.
-;; this just shows the syntax
-(load "pt-auto-insert" nil nil nil)
-
-
 (require 'cmake-mode)
 (setq auto-mode-alist
       (append '(("CMakeLists\\.txt\\'" . cmake-mode)
@@ -658,3 +649,93 @@ skeletons I use together with XEmacs."
 
 (speedbar-get-focus)
 
+
+;;
+;; Auto inserts
+;;
+(add-to-list 'auto-insert-alist
+        '((perl-mode . "Perl Program")
+         nil
+         "#! /usr/bin/perl -w\n\n"
+         "# File: " (file-name-nondirectory buffer-file-name) "\n"
+         "# Time-stamp: <>\n#\n"
+         "# Copyright (C) " (substring (current-time-string) -4)
+         " by " auto-insert-copyright "\n#\n"
+         "# Author: "(user-full-name) "\n#\n"
+         "# Description:\n# " _ "\n"
+         ;; (progn (save-buffer)
+         ;;        (shell-command (format "chmod +x %s"
+         ;;                               (buffer-file-name)))
+         ;;        "")
+         )
+        )
+
+(add-to-list 'auto-insert-alist  '((org-mode . "org mode" )
+         nil
+         "#+OPTIONS:    H:3 num:nil toc:t \\n:nil @:t ::t |:t ^:t -:t f:t *:t TeX:t LaTeX:t skip:nil d:(HIDE) tags:not-in-toc\n"
+         "#+STARTUP:    align fold nodlcheck hidestars oddeven lognotestate\n"
+         "#+SEQ_TODO:   TODO(t) INPROGRESS(i) WAITING(w@) | DONE(d) CANCELED(c@)\n"
+         "#+TAGS:       telephon(t) kaufen(k) brief(b)\n"
+         "#+TITLE:      \n"
+         "#+AUTHOR:     "(user-full-name)"\n"
+         "#+EMAIL:      "(progn user-mail-address)"\n"
+         "#+LANGUAGE:   en\n\n" _
+         ) )
+
+(add-to-list 'auto-insert-alist
+        '(("\\.sh$" . "Shell script")
+         nil
+         "#!/bin/bash\n"
+         "##############################################################################\n"
+         "# @file "(file-name-nondirectory buffer-file-name)"\n"
+         "# This file may not be reproduced, disclosed or used in whole\n"
+         "# or in part without the express written permission of\n"
+         "# Pruftechnik Condition Monitoring GmbH.\n"
+         "#\n"
+         "# (c) 2000 - "( format-time-string "%Y" )" by Pruftechnik AG\n"
+         "# Time-stamp: <>\n#\n"
+         "# Author: "(user-full-name) "\n#\n\n"
+         "# Let shell functions inherit ERR trap.  Same as `set -E'.\n"
+         "set -o errtrace \n\n"
+         "# Trigger error when expanding unset variables.  Same as `set -u'.\n"
+         "set -o nounset\n\n"
+         "#  Trap non-normal exit signals: 1/HUP, 2/INT, 3/QUIT, 15/TERM, ERR\n"
+         "#  NOTE1: - 9/KILL cannot be trapped.\n"
+         "#        - 0/EXIT isn't trapped because:\n"
+         "#          - with ERR trap defined, trap would be called twice on error\n"
+         "#          - with ERR trap defined, syntax errors exit with status 0, not 2\n"
+         "#  NOTE2: Setting ERR trap does implicit `set -o errexit' or `set -e'.\n"
+         "trap quit 1 2 3 15 ERR\n"
+         "\n"
+         "\n"
+         "#--- quit() -----------------------------------------------------\n"
+         "#  @param $1 integer  (optional) Exit status.  If not set, use `$?'\n"
+         "#  @param $2 message  (optional) Error/exit message\n"
+         "#\n"
+         "#  Use \"quit\" instead of \"exit\" to cleanly quit this script\n"
+         "#  Allways call `quit' at end of script\n"
+         "\n"
+         "function quit() {\n"
+         "    local exit_status=${1:-$?}\n"
+         "    local message=${2:-\"\"}\n"
+         "    [ -n \"${message}\"    ] && echo \"${message}\"\n"
+         "    [ ${exit_status} -ne 0 ] && echo Exiting $0 with status $exit_status\n"
+         "    exit $exit_status\n"
+         "}\n"
+         "\n"
+         "\n"
+         "\n"
+         "# myscript" _ "\n"
+         "\n"
+         "\n"
+         "\n"
+         "# Allways call `quit' at end of script\n"
+         "quit\n"
+         ;; (progn (save-buffer)
+         ;;        (shell-command (format "chmod +x %s"
+         ;;                               (buffer-file-name))
+         ;;                       )
+         ;;        "")
+         ))
+
+(message "personal.el done")
