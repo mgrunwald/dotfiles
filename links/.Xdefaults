@@ -304,7 +304,7 @@ URxvt*pointerColor2: black
 URxvt*borderColor: black
 URxvt.perl-ext-common: default,url-select,keyboard-select
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
-URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.keysym.M-w: perl:url-select:select_next
 URxvt.urlLauncher: firefox
 ! URxvt.matcher.button: 1
 ! URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
