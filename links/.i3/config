@@ -212,7 +212,7 @@ client.unfocused        #333333 #222222 #888888
 client.urgent           #2f343a #900000 #ffffff
 
 exec xset s off -dpms
-exec feh  --bg-scale  /home/gru/bilder/capraia_bei_sonnenuntergang.jpg
+exec feh  --bg-scale  ~/bilder/capraia_bei_sonnenuntergang.jpg
 exec iceweasel
 #exec claws-mail
 exec skype   # conflicts if pidgin starts skype
