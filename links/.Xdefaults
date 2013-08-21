@@ -1,44 +1,4 @@
-! ===========================================================================
-!  OpenWindows Olwm Olvwn
-! ===========================================================================
-!
-           OpenWindows.AutoRaise:	false
-  OpenWindows.AutoReReadMenuFile:	true
-                OpenWindows.Beep:	never
-  OpenWindows.ClickMoveThreshold:	5
-   OpenWindows.DragRightDistance:	50
-       OpenWindows.DragThreshold:	5
-       OpenWindows.FocusLenience:	true
-      OpenWindows.IconFlashCount:	3
-        OpenWindows.IconLocation:	bottom
-        OpenWindows.MinimalDecor:	Virtual xload xmem xsysinfo xosview xbiff xclock xeyes
-   OpenWindows.MultiClickTimeout:	4
-      OpenWindows.PaintWorkspace:	true
-     OpenWindows.PopupJumpCursor:	true
- OpenWindows.RubberBandThickness:	1
-  OpenWindows.ScrollbarPlacement:	right
-  OpenWindows.SelectDisplaysMenu:	False
-OpenWindows.SelectToggleStacking:	true
-       OpenWindows.SelectWindows:	true
-         OpenWindows.ServerGrabs:	true
-            OpenWindows.SetInput:	followmouse
-    OpenWindows.ShowMoveGeometry:	true
-  OpenWindows.ShowResizeGeometry:	true
-          OpenWindows.SnapToGrid:	true
-               OpenWindows.Use3D:	true
-         OpenWindows.Use3DFrames:	true
-         OpenWindows.Use3DResize:	true
-      OpenWindows.VirtualDesktop:	2x2
-         OpenWindows.VirtualGrid:	none
-       OpenWindows.VirtualSticky:	Virtual xload xmem xsysinfo xosview xbiff xclock swissclock
-!OpenWindows.WindowColor:	#b2b2b2
-!OpenWindows.WorkspaceColor:	gray
-
            *printCommand: lpr
-
-Mwm.interactivePlacement:	false
-
-      grok*ColSheet: black
 
     xterm*background:	#f0f0f0
     xterm*foreground:       black
@@ -51,128 +11,7 @@ Mwm.interactivePlacement:	false
     xterm*VisualBell: true
 xterm.eightBitOutput:	true
 
-Scrollbar.JumpCursor:	True
-
-
             Ghostview.pageMedia:  A4
-
-*XConsole*text.scrollHorizontal:         False
-            *XConsole*text.wrap: line
-
-!
-! XSysinfo
-!
-               XSysinfo*.font:                 fixed
-        XSysinfo*.title.label:          Linx System Info
-        XSysinfo*.title.width:          200
-    XSysinfo*.load.name.label:      CPU Load:
-    XSysinfo*.idle.name.label:      CPU Idle:
-     XSysinfo*.mem.name.label:       Memory:
-    XSysinfo*.swap.name.label:      Swap:
-! set foreground colors for load
- XSysinfo*load*bar.foreground:   RosyBrown1
-XSysinfo*load*bar.foreground1:  IndianRed1
-XSysinfo*load*bar.foreground2:  OrangeRed1
-XSysinfo*load*bar.foreground3:  firebrick1
-XSysinfo*load*bar.foreground4:  pink1
-XSysinfo*load*bar.foreground5:  HotPink1
-XSysinfo*load*bar.foreground6:  DeepPink2
-XSysinfo*load*bar.foreground7:  maroon1
- XSysinfo*load*bar.segmentGap:   1
-
-! set idle gauge color
-XSysinfo*idle*bar.foreground:   green
- XSysinfo*idle*bar.backgroud:   red
-
-! set mem info gauge colors
- XSysinfo*mem*bar.foreground:    tomato
-XSysinfo*mem*bar.foreground1:   green3
-XSysinfo*mem*bar.foreground2:   orchid
-
-! set swap gauge color
- XSysinfo*swap*bar.foreground:   hotpink1
-
-! set background
-         XSysinfo*.background:           gray50
-XSysinfo*.BarGauge.background:  white
-
-
-  *basicLocale:	C
-   *timeFormat:	C
-      *numeric:	C
-  *displayLang:	C
-    *inputLang:	C
-
-#ifdef COLOR
-                   *customization:	-color
-#endif
-
-
-
-
-!Here are the Xaw3D definitions that reside within my .Xdefaults file.
-!It took me a while to make everything look like the true Motif feel, so
-!put it into your .Xdefaults file and enjoy this cool xterm!
-!
-! Good Xaw3d Defaults
-#ifdef COLOR
-                 *Form.background:			grey67
-*TransientShell*Dialog.background:	grey67
-              *Command.background:		grey77
-           *MenuButton.background:		grey77
-           *MenuButton.foreground:		black
-           *SimpleMenu*background:		grey77
-           *SimpleMenu*foreground:		black
-             *ScrollbarBackground:		grey67
-             *ScrollbarForeground:		grey37
-            *Scrollbar*background:		grey77
-            *Scrollbar*foreground:      grey37
-
-          *Scrollbar*pointerColor:	black
-*Scrollbar*pointerColorBackground:	white
-                *beNiceToColormap:		False
-#else
-                 *Form.background:			black
-                 *Form.foreground:			white
-*TransientShell*Dialog.background:	black
-*TransientShell*Dialog.foreground:	white
-              *Command.background:		black
-              *Command.foreground:		white
-           *MenuButton.background:		black
-           *MenuButton.foreground:		white
-           *SimpleMenu*background:		black
-           *SimpleMenu*foreground:		white
-             *ScrollbarBackground:		black
-             *ScrollbarForeground:		white
-            *Scrollbar*background:		black
-            *Scrollbar*foreground:		white
-          *Scrollbar*pointerColor:	black
-*Scrollbar*pointerColorBackground:	white
-                *beNiceToColormap:		True
-#endif
-            XTerm*Scrollbar*width:		16
-           XTerm*Scrollbar*height:		16
-      XTerm*Scrollbar*shadowWidth:	2
-      XTerm*Scrollbar*borderWidth:	3
-                 *Scrollbar*width:		15
-                *Scrollbar*height:		15
-           *Scrollbar*shadowWidth:		2
-           *Scrollbar*borderWidth:		2
-            *Scrollbar*cursorName:		top_left_arrow
-             *Scrollbar*pushThumb:		false
-               *Label*shadowWidth:		2
-               *Label*borderWidth:		2
-                      *shapeStyle:			Rectangle
-                     *shadowWidth:			2
-              *SmeBSB*shadowWidth:		2
-       *Toggle*highlightThickness:	2
-   *MenuButton*highlightThickness:	2
-      *Command*highlightThickness:	2
-          *Panner*shadowThickness:	2
-      *SimpleMenu*shadowThickness:	2
-               *topShadowContrast:		20
-            *bottomShadowContrast:		45
-                       *PushThumb:			False
 
 ! ===========================================================================
 !                               Motif
@@ -187,52 +26,10 @@ XSysinfo*.BarGauge.background:  white
                          <Key>osfBackSpace: delete-previous-character()\n
 
 
-! ===========================================================================
-!                               XTerm
-! ===========================================================================
-!*vt100.translations: #override \
-!        <Key>Home:      string("[1~") \n\
-!        <Key>Insert:    string("[2~") \n\
-!        <Key>BackSpace: string("[3~") \n\
-!        <Key>End:       string("[4~")
-
-! !
-! !----------------------------------------------------------------------
-! ! Gnuplot parameters
-! !----------------------------------------------------------------------
-! !
-! *rxvt.translations:  #override\n\
-!         <Key>Up:        string("^P")\n\
-!         <Key>Down:      string("^N")\n\
-!         Ctrl<Key>Left:  string("^[b")\n\
-!         <Key>Left:      string("^B")\n\
-!         Ctrl<Key>Right: string("^[f")\n\
-!         <Key>Right:     string("^F")\n\
-!         Ctrl<Key>Home:  string("^[<")\n\
-!         <Key>Home:      string("^B")\n\
-!         Ctrl<Key>End:   string("^[>")\n\
-!         <Key>End:       string("^E")\n\
-!         <Key>Delete:    string("^D")\n
-
-
-
-!Emacs*EmacsFrame.geometry: 101x66-0+0
                  Emacs*EmacsFrame.geometry: 110x105-0+0
                             Emacs*geometry: 110x106-0+0
 .xemacs.shell.container.menubar.background: gray77
-!   .xemacs.shell.container.menubar.fontSet: -nil-profont-medium-r-normal--11-*-*-*-c-*-iso8859-1
-!-xos4-terminus-medium-r-normal-*-*-120-*-*-c-*-iso8859-15
-!-b&h-luxi sans-medium-r-normal-*-10-90-*-*-p-*-iso8859-15
-!-*-lucida-medium-r-normal-*-10-*-*-*-*-*-iso8859-15
 
-!        Emacs*XlwMenu*fontSet: -*-helvetica-medium-r-normal-*-*-120-*-*-*-*-*-*
-     Emacs*XlwMenu*foreground: black
-Emacs*XlwMenu*shadowThickness: 1
-
-! Emacs.default.attributeFont: -nil-profont-medium-r-normal-*-*-110-*-*-c-*-iso8859-1
-!          Emacs*menubar*font: -nil-profont-medium-r-normal--11-*-*-*-c-*-iso8859-1
-!Emacs.modeline.attributeFont: fixed
-!	   Emacs*Font: -nil-profont-medium-r-normal--12-120-72-72-c-60-iso8859-1
               Emacs.toolBar: off
 
               gnuplot*line1Color:  red
@@ -249,32 +46,6 @@ Xscilab*vpane.Vtsci.translations: #override\n\
                         <Key>End:       string("") \n\
                   <Key>BackSpace: string("") \n\
                      <Key>Delete: string("")\n
-
-          tkinfo*font: lucidasanstypewriter-12
-
-!           Aterm*font:            fixed
-           Aterm*font: -xos4-terminus-medium-r-normal-*-*-120-*-*-c-*-iso8859-15
-     Aterm*foreground:      white
-     Aterm*background:      black
-        Aterm*tinting:         #0000ff
-    Aterm*tintingType:     and
-    Aterm*transparent:     true
-Aterm*transpscrollbar: true
-     Aterm*visualBell:      true
-      Aterm*saveLines:       4000
-
-!    urxvt*background: blue
-!          urxvt*font: -xos4-terminus-medium-r-normal-*-*-120-*-*-c-*-iso8859-15
-!    urxvt*foreground: white
-!     urxvt*saveLines: 4000
-!     urxvt*tintColor: blue
-! urxvt*inheritPixmap: true
-!    urxvt*visualBell: true
-!        urxvt*fading: 10
-!     urxvt*fadeColor: blue
-!  urxvt*pointerColor: yellow
-! urxvt*pointerColor2: gold
-!   urxvt*borderColor: blue
 
 URxvt.saveLines: 10000
 URxvt.scrollBar: false
@@ -309,84 +80,48 @@ URxvt.urlLauncher: firefox
 ! URxvt.matcher.button: 1
 ! URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
 URxvt.urgentOnBell: True
-URxvt*color4: RoyalBlue
-URxvt*color12: RoyalBlue
+!URxvt*color4: RoyalBlue
+!URxvt*color12: RoyalBlue
 URxvt.perl-lib: /usr/local/lib/urxvt/perl/urxvt-perls
 
-    dclock*militaryTime:    true
-           dclock*width:    124
-          dclock*height:    65
-      dclock*foreground:    lightblue
-         dclock*led_off:    navy
-      dclock*background:    black
+urxvt*foreground: #f2f2f2
+urxvt*background: #101010
 
-      xosview*transparent:        False
-  xosview*meterLabelColor:        wheat
-       xosview*usedlabels:        True
-   xosview*usedLabelColor:        yellow
-      xosview*borderwidth:        0
-             xosview*font:        7x13bold
-       xosview*background:        black
-       xosview*foreground:        navy
+! Normal
+! color0    black
+! color1    red
+! color2    green
+! color3    yellow
+! color4    blue
+! color5    purple
+! color6    cyan
+! color7    white
 
-! CPU Meter Resources
+URxvt*color0:    #6c6c6c
+URxvt*color1:    #e9897c
+URxvt*color2:    #b6e77d
+URxvt*color3:    #ecebbe
+URxvt*color4:    #a9cdeb
+URxvt*color5:    #ea96eb
+URxvt*color6:    #c9caec
+URxvt*color7:    #f2f2f2
 
-              xosview*cpu:       True
-     xosview*cpuUserColor:       blue
-     xosview*cpuNiceColor:       yellow
-   xosview*cpuSystemColor:       orange
-xosview*cpuInterruptColor:       red
-     xosview*cpuWaitColor:       lightblue
-     xosview*cpuFreeColor:       green
-      xosview*cpuPriority:       5
-         xosview*cpuDecay:       true
-         xosview*cpuGraph:       false
+! Light
+! color8    black
+! color9    red
+! color10    green
+! color11    yellow
+! color12    blue
+! color13    purple
+! color14    cyan
+! color15    white
 
-! Memory Meter Resources
-! Not all of these are used by a specific platform.
+URxvt*color8:    #747474
+URxvt*color9:    #f99286
+URxvt*color10:    #c3f786
+URxvt*color11:    #fcfbcc
+URxvt*color12:    #b6defb
+URxvt*color13:    #fba1fb
+URxvt*color14:    #d7d9fc
+URxvt*color15:    #e2e2e2
 
-              xosview*mem:                True
-   xosview*memKernelColor:     yellow
-     xosview*memUsedColor:     seagreen
-   xosview*memSharedColor:     SkyBlue
-   xosview*memBufferColor:     orange
-    xosview*memCacheColor:     red
-     xosview*memFreeColor:     green
-     xosview*memTextColor:     blue
-    xosview*memOtherColor:     range
-   xosview*memActiveColor:     blue
- xosview*memInactiveColor:     lightblue
-      xosview*memPriority:     10
-         xosview*memDecay:     False
-         xosview*memGraph:     False
-    xosview*memUsedFormat:     autoscale
-
-! Swap Meter Resources
-
-             xosview*swap:               True
-    xosview*swapUsedColor:      seagreen
-    xosview*swapFreeColor:      green
-xosview*swapReservedColor:  yellow
-     xosview*swapPriority:       10
-        xosview*swapDecay:          False
-        xosview*swapGraph:          False
-   xosview*swapUsedFormat:	    autoscale
-
-
-! Network Meter Resources
-
-             xosview*net:		    False
-    xosview*netBandwidth:   10000000  ! for 100Mbit/s Ethernet (could be 12500000)
-      xosview*netInColor:         SkyBlue
-     xosview*netOutColor:         SlateBlue1
-   xosview*netBackground:         green
-     xosview*netPriority:         2
-        xosview*netDecay:         false
-        xosview*netGraph:         false
-   xosview*netUsedFormat:	       autoscale
-        xosview*netIface:         False
-
-
-xosview*horizontalMargin:      1
-  xosview*verticalMargin:      10
- xosview*verticalSpacing:      10
