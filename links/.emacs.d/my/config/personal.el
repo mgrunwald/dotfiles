@@ -25,7 +25,7 @@ skeletons I use together with XEmacs."
   "This directory contains all data XEmacs likes to store."
   )
 
-(load-file "~/.emacs.d/my/lisp/cedet/common/cedet.el")
+;;(load-file "~/.emacs.d/my/lisp/cedet/common/cedet.el")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;    Setting paths and list

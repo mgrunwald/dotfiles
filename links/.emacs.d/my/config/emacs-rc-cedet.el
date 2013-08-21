@@ -35,7 +35,7 @@
 ;; (setq-mode-local erlang-mode semanticdb-find-default-throttle
 ;;                  '(project unloaded system recursive))
 
-(require 'eassist)
+;;(require 'eassist)
 
 ;; ;; customisation of modes
 ;; (defun mg/cedet-hook ()
@@ -150,7 +150,7 @@
 ;; (global-semantic-idle-tag-highlight-mode 1)
 
 ;;; ede customization
-(require 'semantic-lex-spp)
+;;(require 'semantic-lex-spp)
 (global-ede-mode t)
 
 ;; cpp-tests project definition
