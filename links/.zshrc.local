@@ -20,11 +20,6 @@ else
 fi
 
 
-export DAFIT=/home/gru/projects/vxp/branches/branch-0-2-30-X/Dafit_Code
-export DAFIT2=$DAFIT/dafit2/dafit2
-export VXP2=/home/gru/projects/vxp/trunk/Dafit_Code
-
-alias quota="ssh pt-agcmlx1 quota"
 alias aptitude="sudo aptitude"
 alias b2d='bin2base 10'
 alias b2h='bin2base 16'
@@ -105,4 +100,6 @@ fi
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 #export LANG=en_GB.ISO-8859-15
+
+source ${HOME}/.zshrc.per_host/zshrc.local."$(hostname)"
 
