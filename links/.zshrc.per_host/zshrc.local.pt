@@ -1,1 +1,3 @@
 alias quota="ssh pt-agcmlx1 quota"
+
+bindkey -s "\e[24~" "d-upload\n"

@@ -1,0 +1,1 @@
+bbackupquery() { sudo bbackupquery -c /etc/boxbackup/clients/benji/bbackupd.conf "$@" ;}
