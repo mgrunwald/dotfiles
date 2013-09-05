@@ -35,7 +35,6 @@ alias ...="cd ../.."
 alias apg='apg -a 0 -MSNC'
 alias E="SUDO_EDITOR=\"emacsclient  --alternate-editor=\"\" -c \" sudoedit"
 
-
 eval "$(lessfile)"
 eval $(dircolors ~/.dircolors)
 set bell-style visible
