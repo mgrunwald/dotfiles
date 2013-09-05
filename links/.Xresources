@@ -30,7 +30,15 @@ xterm.eightBitOutput:	true
                             Emacs*geometry: 110x106-0+0
 .xemacs.shell.container.menubar.background: gray77
 
-              Emacs.toolBar: off
+Emacs*font: -nil-profont-medium-r-normal-*-*-110-*-*-c-*-iso8859-1
+Emacs*menubar*font: -b&h-lucida-medium-r-normal-*-*-80-*-*-p-*-iso8859-15
+Emacs*menu*font: -b&h-lucida-medium-r-normal-*-*-80-*-*-p-*-iso8859-15
+Emacs*popup*font:  -b&h-lucida-medium-r-normal-*-*-80-*-*-p-*-iso8859-15
+
+Emacs*menuBar:          off
+Emacs*verticalScrollBars:     off
+Emacs*toolBar:          off
+Emacs*internalBorder:      1
 
               gnuplot*line1Color:  red
               gnuplot*line2Color:  blue
@@ -57,8 +65,8 @@ URxvt.background: black
 URxvt.secondaryScroll: true
 ! URxvt*font: xft:Bitstream Vera Sans Mono:pixelsize=12:antialias=true:hinting=true
 ! URxvt*boldFont: xft:Bitstream Vera Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
-URxvt*font: xft:DejaVu Sans Mono:pixelsize=11:antialias=true:hinting=true
-URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=11:antialias=true:hinting=true
+  URxvt*font: xft:DejaVu Sans Mono:pixelsize=11:antialias=true:hinting=true
+  URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=11:antialias=true:hinting=true
 ! URxvt*font: xft:Liberation Mono:pixelsize=12:antialias=true:hinting=true
 ! URxvt*boldFont: xft:Liberation Mono:bold:pixelsize=12:antialias=true:hinting=true
 ! URxvt*font: xft:terminus:pixelsize=14
@@ -76,7 +84,7 @@ URxvt*borderColor: black
 URxvt.perl-ext-common: default,url-select,keyboard-select
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-w: perl:url-select:select_next
-URxvt.urlLauncher: firefox
+URxvt.urlLauncher: x-www-browser
 ! URxvt.matcher.button: 1
 ! URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
 URxvt.urgentOnBell: True
@@ -124,4 +132,3 @@ URxvt*color12:    #b6defb
 URxvt*color13:    #fba1fb
 URxvt*color14:    #d7d9fc
 URxvt*color15:    #e2e2e2
-
