@@ -1,8 +1,8 @@
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(Buffer-menu-buffer+size-width 40)
  '(Buffer-menu-mode-width 8)
  '(Info-auto-generate-directory (quote if-outdated))
@@ -16,7 +16,7 @@
  '(auto-hscroll-mode t)
  '(bar-cursor (quote (quote other)))
  '(before-save-hook (quote (time-stamp delete-trailing-whitespace (lambda nil (copyright-update t)))))
- '(bmkp-last-as-first-bookmark-file "/home/gru/.emacs.bmk")
+ '(bmkp-last-as-first-bookmark-file "/home/markus/.emacs.bmk")
  '(buffers-menu-max-size nil)
  '(c-basic-offset 4)
  '(c-default-style (quote ((java-mode . "java") (other . "gnu"))))
@@ -30,6 +30,7 @@
  '(case-fold-search t)
  '(cc-other-file-alist (quote (("\\.cc$" (".hh" ".h")) ("\\.hh$" (".cc" ".C")) ("\\.c$" (".h")) ("\\.h$" (".c" ".cc" ".C" ".CC" ".cxx" ".cpp")) ("\\.C$" (".H" ".hh" ".h")) ("\\.H$" (".C" ".CC")) ("\\.CC$" (".HH" ".H" ".hh" ".h")) ("\\.HH$" (".CC")) ("\\.cxx$" (".hh" ".h")) ("\\.cpp$" (".h" ".hh")))))
  '(change-log-default-name "~/ChangeLog.Work")
+ '(column-number-mode t)
  '(compilation-ask-about-save nil)
  '(compilation-read-command nil)
  '(compilation-scroll-output t)
@@ -51,7 +52,7 @@
  '(erc-nick "Lupe")
  '(european-calendar-style t)
  '(ff-ignore-include t)
- '(file-coding-system-alist (quote (("\\.dz\\'" no-conversion . no-conversion) ("\\.g?z\\(~\\|\\.~[0-9]+~\\)?\\'" no-conversion . no-conversion) ("\\.\\(?:tgz\\|svgz\\|sifz\\)\\(~\\|\\.~[0-9]+~\\)?\\'" no-conversion . no-conversion) ("\\.tbz2?\\'" no-conversion . no-conversion) ("\\.bz2\\(~\\|\\.~[0-9]+~\\)?\\'" no-conversion . no-conversion) ("\\.Z\\(~\\|\\.~[0-9]+~\\)?\\'" no-conversion . no-conversion) ("\\.elc\\'" . utf-8-emacs) ("\\.utf\\(-8\\)?\\'" . utf-8) ("\\.xml\\'" . xml-find-file-coding-system) ("\\(\\`\\|/\\)loaddefs.el\\'" raw-text . raw-text-unix) ("\\.tar\\'" no-conversion . no-conversion) ("\\.po[tx]?\\'\\|\\.po\\." . po-find-file-coding-system) ("\\.\\(tex\\|ltx\\|dtx\\|drv\\)\\'" . latexenc-find-file-coding-system) ("\\.org\\'" . utf-8) ("" undecided))))
+ '(file-coding-system-alist (quote (("\\.dz\\'" no-conversion . no-conversion) ("\\.g?z\\(~\\|\\.~[0-9]+~\\)?\\'" no-conversion . no-conversion) ("\\.\\(?:tgz\\|svgz\\|sifz\\)\\(~\\|\\.~[0-9]+~\\)?\\'" no-conversion . no-conversion) ("\\.tbz2?\\'" no-conversion . no-conversion) ("\\.bz2\\(~\\|\\.~[0-9]+~\\)?\\'" no-conversion . no-conversion) ("\\.Z\\(~\\|\\.~[0-9]+~\\)?\\'" no-conversion . no-conversion) ("\\.elc\\'" . utf-8-emacs) ("\\.utf\\(-8\\)?\\'" . utf-8) ("\\.xml\\'" . xml-find-file-coding-system) ("\\(\\`\\|/\\)loaddefs.el\\'" raw-text . raw-text-unix) ("\\.tar\\'" no-conversion . no-conversion) ("\\.po[tx]?\\'\\|\\.po\\." . po-find-file-coding-system) ("\\.\\(tex\\|ltx\\|dtx\\|drv\\)\\'" . latexenc-find-file-coding-system) ("\\.org\\'" . utf-8) ("utf-8" undecided))))
  '(filesets-cache-save-often-flag nil)
  '(filesets-data (quote (("damian" (:files "/home/gru/text/damian-scratch.txt")) ("VXP" (:files "/mnt/net/CM_Entwicklung/xchg/VIBXPERT/changelog.txt" "/10.1.2.34:/tmp/VibXpert.log")))))
  '(find-file-compare-truenames t)
@@ -63,7 +64,6 @@
  '(home-end-enable nil)
  '(ido-create-new-buffer (quote always))
  '(ido-enable-flex-matching t)
- '(ido-enable-tramp-completion nil)
  '(ido-everywhere t)
  '(ido-use-filename-at-point (quote guess))
  '(ido-use-url-at-point t)
@@ -77,6 +77,7 @@
  '(make-tags-files-invisible t)
  '(mark-diary-entries-in-calendar t)
  '(mark-holidays-in-calendar t)
+ '(mmm-global-mode (quote maybe))
  '(mode-compile-always-save-buffer-p t)
  '(mode-compile-never-edit-command-p t)
  '(modifier-keys-are-sticky nil)
@@ -131,6 +132,8 @@
  '(org-return-follows-link t)
  '(org-tab-follows-link t)
  '(paren-mode (quote blink-paren) nil (paren))
+ '(pr-ps-printer-alist (quote ((default "lpr" nil nil nil))))
+ '(pr-txt-printer-alist (quote ((default "lpr" nil nil))))
  '(preview-default-document-pt 12)
  '(printer-name nil)
  '(ps-paper-type (quote a4))
@@ -154,6 +157,7 @@
  '(server-switch-hook (quote ((lambda nil (let ((server-buf (current-buffer))) (bury-buffer) (switch-to-buffer-other-frame server-buf))))))
  '(show-paren-mode t nil (paren))
  '(sieve-manage-default-port 4190)
+ '(sieve-manage-default-user "markus@the-grue.de")
  '(signal-error-on-buffer-boundary nil)
  '(speedbar-directory-button-trim-method (quote trim))
  '(speedbar-directory-unshown-regexp "^\\(CVS\\|RCS\\|SCCS\\|\\.svn\\)\\'")
@@ -201,11 +205,10 @@
  '(woman-imenu t)
  '(woman-use-own-frame nil))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(default ((t (:stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "ProFont"))))
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(buffer-menu-buffer ((t (:foreground "blue"))))
  '(cursor ((t (:background "blue"))))
  '(grep-edit-face ((((class color) (background light)) (:background "LightGreen" :weight bold))))
