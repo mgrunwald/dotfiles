@@ -11,3 +11,5 @@ woman-cache.el
 /links/.emacs.d/.org-id-locations
 /links/.emacs.d/ac-comphist.dat
 /links/.i3/config
+/.emacs.desktop
+/links/.emacs.d/tramp
