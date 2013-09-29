@@ -2960,7 +2960,7 @@ brltty() {
 # just press 'asdf' keys to toggle between dvorak and us keyboard layout
 aoeu() {
     echo -n 'Switching to us keyboard layout: '
-    [[ -z "$DISPLAY" ]] && $SUDO loadkeys us &>/dev/null || setxkbmap us &>/dev/null
+    [[ -z "$DISPLAY" ]] && $SUDO loadkeys gb &>/dev/null || setxkbmap gb &>/dev/null
     echo 'Done'
 }
 asdf() {
@@ -2971,7 +2971,7 @@ asdf() {
 # just press 'asdf' key to toggle from neon layout to us keyboard layout
 uiae() {
     echo -n 'Switching to us keyboard layout: '
-    setxkbmap us && echo 'Done' || echo 'Failed'
+    setxkbmap gb && echo 'Done' || echo 'Failed'
 }
 
 # set up an ipv6 tunnel
