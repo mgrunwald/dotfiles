@@ -215,7 +215,6 @@
  '(grep-edit-face ((((class color) (background light)) (:background "LightGreen" :weight bold))))
  '(highlight ((((class color) (background light)) (:background "gray80"))))
  '(hl-line ((t nil)))
- '(mode-line ((((type x w32 mac) (class color)) (:background "grey75" :foreground "black" :box (:line-width -1 :style released-button)))))
  '(org-hide ((((background light)) (:foreground "gray90"))) t)
  '(show-paren-match ((((class color) (background light)) (:inverse-video t))))
  '(w3m-form ((((class color) (background light)) (:foreground "red" :underline t))) t))
