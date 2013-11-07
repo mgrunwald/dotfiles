@@ -817,4 +817,7 @@ skeletons I use together with XEmacs."
 ;; Rinari
 (require 'rinari nil 'noerror)
 
+(require 'autopair nil 'noerror)
+(autopair-global-mode)
+
 (message "personal.el done")
