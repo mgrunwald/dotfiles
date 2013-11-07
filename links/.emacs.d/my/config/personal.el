@@ -144,6 +144,7 @@ skeletons I use together with XEmacs."
              (ska-ruby-mode-keys)
              (rinari-minor-mode)
              (flymake-ruby-load)
+             (diminish 'rinari-minor-mode "Ri" )
              )
 )
 
@@ -684,6 +685,7 @@ skeletons I use together with XEmacs."
 ;;
 (diminish 'abbrev-mode)
 (diminish 'auto-fill-function)
+(diminish 'flymake-mode "FlyMk")
 
 
 ;;
