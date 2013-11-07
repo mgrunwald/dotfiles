@@ -33,7 +33,6 @@ alias md=mkdir
 alias ..="cd .."
 alias ...="cd ../.."
 alias apg='apg -a 0 -MSNC'
-alias E="SUDO_EDITOR=\"emacsclient  --alternate-editor=\"\" -c \" sudoedit"
 
 eval "$(lessfile)"
 eval $(dircolors ~/.dircolors)
@@ -77,6 +76,8 @@ bindkey "åe" backward-kill-word
 
 chpwd () { print -Pn ']2;%$(($COLUMNS - 30))<...<%~%<<' }
 help () { bash -c "help $@" }
+e() { emacsclient --alternate-editor="" -c "$@" }
+E() { SUDO_EDITOR="emacsclient  --alternate-editor=\"\" -c " sudoedit "$@" }
 
 # don't use colors on dumb terminals (like emacs):
 if [[ "$TERM" == dumb ]] ; then
