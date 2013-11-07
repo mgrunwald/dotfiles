@@ -283,7 +283,7 @@
     (setenv "ICECC_CXX" nil )
     (setenv "ICECC_DEBUG" "warnings" )
     (setenv "ICECC_VERSION"
-            "/var/icecc/host-i686-target-i686-gru-2012-08-01-01.tar.gz")
+            "/var/icecc/host-i686-target-i686-gru-2013-10-21.tar.gz")
     (if (not (string-match "^/usr/bin/qmake" (mg-makefile-qmake-path
                                   (concat
                                    (mg-ede-current-project-root-dir)

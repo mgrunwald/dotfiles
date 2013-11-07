@@ -546,25 +546,25 @@ skeletons I use together with XEmacs."
 ;;
 ;; Font locking in buffer menu (M-S-y / buffer-menu)
 ;;
-(setq buffer-menu-buffer-font-lock-keywords
-      '(("^....[*]Man .*Man.*"   . font-lock-variable-name-face) ;Man page
-        (".*Dired.*"             . font-lock-comment-face)       ; Dired
-        ("^....[*]shell.*"       . font-lock-preprocessor-face)  ; shell buff
-        (".*[*]scratch[*].*"     . font-lock-function-name-face) ; scratch buffer
-        ("^....[*].*"            . font-lock-string-face)        ; "*" named buffers
-        ("^..[*].*"              . font-lock-constant-face)      ; Modified
-        ("^.[%].*"               . font-lock-keyword-face)))     ; Read only
+;; (setq buffer-menu-buffer-font-lock-keywords
+;;       '(("^....[*]Man .*Man.*"   . font-lock-variable-name-face) ;Man page
+;;         (".*Dired.*"             . font-lock-comment-face)       ; Dired
+;;         ("^....[*]shell.*"       . font-lock-preprocessor-face)  ; shell buff
+;;         (".*[*]scratch[*].*"     . font-lock-function-name-face) ; scratch buffer
+;;         ("^....[*].*"            . font-lock-string-face)        ; "*" named buffers
+;;         ("^..[*].*"              . font-lock-constant-face)      ; Modified
+;;         ("^.[%].*"               . font-lock-keyword-face)))     ; Read only
 
-(defun buffer-menu-custom-font-lock  ()
-  (let ((font-lock-unfontify-region-function
-         (lambda (start end)
-           (remove-text-properties start end '(font-lock-face nil)))))
-    (font-lock-unfontify-buffer)
-    (set (make-local-variable 'font-lock-defaults)
-         '(buffer-menu-buffer-font-lock-keywords t))
-    (font-lock-fontify-buffer)))
+;; (defun buffer-menu-custom-font-lock  ()
+;;   (let ((font-lock-unfontify-region-function
+;;          (lambda (start end)
+;;            (remove-text-properties start end '(font-lock-face nil)))))
+;;     (font-lock-unfontify-buffer)
+;;     (set (make-local-variable 'font-lock-defaults)
+;;          '(buffer-menu-buffer-font-lock-keywords t))
+;;     (font-lock-fontify-buffer)))
 
-(add-hook 'buffer-menu-mode-hook 'buffer-menu-custom-font-lock)
+;; (add-hook 'buffer-menu-mode-hook 'buffer-menu-custom-font-lock)
 
 ;; ------------------------------
 ;; (require 'skype)
@@ -577,27 +577,23 @@ skeletons I use together with XEmacs."
 ;;
 ( global-hl-line-mode 1 )
 
-(require 'smooth-scroll)
-(smooth-scroll-mode t)
 ;; -- auto complete
-
 (if (< emacs-major-version 24 )
-    (
-     (require 'auto-complete)
-     (add-to-list 'ac-dictionary-directories "/usr/share/auto-complete/dict/")
-     (require 'auto-complete-config)
-     (ac-config-default)
+    (progn
+      (require 'auto-complete)
+      (add-to-list 'ac-dictionary-directories "/usr/share/auto-complete/dict/")
+      (require 'auto-complete-config)
+      (ac-config-default)
 
-     (autoload 'po-mode "po-mode"
-       "Major mode for translators to edit PO files" t)
-     (setq auto-mode-alist (cons '("\\.po\\'\\|\\.po\\." . po-mode)
-				 auto-mode-alist))
-     (autoload 'po-find-file-coding-system "po-compat")
-     (modify-coding-system-alist 'file "\\.po\\'\\|\\.po\\."
-				 'po-find-file-coding-system)
-     (diminish 'auto-complete-mode)
-
-     )
+      (autoload 'po-mode "po-mode"
+	"Major mode for translators to edit PO files" t)
+      (setq auto-mode-alist (cons '("\\.po\\'\\|\\.po\\." . po-mode)
+				  auto-mode-alist))
+      (autoload 'po-find-file-coding-system "po-compat")
+      (modify-coding-system-alist 'file "\\.po\\'\\|\\.po\\."
+				  'po-find-file-coding-system)
+      (diminish 'auto-complete-mode)
+      )
   )
 ;;
 ;; ruby
@@ -638,17 +634,17 @@ skeletons I use together with XEmacs."
 ;; web mode (untested)
 ;;
 
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb$" . web-mode)) ;; (4)
-
+(when (require 'web-mode nil 'noerror)
+  (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.erb$" . web-mode)) ;; (4)
+  )
 
 ;; Interactively Do Things (highly recommended, but not strictly required)
 ;; http://www.masteringemacs.org/articles/2010/10/10/introduction-to-ido-mode/
@@ -726,7 +722,6 @@ skeletons I use together with XEmacs."
 (setq auto-mode-alist (cons '("\\.md$" . markdown-mode) auto-mode-alist))
 
 
-;; If `gnuserv' is installed, add the lines
 (autoload 'octave-help "octave-hlp" nil t)
 
 (speedbar-get-focus)
@@ -820,6 +815,10 @@ skeletons I use together with XEmacs."
          ;;        "")
          ))
 ;; Rinari
-(require 'rinari)
+(require 'rinari nil 'noerror)
+
+(require 'autopair nil 'noerror)
+(autopair-global-mode)
+(diminish 'autopair-mode "pr")
 
 (message "personal.el done")
