@@ -640,10 +640,10 @@ skeletons I use together with XEmacs."
 (setq auto-mode-alist (cons '("\\.md$" . markdown-mode) auto-mode-alist))
 
 
-;; If `gnuserv' is installed, add the lines
 (autoload 'octave-help "octave-hlp" nil t)
-(require 'gnuserv)
-(gnuserv-start)
+;; If `gnuserv' is installed, add the lines
+;; (require 'gnuserv)
+;; (gnuserv-start)
 
 (speedbar-get-focus)
 
