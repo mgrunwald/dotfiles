@@ -577,9 +577,6 @@ skeletons I use together with XEmacs."
 ;;
 ( global-hl-line-mode 1 )
 
-(require 'smooth-scroll)
-(smooth-scroll-mode t)
-
 ;; -- auto complete
 (if (< emacs-major-version 24 )
     (progn
