@@ -30,7 +30,7 @@ xterm.eightBitOutput:	true
                             Emacs*geometry: 110x106-0+0
 .xemacs.shell.container.menubar.background: gray77
 
-Emacs*font: -nil-profont-medium-r-normal-*-*-110-*-*-c-*-iso8859-1
+!Emacs*font: -nil-profont-medium-r-normal-*-*-110-*-*-c-*-iso8859-1
 Emacs*menubar*font: -b&h-lucida-medium-r-normal-*-*-80-*-*-p-*-iso8859-15
 Emacs*menu*font: -b&h-lucida-medium-r-normal-*-*-80-*-*-p-*-iso8859-15
 Emacs*popup*font:  -b&h-lucida-medium-r-normal-*-*-80-*-*-p-*-iso8859-15

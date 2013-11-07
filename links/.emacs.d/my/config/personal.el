@@ -819,5 +819,6 @@ skeletons I use together with XEmacs."
 
 (require 'autopair nil 'noerror)
 (autopair-global-mode)
+(diminish 'autopair-mode "pr")
 
 (message "personal.el done")
