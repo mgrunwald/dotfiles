@@ -1,8 +1,8 @@
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(Buffer-menu-buffer+size-width 40)
  '(Buffer-menu-mode-width 8)
  '(Info-auto-generate-directory (quote if-outdated))
@@ -13,10 +13,11 @@
  '(TeX-open-quote "\"`")
  '(TeX-quote-language-alist (quote (("" "``" "''" t) ("german" "\"`" "\"'" t))))
  '(ange-ftp-try-passive-mode t)
+ '(ansi-color-names-vector ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(auto-hscroll-mode t)
  '(bar-cursor (quote (quote other)))
  '(before-save-hook (quote (time-stamp delete-trailing-whitespace (lambda nil (copyright-update t)))))
- '(bmkp-last-as-first-bookmark-file "/home/gru/.emacs.bmk")
+ '(bmkp-last-as-first-bookmark-file "~/.emacs.bmk")
  '(buffers-menu-max-size nil)
  '(c-basic-offset 4)
  '(c-default-style (quote ((java-mode . "java") (other . "gnu"))))
@@ -35,6 +36,8 @@
  '(compilation-scroll-output t)
  '(compilation-window-height 15)
  '(current-language-environment "UTF-8")
+ '(custom-enabled-themes (quote (zenburn)))
+ '(custom-safe-themes (quote ("d6a00ef5e53adf9b6fe417d2b4404895f26210c52bb8716971be106550cea257" default)))
  '(dabbrev-case-fold-search nil)
  '(dabbrev-case-replace nil)
  '(debug-on-error nil)
@@ -202,17 +205,17 @@
  '(woman-imenu t)
  '(woman-use-own-frame nil))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(default ((t (:stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "ProFont"))))
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#3f3f3f" :foreground "#dcdccc" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 91 :width normal :foundry "unknown" :family "ProFont"))))
  '(buffer-menu-buffer ((t (:foreground "blue"))))
  '(cursor ((t (:background "blue"))))
  '(grep-edit-face ((((class color) (background light)) (:background "LightGreen" :weight bold))))
  '(highlight ((((class color) (background light)) (:background "gray80"))))
- '(hl-line ((t (:background "gray95"))))
+ '(hl-line ((t nil)))
  '(mode-line ((((type x w32 mac) (class color)) (:background "grey75" :foreground "black" :box (:line-width -1 :style released-button)))))
- '(org-hide ((((background light)) (:foreground "gray90"))))
+ '(org-hide ((((background light)) (:foreground "gray90"))) t)
  '(show-paren-match ((((class color) (background light)) (:inverse-video t))))
- '(w3m-form ((((class color) (background light)) (:foreground "red" :underline t)))))
+ '(w3m-form ((((class color) (background light)) (:foreground "red" :underline t))) t))
