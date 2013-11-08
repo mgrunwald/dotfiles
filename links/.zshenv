@@ -15,7 +15,6 @@ GREP_COLOR='1;32'
 PATH=$PATH:${HOME}/bin
 
 eval $(lesspipe )
-export LANG=en_GB.UTF-8
 export BC_ENV_ARGS="-q -l $HOME/.bc/myFunctions"
 export PATH=$PATH:.
 export RPROMPT="${GREEN}%~${NO_COLOUR}"
