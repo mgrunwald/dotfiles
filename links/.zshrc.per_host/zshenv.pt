@@ -11,4 +11,3 @@ export PTZDIR=~/vxp-ptz
 export T=/mnt/net/CM_Entwicklung
 export VXP2=/home/gru/projects/vxp/trunk/Dafit_Code
 export X=/mnt/net/Xchg_Transfer
-export EDITOR=~/bin/em
