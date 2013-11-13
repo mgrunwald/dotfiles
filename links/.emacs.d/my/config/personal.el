@@ -538,6 +538,8 @@ skeletons I use together with XEmacs."
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
 
+(when (require 'sml-modeline nil 'noerror)
+  (sml-modeline-mode 1 ) )
 
 ;; w3m browser
 (setq browse-url-browser-function 'w3m-browse-url)
