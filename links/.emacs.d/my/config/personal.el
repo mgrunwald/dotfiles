@@ -190,6 +190,7 @@ skeletons I use together with XEmacs."
       '(lambda ()
 ;emacs22             (require 'ctypes)
          (require 'vvb-mode)
+         (vvb-mode t)
 	     (diminish 'vvb-mode)
          (imenu-add-menubar-index)
          ;; highlight self-defined types
@@ -203,7 +204,8 @@ skeletons I use together with XEmacs."
          ( load-library "vc" )
          (setq tag-table-alist '( ("Dafit_Software/" . "/home/gru/projects/Dafit_Software/") ))
          (which-function-mode)
-	     (gtags-mode)
+	     (gtags-mode t)
+         (subword-mode t)
 	     (diminish 'gtags-mode "Gtgs")
          (message "==================== c-mode-common-hook ====================")
          ))
@@ -215,7 +217,6 @@ skeletons I use together with XEmacs."
          (ska-coding-keys c-mode-map)
          (ska-c-common-mode-keys c-mode-map)
          (setq grep-find-command '"find . \\( -name \\*.c -o -name \\*.h \\) -print0 | xargs -0 -e grep -n " )
-         (subword-mode t)
          (message "==================== c-mode-hook ====================")
          ))
 
@@ -251,7 +252,6 @@ skeletons I use together with XEmacs."
          (font-lock-add-keywords 'c++-mode
                      '(("\\<Q[A-Z][A-Za-z]*" . 'qt-keywords-face)))
          ;; emacs23 (modify-syntax-entry ?_ "w" ) ; _ is part of a word
-         (subword-mode t)
          (setq mode-name "C++")
          (message "==================== c++-mode-hook ====================")
          ) )
