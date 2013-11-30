@@ -110,6 +110,7 @@ Argument MAP is c-mode-map or c++-mode-map."
   (define-key map '[(control v) (control l)]  'goto-line)
   (define-key map '[(meta n)]                 'c-beginning-of-defun)
   (define-key map '[(meta m)]                 'c-end-of-defun)
+  (define-key map '[(meta \,)]                 'gtags-find-rtag)
 
 ;; Semantic & co
   (define-key map  [S-iso-lefttab]            'eassist-switch-h-cpp)

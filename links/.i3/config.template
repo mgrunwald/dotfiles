@@ -236,6 +236,7 @@ exec udisks-glue -s
 #endif
 #ifdef PT
 exec xset s off -dpms
+exec /usr/lib/notification-daemon/notification-daemon
 exec feh  --bg-scale  ~/bilder/capraia_bei_sonnenuntergang.jpg
 exec iceweasel
 //exec claws-mail
