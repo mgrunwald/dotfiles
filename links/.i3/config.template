@@ -233,6 +233,7 @@ exec pidgin
 exec unclutter -noevents -idle 1 -root
 exec volumeicon
 exec udisks-glue -s
+exec owncloud
 #endif
 #ifdef PT
 exec xset s off -dpms
