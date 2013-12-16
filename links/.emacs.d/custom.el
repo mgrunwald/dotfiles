@@ -211,7 +211,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#3f3f3f" :foreground "#dcdccc" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "unknown" :family "ProFont"))))
- '(cursor ((t (:background "blue"))))
  '(grep-edit-face ((((class color) (background light)) (:background "LightGreen" :weight bold))))
  '(highlight ((((class color) (background light)) (:background "gray80"))))
  '(hl-line ((t nil)))
