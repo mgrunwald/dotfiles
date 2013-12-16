@@ -216,7 +216,7 @@
  '(highlight ((((class color) (background light)) (:background "gray80"))))
  '(hl-line ((t nil)))
  '(org-hide ((((background light)) (:foreground "gray90"))))
- '(show-paren-match ((((class color) (background light)) (:inverse-video t))))
+ '(show-paren-match ((t (:inverse-video t))))
  '(sml-modeline-end-face ((t (:background "#3f3f3f"))))
  '(vvb-face ((t (:inverse-video t))) t)
  '(w3m-form ((((class color) (background light)) (:foreground "red" :underline t)))))
