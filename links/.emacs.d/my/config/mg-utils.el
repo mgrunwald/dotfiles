@@ -45,6 +45,8 @@
 
 ;; We need time-stamp!
 (require 'time-stamp)
+(require 's)
+(require 'calc-bin)
 
 (defun mg-flymake-get-project-include-dirs( base )
   ( "." "local_includes" "startscreen"
@@ -561,6 +563,138 @@
   (interactive)
   (erc :server "irc.freenode.net" :port "6667"
        :nick "Lupe" :password "TwarjEz0" ))
+
+(defun mg-number-base (word)
+  "Identify the base of the number at point. If the number is valid for
+that base is different question"
+  ;; valid examples:
+  ;;
+  ;; base  2   0b10111 1001010b 0001b
+  ;; base  8   07 7o 8o
+  ;; base 10   08 012356910 1 1095870971d
+  ;; base 16   0xAFFE 0x100 10h affeh 0bbbb 0b
+  ;;
+  (cond
+   ( (or (s-starts-with? "0b" word ) (s-ends-with? "b" word ))  2 )
+   ( (or (s-starts-with? "0x" word t ) (s-ends-with? "h" word ))  16 )
+   ( (and
+      (not (s-contains? "8" word ) )
+      (not (s-contains? "9" word ) )
+      (or
+       (s-starts-with? "0" word )
+       (s-ends-with? "o" word )
+       )
+      )
+     8)
+   ( (or (s-ends-with? "d" word ) (s-numeric? word ) ) 10 )
+   (t nil )
+   )
+  )
+
+;; (mg-number-base "0b10111" )
+;; (mg-number-base "1001010b" )
+;; (mg-number-base "0001b" )
+;; (mg-number-base "07" )
+;; (mg-number-base "7o" )
+;; (mg-number-base "8o" )
+;; (mg-number-base "08" )
+;; (mg-number-base "012356910" )
+;; (mg-number-base "1" )
+;; (mg-number-base "1095870971d" )
+;; (mg-number-base "0xAFFE" )
+;; (mg-number-base "0x100" )
+;; (mg-number-base "10h" )
+;; (mg-number-base "affeh" )
+;; (mg-number-base "0bbbb" )
+;; (mg-number-base "0b" )
+
+
+(defun mg-strip-basehint (word)
+  (replace-regexp-in-string "^0*" ""
+                            (case (mg-number-base word )
+                              ( (2) (s-chop-prefixes '("0b" "0B") (s-chop-suffix "b" word) ) )
+                              ( (8) (s-chop-suffix "o" word ))
+                              ( (10) (s-chop-suffix "d" word ))
+                              ( (16) (s-chop-prefixes '( "0x" "0X") (s-chop-suffix "h" word )))
+                              ( (t) word )
+                              )
+                            )
+  )
+
+;; (mg-strip-basehint "0b10111" )
+;; (mg-strip-basehint "1001010b" )
+;; (mg-strip-basehint "0001b" )
+;; (mg-strip-basehint "07" )
+;; (mg-strip-basehint "7o" )
+;; (mg-strip-basehint "8o" )
+;; (mg-strip-basehint "08" )
+;; (mg-strip-basehint "012356910" )
+;; (mg-strip-basehint "1" )
+;; (mg-strip-basehint "1095870971d" )
+;; (mg-strip-basehint "0xAFFE" )
+;; (mg-strip-basehint "0x100" )
+;; (mg-strip-basehint "10h" )
+;; (mg-strip-basehint "affeh" )
+;; (mg-strip-basehint "0bbbb" )
+;; (mg-strip-basehint "0b" )
+
+(defun mg-base-to-dec (number)
+  "Convert any number to base 10"
+  (format "%d" (string-to-number (mg-strip-basehint number)
+                                 (mg-number-base number) ) )
+  )
+
+;; (mg-base-to-dec "0b10111" )
+;; (mg-base-to-dec "1001010b" )
+;; (mg-base-to-dec "0001b" )
+;; (mg-base-to-dec "07" )
+;; (mg-base-to-dec "7o" )
+;; (mg-base-to-dec "8o" )
+;; (mg-base-to-dec "08" )
+;; (mg-base-to-dec "012356910" )
+;; (mg-base-to-dec "1" )
+;; (mg-base-to-dec "1095870971d" )
+;; (mg-base-to-dec "0xAFFE" )
+;; (mg-base-to-dec "0x100" )
+;; (mg-base-to-dec "10h" )
+;; (mg-base-to-dec "affeh" )
+;; (mg-base-to-dec "0bbbb" )
+;; (mg-base-to-dec "0b" )
+
+
+(defun mg-number-to-base (anynumber base)
+  (interactive "sNumber:\nnBase:" )
+  ( let ( (number (string-to-number (mg-base-to-dec anynumber) ) ) )
+    (case base
+      ( (2) (let ((calc-number-radix 2))
+              (math-format-radix number)) )
+      ( (8) (format "0%o" number) )
+      ( (10) (format "%d" number) )
+      ( (16) (format "0x%x" number) )
+      ( (t) "gna")
+      )
+    )
+  )
+
+(defun mg-number-at-point-to-base (base)
+  (interactive "nBase:")
+  (message "%s is %s in base %s"
+           (word-at-point)
+           (mg-number-to-base (word-at-point) base )
+           base )
+  )
+
+(defun mg-change-base-at-point ( base )
+  (interactive "nBase:")
+  "Change the number at point from any base to the base the user wants."
+  (cl-destructuring-bind (beg . end)
+      (bounds-of-thing-at-point 'word)
+    (let ((str (buffer-substring-no-properties beg end)))
+      (delete-region beg end)
+      (insert (mg-number-to-base str base))
+      )))
+; 0x100
+
 
 (message "mg-utils OK")
 (provide 'mg-utils)
