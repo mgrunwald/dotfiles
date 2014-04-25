@@ -6,3 +6,5 @@ include "%H/.XCompose_master"
 <Multi_key> <quotedbl> <A> 			: "Ä"
 <Multi_key> <quotedbl> <O> 			: "Ö"
 <Multi_key> <quotedbl> <U> 			: "Ü"
+<Multi_key> <r> <t> <l>			: U200F
+<Multi_key> <l> <t> <r>			: U200E
