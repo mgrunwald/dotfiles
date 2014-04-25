@@ -194,7 +194,7 @@ in which case `vvb-column' & `vvb-right-on-eol-p' have no effect.")
 
 (defvar vvb-face (make-face 'vvb-face)
   "Face used to hilite the vertical bar.")
-(set-face-background vvb-face "pink")
+;; (set-face-background vvb-face "pink")
 
 (defvar vvb-mode nil
   "*Non-nil means to display the vertical bar at some column.")

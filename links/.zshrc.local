@@ -76,8 +76,6 @@ bindkey "åe" backward-kill-word
 
 chpwd () { print -Pn ']2;%$(($COLUMNS - 30))<...<%~%<<' }
 help () { bash -c "help $@" }
-e() { emacsclient --alternate-editor="" -c "$@" }
-E() { SUDO_EDITOR="emacsclient  --alternate-editor=\"\" -c " sudoedit "$@" }
 
 export EDITOR=e
 

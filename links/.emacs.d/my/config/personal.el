@@ -41,6 +41,7 @@ skeletons I use together with XEmacs."
         (concat my-lisp-dir "emacs-rails")
         (concat my-vendor-dir "web-mode" )
         (concat my-vendor-dir "rinari" )
+        (concat my-vendor-dir "s.el" )
         ;;(concat my-lisp-dir "psgml-1.2.2")
         (concat my-lisp-dir "tools")
         (concat my-lisp-dir "bookmark+")
