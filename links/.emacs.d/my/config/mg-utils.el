@@ -665,28 +665,24 @@ that base is different question"
 (defun mg-number-to-base (anynumber base)
   (interactive "sNumber:\nnBase:" )
   ( let ( (number (string-to-number (mg-base-to-dec anynumber) ) ) )
-    (case base
-      ( (2) (let ((calc-number-radix 2))
-              (math-format-radix number)) )
-      ( (8) (format "0%o" number) )
-      ( (10) (format "%d" number) )
-      ( (16) (format "0x%x" number) )
-      ( (t) "gna")
-      )
-    )
+    (let ((calc-number-radix base))
+      (math-format-radix number)) )
   )
 
 (defun mg-number-at-point-to-base (base)
+  "Change the number at point from any base to the base the user wants.
+The number is displayed as message and appended to the
+kill-ring (meaning you can yank it)"
   (interactive "nBase:")
-  (message "%s is %s in base %s"
-           (word-at-point)
-           (mg-number-to-base (word-at-point) base )
-           base )
+  ( let ( (newbase (mg-number-to-base (word-at-point) base ) ) )
+    (message "%s is %s in base %s" (word-at-point) newbase base )
+    (kill-new newbase)
+    )
   )
+
 
 (defun mg-change-base-at-point ( base )
   (interactive "nBase:")
-  "Change the number at point from any base to the base the user wants."
   (cl-destructuring-bind (beg . end)
       (bounds-of-thing-at-point 'word)
     (let ((str (buffer-substring-no-properties beg end)))
