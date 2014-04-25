@@ -2,7 +2,7 @@
 ;; ergonomic_keybinding_qwerty.el -- A ergonomic keybinding for qwerty keyboard.
 
 ;-*- coding: utf-8 -*-
-;; Copyright © 2007, 2008 by Xah Lee
+;; Copyright © 2013 by Xah Lee
 
 ;; Author: Xah Lee ( http://xahlee.org/ )
 ;; Keywords: qwerty, dvorak, keybinding, ergonomic
@@ -529,6 +529,7 @@
           (function
            (lambda ()
              (define-key org-mode-map (kbd "M-e") 'backward-kill-word ) ; was org-forward-sentence
+             (define-key org-mode-map (kbd "M-h") 'mg-home ) ; was org-mark-element
              )))
 
 ;; nothing to fix: c-mode, c++-mode, java, sh, js, perl, php, python
