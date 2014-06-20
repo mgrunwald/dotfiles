@@ -215,6 +215,7 @@
  '(grep-edit-face ((((class color) (background light)) (:background "LightGreen" :weight bold))))
  '(highlight ((((class color) (background light)) (:background "gray80"))))
  '(hl-line ((t nil)))
+ '(menu ((t (:background "#1e2320" :foreground "goldenrod"))))
  '(org-hide ((((background light)) (:foreground "gray90"))))
  '(show-paren-match ((t (:inverse-video t))))
  '(sml-modeline-end-face ((t (:background "#3f3f3f"))))
