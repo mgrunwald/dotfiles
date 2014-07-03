@@ -418,6 +418,7 @@
  (lambda()
  (define-key diff-mode-map (kbd "M-k") 'next-line)
  (define-key diff-mode-map (kbd "M-K") 'scroll-up)
+ (define-key diff-mode-map (kbd "M-h") 'mg-home)
  )
 )
 
@@ -529,6 +530,7 @@
           (function
            (lambda ()
              (define-key org-mode-map (kbd "M-e") 'backward-kill-word ) ; was org-forward-sentence
+             (define-key org-mode-map (kbd "M-h") 'mg-home ) ; was org-mark-element
              )))
 
 ;; nothing to fix: c-mode, c++-mode, java, sh, js, perl, php, python
