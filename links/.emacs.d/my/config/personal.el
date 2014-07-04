@@ -218,6 +218,9 @@ skeletons I use together with XEmacs."
          (ska-coding-keys c-mode-map)
          (ska-c-common-mode-keys c-mode-map)
          (setq grep-find-command '"find . \\( -name \\*.c -o -name \\*.h \\) -print0 | xargs -0 -e grep -n " )
+         (font-lock-add-keywords nil
+                                 '( ("\\<restrict\\>" . 'font-lock-keyword-face)))
+
          (message "==================== c-mode-hook ====================")
          ))
 
