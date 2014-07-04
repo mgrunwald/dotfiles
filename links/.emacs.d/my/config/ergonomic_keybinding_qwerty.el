@@ -2,7 +2,7 @@
 ;; ergonomic_keybinding_qwerty.el -- A ergonomic keybinding for qwerty keyboard.
 
 ;-*- coding: utf-8 -*-
-;; Copyright © 2007, 2008 by Xah Lee
+;; Copyright © 2013 by Xah Lee
 
 ;; Author: Xah Lee ( http://xahlee.org/ )
 ;; Keywords: qwerty, dvorak, keybinding, ergonomic

@@ -734,6 +734,10 @@ skeletons I use together with XEmacs."
 
 (speedbar-get-focus)
 
+(setq org-latex-to-pdf-process
+  '("xelatex -interaction nonstopmode %f"
+     "xelatex -interaction nonstopmode %f")) ;; for multiple passes
+
 
 ;;
 ;; Auto inserts
