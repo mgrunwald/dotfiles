@@ -531,6 +531,7 @@
            (lambda ()
              (define-key org-mode-map (kbd "M-e") 'backward-kill-word ) ; was org-forward-sentence
              (define-key org-mode-map (kbd "M-h") 'mg-home ) ; was org-mark-element
+             (define-key org-mode-map (kbd "M-a") 'execute-extended-command ) ; was org-backward-sentence
              )))
 
 ;; nothing to fix: c-mode, c++-mode, java, sh, js, perl, php, python
