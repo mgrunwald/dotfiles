@@ -196,7 +196,7 @@
 (global-set-key '[(control v) (i) (b)    ] 'ispell-buffer )
 (global-set-key '[(control v) (i) (r)    ] 'ispell-region )
 (global-set-key '[(control v) (i) (t)    ] 'ispell-toggle-dictionary )
-(global-set-key '[(control v) (g)        ] 'magit-status )
+(global-set-key '[(control v) (control v)] 'magit-status )
 (global-set-key '[(control v) (s)        ] 'sort-lines )
 (global-set-key '[(meta insert)]           'yank-pop)
 (global-set-key '[(shift delete )]         'kill-region)
