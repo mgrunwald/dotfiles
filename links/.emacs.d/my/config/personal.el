@@ -704,7 +704,9 @@ skeletons I use together with XEmacs."
 (add-hook 'octave-mode-hook
           (lambda ()
             (abbrev-mode 1)
-            (auto-fill-mode 1)))
+            (auto-fill-mode 1)
+            (setq comment-start "%" )
+            ))
 
 ;; And finally, inferior-octave-mode-hook is run after starting the process
 ;; and putting its buffer into Inferior Octave mode. Hence, if you like
