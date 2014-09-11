@@ -64,7 +64,7 @@
  '(fume-max-items 50)
  '(gnus-select-method (quote (nntp "news.arcor.de")))
  '(gnuserv-program (concat exec-directory "/gnuserv") t)
- '(gud-gdb-command-name "gdb --annotate=3 ")
+ '(gud-gdb-command-name "gdb -i=mi")
  '(gutter-buffers-tab-visible-p nil)
  '(home-end-enable nil)
  '(ido-create-new-buffer (quote always))
