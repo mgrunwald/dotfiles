@@ -39,6 +39,20 @@ define igr( w, f )
         return w*159/f
 }
 
+# Round down to integer below x
+define floor(x) {
+  auto os,xx;os=scale;scale=0
+  xx=x/1;if(xx>x).=xx--
+  scale=os;return(xx)
+}
+
+# Round up to integer above x
+define ceil(x) {
+  auto os,xx;x=-x;os=scale;scale=0
+  xx=x/1;if(xx>x).=xx--
+  scale=os;return(-xx)
+}
+
 /********************************
 
   bc program:	extensions.bc
