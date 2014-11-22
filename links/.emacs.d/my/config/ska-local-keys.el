@@ -1,5 +1,5 @@
 ;;; ska-local-keys.el --- my own major mode dependend key-bindings
-;; Copyright (C) 2000-2001 Stefan Kamphausen
+;; Copyright (C) 2014 Stefan Kamphausen
 
 ;; Author: Stefan Kamphausen <mail@skamphausen.de>
 ;; Time-stamp: <04-Jul-2011 11:47:54 gru>
@@ -181,6 +181,7 @@ Argument MAP is c-mode-map or c++-mode-map."
   (local-set-key '[(control b) (control c)]  'ska-skel-ruby-class)
   (local-set-key '[(control b) (control h)]  'ska-skel-ruby-header)
   (local-set-key '[(control b) (control s)]  'ska-skel-ruby-string-subst)
+  (local-set-key '[(meta \,)]                'gtags-find-rtag)
   )
 ;;}}}
 
