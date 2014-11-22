@@ -16,15 +16,16 @@
 
 set $mod Mod4
 
-set $wsp1 1: WWW
+set $wsp1 1:WWW
 set $wsp2 2
-set $wsp3 3: EMACS
+set $wsp3 3:EMACS
 set $wsp4 4
 set $wsp5 5
 set $wsp6 6
 set $wsp7 7
-set $wsp8 8: MAIL
-set $wsp9 9: IM
+set $wsp8 8:MAIL
+set $wsp9 9:IM
+set $wsp10 F1:Beamer
 
 // "Workspace" 0 is the scratchpad:
 // Make the currently focused window a scratchpad
@@ -49,7 +50,8 @@ bindsym $mod+L exec lock
 bindsym $mod+Shift+c kill
 
 // start dmenu (a program launcher)
-bindsym $mod+r exec i3-dmenu-desktop --dmenu="dmenu -i -nb \#222222 -nf \#888888 -sb \#333333 -sf \#ffffff"
+// bindsym $mod+r exec i3-dmenu-desktop --dmenu="dmenu -i -nb \#222222 -nf \#888888 -sb \#333333 -sf \#ffffff"
+bindsym $mod+r exec gmrun
 
 // change focus
 bindsym $mod+Left focus left
@@ -89,6 +91,8 @@ bindsym $mod+p focus parent
 // focus the child container
 bindsym $mod+c focus child
 
+workspace $wsp10 output VGA1
+
 // switch to workspace
 bindsym $mod+1 workspace $wsp1
 bindsym $mod+2 workspace $wsp2
@@ -99,12 +103,17 @@ bindsym $mod+6 workspace $wsp6
 bindsym $mod+7 workspace $wsp7
 bindsym $mod+8 workspace $wsp8
 bindsym $mod+9 workspace $wsp9
+bindsym $mod+F1 workspace $wsp10
 
 bindsym XF86Forward workspace next
 bindsym XF86Back    workspace prev
 bindsym $mod+Next workspace next
 bindsym $mod+Prior workspace prev
 workspace_auto_back_and_forth yes
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 -- +2db && killall -SIGUSR1 i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -- -2db && killall -SIGUSR1 i3status
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   1 toggle  && killall -SIGUSR1 i3status
 
 // move focused container to workspace
 bindsym $mod+Shift+exclam      move workspace $wsp1
@@ -116,6 +125,7 @@ bindsym $mod+Shift+asciicircum move workspace $wsp6
 bindsym $mod+Shift+ampersand   move workspace $wsp7
 bindsym $mod+Shift+asterisk    move workspace $wsp8
 bindsym $mod+Shift+parenleft   move workspace $wsp9
+bindsym $mod+Shift+F1          move workspace $wsp10
 
 bindsym $mod+bracketleft       move workspace to up
 
@@ -181,6 +191,7 @@ assign [class="Icedove"] $wsp8
 assign [class="Claws-mail"] $wsp8
 assign [class="Skype"] $wsp9
 assign [class="Pidgin"] $wsp9
+assign [class="MPlayer"] $wsp10
 
 // enable floating mode for all XTerm windows
 for_window [class="Dafit_x86.bin"] floating enable
@@ -221,7 +232,7 @@ client.unfocused        #333333 #222222 #888888
 client.urgent           #2f343a #900000 #ffffff
 
 #ifdef HAKTAR
-exec --no-startup-id i3-msg 'workspace 1; layout tabbed'
+exec --no-startup-id i3-msg 'workspace $wsp1; layout tabbed'
 exec /usr/lib/notification-daemon/notification-daemon
 //exec dbus-launch nm-applet --sm-disable &
 exec wicd-client -t
@@ -231,7 +242,8 @@ exec claws-mail
 exec skype
 exec pidgin
 exec unclutter -noevents -idle 1 -root
-exec volumeicon
+exec start-pulseaudio-x11
+exec pasystray
 exec udisks-glue -s
 exec owncloud
 #endif
