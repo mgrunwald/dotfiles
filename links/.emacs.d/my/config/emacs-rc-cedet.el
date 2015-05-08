@@ -185,7 +185,7 @@
 
 (setq damian-firmware-project
       (ede-cpp-root-project "damian-firmware-project"
-                            :file "~/projects/damian/trunk/MPC/firmware/src/damian.pro"
+                            :file "~/projects/damian/trunk/DMN/MPC/firmware/src/damian.pro"
                             :local-variables (list
                                               (cons 'compile-command
                                                     'mg/gen-damian-fw-compile-string
