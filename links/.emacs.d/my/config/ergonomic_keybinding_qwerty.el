@@ -506,6 +506,9 @@
 (add-hook 'magit-mode-hook
           (lambda()
             (define-key magit-status-mode-map (kbd "M-s") 'other-window) ; was magit-show-level-4
+            (define-key magit-status-mode-map (kbd "M-h") 'mg-home) ; was magit-show-only-files
+            (define-key magit-status-mode-map (kbd "M-H") 'move-end-of-line) ; was magit-show-only-files-all
+
 ;;            (define-key magit-branche-manager-mode-map (kbd "M-s") 'other-window) ; was magit-show-level-4
             ))
 
