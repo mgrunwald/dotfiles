@@ -42,6 +42,7 @@ skeletons I use together with XEmacs."
         (concat my-vendor-dir "web-mode" )
         (concat my-vendor-dir "rinari" )
         (concat my-vendor-dir "s.el" )
+        (concat my-vendor-dir "ri" )
         ;;(concat my-lisp-dir "psgml-1.2.2")
         (concat my-lisp-dir "tools")
         (concat my-lisp-dir "bookmark+")
@@ -141,11 +142,14 @@ skeletons I use together with XEmacs."
 (require 'flymake-ruby)
 (add-hook 'ruby-mode-hook
           '(lambda ()
+             (gtags-mode t)
              (ska-coding-keys ruby-mode-map)
              (ska-ruby-mode-keys)
              (rinari-minor-mode)
              (flymake-ruby-load)
              (diminish 'rinari-minor-mode "Ri" )
+             (require 'ri)
+             (message "==================== ruby-mode-hook ====================")
              )
 )
 
