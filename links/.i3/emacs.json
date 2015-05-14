@@ -29,7 +29,7 @@
                     "swallows": [
                        {
                        // "class": "^Emacs$",
-                       "instance": "^emacs24$"
+                       "instance": "^emacs.*$"
                        // "title": "^workspace\\-3\\.json$"
                        }
                     ],
