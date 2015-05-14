@@ -57,12 +57,8 @@
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(auto-hscroll-mode t)
  '(bar-cursor (quote (quote other)))
- '(before-save-hook
-   (quote
-    (time-stamp delete-trailing-whitespace
-                (lambda nil
-                  (copyright-update t)))))
- '(bmkp-last-as-first-bookmark-file "/home/markus/.emacs.bmk")
+ '(before-save-hook (quote (time-stamp delete-trailing-whitespace)))
+ '(bmkp-last-as-first-bookmark-file "~/.emacs.bmk")
  '(buffers-menu-max-size nil)
  '(c-basic-offset 4)
  '(c-default-style (quote ((java-mode . "java") (other . "gnu"))))
@@ -155,9 +151,10 @@
       (:files "/mnt/net/CM_Entwicklung/xchg/VIBXPERT/changelog.txt" "/10.1.2.34:/tmp/VibXpert.log")))))
  '(find-file-compare-truenames t)
  '(fume-max-items 50)
+ '(global-auto-revert-mode t)
  '(gnus-select-method (quote (nntp "news.arcor.de")))
  '(gnuserv-program (concat exec-directory "/gnuserv") t)
- '(gud-gdb-command-name "gdb --annotate=3 ")
+ '(gud-gdb-command-name "gdb -i=mi")
  '(gutter-buffers-tab-visible-p nil)
  '(home-end-enable nil)
  '(ido-create-new-buffer (quote always))
@@ -526,6 +523,7 @@
  '(tex-close-quote "\"'")
  '(tex-open-quote "\"`")
  '(time-stamp-active nil)
+ '(time-stamp-format "%:y-%02m-%02dT%02H:%02M:%02S+%Z %U")
  '(toolbar-visible-p nil)
  '(tooltip-gud-tips-p t)
  '(track-eol t)
