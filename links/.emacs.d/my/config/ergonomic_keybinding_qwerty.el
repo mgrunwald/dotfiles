@@ -2,7 +2,7 @@
 ;; ergonomic_keybinding_qwerty.el -- A ergonomic keybinding for qwerty keyboard.
 
 ;-*- coding: utf-8 -*-
-;; Copyright © 2013 by Xah Lee
+;; Copyright © 2015 by Xah Lee
 
 ;; Author: Xah Lee ( http://xahlee.org/ )
 ;; Keywords: qwerty, dvorak, keybinding, ergonomic
@@ -419,6 +419,9 @@
  (define-key diff-mode-map (kbd "M-k") 'next-line)
  (define-key diff-mode-map (kbd "M-K") 'scroll-up)
  (define-key diff-mode-map (kbd "M-h") 'mg-home)
+ (define-key diff-mode-map (kbd "M-SPC") 'set-mark-command)
+ (define-key diff-mode-map (kbd "M-o") 'forward-word)
+ (define-key diff-mode-map (kbd "M-p") 'recenter)
  )
 )
 
@@ -533,6 +536,13 @@
              (define-key org-mode-map (kbd "M-h") 'mg-home ) ; was org-mark-element
              (define-key org-mode-map (kbd "M-a") 'execute-extended-command ) ; was org-backward-sentence
              )))
+
+;; reclaim bindings from web mode
+(add-hook 'web-mode-hook
+          (lambda ()
+            (define-key web-mode-map (kbd "M-;") 'isearch-forward) ; ;was web-mode-comment-or-uncomment
+            (define-key web-mode-map (kbd "M-'") 'web-mode-comment-or-uncomment)
+            ))
 
 ;; nothing to fix: c-mode, c++-mode, java, sh, js, perl, php, python
 
