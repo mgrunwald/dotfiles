@@ -2,6 +2,25 @@
 
 ;;; Link this file to ~/.emacs
 
+
+;;; This was installed by package-install.el.
+;;; This provides support for the package system and
+;;; interfacing with ELPA, the package archive.
+;;; Move this code earlier if you want to reference
+;;; packages in your .emacs.
+;(when
+;    (load
+;         (expand-file-name "~/.emacs.d/elpa/package.el"))
+;           (package-initialize))
+
+(require 'package)
+(add-to-list 'package-archives
+         '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+
+(package-initialize)
+                    
+
 ;; This directory contains all the xemacs relevant stuff:
 (defvar my-emacs-dir
   (expand-file-name "~/.emacs.d/my/")
