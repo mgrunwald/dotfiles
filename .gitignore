@@ -16,3 +16,5 @@ woman-cache.el
 /links/.mc/history
 .emacs.desktop
 .emacs.desktop.lock
+/links/.emacs.d/recentf
+/links/.emacs.d/ido.last
