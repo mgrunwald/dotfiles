@@ -150,6 +150,12 @@ isgrmlcd(){
     return 1
 }
 
+
+iscygwin(){
+    [[ "${OSTYPE}" -eq "cygwin" ]] && return 0
+    return 1
+}
+
 if isgrml ; then
 #f1# Checks whether or not you're running grml-small
     isgrmlsmall() {
@@ -2475,7 +2481,7 @@ fi
 
 # {{{ Use hard limits, except for a smaller stack and no core dumps
 unlimit
-is425 && limit stack 8192
+is425 && ! iscygwin && limit stack 8192
 isgrmlcd && limit core 0 # important for a live-cd-system
 limit -s
 # }}}

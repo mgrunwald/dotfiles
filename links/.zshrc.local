@@ -34,7 +34,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias apg='apg -a 0 -MSNC'
 
-eval "$(lessfile)"
+which lessfile > /dev/null 2>&1 && eval "$(lessfile)"
 eval $(dircolors ~/.dircolors)
 set bell-style visible
 set page-completions off
