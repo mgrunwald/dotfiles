@@ -1,5 +1,4 @@
 ;;; personal.el --- Setup modes, hooks and other personal stuff
-(require 'diminish)
 
 (defvar my-lisp-dir
   (concat my-emacs-dir "lisp/")
@@ -88,7 +87,7 @@ skeletons I use together with XEmacs."
 (load "ergonomic_keybinding_qwerty.el")
 (require 'ska-global-keys)
 (require 'ska-local-keys)
-
+(require 'diminish)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Major Modes
 
@@ -207,11 +206,12 @@ skeletons I use together with XEmacs."
          (setq tab-width 4)
          ;; explicitly load vc
          ( load-library "vc" )
-         (setq tag-table-alist '( ("Dafit_Software/" . "/home/gru/projects/Dafit_Software/") ))
+;;         (setq tag-table-alist '( ("Dafit_Software/" . "/home/gru/projects/Dafit_Software/") ))
          (which-function-mode)
 	     (gtags-mode t)
          (subword-mode t)
 	     (diminish 'gtags-mode "Gtgs")
+         (whitespace-mode)
          (message "==================== c-mode-common-hook ====================")
          ))
 
@@ -518,18 +518,18 @@ skeletons I use together with XEmacs."
 
 ( setenv "GREP_OPTIONS" "--color=never" )
 
-(load "auctex.el" nil t t)
-(load "preview-latex.el" nil t t)
+;; (load "auctex.el" nil t t)
+;; (load "preview-latex.el" nil t t)
 
-(add-hook 'latex-mode-hook 'turn-on-reftex)
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-(setq reftex-plug-into-auctex t)
+;; (add-hook 'latex-mode-hook 'turn-on-reftex)
+;; (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+;; (setq reftex-plug-into-auctex t)
 
-;; (setq TeX-parse-self t) ; Enable parse on load.
-;; (setq TeX-auto-save t) ; Enable parse on save.
+;; ;; (setq TeX-parse-self t) ; Enable parse on load.
+;; ;; (setq TeX-auto-save t) ; Enable parse on save.
 
-;; (add-hook 'TeX-language-de-hook
-;;            (lambda () (ispell-change-dictionary "german")))
+;; ;; (add-hook 'TeX-language-de-hook
+;; ;;            (lambda () (ispell-change-dictionary "german")))
 
 
 (defadvice vc-revert-buffer (after touch activate)
@@ -679,7 +679,6 @@ skeletons I use together with XEmacs."
 
 (require 'smooth-scrolling)
 
-(require 'dir-locals )
 (require 'grep-edit)
 
 ;;
@@ -688,7 +687,7 @@ skeletons I use together with XEmacs."
 ;;  messages that I don't untderstand. I have no unpulled commits.)
 ;; Later: Ok, I /had/ unpulled commits in the branch.
 ;;
-(add-hook 'magit-mode-hook 'turn-on-magit-svn)
+;; (add-hook 'magit-mode-hook 'turn-on-magit-svn)
 
 ;;
 ;; diminish.el: get a shorter modeline
@@ -740,9 +739,9 @@ skeletons I use together with XEmacs."
 
 (speedbar-get-focus)
 
-(setq org-latex-to-pdf-process
-  '("xelatex -interaction nonstopmode %f"
-     "xelatex -interaction nonstopmode %f")) ;; for multiple passes
+;; (setq org-latex-to-pdf-process
+;;   '("xelatex -interaction nonstopmode %f"
+;;      "xelatex -interaction nonstopmode %f")) ;; for multiple passes
 
 
 ;;
@@ -838,5 +837,9 @@ skeletons I use together with XEmacs."
 (require 'autopair nil 'noerror)
 (autopair-global-mode)
 (diminish 'autopair-mode "pr")
+
+(smart-tabs-insinuate 'c 'c++ 'java 'javascript 'cperl 'python
+                       'ruby 'nxml)
+
 
 (message "personal.el done")
