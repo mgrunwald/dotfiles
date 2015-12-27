@@ -20,5 +20,6 @@ export PATH=$PATH:.
 export RPROMPT="${GREEN}%~${NO_COLOUR}"
 export GTK_IM_MODULE="xim"
 export INFOPATH=/usr/share/info
+export BROWSER=chromium
 
 source ${HOME}/.zshrc.per_host/zshenv."$(hostname)"

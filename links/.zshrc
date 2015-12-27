@@ -3130,7 +3130,7 @@ export COLORTERM="yes"
 if [[ -z "$BROWSER" ]] ; then
     if [[ -n "$DISPLAY" ]] ; then
         #v# If X11 is running
-        check_com -c firefox && export BROWSER=firefox
+        check_com -c chromium && export BROWSER=chromium
     else
         #v# If no X11 is running
         check_com -c w3m && export BROWSER=w3m
