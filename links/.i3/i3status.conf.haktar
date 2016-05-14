@@ -12,20 +12,27 @@ order += "cpu_temperature 0"
 order += "cpu_temperature 1"
 order += "load"
 order += "time"
+order += "path_exists dirvish"
+
+path_exists dirvish {
+        format = " B A C K U P "
+        format_down = ""
+        path = /tmp/dirvish
+}
 
 wireless wlan0 {
-        format_up = "W: (%quality at %essid) %ip"
+        format_up = "%essid %quality %ip"
         format_down = "W: down"
 }
 
 ethernet eth0 {
         # if you use %speed, i3status requires root privileges
         format_up = "E: %ip (%speed)"
-	format_down = "E: down"
+	format_down = ""
 }
 
 battery 0 {
-        format = "%status %percentage %remaining"
+        format = "%status %percentage %remaining"
 }
 
 run_watch DHCP {
@@ -45,11 +52,11 @@ load {
 }
 
 cpu_temperature 0 {
-	format = "T: %degrees C"
+	format = "🌡 %degrees⁰C"
 }
 
 cpu_temperature 1 {
-	format = "T: %degrees C"
+	format = "🌡 %degrees⁰C"
 }
 
 disk "/" {
