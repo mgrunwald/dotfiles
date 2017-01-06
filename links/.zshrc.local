@@ -100,4 +100,14 @@ fi
 
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
+# Use glob patterns when using ctrl-r
+#   ctrl-r wordA*wordB
+# will match commands where wordA is followed by wordB with zero or more number
+# of characters in between. This functionality is not available in old zsh
+# versions (ex:- 4.2.6) so check for its availability.
+zle -al | grep -q history-incremental-pattern-search-backward
+if [ $? -eq 0 ]; then
+  bindkey "\C-r" history-incremental-pattern-search-backward
+fi
+
 source ${HOME}/.zshrc.per_host/zshrc.local."$(hostname)"
