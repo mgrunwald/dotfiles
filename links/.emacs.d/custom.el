@@ -8,7 +8,6 @@
  '(Info-auto-generate-directory (quote if-outdated))
  '(Info-button1-follows-hyperlink t)
  '(Info-save-auto-generated-dir (quote always))
- '(LaTeX-command "pdflatex -shell-escape")
  '(TeX-close-quote "\"'")
  '(TeX-command-list
    (quote
@@ -152,7 +151,6 @@
  '(find-file-compare-truenames t)
  '(fume-max-items 50)
  '(global-auto-revert-mode t)
- '(gnus-select-method (quote (nntp "news.arcor.de")))
  '(gnuserv-program (concat exec-directory "/gnuserv") t)
  '(gud-gdb-command-name "gdb -i=mi")
  '(gutter-buffers-tab-visible-p nil)
@@ -165,6 +163,7 @@
  '(ido-use-url-at-point t)
  '(imenu-sort-function (quote imenu--sort-by-name))
  '(indent-tabs-mode nil)
+ '(ispell-dictionary "deutsch-alt")
  '(ispell-dictionary-alist
    (quote
     ((nil "[[:alpha:]]" "[^[:alpha:]]" "'" t
@@ -389,9 +388,14 @@
      ("slashdot" "http://slashdot.org/index.rss" nil 3600)
      ("Heise News (german)" "http://www.heise.de/newsticker/heise.rdf")
      ("Tagesschau (german)" "http://www.tagesschau.de/newsticker.rdf" nil 1800))))
- '(org-agenda-files (quote ("~/org/work.org" "~/org/private.org")))
+ '(org-agenda-files (quote ("~/org/newgtd.org")))
  '(org-agenda-include-diary t)
- '(org-default-notes-file "~/org/notes.org")
+ '(org-capture-templates
+   (quote
+    (("t" "Todo" entry
+      (file+headline "~/org/newgtd.org" "Tasks")
+      "* TODO %?" :empty-lines-after 1))))
+ '(org-default-notes-file "~/org/newgtd.org")
  '(org-export-latex-classes
    (quote
     (("scrartcl" "\\documentclass{scrartcl}
@@ -461,6 +465,11 @@
   %a" "~/org/work.org" "Unsortiert" nil))))
  '(org-return-follows-link t)
  '(org-tab-follows-link t)
+ '(package-archives
+   (quote
+    (("gnu" . "http://elpa.gnu.org/packages/")
+     ("MELPA" . "https://melpa.org/packages/"))))
+ '(package-selected-packages (quote (edit-server edit-server-htmlize)))
  '(paren-mode (quote blink-paren) nil (paren))
  '(preview-default-document-pt 12)
  '(printer-name nil)
@@ -494,6 +503,7 @@
  '(scroll-margin 0)
  '(semantic-idle-scheduler-idle-time 2)
  '(semantic-self-insert-show-completion-function (lambda nil (semantic-ia-complete-symbol-menu (point))))
+ '(send-mail-function (quote sendmail-send-it))
  '(server-switch-hook nil)
  '(show-paren-mode t nil (paren))
  '(sieve-manage-default-port 4190)
@@ -545,6 +555,7 @@
  '(url-proxy-services nil)
  '(url-show-status nil)
  '(url-use-hypertext-gopher nil)
+ '(user-mail-address "markus@the-grue.de")
  '(vc-mode-face (quote highlight))
  '(visible-bell t)
  '(vvb-column 100 t)
