@@ -6,6 +6,7 @@
 
 
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(setenv "GIT_SSH" "c:/Program Files/git/usr/bin/ssh.exe" )
 
 (provide 'MCH-H5HNY52.mch.osram.de)
 ;;; MCH-H5HNY52.mch.osram.de.el ends here
