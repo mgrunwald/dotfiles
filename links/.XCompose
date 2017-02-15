@@ -8,3 +8,6 @@ include "%H/.XCompose_master"
 <Multi_key> <quotedbl> <U> 			: "Ü"
 <Multi_key> <r> <t> <l>			: U200F
 <Multi_key> <l> <t> <r>			: U200E
+<Multi_key> <bar> <colon>       : U1D106 
+<Multi_key> <colon> <bar>       : U1D107
+
