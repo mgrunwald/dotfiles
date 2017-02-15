@@ -98,19 +98,22 @@ languages. Argument MAP is the local keymap (e.g. cperl-mode-map)."
   "Set my personal keys for C and C++.
 Argument MAP is c-mode-map or c++-mode-map."
   (define-key map '[(control b) (control b)]  'compile)
-  (define-key map '[(f9)]                     'mg/compile)
+  (define-key map '[(f9)]                     'compile)
   (define-key map '[(control f9)]             'kill-compilation)
   (define-key map '[(control b) (control c)]  'mg-copy-method)
   (define-key map '[(control b) (control l)]  'add-change-log-entry)
   (define-key map '[(control b) (control n)]  'mg-narrow-to-method)
   (define-key map '[(control b) (control q)]  'kdab-lookup-qt-documentation)
   (define-key map '[(control b) (d)]          'mg-skel-pt-dbgvar)
+  (define-key map '[(control b) (control o)]  'mg-margin-comment)
   (define-key map '[(control j)]              'c-indent-new-comment-line)
   (define-key map '[(meta y)]                 'imenu)
   (define-key map '[(control v) (control l)]  'goto-line)
   (define-key map '[(meta n)]                 'c-beginning-of-defun)
   (define-key map '[(meta m)]                 'c-end-of-defun)
-  (define-key map '[(meta \,)]                 'gtags-find-rtag)
+  (define-key map '[(meta .)]                 'gtags-find-tag)
+  (define-key map '[(meta \,)]                'gtags-find-rtag)
+  (define-key map '[(meta \*)]                'gtags-pop-stack)
 
 ;; Semantic & co
   (define-key map  [S-iso-lefttab]            'eassist-switch-h-cpp)
@@ -153,6 +156,31 @@ Argument MAP is c-mode-map or c++-mode-map."
   )
 
 ;;}}}
+
+(defun mg-cs-mode-keys (map)
+  "Set my personal keys for C#.
+Argument MAP is csharp-mode-map"
+  (define-key map '[(f9)]                     'mg/compile)
+  (define-key map '[(control f9)]             'kill-compilation)
+  (define-key map '[(control b) (control n)]  'mg-narrow-to-method)
+  (define-key map '[(control j)]              'c-indent-new-comment-line)
+  (define-key map '[(meta y)]                 'imenu)
+  (define-key map '[(control v) (control l)]  'goto-line)
+  (define-key map '[(meta n)]                 'c-beginning-of-defun)
+  (define-key map '[(meta m)]                 'c-end-of-defun)
+  ;; O_m_niSharp
+  (define-key map '[(.)]                 'omnisharp-add-dot-and-auto-complete)
+  (define-key map '[(meta .)]                 'omnisharp-auto-complete)
+  (define-key map '[(f12)]                 'omnisharp-go-to-definition)
+  (define-key map [(control b) (\,)]                 'omnisharp-show-overloads-at-point)
+  (define-key map '[(control b) (u)]                 'omnisharp-find-usages)
+  (define-key map '[(control b) (I)]                 'omnisharp-find-implementations)
+  (define-key map '[(control b) (o)]                 'omnisharp-go-to-definition)
+  (define-key map '[(control b) (r)]                 'omnisharp-run-code-action-refactoring)
+  (define-key map '[(control b) (f)]                 'omnisharp-fix-code-issue-at-point)
+  (define-key map '[(control b) (F)]                 'omnisharp-fix-usings)
+  (define-key map '[(control b) (R)]                 'omnisharp-rename)
+  )
 
 ;;{{{ Perl Mode
 ;;-------------

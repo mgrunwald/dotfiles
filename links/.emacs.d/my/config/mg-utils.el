@@ -443,8 +443,9 @@
   "Inserts the actual date at point"
   ( interactive "P" )
   (if (equal prefix nil )
-      (insert ( current-time-string ) )
-    (insert (format-time-string "%Y-%m-%d" (current-time)) ) )
+      (insert (format-time-string "%A, %Y-%m-%d" (current-time)) )
+    (insert ( current-time-string ) )
+    )
 )
 
 (defun mg-filter-variables (param-string)

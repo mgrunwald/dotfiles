@@ -7,6 +7,7 @@
 DOTFILES_ROOT="`pwd`/links"
 
 set -e
+set -x
 
 echo ''
 

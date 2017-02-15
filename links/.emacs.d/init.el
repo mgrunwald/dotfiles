@@ -19,7 +19,7 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 
 (package-initialize)
-                    
+
 
 ;; This directory contains all the xemacs relevant stuff:
 (defvar my-emacs-dir
@@ -66,9 +66,9 @@
 ;;}}}
 ;;============================================================================
 
-(setq abbrev-file-name             ;; tell emacs where to read abbrev
-      "~/.emacs.d/my/config/abbrev_defs.el")    ;; definitions from...
-(read-abbrev-file abbrev-file-name t)
+;;(setq abbrev-file-name             ;; tell emacs where to read abbrev
+;;      "~/.emacs.d/my/config/abbrev_defs.el")    ;; definitions from...
+;;(read-abbrev-file abbrev-file-name t)
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
@@ -97,7 +97,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(bmkp-last-as-first-bookmark-file "~/.emacs.bmk"))
+ '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

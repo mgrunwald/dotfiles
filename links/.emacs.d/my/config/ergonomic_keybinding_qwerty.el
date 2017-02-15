@@ -219,7 +219,9 @@
 
 ;; isearch
 (global-set-key (kbd "M-;") 'isearch-forward)
+(global-set-key (kbd "M-ö") 'isearch-forward) ;; german keyboard
 (global-set-key (kbd "M-:") 'isearch-backward)
+(global-set-key (kbd "M-Ö") 'isearch-backward) ;; german keyboard
 
 (global-set-key (kbd "M-p") 'recenter)
 
@@ -332,7 +334,9 @@
 (add-hook 'isearch-mode-hook
  (lambda ()
  (define-key isearch-mode-map (kbd "M-;") 'isearch-repeat-forward)
+ (define-key isearch-mode-map (kbd "M-ö") 'isearch-repeat-forward)
  (define-key isearch-mode-map (kbd "M-:") 'isearch-repeat-backward)
+ (define-key isearch-mode-map (kbd "M-Ö") 'isearch-repeat-backward)
 
  (define-key isearch-mode-map (kbd "M-p") 'recenter) ; was isearch-ring-retreat
  (define-key isearch-mode-map (kbd "M-n") 'nil) ; was isearch-ring-advance

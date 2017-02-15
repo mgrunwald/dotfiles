@@ -58,7 +58,7 @@
  '(auto-hscroll-mode t)
  '(bar-cursor (quote (quote other)))
  '(before-save-hook (quote (time-stamp delete-trailing-whitespace)))
- '(bmkp-last-as-first-bookmark-file "~/.emacs.bmk")
+ '(bmkp-last-as-first-bookmark-file "/home/M.Grunwald/.emacs.d/bookmarks")
  '(buffers-menu-max-size nil)
  '(c-basic-offset 4)
  '(c-default-style (quote ((java-mode . "java") (other . "gnu"))))
@@ -97,6 +97,7 @@
      ("\\.cpp$"
       (".h" ".hh")))))
  '(change-log-default-name "~/ChangeLog.Work")
+ '(column-number-mode t)
  '(compilation-ask-about-save nil)
  '(compilation-read-command nil)
  '(compilation-scroll-output t)
@@ -376,6 +377,7 @@
  '(mode-compile-never-edit-command-p t)
  '(modifier-keys-are-sticky nil)
  '(modifier-keys-sticky-time 750 t)
+ '(mouse-avoidance-mode (quote animate) nil (avoid))
  '(mouse-wheel-mode t nil (mwheel))
  '(mouse-yank-at-point t)
  '(newsticker-html-renderer (quote w3m-region))
@@ -389,6 +391,8 @@
      ("slashdot" "http://slashdot.org/index.rss" nil 3600)
      ("Heise News (german)" "http://www.heise.de/newsticker/heise.rdf")
      ("Tagesschau (german)" "http://www.tagesschau.de/newsticker.rdf" nil 1800))))
+ '(next-error-highlight (quote fringe-arrow))
+ '(omnisharp-imenu-support t)
  '(org-agenda-files (quote ("~/org/work.org" "~/org/private.org")))
  '(org-agenda-include-diary t)
  '(org-default-notes-file "~/org/notes.org")
@@ -482,14 +486,19 @@
  '(require-final-newline (quote ask))
  '(safe-local-variable-values
    (quote
-    ((time-stamp-format . %:y-%02m-%02d)
+    ((vvb-column . 80)
+     (time-stamp-format . %:y-%02m-%02d)
      (time-stamp-active . t)
      (mg-auto-insert-style . damian)
      (mg-auto-insert-style . "damian")
      (gud-gdb-command-name . "arm-none-linux-gnueabi-gdb -quiet --annotate=3 /home/gru/projects/damian-git-svn/DMN/MPC/firmware/bin/milestone_arm_debug")
      (gud-gdb-command-name . "arm-none-linux-gnueabi-gdb --annotate=3 /home/gru/projects/damian-git-svn/DMN/MPC/firmware/bin/milestone_arm_debug")
      (gud-gdb-command-name . "arm-none-linux-gnueabi-gdb --annotate=3 ")
-     (compile-command . "make -k -j "))))
+     (compile-command . "make -k -j ")
+     (compile-command . "iarbuild 'c:\\Users\\m.grunwald\\Documents\\Projects\\Trade\\TRADE_SW\\Application\\Compile\\DemoBlink.ewp' -make Debug -log all")
+     (compile-command . "iarbuild 'c:\\Users\\m.grunwald\\Documents\\Projects\\Trade\\Applications\\TestLibraryD_E\\Projects\\IAR_ARM\\TestLibraryD_E\\TestLibraryD_E.ewp' -make Debug -log all")
+     (compile-command . "iarbuild 'c:\\Users\\m.grunwald\\Documents\\Projects\\ESMS\\Application\\Compile\\ESMS.ewp' -make Debug -log all")
+     (compile-command . "iarbuild 'c:\\Users\\m.grunwald\\Documents\\Projects\\ESMD\\Application\\Compile\\ESMD.ewp' -make Debug -log all"))))
  '(save-place t nil (saveplace))
  '(scroll-margin 0)
  '(semantic-idle-scheduler-idle-time 2)
@@ -566,6 +575,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#3f3f3f" :foreground "#dcdccc" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 102 :width normal :foundry "normal" :family "DejaVu Sans Mono"))))
  '(grep-edit-face ((((class color) (background light)) (:background "LightGreen" :weight bold))))
  '(highlight ((((class color) (background light)) (:background "gray80"))))
  '(hl-line ((t nil)))

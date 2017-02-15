@@ -218,12 +218,12 @@ EXEC 01;32
 .yaml 0;31
 
 # Unimportant, nearly hidden.
-.o   08;37
-.class 08;37
-.pyc   08;37
-.pyo   08;37
-.mod   08;37
-.hsc   08;37
+.o   00;37
+.class 00;37
+.pyc   00;37
+.pyo   00;37
+.mod   00;37
+.hsc   00;37
 
 # Stand out!
 *bug   0;41
