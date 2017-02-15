@@ -21,6 +21,7 @@ fi
 
 
 alias aptitude="sudo aptitude"
+alias apt-get="sudo apt-get"
 alias b2d='bin2base 10'
 alias b2h='bin2base 16'
 alias d2b='base2bin 10'
