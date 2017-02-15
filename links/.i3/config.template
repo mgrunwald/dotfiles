@@ -111,9 +111,14 @@ bindsym $mod+Next workspace next
 bindsym $mod+Prior workspace prev
 workspace_auto_back_and_forth yes
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pactl list sinks short | grep pci | awk '{print $1}') -- +2db && killall -SIGUSR1 i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pactl list sinks short | grep pci | awk '{print $1}') -- -2db && killall -SIGUSR1 i3status
-bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   $(pactl list sinks short | grep pci | awk '{print $1}') toggle  && killall -SIGUSR1 i3status
+//bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pactl list sinks short | grep pci | awk '{print $1}') -- +2db && killall -SIGUSR1 i3status
+//bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pactl list sinks short | grep pci | awk '{print $1}') -- -2db && killall -SIGUSR1 i3status
+//bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   $(pactl list sinks short | grep pci | awk '{print $1}') toggle  && killall -SIGUSR1 i3status
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 2+ unmute && killall -SIGUSR1 i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 2- unmute && killall -SIGUSR1 i3status
+bindsym XF86AudioMute        exec --no-startup-id amixer -q set Master toggle && killall -SIGUSR1 i3status
+
 
 // move focused container to workspace
 bindsym $mod+Shift+exclam      move workspace $wsp1
@@ -192,14 +197,19 @@ assign [class="Claws-mail"] $wsp8
 assign [class="Skype"] $wsp9
 assign [class="Pidgin"] $wsp9
 assign [class="MPlayer"] $wsp10
+assign [class="mpv"] $wsp10
 
 // enable floating mode for all XTerm windows
-for_window [class="Dafit_x86.bin"] floating enable
-for_window [class="dafit_x86.bin"] floating enable
 
 // and for mplayer
 for_window [class="MPlayer"] floating enable
+for_window [class="mpv"] floating enable
 
+// and for pa volume control
+for_window [class="Pavucontrol"] floating enable
+
+// Create a standard scratchpad
+for_window [class="URxvt" title="Scratchpad"] move scratchpad
 
 // Start i3bar to display a workspace bar (plus the system information i3status
 // finds out, if available)
@@ -232,22 +242,29 @@ client.unfocused        #333333 #222222 #888888
 client.urgent           #2f343a #900000 #ffffff
 
 #ifdef HAKTAR
-exec --no-startup-id i3-msg 'workspace $wsp1; layout tabbed'
 // exec /usr/lib/notification-daemon/notification-daemon
 // exec dbus-launch nm-applet --sm-disable &
 exec --no-startup-id dunst
 exec wicd-client -t
-exec --no-startup-id eval $(cat ~/.fehbg)
-exec x-www-browser
+exec --no-startup-id feh  --bg-scale '/home/markus/bilder/desktop.jpg'
 exec claws-mail
-exec skype
 exec pidgin
 exec --no-startup-id unclutter -noevents -idle 1 -root
-exec --no-startup-id start-pulseaudio-x11
-exec pasystray
+//exec --no-startup-id start-pulseaudio-x11
+//exec pasystray
+exec volumeicon
 exec --no-startup-id tpb
-exec --no-startup-id udisks-glue -s
+// exec --no-startup-id udisks-glue -s
 exec owncloud
+exec /opt/skype-4.2.0.13/skype
+exec --no-startup-id i3-msg 'workspace $wsp3; append_layout /home/markus/.i3/emacs.json'
+exec --no-startup-id i3-msg 'workspace $wsp1; layout tabbed; exec x-www-browser'
+exec x-terminal-emulator
+exec x-terminal-emulator
+exec x-terminal-emulator
+exec x-terminal-emulator
+exec x-terminal-emulator
+exec emacs
 #endif
 #ifdef PT
 exec xset s off -dpms
@@ -259,3 +276,4 @@ exec skype   # conflicts if pidgin starts skype
 //exec pidgin
 exec klipper
 #endif
+exec x-terminal-emulator -T "Scratchpad"
