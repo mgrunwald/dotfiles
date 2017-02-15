@@ -106,9 +106,10 @@ skeletons I use together with XEmacs."
 (add-hook 'text-mode-hook
       '(lambda ()
          (auto-fill-mode 1)
-;emacs22             (turn-on-filladapt-mode)
          (abbrev-mode 1)
-;;       (load "ergonomic_keybinding_qwerty.el")
+         (toggle-truncate-lines nil)
+         (setq word-wrap t)
+         (auto-fill-mode nil)
          (message "==================== text-mode-hook ====================")
          ))
 
