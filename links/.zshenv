@@ -19,6 +19,7 @@ export BC_ENV_ARGS="-q -l $HOME/.bc/myFunctions"
 export PATH=$PATH:.
 export RPROMPT="${GREEN}%~${NO_COLOUR}"
 export GTK_IM_MODULE="xim"
+export QT_IM_MODULE="xim"
 export INFOPATH=/usr/share/info
 export BROWSER=chromium
 
