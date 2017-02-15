@@ -18,3 +18,5 @@ woman-cache.el
 .emacs.desktop.lock
 /links/.emacs.d/recentf
 /links/.emacs.d/ido.last
+/links/.emacs.d/bookmarks
+links/.emacs.d/elpa/
