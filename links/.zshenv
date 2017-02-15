@@ -14,11 +14,11 @@ GREP_COLOR='1;32'
 #setopt cdablevars
 PATH=$PATH:${HOME}/bin
 
-eval $(/usr/local/bin/lesspipe.sh )
+eval $(lesspipe )
 export BC_ENV_ARGS="-q -l $HOME/.bc/myFunctions"
 export PATH=$PATH:.
 export RPROMPT="${GREEN}%~${NO_COLOUR}"
 export GTK_IM_MODULE="xim"
 export INFOPATH=/usr/share/info
 
-source ${HOME}/.zshrc.per_host/zshenv."$(hostname | sed s///g)"
+source ${HOME}/.zshrc.per_host/zshenv."$(hostname)"
