@@ -16,14 +16,14 @@
 
 set $mod Mod4
 
-set $wsp1 1:WWW
+set $wsp1 1:🌐
 set $wsp2 2
 set $wsp3 3:EMACS
 set $wsp4 4
 set $wsp5 5
 set $wsp6 6
 set $wsp7 7
-set $wsp8 8:MAIL
+set $wsp8 8:✉
 set $wsp9 9:IM
 set $wsp10 F1:Beamer
 
@@ -35,7 +35,9 @@ bindsym $mod+Shift+"0" move scratchpad
 bindsym $mod+"0" scratchpad show
 
 // font for window titles. ISO 10646 = Unicode
-font -xos4-terminus-bold-r-normal--12-*-*-*-*-*-iso10646-1
+//font -xos4-terminus-bold-r-normal--12-*-*-*-*-*-iso10646-1
+// https://developer.gnome.org/pango/stable/PangoMarkupFormat.html
+font pango:DejaVu Sans Condensed 9px
 
 // Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -194,7 +196,6 @@ new_window 1pixel
 assign [class="Iceweasel"] $wsp1
 assign [class="Icedove"] $wsp8
 assign [class="Claws-mail"] $wsp8
-assign [class="Skype"] $wsp9
 assign [class="Pidgin"] $wsp9
 assign [class="MPlayer"] $wsp10
 assign [class="mpv"] $wsp10
@@ -214,6 +215,7 @@ for_window [class="URxvt" title="Scratchpad"] move scratchpad
 // Start i3bar to display a workspace bar (plus the system information i3status
 // finds out, if available)
 bar {
+    font pango:DejaVu Sans Condensed 18px
 #ifdef PT
     status_command i3status --config ~/.i3/i3status.conf.pt
     position top
@@ -256,7 +258,6 @@ exec volumeicon
 exec --no-startup-id tpb
 // exec --no-startup-id udisks-glue -s
 exec owncloud
-exec /opt/skype-4.2.0.13/skype
 exec --no-startup-id i3-msg 'workspace $wsp3; append_layout /home/markus/.i3/emacs.json'
 exec --no-startup-id i3-msg 'workspace $wsp1; layout tabbed; exec x-www-browser'
 exec x-terminal-emulator
@@ -272,7 +273,6 @@ exec /usr/lib/notification-daemon/notification-daemon
 exec feh  --bg-scale  ~/bilder/capraia_bei_sonnenuntergang.jpg
 exec iceweasel
 //exec claws-mail
-exec skype   # conflicts if pidgin starts skype
 //exec pidgin
 exec klipper
 #endif
