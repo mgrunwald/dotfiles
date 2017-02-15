@@ -1,2 +1,0 @@
-#!/bin/bash
-SUDO_EDITOR="emacsclient  --alternate-editor=\"\" -c " sudoedit "$@"
