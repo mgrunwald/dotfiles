@@ -948,7 +948,7 @@ zrcautoload run-help # use via 'esc-h'
 
 # completion system
 if zrcautoload compinit ; then
-    compinit || print 'Notice: no compinit available :('
+    compinit -u || print 'Notice: no compinit available :('
 else
     print 'Notice: no compinit available :('
     function zstyle { }

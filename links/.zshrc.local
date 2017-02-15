@@ -100,3 +100,5 @@ fi
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 source ${HOME}/.zshrc.per_host/zshrc.local."$(hostname)"
+
+export TZ=$(/usr/bin/tzset)
