@@ -266,6 +266,7 @@ exec x-terminal-emulator
 exec x-terminal-emulator
 exec x-terminal-emulator
 exec emacs
+exec qlipper
 #endif
 #ifdef PT
 exec xset s off -dpms
