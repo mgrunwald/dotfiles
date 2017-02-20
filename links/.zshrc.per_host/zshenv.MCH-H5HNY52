@@ -1,0 +1,5 @@
+#
+# Advertise CPPUTEST
+#
+export CPPUTEST_HOME=~/Projects/cpputest-3.8
+

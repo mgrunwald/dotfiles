@@ -1,3 +1,5 @@
+;;; personal.el --- Setup modes, hooks and other personal stuff
+
 (defvar my-lisp-dir
   (concat my-emacs-dir "lisp/")
   "The personal lisp directory. All self-written files and files from
@@ -68,6 +70,7 @@ skeletons I use together with XEmacs."
 ;(if (file-readable-p my-domain-file)
 ;       (load my-domain-file nil nil))
 
+( set-locale-environment "de_DE@UTF8" )
 
 ;;{{{ The settings of the new filenames for some packages
 (setq vm-init-file            (concat my-config-dir "/vm-init.el"))
@@ -86,7 +89,10 @@ skeletons I use together with XEmacs."
 (load "ergonomic_keybinding_qwerty.el")
 (require 'ska-global-keys)
 (require 'ska-local-keys)
+(require 'diminish)
+(require 'yasnippet)
 
+(yas-global-mode 1)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Major Modes
 
@@ -192,13 +198,11 @@ skeletons I use together with XEmacs."
 
 (add-hook 'c-mode-common-hook
       '(lambda ()
-;emacs22             (require 'ctypes)
          (require 'vvb-mode)
          (vvb-mode t)
 	     (diminish 'vvb-mode)
          (imenu-add-menubar-index)
          ;; highlight self-defined types
-;emacs22             (ctypes-auto-parse-mode 1)
          '(c-indent-comments-syntactically-p nil)
          (abbrev-mode 1)
          (auto-fill-mode 1)
@@ -206,11 +210,14 @@ skeletons I use together with XEmacs."
          (setq tab-width 4)
          ;; explicitly load vc
          ( load-library "vc" )
-         (setq tag-table-alist '( ("Dafit_Software/" . "/home/gru/projects/Dafit_Software/") ))
+;;         (setq tag-table-alist '( ("Dafit_Software/" . "/home/gru/projects/Dafit_Software/") ))
          (which-function-mode)
 	     (gtags-mode t)
          (subword-mode t)
 	     (diminish 'gtags-mode "Gtgs")
+         ;;         (whitespace-mode)
+         ;; (require 'doxymacs)
+         ;; (doxymacs-mode)
          (message "==================== c-mode-common-hook ====================")
          ))
 
@@ -232,10 +239,6 @@ skeletons I use together with XEmacs."
          ;; my keybindings
          (ska-coding-keys c++-mode-map)
          (ska-c-common-mode-keys c++-mode-map)
-         ;; emacs23 (require 'doxymacs)
-         ;; emacs23  (doxymacs-mode)
-;;              (setq comment-start "// " )
-;;              (setq comment-end "" )
          (setq grep-find-command '"find . \\( -name \\*.cpp -o -name \\*.h \\) -print0 | xargs -0 -e grep -n " )
          ;; qt keywords and stuff ...
          ;; set up indenting correctly for new qt kewords
@@ -267,6 +270,15 @@ skeletons I use together with XEmacs."
 	  '(lambda ()
 	     (message "==================== lua-mode-hook ====================")
 	     ))
+
+(add-hook 'csharp-mode-hook
+          '(lambda()
+             (omnisharp-mode t)
+             (diminish 'omnisharp-mode "o#")
+             (mg-cs-mode-keys csharp-mode-map)
+             (message "==================== csharp-mode-hook ====================")
+             ))
+
 
 
 ;;--------------------------------------------------------------------
@@ -383,6 +395,17 @@ skeletons I use together with XEmacs."
 (add-hook 'w3m-mode-hook
           (lambda()
             (vvb-mode nil )
+            )
+          )
+
+
+(add-hook 'gtags-select-mode-hook
+          (lambda()
+            (define-key gtags-select-mode-map "\e*" 'gtags-pop-stack)
+            (define-key gtags-select-mode-map "\C-m" 'gtags-select-tag)
+            (define-key gtags-select-mode-map "\C-o" 'gtags-select-tag-other-window)
+            (define-key gtags-select-mode-map "\e." 'gtags-select-tag)
+            (message "==================== gtags-select-mode ====================")
             )
           )
 
@@ -517,18 +540,18 @@ skeletons I use together with XEmacs."
 
 ( setenv "GREP_OPTIONS" "--color=never" )
 
-(load "auctex.el" nil t t)
-(load "preview-latex.el" nil t t)
+;; (load "auctex.el" nil t t)
+;; (load "preview-latex.el" nil t t)
 
-(add-hook 'latex-mode-hook 'turn-on-reftex)
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-(setq reftex-plug-into-auctex t)
+;; (add-hook 'latex-mode-hook 'turn-on-reftex)
+;; (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+;; (setq reftex-plug-into-auctex t)
 
-;; (setq TeX-parse-self t) ; Enable parse on load.
-;; (setq TeX-auto-save t) ; Enable parse on save.
+;; ;; (setq TeX-parse-self t) ; Enable parse on load.
+;; ;; (setq TeX-auto-save t) ; Enable parse on save.
 
-;; (add-hook 'TeX-language-de-hook
-;;            (lambda () (ispell-change-dictionary "german")))
+;; ;; (add-hook 'TeX-language-de-hook
+;; ;;            (lambda () (ispell-change-dictionary "german")))
 
 
 (defadvice vc-revert-buffer (after touch activate)
@@ -678,7 +701,6 @@ skeletons I use together with XEmacs."
 
 (require 'smooth-scrolling)
 
-(require 'dir-locals )
 (require 'grep-edit)
 
 ;;
@@ -687,7 +709,7 @@ skeletons I use together with XEmacs."
 ;;  messages that I don't untderstand. I have no unpulled commits.)
 ;; Later: Ok, I /had/ unpulled commits in the branch.
 ;;
-;;(add-hook 'magit-mode-hook 'turn-on-magit-svn)
+;; (add-hook 'magit-mode-hook 'turn-on-magit-svn)
 
 ;;
 ;; diminish.el: get a shorter modeline
@@ -739,9 +761,9 @@ skeletons I use together with XEmacs."
 
 (speedbar-get-focus)
 
-(setq org-latex-to-pdf-process
-  '("xelatex -interaction nonstopmode %f"
-     "xelatex -interaction nonstopmode %f")) ;; for multiple passes
+;; (setq org-latex-to-pdf-process
+;;   '("xelatex -interaction nonstopmode %f"
+;;      "xelatex -interaction nonstopmode %f")) ;; for multiple passes
 
 
 ;;
@@ -838,7 +860,24 @@ skeletons I use together with XEmacs."
 (autopair-global-mode)
 (diminish 'autopair-mode "pr")
 
-(global-unset-key (kbd "C-e")) ; move-end-of-line
-(setq elscreen-prefix-key "\C-e")
+;; (smart-tabs-insinuate 'c 'c++ 'java 'javascript 'cperl 'python
+;;                        'ruby 'nxml)
+
+;; To parse "IAR Embedded workbench 4.21A for Atmel AVR" messages
+;; Load compile.el library
+;; seen at https://lists.gnu.org/archive/html/help-gnu-emacs/2008-09/msg00687.html
+(require 'compile)
+;;Store new item "iar-avr" into compilation-error-regexp-alist variable
+(setq compilation-error-regexp-alist
+      (cons 'iar-avr compilation-error-regexp-alist))
+;; Store iar-avr regexp into compilation-error-regexp-alist-alist variable
+(setq compilation-error-regexp-alist-alist
+      (cons '(iar-avr
+              "^\\(?:.*\\\\\\)\\(.*\\)(\\([0-9]+\\)) : \\(?:Error\\|Warnin\\(g\\)\\)\\[Pe[0-9]+\\]:"
+              1 2 nil (3)) compilation-error-regexp-alist-alist))
+;;
+;; "Instead of setq you may want to use custom-set-variable"
+
+(google-this-mode 1)
 
 (message "personal.el done")

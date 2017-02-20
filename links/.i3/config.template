@@ -258,6 +258,10 @@ exec volumeicon
 exec --no-startup-id tpb
 // exec --no-startup-id udisks-glue -s
 exec owncloud
+<<<<<<< Updated upstream
+=======
+exec /opt/skype-4.2.0.13/skype
+>>>>>>> Stashed changes
 exec --no-startup-id i3-msg 'workspace $wsp3; append_layout /home/markus/.i3/emacs.json'
 exec --no-startup-id i3-msg 'workspace $wsp1; layout tabbed; exec x-www-browser'
 exec x-terminal-emulator

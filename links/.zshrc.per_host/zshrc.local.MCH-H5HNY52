@@ -1,0 +1,4 @@
+export EDITOR=vim
+export TZ=$(/usr/bin/tzset)
+
+zstyle ':vcs_info:*' enable false
