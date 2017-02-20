@@ -14,3 +14,4 @@ woman-cache.el
 /.emacs.desktop
 /links/.emacs.d/tramp
 /links/.mc/history
+links/.emacs.d/elpa
