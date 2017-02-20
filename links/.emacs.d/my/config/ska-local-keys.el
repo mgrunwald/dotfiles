@@ -98,7 +98,7 @@ languages. Argument MAP is the local keymap (e.g. cperl-mode-map)."
   "Set my personal keys for C and C++.
 Argument MAP is c-mode-map or c++-mode-map."
   (define-key map '[(control b) (control b)]  'compile)
-  (define-key map '[(f9)]                     'mg/compile)
+  (define-key map '[(f9)]                     'compile)
   (define-key map '[(control f9)]             'kill-compilation)
   (define-key map '[(control b) (control c)]  'mg-copy-method)
   (define-key map '[(control b) (control l)]  'add-change-log-entry)

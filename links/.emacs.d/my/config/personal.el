@@ -1,6 +1,3 @@
-;;; personal.el --- Setup modes, hooks and other personal stuff
-(require 'diminish)
-
 (defvar my-lisp-dir
   (concat my-emacs-dir "lisp/")
   "The personal lisp directory. All self-written files and files from
@@ -83,6 +80,7 @@ skeletons I use together with XEmacs."
 (setq shadow-todo-file        (concat my-data-dir   "/shadow_todo"))
 ;;}}}
 
+(load "elscreen" "ElScreen" t)
 
 ;;(load "kicking-the-habbit.el" )
 (load "ergonomic_keybinding_qwerty.el")
@@ -410,7 +408,7 @@ skeletons I use together with XEmacs."
  (setq org-log-done t)
 
 ;; emacs24 (org-remember-insinuate)
-(define-key global-map "\C-cr" 'org-remember)
+(define-key global-map "\C-cc" 'org-capture)
 
 ;; hippie-expand
 ;;expand text trying various ways to find its expansion.
@@ -494,9 +492,9 @@ skeletons I use together with XEmacs."
         ;;(holiday-float 11 3 1 "Buß- und Bettag" 16)
         (holiday-float 11 0 1 "Totensonntag" 20)))
 
-(setq calendar-holidays
-      (append general-holidays local-holidays other-holidays
-              christian-holidays solar-holidays))
+;;(setq calendar-holidays
+;;     (append general-holidays local-holidays other-holidays
+;;              christian-holidays solar-holidays))
 
 
 
@@ -839,5 +837,8 @@ skeletons I use together with XEmacs."
 (require 'autopair nil 'noerror)
 (autopair-global-mode)
 (diminish 'autopair-mode "pr")
+
+(global-unset-key (kbd "C-e")) ; move-end-of-line
+(setq elscreen-prefix-key "\C-e")
 
 (message "personal.el done")

@@ -140,7 +140,7 @@
 (global-unset-key (kbd "C-b")) ; backward-char
 ;(global-unset-key (kbd "C-c")) ; (prefix)
 (global-unset-key (kbd "C-d")) ; delete-char
-(global-unset-key (kbd "C-e")) ; move-end-of-line
+;;(global-unset-key (kbd "C-e")) ; move-end-of-line
 (global-unset-key (kbd "C-f")) ; forward-char
 ;(global-unset-key (kbd "C-g")) ; keyboard-quit
 ;(global-unset-key (kbd "C-h")) ; (prefix)
@@ -268,8 +268,8 @@
 (global-set-key (kbd "M-A") 'shell-command)
 
 ;;; WINDOW SPLITING
-(global-set-key (kbd "M-s") 'move-cursor-next-pane)
-(global-set-key (kbd "M-S") 'move-cursor-previous-pane)
+(global-set-key (kbd "M-t") 'move-cursor-next-pane)
+(global-set-key (kbd "M-T") 'move-cursor-previous-pane)
 
 ;;; --------------------------------------------------
 ;;; STANDARD SHORTCUTS
@@ -352,7 +352,7 @@
 (define-key minibuffer-local-map (kbd "M-p") 'recenter) ; was previous-history-element. Use ↑ key or f11.
 (define-key minibuffer-local-map (kbd "M-n") 'nil) ; was next-history-element. Use ↓ key or f12.
 (define-key minibuffer-local-map (kbd "M-r") 'kill-word) ; was previous-matching-history-element.
-(define-key minibuffer-local-map (kbd "M-s") 'move-cursor-next-pane) ; was nest-matching-history-element
+(define-key minibuffer-local-map (kbd "M-t") 'move-cursor-next-pane) ; was nest-matching-history-element
 (define-key minibuffer-local-map (kbd "M-i") 'previous-history-element)
 (define-key minibuffer-local-map (kbd "M-k") 'next-history-element)
 
@@ -369,7 +369,7 @@
    (define-key comint-mode-map (kbd "M-p") 'recenter) ; was comint-previous-input. Use Ctrl+↑ or f11
    (define-key comint-mode-map (kbd "M-n") 'nil) ; was comint-next-input. Use Ctrl+↓ or f12
    (define-key comint-mode-map (kbd "M-r") 'kill-word) ; was comint-previous-matching-input.
-   (define-key comint-mode-map (kbd "M-s") 'other-window) ; was comint-next-matching-input.
+   (define-key comint-mode-map (kbd "M-t") 'other-window) ; was comint-next-matching-input.
 
    (define-key comint-mode-map (kbd "<f11>") 'comint-previous-input)
    (define-key comint-mode-map (kbd "<f12>") 'comint-next-input)
@@ -397,14 +397,14 @@
 (add-hook 'Info-mode-hook
  (lambda ()
  (define-key Info-mode-map (kbd "M-n") 'nil) ; was clone-buffer
- (define-key Info-mode-map (kbd "M-s") 'other-window) ; was Info-search; just press “s” instead for isearch-forward
+ (define-key Info-mode-map (kbd "M-t") 'other-window) ; was Info-search; just press “s” instead for isearch-forward
  )
 )
 
 (add-hook 'text-mode-hook
  (lambda ()
- (define-key text-mode-map (kbd "M-s") 'other-window) ; was center-line
- (define-key text-mode-map (kbd "M-S") 'nil) ; was center-paragraph
+ (define-key text-mode-map (kbd "M-t") 'other-window) ; was center-line
+ (define-key text-mode-map (kbd "M-T") 'nil) ; was center-paragraph
  )
 )
 
@@ -452,7 +452,7 @@
 ;; reclaim bindings from html mode
 (add-hook 'html-mode-hook
  (lambda ()
- (define-key html-mode-map (kbd "M-s") 'other-window)
+ (define-key html-mode-map (kbd "M-t") 'other-window)
  )
 )
 
@@ -474,7 +474,7 @@
 
   (define-key w3m-mode-map (kbd "M-i") 'previous-line) ; was w3m-save-image
   (define-key w3m-mode-map (kbd "M-k") 'next-line) ; was w3m-cookie
-  (define-key w3m-mode-map (kbd "M-s") 'other-window) ; was w3m-session-select
+  (define-key w3m-mode-map (kbd "M-t") 'other-window) ; was w3m-session-select
 ))
 
 ;; reclaim bindings from rcirc (???)
@@ -496,29 +496,29 @@
 ;; reclaim bindings from buffer menu
 (add-hook 'buffer-menu-mode-hook
  (lambda ()
-   (define-key Buffer-menu-mode-map (kbd "M-s") 'other-window) ; was prefix-command
+   (define-key Buffer-menu-mode-map (kbd "M-t") 'other-window) ; was prefix-command
 ))
 
 ;; reclaim bindings from svn status
 (add-hook 'svn-status-mode-hook
  (lambda()
-   (define-key svn-status-mode-map (kbd "M-s") 'other-window) ; was svn-status-update
+   (define-key svn-status-mode-map (kbd "M-t") 'other-window) ; was svn-status-update
 ))
 
 ;; reclaim bindings from magit status
 (add-hook 'magit-mode-hook
           (lambda()
-            (define-key magit-status-mode-map (kbd "M-s") 'other-window) ; was magit-show-level-4
+            (define-key magit-status-mode-map (kbd "M-t") 'other-window) ; was magit-show-level-4
             (define-key magit-status-mode-map (kbd "M-h") 'mg-home) ; was magit-show-only-files
             (define-key magit-status-mode-map (kbd "M-H") 'move-end-of-line) ; was magit-show-only-files-all
 
-;;            (define-key magit-branche-manager-mode-map (kbd "M-s") 'other-window) ; was magit-show-level-4
+;;            (define-key magit-branche-manager-mode-map (kbd "M-t") 'other-window) ; was magit-show-level-4
             ))
 
 ;; reclaim bindings from bookmark+
 (add-hook 'bookmark-bmenu-mode-hook
           (lambda()
-            (define-key bookmark-bmenu-mode-map (kbd "M-s") 'other-window) ; was prefix
+            (define-key bookmark-bmenu-mode-map (kbd "M-t") 'other-window) ; was prefix
             (define-key bookmark-bmenu-mode-map (kbd "M-a") 'execute-extended-command) ; was bookmark-bmenu-show-all-annotations
             ))
 
