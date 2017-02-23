@@ -83,6 +83,7 @@ skeletons I use together with XEmacs."
 (setq shadow-todo-file        (concat my-data-dir   "/shadow_todo"))
 ;;}}}
 
+(load "elscreen" "ElScreen" t)
 
 ;;(load "kicking-the-habbit.el" )
 (load "ergonomic_keybinding_qwerty.el")
@@ -514,9 +515,9 @@ skeletons I use together with XEmacs."
         ;;(holiday-float 11 3 1 "Buß- und Bettag" 16)
         (holiday-float 11 0 1 "Totensonntag" 20)))
 
-(setq calendar-holidays
-      (append general-holidays local-holidays other-holidays
-              christian-holidays solar-holidays))
+;;(setq calendar-holidays
+;;     (append general-holidays local-holidays other-holidays
+;;              christian-holidays solar-holidays))
 
 
 
