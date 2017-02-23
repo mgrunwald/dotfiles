@@ -429,7 +429,7 @@ skeletons I use together with XEmacs."
 ;; (setq org-agenda-include-all-todo t)
  (setq org-log-done t)
 
-;; emacs24 (org-remember-insinuate)
+(org-clock-persistence-insinuate)
 (define-key global-map "\C-cr" 'org-remember)
 
 ;; hippie-expand

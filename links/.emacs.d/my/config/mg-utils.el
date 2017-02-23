@@ -692,6 +692,27 @@ kill-ring (meaning you can yank it)"
       )))
 ; 0x100
 
+(defun last-weekday-of-month-p (date)
+  "Function to detect whether a given date is the last weekday of the
+  month.
+Usage: (last-weekday-of-month-p date)
+"
+  (let* ((day-of-week (calendar-day-of-week date))
+         (month (calendar-extract-month date))
+         (year (calendar-extract-year date))
+         (last-month-day (calendar-last-day-of-month month year))
+         (month-day (cadr date)))
+
+    (or
+     ;; it's the last day of the month & it is a weekday
+     (and (eq month-day last-month-day)
+          (memq day-of-week '(1 2 3 4 5)))
+
+     ;; it's a friday, and it's the last-but-one or last-but-two day
+     ;; of the month
+     (and (eq day-of-week 5)
+          (or (eq month-day (1- last-month-day))
+              (eq month-day (1- (1- last-month-day))))))))
 
 (message "mg-utils OK")
 (provide 'mg-utils)
