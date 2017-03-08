@@ -714,6 +714,30 @@ Usage: (last-weekday-of-month-p date)
           (or (eq month-day (1- last-month-day))
               (eq month-day (1- (1- last-month-day))))))))
 
+;;
+;; See http://emacs.stackexchange.com/questions/19536/why-do-paths-start-with-c-c-in-windows-emacs-when-i-use-next-error/19817
+;;
+(defun msys-file-name-handler (operation &rest args)
+  "Call `unmsys--file-name' on file names."
+  (let ((inhibit-file-name-handlers
+         (cons 'msys-file-name-handler
+               (and (eq inhibit-file-name-operation operation)
+                    inhibit-file-name-handlers)))
+        (inhibit-file-name-operation operation))
+    (pcase (cons operation args)
+      (`(expand-file-name ,name . ,(or `(,directory) directory))
+       (expand-file-name (unmsys--file-name name) (if directory (unmsys--file-name directory))))
+      (`(substitute-in-file-name ,name)
+       (substitute-in-file-name (unmsys--file-name name)))
+      (_ (apply operation args)))))
+
+;; Work around apparent bug in `compilation-parse-errors'.
+(defun save-match-data-advice (fun &rest args)
+  "Add this as `:around' advice to save the match-data."
+  (save-match-data
+    (apply fun args)))
+
+
 (message "mg-utils OK")
 (provide 'mg-utils)
 

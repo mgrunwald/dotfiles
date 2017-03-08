@@ -91,6 +91,7 @@ skeletons I use together with XEmacs."
 (require 'ska-local-keys)
 (require 'diminish)
 (require 'yasnippet)
+(require 'mg-utils)
 
 (yas-global-mode 1)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -218,6 +219,9 @@ skeletons I use together with XEmacs."
          ;;         (whitespace-mode)
          ;; (require 'doxymacs)
          ;; (doxymacs-mode)
+         (add-to-list 'file-name-handler-alist '("\\`/[a-zA-Z]/" . msys-file-name-handler))
+         (advice-(and )dd 'compilation-error-properties :around #'save-match-data-advice)
+
          (message "==================== c-mode-common-hook ====================")
          ))
 
