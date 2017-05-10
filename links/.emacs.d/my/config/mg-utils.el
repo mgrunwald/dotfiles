@@ -692,6 +692,7 @@ kill-ring (meaning you can yank it)"
       )))
 ; 0x100
 
+;;;###autoload
 (defun last-weekday-of-month-p (date)
   "Function to detect whether a given date is the last weekday of the
   month.
@@ -717,6 +718,7 @@ Usage: (last-weekday-of-month-p date)
 ;;
 ;; See http://emacs.stackexchange.com/questions/19536/why-do-paths-start-with-c-c-in-windows-emacs-when-i-use-next-error/19817
 ;;
+;;;###autoload
 (defun msys-file-name-handler (operation &rest args)
   "Call `unmsys--file-name' on file names."
   (let ((inhibit-file-name-handlers
@@ -732,6 +734,7 @@ Usage: (last-weekday-of-month-p date)
       (_ (apply operation args)))))
 
 ;; Work around apparent bug in `compilation-parse-errors'.
+;;;###autoload
 (defun save-match-data-advice (fun &rest args)
   "Add this as `:around' advice to save the match-data."
   (save-match-data
