@@ -90,6 +90,9 @@
 ;; META: rectangle operations. meta button1 is default
 (global-set-key '[(meta button2)]          'yank-rectangle)
 (global-set-key '[(meta button3)]          'kill-rectangle)
+
+(global-set-key [C-wheel-up] '(lambda () (interactive) (text-scale-increase 1)))
+(global-set-key [C-wheel-down] '(lambda () (interactive) (text-scale-decrease 1)))
 ;;=============================================================================
 ;;                    scroll on  mouse wheel
 ;;=============================================================================
