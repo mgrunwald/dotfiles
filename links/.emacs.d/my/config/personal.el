@@ -70,6 +70,15 @@ skeletons I use together with XEmacs."
 ;(if (file-readable-p my-domain-file)
 ;       (load my-domain-file nil nil))
 
+;; (autoload 'last-weekday-of-month-p "mg-utils.el" "Function to detect whether a given date is the last weekday of the
+;;   month.
+;; Usage: (last-weekday-of-month-p date)
+;; " t)
+
+;; (autoload 'msys-file-name-handler "mg-utils.el" "Call `unmsys--file-name' on file names." t)
+;; (autoload 'save-match-data-advice "mg-utils.el" "Add this as `:around' advice to save the match-data." t)
+
+
 ( set-locale-environment "de_DE@UTF8" )
 
 ;;{{{ The settings of the new filenames for some packages
@@ -92,6 +101,9 @@ skeletons I use together with XEmacs."
 (require 'diminish)
 (require 'yasnippet)
 (require 'mg-utils)
+(load "mg-utils" nil nil)
+
+(setq system-time-locale "en_US" )
 
 (yas-global-mode 1)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -219,8 +231,8 @@ skeletons I use together with XEmacs."
          ;;         (whitespace-mode)
          ;; (require 'doxymacs)
          ;; (doxymacs-mode)
-         (add-to-list 'file-name-handler-alist '("\\`/[a-zA-Z]/" . msys-file-name-handler))
-         (advice-(and )dd 'compilation-error-properties :around #'save-match-data-advice)
+         ;; (add-to-list 'file-name-handler-alist '("\\`/[a-zA-Z]/" . msys-file-name-handler))
+         ;; (advice-add 'compilation-error-properties :around #'save-match-data-advice)
 
          (message "==================== c-mode-common-hook ====================")
          ))
@@ -269,6 +281,9 @@ skeletons I use together with XEmacs."
          (setq mode-name "C++")
          (message "==================== c++-mode-hook ====================")
          ) )
+
+(setq auto-mode-alist (append '(("\\.c\.gcov$" . text-mode)) auto-mode-alist))
+
 
 (add-hook 'lua-mode-hook
 	  '(lambda ()
@@ -430,7 +445,6 @@ skeletons I use together with XEmacs."
  (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 ;; (setq org-todo-keywords '("TODO" "STARTED" "WAITING" "DONE")) ;; (6)
-;; (setq org-agenda-include-diary t)                             ;; (7)
 ;; (setq org-agenda-include-all-todo t)
  (setq org-log-done t)
 
@@ -883,5 +897,10 @@ skeletons I use together with XEmacs."
 ;; "Instead of setq you may want to use custom-set-variable"
 
 (google-this-mode 1)
+
+
+
+(add-to-list 'file-name-handler-alist '("\\`/[a-zA-Z]/" . msys-file-name-handler))
+(advice-add 'compilation-error-properties :around #'save-match-data-advice)
 
 (message "personal.el done")
