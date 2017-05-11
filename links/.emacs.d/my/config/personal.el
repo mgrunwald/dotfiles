@@ -28,6 +28,10 @@ skeletons I use together with XEmacs."
   "This directory contains all data XEmacs likes to store."
   )
 
+(if (eq system-type 'windows-nt)
+    (setenv "PATH" ( concat "c:\\MinGW\\msys\\1.0\\bin;" (getenv "PATH") ))
+  )
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;    Setting paths and list
 
@@ -78,6 +82,8 @@ skeletons I use together with XEmacs."
 ;; (autoload 'msys-file-name-handler "mg-utils.el" "Call `unmsys--file-name' on file names." t)
 ;; (autoload 'save-match-data-advice "mg-utils.el" "Add this as `:around' advice to save the match-data." t)
 
+(require 'german-holidays)
+(setq calendar-holidays holiday-german-BY-holidays)
 
 ( set-locale-environment "de_DE@UTF8" )
 
@@ -92,7 +98,6 @@ skeletons I use together with XEmacs."
 (setq shadow-todo-file        (concat my-data-dir   "/shadow_todo"))
 ;;}}}
 
-(load "elscreen" "ElScreen" t)
 
 ;;(load "kicking-the-habbit.el" )
 (load "ergonomic_keybinding_qwerty.el")
@@ -100,10 +105,6 @@ skeletons I use together with XEmacs."
 (require 'ska-local-keys)
 (require 'diminish)
 (require 'yasnippet)
-(require 'mg-utils)
-(load "mg-utils" nil nil)
-
-(setq system-time-locale "en_US" )
 
 (yas-global-mode 1)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -161,6 +162,8 @@ skeletons I use together with XEmacs."
 (add-hook 'ruby-mode-hook
           '(lambda ()
              (gtags-mode t)
+             (if gtags-auto-update
+                 (add-hook 'after-save-hook 'gtags-update-hook))
              (ska-coding-keys ruby-mode-map)
              (ska-ruby-mode-keys)
              (rinari-minor-mode)
@@ -207,7 +210,7 @@ skeletons I use together with XEmacs."
          ))
 
 (autoload 'gtags-mode "gtags" "" t)
-
+(require 'auto-gtags)
 
 (add-hook 'c-mode-common-hook
       '(lambda ()
@@ -218,14 +221,14 @@ skeletons I use together with XEmacs."
          ;; highlight self-defined types
          '(c-indent-comments-syntactically-p nil)
          (abbrev-mode 1)
-         (auto-fill-mode 1)
-         (setq fill-column 90)
          (setq tab-width 4)
          ;; explicitly load vc
          ( load-library "vc" )
 ;;         (setq tag-table-alist '( ("Dafit_Software/" . "/home/gru/projects/Dafit_Software/") ))
          (which-function-mode)
 	     (gtags-mode t)
+         (if gtags-auto-update
+             (add-hook 'after-save-hook 'gtags-update-hook))
          (subword-mode t)
 	     (diminish 'gtags-mode "Gtgs")
          ;;         (whitespace-mode)
@@ -246,6 +249,8 @@ skeletons I use together with XEmacs."
          (setq grep-find-command '"find . \\( -name \\*.c -o -name \\*.h \\) -print0 | xargs -0 -e grep -n " )
          (font-lock-add-keywords nil
                                  '( ("\\<restrict\\>" . 'font-lock-keyword-face)))
+         (setq comment-start "// " )
+         (setq comment-end "" )
 
          (message "==================== c-mode-hook ====================")
          ))
@@ -446,10 +451,13 @@ skeletons I use together with XEmacs."
 (define-key global-map "\C-ca" 'org-agenda)
 ;; (setq org-todo-keywords '("TODO" "STARTED" "WAITING" "DONE")) ;; (6)
 ;; (setq org-agenda-include-all-todo t)
- (setq org-log-done t)
+(setq org-log-done t)
+;;(setq org-default-notes-file (concat org-directory "/notes.org"))
+(define-key global-map "\C-cc" 'org-capture)
 
-(org-clock-persistence-insinuate)
-(define-key global-map "\C-cr" 'org-remember)
+
+;; emacs24 (org-remember-insinuate)
+;; (define-key global-map "\C-cr" 'org-remember)
 
 ;; hippie-expand
 ;;expand text trying various ways to find its expansion.
@@ -533,9 +541,9 @@ skeletons I use together with XEmacs."
         ;;(holiday-float 11 3 1 "Buß- und Bettag" 16)
         (holiday-float 11 0 1 "Totensonntag" 20)))
 
-;;(setq calendar-holidays
-;;     (append general-holidays local-holidays other-holidays
-;;              christian-holidays solar-holidays))
+;(setq calendar-holidays
+;      (append general-holidays local-holidays other-holidays
+;              christian-holidays solar-holidays));
 
 
 
@@ -585,6 +593,7 @@ skeletons I use together with XEmacs."
 ;; menu bar takes only place
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
+(horizontal-scroll-bar-mode 0)
 
 (when (require 'sml-modeline nil 'noerror)
   (sml-modeline-mode 1 ) )
@@ -777,7 +786,7 @@ skeletons I use together with XEmacs."
 
 (autoload 'octave-help "octave-hlp" nil t)
 
-(speedbar-get-focus)
+;;(speedbar-get-focus)
 
 ;; (setq org-latex-to-pdf-process
 ;;   '("xelatex -interaction nonstopmode %f"
@@ -878,6 +887,24 @@ skeletons I use together with XEmacs."
 (autopair-global-mode)
 (diminish 'autopair-mode "pr")
 
+(require 'hideshow)
+(require 'sgml-mode)
+(require 'nxml-mode)
+
+(add-to-list 'hs-special-modes-alist
+             '(nxml-mode
+               "<!--\\|<[^/>]*[^/]>"
+               "-->\\|</[^/>]*[^/]>"
+
+               "<!--"
+               sgml-skip-tag-forward
+               nil))
+
+(add-hook 'nxml-mode-hook 'hs-minor-mode)
+
+;; optional key bindings, easier than hs defaults
+(define-key nxml-mode-map (kbd "C-c h") 'hs-toggle-hiding)
+
 ;; (smart-tabs-insinuate 'c 'c++ 'java 'javascript 'cperl 'python
 ;;                        'ruby 'nxml)
 
@@ -896,10 +923,31 @@ skeletons I use together with XEmacs."
 ;;
 ;; "Instead of setq you may want to use custom-set-variable"
 
+;; yang
+(autoload 'yang-mode "yang-mode" "Major mode for editing YANG modules."
+  t)
+(add-to-list 'auto-mode-alist '("\\.yang$" . yang-mode))
+
+(defun my-compilation-mode-hook ()
+  (setq truncate-lines nil) ;; automatically becomes buffer local
+  (set (make-local-variable 'truncate-partial-width-windows) nil))
+(add-hook 'compilation-mode-hook 'my-compilation-mode-hook)
+
+;; http://stackoverflow.com/questions/9656311/conflict-resolution-with-emacs-ediff-how-can-i-take-the-changes-of-both-version
+(defun ediff-copy-both-to-C ()
+  (interactive)
+  (ediff-copy-diff ediff-current-difference nil 'C nil
+                   (concat
+                    (ediff-get-region-contents ediff-current-difference 'A ediff-control-buffer)
+                    (ediff-get-region-contents ediff-current-difference 'B ediff-control-buffer))))
+(defun add-d-to-ediff-mode-map () (define-key ediff-mode-map "d" 'ediff-copy-both-to-C))
+(add-hook 'ediff-keymap-setup-hook 'add-d-to-ediff-mode-map)
 (google-this-mode 1)
 
 
 
+;; Horizontal splitting really ought to be the default, honestly.
+(setq ediff-split-window-function 'split-window-horizontally)
 (add-to-list 'file-name-handler-alist '("\\`/[a-zA-Z]/" . msys-file-name-handler))
 (advice-add 'compilation-error-properties :around #'save-match-data-advice)
 

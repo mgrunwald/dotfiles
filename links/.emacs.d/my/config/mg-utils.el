@@ -82,8 +82,23 @@
 (defun mg-spaces-to-column( col )
   "Insert spaces until point is in column col"
   ( interactive "P" )
-  ( while ( < (current-column) col ) (insert " " ) )
+  ( move-to-column col t )
   )
+
+(defun mg-margin-comment()
+  "Set the cursor to column 80 and insert '// ' characters. Usefull
+for OSRAM Firmware coding styleguides"
+  (interactive)
+  (progn
+    (move-to-column 80 t)
+    (unless
+        (string-prefix-p "//" (buffer-substring-no-properties (point)
+                                                              (line-end-position) ) )
+      (insert "// ")
+      )
+    )
+  )
+
 
 (defun mg-force-qmake-project( qmake projectdir projectfile )
   ( message ( concat "Running " qmake ) )

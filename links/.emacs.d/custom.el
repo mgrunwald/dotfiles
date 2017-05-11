@@ -5,9 +5,11 @@
  ;; If there is more than one, they won't work right.
  '(Buffer-menu-buffer+size-width 40)
  '(Buffer-menu-mode-width 8)
+ '(Info-additional-directory-list (quote ("c:\\cygwin64\\usr\\share\\info\\")))
  '(Info-auto-generate-directory (quote if-outdated))
  '(Info-button1-follows-hyperlink t)
  '(Info-save-auto-generated-dir (quote always))
+ '(LaTeX-command "pdflatex -shell-escape")
  '(TeX-close-quote "\"'")
  '(TeX-command-list
    (quote
@@ -55,9 +57,11 @@
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(auto-hscroll-mode t)
+ '(auto-update (quote all))
  '(bar-cursor (quote (quote other)))
  '(before-save-hook (quote (time-stamp delete-trailing-whitespace)))
- '(bmkp-last-as-first-bookmark-file "/home/M.Grunwald/.emacs.d/bookmarks")
+ '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
+ '(browse-url-browser-function (quote browse-url-default-windows-browser))
  '(buffers-menu-max-size nil)
  '(c-basic-offset 4)
  '(c-default-style (quote ((java-mode . "java") (other . "gnu"))))
@@ -66,9 +70,13 @@
  '(c-offsets-alist
    (quote
     ((brace-list-open . 0)
+     (statement-case-open . 0)
      (substatement-open . 0)
      (case-label . +))))
  '(calc-gnuplot-name "gnuplot")
+ '(calendar-date-style (quote european))
+ '(calendar-latitude 48.1)
+ '(calendar-longitude 11.6)
  '(calendar-mark-diary-entries-flag t)
  '(calendar-mark-holidays-flag t)
  '(calendar-week-start-day 1)
@@ -97,6 +105,8 @@
       (".h" ".hh")))))
  '(change-log-default-name "~/ChangeLog.Work")
  '(column-number-mode t)
+ '(company-auto-complete (quote (quote company-explicit-action-p)))
+ '(company-show-numbers t)
  '(compilation-ask-about-save nil)
  '(compilation-read-command nil)
  '(compilation-scroll-output t)
@@ -106,6 +116,8 @@
  '(custom-safe-themes
    (quote
     ("d6a00ef5e53adf9b6fe417d2b4404895f26210c52bb8716971be106550cea257" default)))
+ '(cygwin-mount-cygwin-bin-directory "C:/cygwin64/bin")
+ '(cygwin-mount-table t)
  '(dabbrev-case-fold-search nil)
  '(dabbrev-case-replace nil)
  '(debug-on-error nil)
@@ -116,6 +128,15 @@
  '(diary-file "~/org/diary")
  '(diary-list-entries-hook (quote (diary-sort-entries)))
  '(diff-switches "-u")
+ '(dmoccur-exclusion-mask
+   (quote
+    ("\\.elc$" "\\.exe$" "\\.dll$" "\\.lib$" "\\.lzh$" "\\.zip$" "\\.deb$" "\\.gz$" "\\.pdf$" "\\.tar$" "\\.gz$" "\\.7z$" "\\.o$" "\\.a$" "\\.mod$" "\\.nc$" "\\.obj$" "\\.ai$" "\\.fla$" "\\.swf$" "\\.dvi$" "\\.pdf$" "\\.bz2$" "\\.tgz$" "\\.cab$" "\\.sea$" "\\.bin$" "\\.fon$" "\\.fnt$" "\\.scr$" "\\.tmp$" "\\.wrl$" "\\.Z$" "\\.aif$" "\\.aiff$" "\\.mp3$" "\\.wma$" "\\.mpg$" "\\.mpeg$" "\\.aac$" "\\.mid$" "\\.au$" "\\.avi$" "\\.dcr$" "\\.dir$" "\\.dxr$" "\\.midi$" "\\.mov$" "\\.ra$" "\\.ram$" "\\.vdo$" "\\.wav$" "\\.doc$" "\\.xls$" "\\.ppt$" "\\.mdb$" "\\.adp$" "\\.wri$" "\\.jpg$" "\\.gif$" "\\.tiff$" "\\.tif$" "\\.bmp$" "\\.png$" "\\.pbm$" "\\.jpeg$" "\\.xpm$" "\\.pbm$" "\\.ico$" "\\.eps$" "\\.psd$" "/TAGS$" "\\~$" "\\.svn/.+" "CVS/.+" "\\.git/.+" "\\.pbi$" "\\.cout$" "\\.pbd$" "\\.browse$" "GPATH$" "GRTAGS$" "GTAGS$" "\\.gcov$")))
+ '(doxymacs-doxygen-dirs
+   (quote
+    (("^c:/ST_M4_Lib/" "c:/ST_M4_Lib/STM32F30x_StdPeriph_Driver/doxygen.tag" "file:///C:/ST_M4_Lib/STM32F30x_StdPeriph_Driver/html"))))
+ '(doxymacs-external-xml-parser-executable "c:/Program Files/Tools/doxymacs_parser.bat")
+ '(doxymacs-use-external-xml-parser t)
+ '(ediff-merge-split-window-function (quote split-window-vertically))
  '(ediff-use-toolbar-p t)
  '(efs-ftp-program-args (quote ("-i" "-n" "-g" "-v" "-p")))
  '(erc-autojoin-mode nil)
@@ -124,6 +145,7 @@
     (autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands readonly ring smiley stamp track)))
  '(erc-nick "Lupe")
  '(european-calendar-style t)
+ '(explicit-shell-file-name "c:\\cygwin64\\bin\\zsh.exe")
  '(ff-ignore-include t)
  '(file-coding-system-alist
    (quote
@@ -143,28 +165,28 @@
      ("\\.org\\'" . utf-8)
      ("" undecided))))
  '(filesets-cache-save-often-flag nil)
- '(filesets-data
-   (quote
-    (("damian"
-      (:files "/home/gru/text/damian-scratch.txt"))
-     ("VXP"
-      (:files "/mnt/net/CM_Entwicklung/xchg/VIBXPERT/changelog.txt" "/10.1.2.34:/tmp/VibXpert.log")))))
+ '(filesets-data nil)
  '(find-file-compare-truenames t)
+ '(flycheck-gcc-include-path (quote ("../../../Application/Source/")))
  '(fume-max-items 50)
  '(global-auto-revert-mode t)
+ '(gnus-select-method (quote (nntp "news.arcor.de")))
  '(gnuserv-program (concat exec-directory "/gnuserv") t)
- '(gud-gdb-command-name "gdb -i=mi")
+ '(google-this-keybind "g")
+ '(google-this-mode t)
+ '(gtags-auto-update (quote all))
  '(gutter-buffers-tab-visible-p nil)
  '(home-end-enable nil)
+ '(horizontal-scroll-bar-mode nil)
  '(ido-create-new-buffer (quote always))
  '(ido-enable-flex-matching t)
  '(ido-enable-tramp-completion nil)
  '(ido-everywhere t)
  '(ido-use-filename-at-point (quote guess))
  '(ido-use-url-at-point t)
+ '(ido-use-virtual-buffers nil)
  '(imenu-sort-function (quote imenu--sort-by-name))
  '(indent-tabs-mode nil)
- '(ispell-dictionary "deutsch-alt")
  '(ispell-dictionary-alist
    (quote
     ((nil "[[:alpha:]]" "[^[:alpha:]]" "'" t
@@ -366,9 +388,13 @@
       ("-B" "-d" "slovak")
       nil iso-8859-2))) t)
  '(ispell-local-dictionary "british")
+ '(ispell-program-name "c:\\Program Files\\Tools\\ispell.bat")
  '(kill-whole-line t)
  '(lazy-lock-stealth-time 60)
  '(line-number-mode t)
+ '(lunar-phase-names
+   (quote
+    ("Neumond" "Erstes Viertel" "Vollmond" "Letztes Viertel")))
  '(make-tags-files-invisible t)
  '(mark-diary-entries-in-calendar t)
  '(mark-holidays-in-calendar t)
@@ -390,16 +416,43 @@
      ("slashdot" "http://slashdot.org/index.rss" nil 3600)
      ("Heise News (german)" "http://www.heise.de/newsticker/heise.rdf")
      ("Tagesschau (german)" "http://www.tagesschau.de/newsticker.rdf" nil 1800))))
- '(org-agenda-files (quote ("~/org/newgtd.org")))
  '(next-error-highlight (quote fringe-arrow))
  '(omnisharp-imenu-support t)
+ '(org-agenda-custom-commands
+   (quote
+    (("n" "Agenda and all TODOs"
+      ((agenda "" nil)
+       (alltodo "" nil))
+      nil)
+     ("r" "Closed more than one week ago" tags "CLOSED<=\"<-7d>\"" nil))))
+ '(org-agenda-files
+   (quote
+    ("~/org/someday.org" "~/org/newgtd.org" "~/org/journal.org")))
  '(org-agenda-include-diary t)
  '(org-capture-templates
    (quote
     (("t" "Todo" entry
-      (file+headline "~/org/newgtd.org" "Tasks")
-      "* TODO %?" :empty-lines-after 1))))
- '(org-default-notes-file "~/org/newgtd.org")
+      (file+headline "~/org/newgtd.org" "Aufgaben")
+      "* TODO %?
+  %i
+  %a" :empty-lines-after 1)
+     ("j" "Journal" entry
+      (file+datetree "~/org/journal.org")
+      "* %?
+  Erstellt: %U
+  %i
+  %a" :empty-lines-after 1)
+     ("n" "Note" entry
+      (file+headline "~/org/journal.org" "Notes")
+      "* %?
+  Erstellt: %U
+  %i
+  %a"))))
+ '(org-clock-persist t)
+ '(org-completion-use-ido t)
+ '(org-default-notes-file "~/org/notes.org")
+ '(org-ellipsis "…")
+ '(org-enforce-todo-dependencies t)
  '(org-export-latex-classes
    (quote
     (("scrartcl" "\\documentclass{scrartcl}
@@ -459,6 +512,11 @@
       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))))
  '(org-export-latex-default-class "scrartcl")
  '(org-hide-leading-stars t)
+ '(org-refile-targets
+   (quote
+    (("~/org/newgtd.org" :tag . "PROJECT")
+     ("~/org/newgtd.org" :level . 1)
+     ("~/org/journal.org" :tag . "NOTES"))))
  '(org-remember-templates
    (quote
     (("private" 112 "* TODO %?
@@ -469,11 +527,9 @@
   %a" "~/org/work.org" "Unsortiert" nil))))
  '(org-return-follows-link t)
  '(org-tab-follows-link t)
- '(package-archives
+ '(package-selected-packages
    (quote
-    (("gnu" . "http://elpa.gnu.org/packages/")
-     ("MELPA" . "https://melpa.org/packages/"))))
- '(package-selected-packages (quote (edit-server edit-server-htmlize)))
+    (german-holidays transpose-frame multiple-cursors cov moccur-edit git-timemachine ox-gfm sx ietf-docs yasnippet wgrep sr-speedbar smart-tabs-mode psvn powershell org-journal omnisharp magit gtags google-this google-maps dictcc cygwin-mount)))
  '(paren-mode (quote blink-paren) nil (paren))
  '(preview-default-document-pt 12)
  '(printer-name nil)
@@ -498,21 +554,26 @@
     ((vvb-column . 80)
      (time-stamp-format . %:y-%02m-%02d)
      (time-stamp-active . t)
-     (mg-auto-insert-style . damian)
-     (mg-auto-insert-style . "damian")
      (gud-gdb-command-name . "arm-none-linux-gnueabi-gdb -quiet --annotate=3 /home/gru/projects/damian-git-svn/DMN/MPC/firmware/bin/milestone_arm_debug")
      (gud-gdb-command-name . "arm-none-linux-gnueabi-gdb --annotate=3 /home/gru/projects/damian-git-svn/DMN/MPC/firmware/bin/milestone_arm_debug")
      (gud-gdb-command-name . "arm-none-linux-gnueabi-gdb --annotate=3 ")
      (compile-command . "make -k -j ")
-     (compile-command . "iarbuild 'c:\\Users\\m.grunwald\\Documents\\Projects\\Trade\\TRADE_SW\\Application\\Compile\\DemoBlink.ewp' -make Debug -log all")
-     (compile-command . "iarbuild 'c:\\Users\\m.grunwald\\Documents\\Projects\\Trade\\Applications\\TestLibraryD_E\\Projects\\IAR_ARM\\TestLibraryD_E\\TestLibraryD_E.ewp' -make Debug -log all")
-     (compile-command . "iarbuild 'c:\\Users\\m.grunwald\\Documents\\Projects\\ESMS\\Application\\Compile\\ESMS.ewp' -make Debug -log all")
-     (compile-command . "iarbuild 'c:\\Users\\m.grunwald\\Documents\\Projects\\ESMD\\Application\\Compile\\ESMD.ewp' -make Debug -log all"))))
+     (compile-command . "iarbuild \"c:\\Users\\m.grunwald\\Documents\\Projects\\Trade\\TRADE_SW\\Application\\Compile\\DemoBlink.ewp\" -make Debug -log info")
+     (compile-command . "iarbuild \"c:\\Users\\m.grunwald\\Documents\\Projects\\Trade\\Applications\\TestLibraryD_E\\Projects\\IAR_ARM\\TestLibraryD_E\\TestLibraryD_E.ewp\" -make Debug -log info")
+     (compile-command . "iarbuild \"c:\\Users\\m.grunwald\\Documents\\Projects\\ESMS\\Application\\Compile\\ESMS_Oel.ewp\" -make Debug -log info")
+     (compile-command . "iarbuild \"c:\\Users\\m.grunwald\\Documents\\Projects\\ESMD\\Application\\Compile\\ESMD_Oel.ewp\" -make Debug -log info")
+     (compile-command . "c:\\Program Files (x86)\\MSBuild\\12.0\\Bin\\MSBuild.exe")
+     (compile-command . "make -C .. -j gcov")
+     (compile-command . "make -C .. -j")
+     (compile-command . "iarbuild \"c:\\SiliconLabs\\EmberZNet5.7.0-GA\\app\\builder\\EM358_HostApp_ST\\EM358_HostApp_ST_M4_UART.ewp\" -make Debug -log info")
+     (compile-command . "iarbuild \"c:\\Users\\m.grunwald\\Documents\\Projects\\ESMX\\Application\\Compile\\ESMx.ewp\" -make Debug -log info")
+     (compile-command . "iarbuild \"c:\\Users\\m.grunwald\\Documents\\Projects\\ESMX_zigbee\\Application\\Compile\\ESMx.ewp\" -make Debug -log info")
+     (compile-command . "iarbuild \"c:\\Users\\m.grunwald\\Documents\\Projects\\v2_2_x\\Application\\Compile\\ESMx.ewp\" -make Debug -log info")
+     (compile-command . "iarbuild \"c:\\Users\\m.grunwald\\Documents\\Projects\\LUXeye\\ESMX_ZigBee\\Application\\Compile\\ESMx.ewp\" -make Debug -log info"))))
  '(save-place t nil (saveplace))
  '(scroll-margin 0)
  '(semantic-idle-scheduler-idle-time 2)
  '(semantic-self-insert-show-completion-function (lambda nil (semantic-ia-complete-symbol-menu (point))))
- '(send-mail-function (quote sendmail-send-it))
  '(server-switch-hook nil)
  '(show-paren-mode t nil (paren))
  '(sieve-manage-default-port 4190)
@@ -534,6 +595,10 @@
  '(speedbar-supported-extension-expressions
    (quote
     (".bnf" ".pro" ".[ch]\\(\\+\\+\\|pp\\|c\\|h\\|xx\\)?" ".tex\\(i\\(nfo\\)?\\)?" ".el" ".emacs" ".l" ".lsp" ".p" ".java" ".f\\(90\\|77\\|or\\)?" ".ada" ".p[lm]" ".tcl" ".m" ".scm" ".pm" ".py" ".s?html" "[Mm]akefile\\(\\.in\\)?")))
+ '(svn-status-hide-externals t)
+ '(svn-status-hide-unknown t)
+ '(svn-status-hide-unmodified t)
+ '(tab-always-indent (quote complete))
  '(tab-width 4)
  '(tags-always-exact t)
  '(tags-auto-read-changed-tag-files t)
@@ -564,12 +629,13 @@
  '(url-proxy-services nil)
  '(url-show-status nil)
  '(url-use-hypertext-gopher nil)
- '(user-mail-address "markus@the-grue.de")
+ '(user-full-name "Markus Grunwald")
+ '(user-mail-address "m.grunwald@osram.com")
  '(vc-mode-face (quote highlight))
  '(visible-bell t)
- '(vvb-column 100 t)
- '(vvb-mode nil t)
- '(vvb-right-on-eol-p t t)
+ '(vvb-column 80 t)
+ '(vvb-mode t t)
+ '(vvb-right-on-eol-p nil t)
  '(w3-delay-image-loads t)
  '(w3-do-incremental-display t)
  '(w3-icon-format nil)
@@ -580,6 +646,7 @@
  '(whitespace-check-spacetab-whitespace nil)
  '(woman-cache-filename "~/.emacs.d/woman-cache.el")
  '(woman-imenu t)
+ '(woman-manpath (quote ("c:/cygwin64/usr/share/man")))
  '(woman-use-own-frame nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -588,13 +655,14 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#3f3f3f" :foreground "#dcdccc" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 102 :width normal :foundry "normal" :family "DejaVu Sans Mono"))))
  '(grep-edit-face ((((class color) (background light)) (:background "LightGreen" :weight bold))))
+ '(hi-yellow ((t (:foreground "#f0dfaf" :inverse-video t))))
  '(highlight ((((class color) (background light)) (:background "gray80"))))
  '(hl-line ((t nil)))
  '(menu ((t (:background "#1e2320" :foreground "goldenrod"))))
  '(org-hide ((((background light)) (:foreground "gray90"))))
  '(show-paren-match ((t (:inverse-video t))))
  '(sml-modeline-end-face ((t (:background "#3f3f3f"))))
- '(vvb-face ((t (:inverse-video t))) t)
+ '(vvb-face ((t (:background "#2A2A2A"))) t)
  '(w3m-form ((((class color) (background light)) (:foreground "red" :underline t))))
  '(whitespace-hspace ((t (:foreground "gray40"))))
  '(whitespace-indentation ((t (:foreground "firebrick"))))

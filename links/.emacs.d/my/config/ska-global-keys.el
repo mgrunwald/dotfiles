@@ -60,9 +60,8 @@
 (global-set-key '[(control delete)]        'kill-word)
 (global-set-key '[(control <)]             'previous-buffer)
 (global-set-key '[(control >)]             'next-buffer)
-(global-set-key '[(f10)]                   'speedbar-get-focus)
-(global-set-key '[(control v) (control s)] 'speedbar-get-focus)
-(global-set-key "%"			   'mg-match-paren)
+(global-set-key '[(f10)]                   'sr-speedbar-toggle)
+(global-set-key '[(meta \[)]			   'mg-match-paren)
 (global-set-key '[(control k)]             'mg-kill-entire-line)
 (global-set-key '[(control x) (p)]         '(lambda () (interactive) (other-window -1)))
 (global-set-key '[(control z)]             'yank)
@@ -71,6 +70,7 @@
 (global-set-key '[(control x) (notsign)]    'previous-error)
 (global-set-key '[(control tab)]	    'other-window)
 (global-set-key '[(home)]                  'mg-home)
+(global-set-key '[(apps)]                  'menu-bar-mode)
 
 
 ( load "shift-mark" )
