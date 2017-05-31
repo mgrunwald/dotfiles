@@ -82,8 +82,8 @@ skeletons I use together with XEmacs."
 ;; (autoload 'msys-file-name-handler "mg-utils.el" "Call `unmsys--file-name' on file names." t)
 ;; (autoload 'save-match-data-advice "mg-utils.el" "Add this as `:around' advice to save the match-data." t)
 
-(require 'german-holidays)
-(setq calendar-holidays holiday-german-BY-holidays)
+(if (require 'german-holidays "german-holidays" t)
+    (setq calendar-holidays holiday-german-BY-holidays))
 
 ( set-locale-environment "de_DE@UTF8" )
 
@@ -942,7 +942,8 @@ skeletons I use together with XEmacs."
                     (ediff-get-region-contents ediff-current-difference 'B ediff-control-buffer))))
 (defun add-d-to-ediff-mode-map () (define-key ediff-mode-map "d" 'ediff-copy-both-to-C))
 (add-hook 'ediff-keymap-setup-hook 'add-d-to-ediff-mode-map)
-(google-this-mode 1)
+
+(if (fboundp 'google-this-mode) (google-this-mode 1))
 
 
 
