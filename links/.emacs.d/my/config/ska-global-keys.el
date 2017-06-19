@@ -215,6 +215,12 @@
 
 (global-set-key "\e#" 'calc-dispatch)
 
+;; Frame rotation
+;; ---------------------------------------
+(global-set-key '[(control v) (\)) ] 'rotate-frame-clockwise )
+(global-set-key '[(control v) (\() ] 'rotate-frame-anticlockwise )
+(global-set-key '[(control v) (|) ] 'flop-frame )
+(global-set-key '[(control v) (-) ] 'flip-frame )
 
 (provide 'ska-global-keys)
 
