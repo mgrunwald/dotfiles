@@ -139,6 +139,7 @@
  '(ediff-merge-split-window-function (quote split-window-vertically))
  '(ediff-use-toolbar-p t)
  '(efs-ftp-program-args (quote ("-i" "-n" "-g" "-v" "-p")))
+ '(enable-local-variables :all)
  '(erc-autojoin-mode nil)
  '(erc-modules
    (quote
@@ -595,6 +596,7 @@
  '(speedbar-supported-extension-expressions
    (quote
     (".bnf" ".pro" ".[ch]\\(\\+\\+\\|pp\\|c\\|h\\|xx\\)?" ".tex\\(i\\(nfo\\)?\\)?" ".el" ".emacs" ".l" ".lsp" ".p" ".java" ".f\\(90\\|77\\|or\\)?" ".ada" ".p[lm]" ".tcl" ".m" ".scm" ".pm" ".py" ".s?html" "[Mm]akefile\\(\\.in\\)?")))
+ '(svn-status-default-diff-arguments nil)
  '(svn-status-hide-externals t)
  '(svn-status-hide-unknown t)
  '(svn-status-hide-unmodified t)
