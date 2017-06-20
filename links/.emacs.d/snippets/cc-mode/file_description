@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+#cotributor: Markus Grunwald <markus@the-grue.de>
+#name: File description
+#key: \file
+#group: doxygen
+# --
+//------------------------------------------------------------------------------
+///   \file ${1:`(file-name-nondirectory(buffer-file-name))`}
+///   \since ${2:`(format-time-string "%Y-%m-%d" (current-time))`}
+///   \brief ${3:A Documented file.}
+ ${4:///
+///  ${5:Detailed description}
+///
+}/// DISCLAIMER:
+///   The content of this file is intellectual property of the Osram GmbH. It is
+///   confidential and not intended for public release. All rights reserved.
+///   Copyright © Osram GmbH
+///
+//------------------------------------------------------------------------------

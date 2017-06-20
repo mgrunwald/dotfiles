@@ -1,0 +1,29 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# contributor: Markus Grunwald <m.grunwald@osram.com>
+# name: test file
+# key: testfile
+# group: cpputest
+# --
+#include "CppUTest/TestHarness.h"
+#include "CppUTestExt/MockSupport.h"
+
+extern "C"
+{
+}
+
+TEST_GROUP(${1:`(file-name-base)`})
+{
+  void setup()
+  {
+  }
+
+  void teardown()
+  {
+  }
+
+};
+
+/*
+   Test list
+   - ${0:Think about testcases and write them down}
+*/

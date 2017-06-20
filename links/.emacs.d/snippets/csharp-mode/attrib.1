@@ -1,0 +1,19 @@
+#contributor : Alejandro Espinoza Esparza <aespinoza@structum.com.mx>
+#name : private attribute ....; public property ... ... { ... }
+# key: attrib
+# --
+// \brief $3
+//
+private $1 $2;
+
+// \brief $4
+// \param $5
+public $1 $2
+{
+    get {
+        return this.$2;
+    }
+    set {
+        this.$2 = value;
+    }
+}

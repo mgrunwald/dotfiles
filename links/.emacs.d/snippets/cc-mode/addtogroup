@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: Add to group
+# key: \addtogroup
+# group: doxygen
+# expand-env: ((yas-wrap-around-region t))
+# --
+//
+/// \addtogroup ${1:internal_group_name} ${2:title}
+/// \\{
+//
+$0
+//
+/// \\} End of addtogroup $1
+//
