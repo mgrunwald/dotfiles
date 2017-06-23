@@ -530,7 +530,7 @@
  '(org-tab-follows-link t)
  '(package-selected-packages
    (quote
-    (german-holidays transpose-frame multiple-cursors cov moccur-edit git-timemachine ox-gfm sx ietf-docs yasnippet wgrep sr-speedbar smart-tabs-mode psvn powershell org-journal omnisharp magit gtags google-this google-maps dictcc cygwin-mount)))
+    (groovy-mode german-holidays transpose-frame multiple-cursors cov moccur-edit git-timemachine ox-gfm ietf-docs yasnippet wgrep sr-speedbar smart-tabs-mode psvn powershell org-journal omnisharp magit gtags google-this google-maps dictcc cygwin-mount)))
  '(paren-mode (quote blink-paren) nil (paren))
  '(preview-default-document-pt 12)
  '(printer-name nil)
