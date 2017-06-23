@@ -939,8 +939,9 @@ skeletons I use together with XEmacs."
 (defun add-d-to-ediff-mode-map () (define-key ediff-mode-map "d" 'ediff-copy-both-to-C))
 (add-hook 'ediff-keymap-setup-hook 'add-d-to-ediff-mode-map)
 
-(if (fboundp 'google-this-mode) (google-this-mode 1) )
-(diminish 'google-this-mode)
+(if (fboundp 'google-this-mode)
+    (progn (google-this-mode 1)
+           (diminish 'google-this-mode) ) )
 
 
 
