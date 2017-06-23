@@ -831,11 +831,7 @@ skeletons I use together with XEmacs."
          "#!/bin/bash\n"
          "##############################################################################\n"
          "# @file "(file-name-nondirectory buffer-file-name)"\n"
-         "# This file may not be reproduced, disclosed or used in whole\n"
-         "# or in part without the express written permission of\n"
-         "# Pruftechnik Condition Monitoring GmbH.\n"
-         "#\n"
-         "# (c) 2000 - "( format-time-string "%Y" )" by Pruftechnik AG\n"
+         "#\n\n"
          "# Time-stamp: <>\n#\n"
          "# Author: "(user-full-name) "\n#\n\n"
          "# Let shell functions inherit ERR trap.  Same as `set -E'.\n"
@@ -943,7 +939,8 @@ skeletons I use together with XEmacs."
 (defun add-d-to-ediff-mode-map () (define-key ediff-mode-map "d" 'ediff-copy-both-to-C))
 (add-hook 'ediff-keymap-setup-hook 'add-d-to-ediff-mode-map)
 
-(if (fboundp 'google-this-mode) (google-this-mode 1))
+(if (fboundp 'google-this-mode) (google-this-mode 1) )
+(diminish 'google-this-mode)
 
 
 
@@ -951,5 +948,10 @@ skeletons I use together with XEmacs."
 (setq ediff-split-window-function 'split-window-horizontally)
 (add-to-list 'file-name-handler-alist '("\\`/[a-zA-Z]/" . msys-file-name-handler))
 (advice-add 'compilation-error-properties :around #'save-match-data-advice)
+
+;;Let the frame show the current desktop
+;; https://emacs.stackexchange.com/questions/33708/what-is-missing-to-show-the-desktop-dirname-in-the-frame-title
+(setq frame-title-format `( ,( file-name-nondirectory (directory-file-name desktop-dirname) )
+                           ":  %b " ) )
 
 (message "personal.el done")
