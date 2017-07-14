@@ -34,11 +34,11 @@
 
 (defvar oel-mode-syntax-table
   (let ((st (make-syntax-table)))
-    (modify-syntax-entry ?_ "w" st)
-    (modify-syntax-entry ?# "<" st)
+    (modify-syntax-entry ?_  "w" st)
+    (modify-syntax-entry ?#  "<" st)
     (modify-syntax-entry ?\n ">" st)
-    (modify-syntax-entry ?/ ". 124b" st)
-    (modify-syntax-entry ?\n "> b" st)
+    (modify-syntax-entry ?/  ". 12" st)
+    ;; (modify-syntax-entry ?\n "> b" st)
     st)
   "Syntax table for `oel-mode'.")
 
@@ -138,6 +138,8 @@
   (setq-local font-lock-defaults
               '(oel-font-lock-keywords nil t)
               )
+  (setq-local tab-width 2)
+  (setq-local default-tab-width 2)
   (setq-local indent-line-function 'oel-indent-line)
   ;; (setq-local imenu-generic-expression
   ;;             oel-imenu-generic-expression)
@@ -150,6 +152,7 @@
 (defun oel-indent-line ()
   "Indent current line of Oel code."
   (interactive)
+  (beginning-of-line)
   (let ((savep (> (current-column) (current-indentation)))
         (indent (condition-case nil (max (oel-calculate-indentation) 0)
                   (error 0))))
@@ -159,9 +162,38 @@
 
 (defun oel-calculate-indentation ()
   "Return the column to which the current line should be indented."
-  ;; ...
+  (let ((not-indented t) (cur-indent 0) )
+    (if (bobp)
+        (setq cur-indent 0)		   ; First line is always non-indented
+      (if (looking-at "^\\s *End\\(If\\|List\\)") ; If the line we are looking at is the end of a block, then decrease the indentation
+          (progn
+            (save-excursion
+              (forward-line -1)
+              (setq cur-indent (- (current-indentation) default-tab-width)))
+            (if (< cur-indent 0) ; We can't indent past the left margin
+                (setq cur-indent 0)))
+        (save-excursion
+          (while not-indented ; Iterate backwards until we find an indentation hint
+            (forward-line -1)
+            (if (looking-at "^\\s *End\\(If\\|List\\)") ; This hint indicates that we need to indent at the level of the END_ token
+                (progn
+                  (setq cur-indent (current-indentation))
+                  (setq not-indented nil))
+              (if (looking-at "^\\s *\\(If\\|EventList\\|Else\\)") ; This hint indicates that we need to indent an extra level
+                  (progn
+                    (setq cur-indent (+ (current-indentation) default-tab-width)) ; Do the actual indenting
+                    (setq not-indented nil))
+                (if (bobp)
+                    (setq not-indented nil))
+                )
+              )
+            )
+          )
+        )
+      )
+    cur-indent
+    )
   )
-
 
 
 (provide 'oel-mode)
