@@ -24,6 +24,20 @@
 
 ;;; Code:
 
+(defcustom oel-mode-compiler-path ""
+  "Path to the oel compiler. See `oel-mode-compiler-executable`"
+  :group 'oel-mode
+  :type '(string)
+  :risky t
+  )
+
+(defcustom oel-mode-compiler-executable "ESMxOelTool.exe"
+  "The oel compiler executable. See `oel-mode-compiler-path`"
+  :group 'oel-mode
+  :type '(string)
+  :risky t
+  )
+
 (defvar oel-mode-hook nil)
 
 (defvar oel-mode-map
@@ -141,6 +155,7 @@
   (setq-local tab-width 2)
   (setq-local default-tab-width 2)
   (setq-local indent-line-function 'oel-indent-line)
+  (setq-local compile-command (oel-compiler-command))
   ;; (setq-local imenu-generic-expression
   ;;             oel-imenu-generic-expression)
   ;; (setq-local outline-regexp oel-outline-regexp)
@@ -197,6 +212,24 @@
     cur-indent
     )
   )
+
+(defun oel-compiler-command ()
+    "Returns the absolute, complete path to the oel compiler and the
+in- and out-file. See `oel-mode-compiler-path` and `oel-mode-compiler-executable`"
+  (if (file-name-absolute-p oel-mode-compiler-executable)
+      oel-mode-compiler-executable
+    (concat
+     (file-name-as-directory oel-mode-compiler-path)
+     oel-mode-compiler-executable
+     " "
+     (file-name-nondirectory (buffer-file-name))
+     " "
+     (file-name-sans-extension (file-name-nondirectory (buffer-file-name)))
+     ".h"
+     )
+    )
+  )
+
 
 
 (provide 'oel-mode)
