@@ -172,19 +172,22 @@
               (setq cur-indent (- (current-indentation) default-tab-width)))
             (if (< cur-indent 0) ; We can't indent past the left margin
                 (setq cur-indent 0)))
-        (save-excursion
-          (while not-indented ; Iterate backwards until we find an indentation hint
-            (forward-line -1)
-            (if (looking-at "^\\s *End\\(If\\|List\\)") ; This hint indicates that we need to indent at the level of the END_ token
-                (progn
-                  (setq cur-indent (current-indentation))
-                  (setq not-indented nil))
-              (if (looking-at "^\\s *\\(If\\|EventList\\|Else\\)") ; This hint indicates that we need to indent an extra level
+        (if (looking-at "^\\s *\\sw+:")  ; labels
+            (setq cur-indent 0)
+          (save-excursion
+            (while not-indented ; Iterate backwards until we find an indentation hint
+              (forward-line -1)
+              (if (looking-at "^\\s *End\\(If\\|List\\)") ; This hint indicates that we need to indent at the level of the END_ token
                   (progn
-                    (setq cur-indent (+ (current-indentation) default-tab-width)) ; Do the actual indenting
+                    (setq cur-indent (current-indentation))
                     (setq not-indented nil))
-                (if (bobp)
-                    (setq not-indented nil))
+                (if (looking-at "^\\s *\\(If\\|EventList\\|Else\\)") ; This hint indicates that we need to indent an extra level
+                    (progn
+                      (setq cur-indent (+ (current-indentation) default-tab-width)) ; Do the actual indenting
+                      (setq not-indented nil))
+                  (if (bobp)
+                      (setq not-indented nil))
+                  )
                 )
               )
             )
