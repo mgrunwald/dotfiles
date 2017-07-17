@@ -20,7 +20,7 @@
 
 ;;; Commentary:
 
-;;
+;; This file implements an emacs mode for the OSRAM Event Language (oel)
 
 ;;; Code:
 
@@ -43,6 +43,8 @@
 (defvar oel-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map [(return)] 'newline-and-indent)
+    (define-key map [(meta-y)] 'imenu )
+    (define-key map [(control-c) (control-c)] 'compile )
     map)
   "Keymap for `oel-mode'.")
 
@@ -156,8 +158,8 @@
   (setq-local default-tab-width 2)
   (setq-local indent-line-function 'oel-indent-line)
   (setq-local compile-command (oel-compiler-command))
-  ;; (setq-local imenu-generic-expression
-  ;;             oel-imenu-generic-expression)
+  (setq-local imenu-generic-expression
+              '((nil "^\\s *EventList\\s +\\(\\sw+\\)" 1)) )
   ;; (setq-local outline-regexp oel-outline-regexp)
   ;; ...
   )
