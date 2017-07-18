@@ -54,7 +54,6 @@
     (modify-syntax-entry ?#  "<" st)
     (modify-syntax-entry ?\n ">" st)
     (modify-syntax-entry ?/  ". 12" st)
-    ;; (modify-syntax-entry ?\n "> b" st)
     st)
   "Syntax table for `oel-mode'.")
 
@@ -135,11 +134,10 @@
    )
   "Keyword highlighting specification for `oel-mode'.")
 
-;; (defvar oel-imenu-generic-expression
-;;   ...)
-
-;; (defvar oel-outline-regexp
-;;   ...)
+(defvar oel-imenu-generic-expression
+  '((nil "^\\s *EventList\\s +\\(\\sw+\\)" 1))
+  "Keywords that define event lists (functions)"
+)
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.oel\\'" . oel-mode))
@@ -158,10 +156,7 @@
   (setq-local default-tab-width 2)
   (setq-local indent-line-function 'oel-indent-line)
   (setq-local compile-command (oel-compiler-command))
-  (setq-local imenu-generic-expression
-              '((nil "^\\s *EventList\\s +\\(\\sw+\\)" 1)) )
-  ;; (setq-local outline-regexp oel-outline-regexp)
-  ;; ...
+  (setq-local imenu-generic-expression oel-imenu-generic-expression )
   )
 
  ;;; Indentation
