@@ -42,9 +42,9 @@
 
 (defvar oel-mode-map
   (let ((map (make-sparse-keymap)))
-    (define-key map [(return)] 'newline-and-indent)
-    (define-key map [(meta-y)] 'idomenu )
-    (define-key map [(control-c) (control-c)] 'compile )
+    (define-key map (kbd "<return>") 'newline-and-indent)
+    (define-key map (kbd "M-y")      'idomenu )
+    (define-key map (kbd "C-c C-c") 'compile )
     map)
   "Keymap for `oel-mode'.")
 
