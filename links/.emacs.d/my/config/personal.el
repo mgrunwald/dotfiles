@@ -952,7 +952,14 @@ skeletons I use together with XEmacs."
 
 ;;Let the frame show the current desktop
 ;; https://emacs.stackexchange.com/questions/33708/what-is-missing-to-show-the-desktop-dirname-in-the-frame-title
-(setq frame-title-format `( ,( file-name-nondirectory (directory-file-name desktop-dirname) )
-                           ":  %b " ) )
+( if (stringp 'desktop-dirname)
+    (setq frame-title-format `( ,( file-name-nondirectory (directory-file-name desktop-dirname) )
+				":  %b " ) ) )
+
+(elpy-enable)
+(elpy-use-ipython)
+;; (when (require 'flycheck nil t)
+;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 (message "personal.el done")
