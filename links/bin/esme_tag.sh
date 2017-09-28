@@ -59,12 +59,12 @@ EOF
 
 # myscript
 
-${DRY_RUN} svn copy Application@"${REVISION}"          "${REPOSITORY}"/Projects/ESME/"${TAG_SUBDIR}"                          -m "${MESSAGE}"
-${DRY_RUN} svn copy Library/BluetoothLibrary@"${REVISION}"     "${REPOSITORY}"/Library/BluetoothLibrary/"${TAG_SUBDIR}"               -m "${MESSAGE}"
-${DRY_RUN} svn copy Library/CommonRtosLibrary@"${REVISION}"    "${REPOSITORY}"/Library/CommonRtosLibrary/"${TAG_SUBDIR}"              -m "${MESSAGE}"
-${DRY_RUN} svn copy Library/DaliUartLibrary@"${REVISION}"      "${REPOSITORY}"/Library/DaliUartLibrary/"${TAG_SUBDIR}"                -m "${MESSAGE}"
-${DRY_RUN} svn copy Library/ESMxLibrary@"${REVISION}"          "${REPOSITORY}"/Library/ESMxLibrary/"${TAG_SUBDIR}"                    -m "${MESSAGE}"
-${DRY_RUN} svn copy Library/OelLibrary@"${REVISION}"           "${REPOSITORY}"/Library/OelLibrary/"${TAG_SUBDIR}"                     -m "${MESSAGE}"
+${DRY_RUN} svn copy Application@"${REVISION}"                            "${REPOSITORY}"/Projects/ESME/"${TAG_SUBDIR}"                          -m "${MESSAGE}"
+${DRY_RUN} svn copy Library/BluetoothLibrary@"${REVISION}"               "${REPOSITORY}"/Library/BluetoothLibrary/"${TAG_SUBDIR}"               -m "${MESSAGE}"
+${DRY_RUN} svn copy Library/CommonRtosLibrary@"${REVISION}"              "${REPOSITORY}"/Library/CommonRtosLibrary/"${TAG_SUBDIR}"              -m "${MESSAGE}"
+${DRY_RUN} svn copy Library/DaliUartLibrary@"${REVISION}"                "${REPOSITORY}"/Library/DaliUartLibrary/"${TAG_SUBDIR}"                -m "${MESSAGE}"
+${DRY_RUN} svn copy Library/ESMxLibrary@"${REVISION}"                    "${REPOSITORY}"/Library/ESMxLibrary/"${TAG_SUBDIR}"                    -m "${MESSAGE}"
+${DRY_RUN} svn copy Library/OelLibrary@"${REVISION}"                     "${REPOSITORY}"/Library/OelLibrary/"${TAG_SUBDIR}"                     -m "${MESSAGE}"
 ${DRY_RUN} svn copy LibraryThirdParty/CMSIS@"${REVISION}"                "${REPOSITORY}"/LibraryThirdParty/CMSIS_Light/"${TAG_SUBDIR}"          -m "${MESSAGE}"
 ${DRY_RUN} svn copy LibraryThirdParty/cpputest@"${REVISION}"             "${REPOSITORY}"/LibraryThirdParty/cpputest/"${TAG_SUBDIR}"             -m "${MESSAGE}"
 # Embos is already fetched from a tag
