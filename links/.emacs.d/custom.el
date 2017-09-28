@@ -139,6 +139,8 @@
  '(ediff-merge-split-window-function (quote split-window-vertically))
  '(ediff-use-toolbar-p t)
  '(efs-ftp-program-args (quote ("-i" "-n" "-g" "-v" "-p")))
+ '(elpy-test-pytest-runner-command (quote ("py.test" "-s")))
+ '(elpy-test-runner (quote elpy-test-pytest-runner))
  '(enable-local-variables :all)
  '(erc-autojoin-mode nil)
  '(erc-modules
@@ -176,6 +178,7 @@
  '(google-this-keybind "g")
  '(google-this-mode t)
  '(gtags-auto-update (quote all))
+ '(gud-pdb-command-name "rpdb2")
  '(gutter-buffers-tab-visible-p nil)
  '(home-end-enable nil)
  '(horizontal-scroll-bar-mode nil)
@@ -418,6 +421,8 @@
      ("Heise News (german)" "http://www.heise.de/newsticker/heise.rdf")
      ("Tagesschau (german)" "http://www.tagesschau.de/newsticker.rdf" nil 1800))))
  '(next-error-highlight (quote fringe-arrow))
+ '(oel-mode-compiler-path
+   "c:\\Users\\m.grunwald\\Documents\\Projects\\LUXeye\\ESME_trunk\\Library\\OelLibrary\\ESMx_Oel_Tool\\bin\\Debug")
  '(omnisharp-imenu-support t)
  '(org-agenda-custom-commands
    (quote
@@ -448,7 +453,15 @@
       "* %?
   Erstellt: %U
   %i
-  %a"))))
+  %a")
+     ("J" "Jira item" entry
+      (file+headline "~/org/newgtd.org" "Aufgaben")
+      "* TODO [[https://jira.int.osram-light.com:8443/browse/DEB-%?][DEB-]]
+  %i" :empty-lines-after 1)
+     ("m" "Manntage buchen" entry
+      (file+headline "~/org/newgtd.org" "Aufgaben")
+      "* TODO Manntage buchen
+  [[https://olq.int.osram-light.com:10443/nwbc/?sap-nwbc-node=296&sap-nwbc-context=03HM33B030D633D533D23336000304CFC8002264ECEF1308641A029900&sap-client=010&sap-language=EN&sap-nwbc-history_item=&sap-theme=sap_corbu][Link]]" :empty-lines-after 1))))
  '(org-clock-persist t)
  '(org-completion-use-ido t)
  '(org-default-notes-file "~/org/notes.org")
@@ -530,13 +543,14 @@
  '(org-tab-follows-link t)
  '(package-selected-packages
    (quote
-    (groovy-mode german-holidays transpose-frame multiple-cursors cov moccur-edit git-timemachine ox-gfm ietf-docs yasnippet wgrep sr-speedbar smart-tabs-mode psvn powershell org-journal omnisharp magit gtags google-this google-maps dictcc cygwin-mount)))
+    (swift-mode emojify slack edit-indirect idomenu realgud sx elpy groovy-mode german-holidays transpose-frame multiple-cursors cov moccur-edit git-timemachine ox-gfm ietf-docs yasnippet wgrep sr-speedbar smart-tabs-mode psvn powershell org-journal omnisharp magit gtags google-this google-maps dictcc cygwin-mount)))
  '(paren-mode (quote blink-paren) nil (paren))
  '(preview-default-document-pt 12)
  '(printer-name nil)
  '(ps-paper-type (quote a4))
  '(ps-print-color-p nil)
  '(ps-printer-name nil)
+ '(realgud:pdb-command-name "python -m pdb ")
  '(reb-re-syntax (quote string))
  '(recent-files-commands-submenu t)
  '(recent-files-dont-include
@@ -596,6 +610,7 @@
  '(speedbar-supported-extension-expressions
    (quote
     (".bnf" ".pro" ".[ch]\\(\\+\\+\\|pp\\|c\\|h\\|xx\\)?" ".tex\\(i\\(nfo\\)?\\)?" ".el" ".emacs" ".l" ".lsp" ".p" ".java" ".f\\(90\\|77\\|or\\)?" ".ada" ".p[lm]" ".tcl" ".m" ".scm" ".pm" ".py" ".s?html" "[Mm]akefile\\(\\.in\\)?")))
+ '(svn-log-edit-show-diff-for-commit t)
  '(svn-status-default-diff-arguments nil)
  '(svn-status-hide-externals t)
  '(svn-status-hide-unknown t)
@@ -620,6 +635,7 @@
      ("\\`ftp\\." "" "ftp")
      ("\\`localhost\\'" "\\`root\\'" "su")
      ("\\`10.1.2" "" "ftp"))))
+ '(tramp-use-ssh-controlmaster-options nil)
  '(transient-mark-mode t)
  '(truncate-lines t)
  '(undo-high-threshold 300000)
@@ -649,7 +665,8 @@
  '(woman-cache-filename "~/.emacs.d/woman-cache.el")
  '(woman-imenu t)
  '(woman-manpath (quote ("c:/cygwin64/usr/share/man")))
- '(woman-use-own-frame nil))
+ '(woman-use-own-frame nil)
+ '(yas-visit-from-menu t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
