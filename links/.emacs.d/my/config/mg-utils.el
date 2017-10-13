@@ -755,6 +755,20 @@ Usage: (last-weekday-of-month-p date)
   (save-match-data
     (apply fun args)))
 
+;;
+;; https://emacs.stackexchange.com/questions/36131/is-there-a-common-way-to-open-svn-status-or-magit-depending-on-current-buffe
+(defun mg-open-status ()
+  (interactive)
+  (if vc-mode
+      (if (string-match "^ Git" (substring-no-properties vc-mode))
+          (magit-status)
+        (if (string-match "^ SVN" (substring-no-properties vc-mode))
+            ( call-interactively 'svn-status )
+          (if (string-match "^ HG" (substring-no-properties vc-mode))
+              (ahg-status)
+            )))
+    (message "not a project file")))
+
 
 (message "mg-utils OK")
 (provide 'mg-utils)
