@@ -212,6 +212,9 @@ skeletons I use together with XEmacs."
 (autoload 'gtags-mode "gtags" "" t)
 (require 'auto-gtags)
 
+(defun maybe-cmake-project-hook ()
+  (if (file-exists-p "CMakeLists.txt") (cmake-project-mode)))
+
 (add-hook 'c-mode-common-hook
       '(lambda ()
          (require 'vvb-mode)
@@ -236,7 +239,7 @@ skeletons I use together with XEmacs."
          ;; (doxymacs-mode)
          ;; (add-to-list 'file-name-handler-alist '("\\`/[a-zA-Z]/" . msys-file-name-handler))
          ;; (advice-add 'compilation-error-properties :around #'save-match-data-advice)
-
+         (maybe-cmake-project-hook)
          (message "==================== c-mode-common-hook ====================")
          ))
 
