@@ -104,6 +104,7 @@
      ("\\.cpp$"
       (".h" ".hh")))))
  '(change-log-default-name "~/ChangeLog.Work")
+ '(cmake-project-default-build-dir-name "build/")
  '(column-number-mode t)
  '(company-auto-complete (quote (quote company-explicit-action-p)))
  '(company-show-numbers t)
