@@ -966,4 +966,14 @@ skeletons I use together with XEmacs."
 ;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
 ;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
+(slack-register-team
+ :name "Encelium"
+ :default t
+ :client-id "112111200311.244642769601"
+ :client-secret "2b72a0aa13b5015cd27d11f530f8a5ae" )
+
+;; (require 'cl)
+;; (require 'todochiku)
+( require 'alert)
+
 (message "personal.el done")
