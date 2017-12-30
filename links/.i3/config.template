@@ -46,7 +46,7 @@ floating_modifier $mod
 bindsym $mod+Return exec x-terminal-emulator
 
 // lock the screen
-bindsym $mod+L exec lock
+bindsym $mod+l exec ~/bin/lock
 
 // kill focused window
 bindsym $mod+Shift+c kill
@@ -124,8 +124,8 @@ bindsym XF86AudioMute        exec --no-startup-id amixer -q set Master toggle &&
 
 // move focused container to workspace
 bindsym $mod+Shift+exclam      move workspace $wsp1
-bindsym $mod+Shift+quotedbl    move workspace $wsp2
-bindsym $mod+Shift+sterling    move workspace $wsp3
+bindsym $mod+Shift+at          move workspace $wsp2
+bindsym $mod+Shift+numbersign  move workspace $wsp3
 bindsym $mod+Shift+dollar      move workspace $wsp4
 bindsym $mod+Shift+percent     move workspace $wsp5
 bindsym $mod+Shift+asciicircum move workspace $wsp6
@@ -194,8 +194,7 @@ new_window 1pixel
 
 
 assign [class="Iceweasel"] $wsp1
-assign [class="Icedove"] $wsp8
-assign [class="Claws-mail"] $wsp8
+assign [class="Thunderbird"] $wsp8
 assign [class="Pidgin"] $wsp9
 assign [class="MPlayer"] $wsp10
 assign [class="mpv"] $wsp10
@@ -205,6 +204,7 @@ assign [class="mpv"] $wsp10
 // and for mplayer
 for_window [class="MPlayer"] floating enable
 for_window [class="mpv"] floating enable
+for_window [class="kruler"] floating enable
 
 // and for pa volume control
 for_window [class="Pavucontrol"] floating enable
@@ -216,14 +216,11 @@ for_window [class="URxvt" title="Scratchpad"] move scratchpad
 // finds out, if available)
 bar {
     font pango:DejaVu Sans Condensed 18px
-#ifdef PT
-    status_command i3status --config ~/.i3/i3status.conf.pt
-    position top
-#endif
 #ifdef HAKTAR
-    status_command i3status  --config ~/.i3/i3status.conf.haktar
+    // status_command i3status --config ~/.i3/i3status.conf.haktar | ~/.i3/wrapper.pl
+    status_command i3status --config ~/.i3/i3status.conf.haktar
     position bottom
-    tray_output LVDS1
+    tray_output eDP1
 #endif
     mode hide
     colors {
@@ -249,7 +246,7 @@ client.urgent           #2f343a #900000 #ffffff
 exec --no-startup-id dunst
 exec wicd-client -t
 exec --no-startup-id feh  --bg-scale '/home/markus/bilder/desktop.jpg'
-exec claws-mail
+exec thunderbird
 exec pidgin
 exec --no-startup-id unclutter -noevents -idle 1 -root
 //exec --no-startup-id start-pulseaudio-x11
@@ -258,27 +255,15 @@ exec volumeicon
 exec --no-startup-id tpb
 // exec --no-startup-id udisks-glue -s
 exec owncloud
-<<<<<<< Updated upstream
-=======
-exec /opt/skype-4.2.0.13/skype
->>>>>>> Stashed changes
-exec --no-startup-id i3-msg 'workspace $wsp3; append_layout /home/markus/.i3/emacs.json'
+//exec --no-startup-id i3-msg 'workspace $wsp3; append_layout /home/markus/.i3/emacs.json'
 exec --no-startup-id i3-msg 'workspace $wsp1; layout tabbed; exec x-www-browser'
-exec x-terminal-emulator
-exec x-terminal-emulator
-exec x-terminal-emulator
-exec x-terminal-emulator
-exec x-terminal-emulator
+// exec x-terminal-emulator
+// exec x-terminal-emulator
+// exec x-terminal-emulator
+// exec x-terminal-emulator
+// exec x-terminal-emulator
 exec emacs
-exec qlipper
-#endif
-#ifdef PT
-exec xset s off -dpms
-exec /usr/lib/notification-daemon/notification-daemon
-exec feh  --bg-scale  ~/bilder/capraia_bei_sonnenuntergang.jpg
-exec iceweasel
-//exec claws-mail
-//exec pidgin
-exec klipper
+// exec qlipper
+exec nitrokey-app
 #endif
 exec x-terminal-emulator -T "Scratchpad"
