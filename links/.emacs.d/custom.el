@@ -473,7 +473,9 @@
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
      ("MELPA" . "https://melpa.org/packages/"))))
- '(package-selected-packages (quote (edit-server edit-server-htmlize)))
+ '(package-selected-packages
+   (quote
+    (ox-twbs git-timemachine google-this edit-server edit-server-htmlize)))
  '(paren-mode (quote blink-paren) nil (paren))
  '(preview-default-document-pt 12)
  '(printer-name nil)
