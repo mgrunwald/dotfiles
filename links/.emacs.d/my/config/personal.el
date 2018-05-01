@@ -879,5 +879,6 @@ skeletons I use together with XEmacs."
 ;; "Instead of setq you may want to use custom-set-variable"
 
 (google-this-mode 1)
+(load "~/blog/lisp/gru-website.el")
 
 (message "personal.el done")
