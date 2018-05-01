@@ -256,7 +256,7 @@ exec --no-startup-id tpb
 // exec --no-startup-id udisks-glue -s
 exec owncloud
 //exec --no-startup-id i3-msg 'workspace $wsp3; append_layout /home/markus/.i3/emacs.json'
-exec --no-startup-id i3-msg 'workspace $wsp1; layout tabbed; exec x-www-browser'
+exec --no-startup-id i3-msg 'workspace $wsp1; layout tabbed; exec x-www-browser  --high-dpi-support=1 --force-device-scale-factor=1'
 // exec x-terminal-emulator
 // exec x-terminal-emulator
 // exec x-terminal-emulator
@@ -265,5 +265,6 @@ exec --no-startup-id i3-msg 'workspace $wsp1; layout tabbed; exec x-www-browser'
 exec emacs
 // exec qlipper
 exec nitrokey-app
+exec blueman-applet
 #endif
 exec x-terminal-emulator -T "Scratchpad"
