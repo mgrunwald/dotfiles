@@ -165,3 +165,10 @@ URxvt*color12: #4186be
 URxvt*color13: #cf9ebe
 URxvt*color14: #71bebe
 URxvt*color15: #ffffff
+
+
+Xft.dpi:                142
+Xft.antialias:          1
+Xft.hinting:            1
+Xft.rgba:               rgb
+Xft.hintstyle:          hintslight
