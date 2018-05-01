@@ -74,7 +74,7 @@ URxvt.secondaryScroll: true
 URxvt*visualBell: true
 URxvt*fading: 50
 URxvt*fadeColor: black
-URxvt.perl-ext-common: default,url-select,keyboard-select
+URxvt.perl-ext-common: default,url-select,keyboard-select,confirm-paste
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-w: perl:url-select:select_next
 URxvt.urlLauncher: x-www-browser
