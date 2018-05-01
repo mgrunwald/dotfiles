@@ -497,7 +497,7 @@
  '(require-final-newline (quote ask))
  '(safe-local-variable-values
    (quote
-    ((vvb-column . 80)
+    ((TeX-auto-save . t)
      (time-stamp-format . %:y-%02m-%02d)
      (time-stamp-active . t)
      (mg-auto-insert-style . damian)
