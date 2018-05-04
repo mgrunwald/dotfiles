@@ -1,0 +1,18 @@
+#contributor : Alejandro Espinoza Esparza <aespinoza@structum.com.mx>
+#name : class ... { ... }
+# key: class
+# --
+${5:public} class ${1:Name}
+{
+    #region Ctor & Destructor
+    // \brief ${3:Standard Constructor}
+    public $1($2)
+    {
+    }
+
+    // \brief ${4:Default Destructor}
+    public ~$1()
+    {
+    }
+    #endregion
+}

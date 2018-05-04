@@ -1,0 +1,10 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# contributor: Markus Grunwald <m.grunwald@osram.com>
+# name: Testcase
+# key: TEST
+# group: cpputest
+# --
+TEST( ${1:`(file-name-base)`}, ${2:Testcase} )
+{
+    $0
+}

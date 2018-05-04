@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: Mock with Parameter of Type
+# key: .wPT
+# group: cpputest
+# binding: direct-keybinding
+# --
+.withParameterOfType( "${1:Type}", "$2", $2 )

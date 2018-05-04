@@ -1,6 +1,6 @@
 ;;; xml-parse --- code to efficiently read/write XML data with Elisp
 ;;;
-;;; $Id: xml-parse.el,v 1.1 2006/06/08 07:49:41 gru Exp $
+;;; $Id: xml-parse.el,v 1.4 2001/05/12 22:36:13 ryants Exp $
 
 ;; Copyright (C) 2001 John Wiegley.
 

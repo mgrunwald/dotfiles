@@ -1,0 +1,10 @@
+#contributor : Alejandro Espinoza Esparza <aespinoza@structum.com.mx>
+#name : public void Method { ... }
+# key: method
+# --
+// \brief ${5:Description}
+// ${2:$(if (string= (upcase yas-text) "VOID") "" (format "%s%s" "\n// \\\\returns " yas-text))}
+${1:public} ${2:void} ${3:MethodName}($4)
+{
+$0
+}

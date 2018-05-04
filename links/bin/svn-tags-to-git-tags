@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# from http://de.gitready.com/advanced/2009/02/16/convert-git-svn-tag-branches-to-real-tags.html
+
+git for-each-ref refs/remotes/origin/tags | cut -d / -f 5- |
+while read ref
+do
+git tag -a "$ref" -m"say farewell to SVN" "refs/remotes/origin/tags/$ref"
+git push origin ":refs/heads/tags/$ref"
+git push origin tag "$ref"
+done

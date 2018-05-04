@@ -12,7 +12,7 @@ GREP_OPTIONS='--color=auto'
 GREP_COLOR='1;32'
 
 #setopt cdablevars
-PATH=$PATH:${HOME}/bin
+PATH=$PATH:/usr/local/bin:${HOME}/bin
 
 eval $(lesspipe )
 export BC_ENV_ARGS="-q -l $HOME/.bc/myFunctions"
@@ -23,4 +23,4 @@ export QT_IM_MODULE="xim"
 export INFOPATH=/usr/share/info
 export BROWSER=chromium
 
-source ${HOME}/.zshrc.per_host/zshenv."$(hostname)"
+source ${HOME}/.zshrc.per_host/zshenv."$(hostname | sed s///g)"

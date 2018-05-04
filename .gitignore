@@ -19,4 +19,12 @@ woman-cache.el
 /links/.emacs.d/recentf
 /links/.emacs.d/ido.last
 /links/.emacs.d/bookmarks
-links/.emacs.d/elpa/
+/links/.emacs.d/elpa/
+/elpa/
+/links/.emacs.d/eshell/
+/links/.emacs.d/.sx/
+/links/.emacs.d/**/#*#
+/links/.emacs.d/**/*.elc
+/links/.emacs.d/org-clock-save.el
+/links/.emacs.d/server/
+/links/.emacs.d/url/

@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: Mock with Parameter
+# key: .wP
+# group: cpputest
+# binding: direct-keybinding
+# --
+.withParameter("$1", $1)

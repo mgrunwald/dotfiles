@@ -60,9 +60,8 @@
 (global-set-key '[(control delete)]        'kill-word)
 (global-set-key '[(control <)]             'previous-buffer)
 (global-set-key '[(control >)]             'next-buffer)
-(global-set-key '[(f10)]                   'speedbar-get-focus)
-(global-set-key '[(control v) (control s)] 'speedbar-get-focus)
-(global-set-key "%"			   'mg-match-paren)
+(global-set-key '[(f10)]                   'sr-speedbar-toggle)
+(global-set-key '[(meta \[)]			   'mg-match-paren)
 (global-set-key '[(control k)]             'mg-kill-entire-line)
 (global-set-key '[(control x) (p)]         '(lambda () (interactive) (other-window -1)))
 (global-set-key '[(control z)]             'yank)
@@ -71,6 +70,7 @@
 (global-set-key '[(control x) (notsign)]    'previous-error)
 (global-set-key '[(control tab)]	    'other-window)
 (global-set-key '[(home)]                  'mg-home)
+(global-set-key '[(apps)]                  'menu-bar-mode)
 
 
 ( load "shift-mark" )
@@ -90,6 +90,9 @@
 ;; META: rectangle operations. meta button1 is default
 (global-set-key '[(meta button2)]          'yank-rectangle)
 (global-set-key '[(meta button3)]          'kill-rectangle)
+
+(global-set-key [C-wheel-up] '(lambda () (interactive) (text-scale-increase 1)))
+(global-set-key [C-wheel-down] '(lambda () (interactive) (text-scale-decrease 1)))
 ;;=============================================================================
 ;;                    scroll on  mouse wheel
 ;;=============================================================================
@@ -196,7 +199,7 @@
 (global-set-key '[(control v) (i) (b)    ] 'ispell-buffer )
 (global-set-key '[(control v) (i) (r)    ] 'ispell-region )
 (global-set-key '[(control v) (i) (t)    ] 'ispell-toggle-dictionary )
-(global-set-key '[(control v) (control v)] 'magit-status )
+(global-set-key '[(control v) (control v)] 'mg-open-status )
 (global-set-key '[(control v) (s)        ] 'sort-lines )
 (global-set-key '[(meta insert)]           'yank-pop)
 (global-set-key '[(shift delete )]         'kill-region)
@@ -212,6 +215,12 @@
 
 (global-set-key "\e#" 'calc-dispatch)
 
+;; Frame rotation
+;; ---------------------------------------
+(global-set-key '[(control v) (\)) ] 'rotate-frame-clockwise )
+(global-set-key '[(control v) (\() ] 'rotate-frame-anticlockwise )
+(global-set-key '[(control v) (|) ] 'flop-frame )
+(global-set-key '[(control v) (-) ] 'flip-frame )
 
 (provide 'ska-global-keys)
 

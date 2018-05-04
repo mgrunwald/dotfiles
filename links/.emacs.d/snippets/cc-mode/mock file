@@ -1,0 +1,22 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# contributor: Markus Grunwald <m.grunwald@osram.com>
+# name: mock file
+# key: mockfile
+# group: cpputest
+# binding: direct-keybinding
+# --
+#include "CppUTestExt/MockSupport.h"
+
+extern "C"
+{
+}
+
+/* Example mock call
+  return (HAL_StatusTypeDef) mock()
+    .actualCall("HAL_I2CEx_AnalogFilter_Config")
+    .withParameterOfType("I2C_HandleTypeDef", "hi2c", hi2c)
+    .withParameter("AnalogFilter", AnalogFilter)
+    .returnValue().getIntValue();
+*/
+
+$0

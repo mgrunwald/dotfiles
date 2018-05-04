@@ -107,7 +107,7 @@ Argument MAP is c-mode-map or c++-mode-map."
   (define-key map '[(control b) (d)]          'mg-skel-pt-dbgvar)
   (define-key map '[(control b) (control o)]  'mg-margin-comment)
   (define-key map '[(control j)]              'c-indent-new-comment-line)
-  (define-key map '[(meta y)]                 'imenu)
+  (define-key map '[(meta y)]                 'idomenu)
   (define-key map '[(control v) (control l)]  'goto-line)
   (define-key map '[(meta n)]                 'c-beginning-of-defun)
   (define-key map '[(meta m)]                 'c-end-of-defun)
@@ -115,9 +115,8 @@ Argument MAP is c-mode-map or c++-mode-map."
   (define-key map '[(meta \,)]                'gtags-find-rtag)
   (define-key map '[(meta \*)]                'gtags-pop-stack)
 
-;; Semantic & co
-  (define-key map  [S-iso-lefttab]            'eassist-switch-h-cpp)
-  (define-key map  [S-tab]                    'eassist-switch-h-cpp)
+  (define-key map  [S-iso-lefttab]            'ff-find-other-file)
+  (define-key map  [S-tab]                    'ff-find-other-file)
   ;; (define-key map  [(meta .)]                 'semantic-ia-fast-jump)
 
 
@@ -160,26 +159,29 @@ Argument MAP is c-mode-map or c++-mode-map."
 (defun mg-cs-mode-keys (map)
   "Set my personal keys for C#.
 Argument MAP is csharp-mode-map"
-  (define-key map '[(f9)]                     'mg/compile)
+  (define-key map '[(f9)]                     'omnisharp-build-in-emacs)
   (define-key map '[(control f9)]             'kill-compilation)
   (define-key map '[(control b) (control n)]  'mg-narrow-to-method)
   (define-key map '[(control j)]              'c-indent-new-comment-line)
-  (define-key map '[(meta y)]                 'imenu)
+  (define-key map '[(meta y)]                 'idomenu)
   (define-key map '[(control v) (control l)]  'goto-line)
   (define-key map '[(meta n)]                 'c-beginning-of-defun)
   (define-key map '[(meta m)]                 'c-end-of-defun)
+  (define-key map '[(f11)]                    'previous-error)
+  (define-key map '[(f12)]                    'next-error)
+  (define-key map '[(control b) (v)]          'svn-status)
   ;; O_m_niSharp
-  (define-key map '[(.)]                 'omnisharp-add-dot-and-auto-complete)
-  (define-key map '[(meta .)]                 'omnisharp-auto-complete)
-  (define-key map '[(f12)]                 'omnisharp-go-to-definition)
-  (define-key map [(control b) (\,)]                 'omnisharp-show-overloads-at-point)
-  (define-key map '[(control b) (u)]                 'omnisharp-find-usages)
-  (define-key map '[(control b) (I)]                 'omnisharp-find-implementations)
-  (define-key map '[(control b) (o)]                 'omnisharp-go-to-definition)
-  (define-key map '[(control b) (r)]                 'omnisharp-run-code-action-refactoring)
-  (define-key map '[(control b) (f)]                 'omnisharp-fix-code-issue-at-point)
-  (define-key map '[(control b) (F)]                 'omnisharp-fix-usings)
-  (define-key map '[(control b) (R)]                 'omnisharp-rename)
+  (define-key map '[(.)]              'omnisharp-add-dot-and-auto-complete)
+  (define-key map '[(meta .)]         'omnisharp-auto-complete)
+  (define-key map '[(control b) (d)]  'omnisharp-go-to-definition)
+  (define-key map '[(control b) (\,)] 'omnisharp-show-overloads-at-point)
+  (define-key map '[(control b) (u)]  'omnisharp-find-usages)
+  (define-key map '[(control b) (I)]  'omnisharp-find-implementations)
+  (define-key map '[(control b) (o)]  'omnisharp-go-to-definition)
+  (define-key map '[(control b) (r)]  'omnisharp-run-code-action-refactoring)
+  (define-key map '[(control b) (f)]  'omnisharp-fix-code-issue-at-point)
+  (define-key map '[(control b) (F)]  'omnisharp-fix-usings)
+  (define-key map '[(control b) (R)]  'omnisharp-rename)
   )
 
 ;;{{{ Perl Mode

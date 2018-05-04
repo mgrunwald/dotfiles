@@ -1,0 +1,22 @@
+# -*- mode: snippet -*-
+# name: method
+# key: m
+# --
+//------------------------------------------------------------------------------
+/// \brief ${5:method description}
+/// ${6:
+///   ${7:Detailed description}
+///
+/// }
+$0${4:$(replace-regexp-in-string "\n$" "" (mapconcat 'identity
+  (mapcar '(lambda (l) (format "/// \\\\param %s\\n" (cadr l) ))
+        (mapcar #'(lambda (gna)
+                    (split-string gna " " t)) (split-string yas-text "," t))
+        )
+  ""))}
+/// \return $1
+//------------------------------------------------------------------------------
+${1:type} ${2:`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`::}${3:CamelCase}( ${4:args} )
+{
+
+}

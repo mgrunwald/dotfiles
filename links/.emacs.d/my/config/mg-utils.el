@@ -82,8 +82,23 @@
 (defun mg-spaces-to-column( col )
   "Insert spaces until point is in column col"
   ( interactive "P" )
-  ( while ( < (current-column) col ) (insert " " ) )
+  ( move-to-column col t )
   )
+
+(defun mg-margin-comment()
+  "Set the cursor to column 80 and insert '// ' characters. Usefull
+for OSRAM Firmware coding styleguides"
+  (interactive)
+  (progn
+    (move-to-column 80 t)
+    (unless
+        (string-prefix-p "//" (buffer-substring-no-properties (point)
+                                                              (line-end-position) ) )
+      (insert "// ")
+      )
+    )
+  )
+
 
 (defun mg-force-qmake-project( qmake projectdir projectfile )
   ( message ( concat "Running " qmake ) )
@@ -691,6 +706,71 @@ kill-ring (meaning you can yank it)"
       (insert (mg-number-to-base str base))
       )))
 ; 0x100
+
+;;;###autoload
+(defun last-weekday-of-month-p (date)
+  "Function to detect whether a given date is the last weekday of the
+  month.
+Usage: (last-weekday-of-month-p date)
+"
+  (let* ((day-of-week (calendar-day-of-week date))
+         (month (calendar-extract-month date))
+         (year (calendar-extract-year date))
+         (last-month-day (calendar-last-day-of-month month year))
+         (month-day (cadr date)))
+
+    (or
+     ;; it's the last day of the month & it is a weekday
+     (and (eq month-day last-month-day)
+          (memq day-of-week '(1 2 3 4 5)))
+
+     ;; it's a friday, and it's the last-but-one or last-but-two day
+     ;; of the month
+     (and (eq day-of-week 5)
+          (or (eq month-day (1- last-month-day))
+              (eq month-day (1- (1- last-month-day))))))))
+
+;;
+;; See http://emacs.stackexchange.com/questions/19536/why-do-paths-start-with-c-c-in-windows-emacs-when-i-use-next-error/19817
+;;
+;;;###autoload
+(defun msys-file-name-handler (operation &rest args)
+  "Call `unmsys--file-name' on file names."
+  (let ((inhibit-file-name-handlers
+         (cons 'msys-file-name-handler
+               (and (eq inhibit-file-name-operation operation)
+                    inhibit-file-name-handlers)))
+        (inhibit-file-name-operation operation))
+    (pcase (cons operation args)
+      (`(expand-file-name ,name . ,(or `(,directory) directory))
+       (expand-file-name (unmsys--file-name name) (if directory (unmsys--file-name directory))))
+      (`(substitute-in-file-name ,name)
+       (substitute-in-file-name (unmsys--file-name name)))
+      (_ (apply operation args)))))
+
+;; Work around apparent bug in `compilation-parse-errors'.
+;;;###autoload
+(defun save-match-data-advice (fun &rest args)
+  "Add this as `:around' advice to save the match-data."
+  (save-match-data
+    (apply fun args)))
+
+;;
+;; https://emacs.stackexchange.com/questions/36131/is-there-a-common-way-to-open-svn-status-or-magit-depending-on-current-buffe
+(defun mg-open-status ()
+  (interactive)
+  (if vc-mode
+      (if (string-match "^ Git" (substring-no-properties vc-mode))
+          (magit-status)
+        (if (string-match "^ SVN" (substring-no-properties vc-mode))
+            (let ((topdir (locate-dominating-file default-directory "Application")))
+            ;; ( call-interactively 'svn-status )
+            (svn-status topdir )
+            )
+          (if (string-match "^ HG" (substring-no-properties vc-mode))
+              (ahg-status)
+            )))
+    (message "not a project file")))
 
 
 (message "mg-utils OK")
