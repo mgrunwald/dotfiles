@@ -1,0 +1,1 @@
+bell() {[ $? -eq 0 ] && export sound=/usr/share/sounds/KDE-Sys-App-Message.ogg || export sound=/usr/share/sounds/KDE-Sys-App-Error.ogg; ogg123 --quiet ${sound} & }

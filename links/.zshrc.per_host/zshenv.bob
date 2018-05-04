@@ -1,0 +1,4 @@
+export EMAIL="markus@the-grue.de"
+export NAME="Markus Grunwald"
+export SMTPSERVER="smtp.the-grue.de"
+export PATH=$PATH:${HOME}/chor/bin
