@@ -70,6 +70,17 @@ skeletons I use together with XEmacs."
 ;(if (file-readable-p my-domain-file)
 ;       (load my-domain-file nil nil))
 
+;; (autoload 'last-weekday-of-month-p "mg-utils.el" "Function to detect whether a given date is the last weekday of the
+;;   month.
+;; Usage: (last-weekday-of-month-p date)
+;; " t)
+
+;; (autoload 'msys-file-name-handler "mg-utils.el" "Call `unmsys--file-name' on file names." t)
+;; (autoload 'save-match-data-advice "mg-utils.el" "Add this as `:around' advice to save the match-data." t)
+
+(if (require 'german-holidays "german-holidays" t)
+    (setq calendar-holidays holiday-german-BY-holidays))
+
 ( set-locale-environment "de_DE@UTF8" )
 
 ;;{{{ The settings of the new filenames for some packages
@@ -83,7 +94,6 @@ skeletons I use together with XEmacs."
 (setq shadow-todo-file        (concat my-data-dir   "/shadow_todo"))
 ;;}}}
 
-(load "elscreen" "ElScreen" t)
 
 ;;(load "kicking-the-habbit.el" )
 (load "ergonomic_keybinding_qwerty.el")
@@ -148,6 +158,8 @@ skeletons I use together with XEmacs."
 (add-hook 'ruby-mode-hook
           '(lambda ()
              (gtags-mode t)
+             (if gtags-auto-update
+                 (add-hook 'after-save-hook 'gtags-update-hook))
              (ska-coding-keys ruby-mode-map)
              (ska-ruby-mode-keys)
              (rinari-minor-mode)
@@ -195,6 +207,11 @@ skeletons I use together with XEmacs."
 
 (autoload 'gtags-mode "gtags" "" t)
 
+(when (require 'auto-gtags nil t)
+  )
+
+(defun maybe-cmake-project-hook ()
+  (if (file-exists-p "CMakeLists.txt") (cmake-project-mode)))
 
 (add-hook 'c-mode-common-hook
       '(lambda ()
@@ -205,19 +222,22 @@ skeletons I use together with XEmacs."
          ;; highlight self-defined types
          '(c-indent-comments-syntactically-p nil)
          (abbrev-mode 1)
-         (auto-fill-mode 1)
-         (setq fill-column 90)
          (setq tab-width 4)
          ;; explicitly load vc
          ( load-library "vc" )
 ;;         (setq tag-table-alist '( ("Dafit_Software/" . "/home/gru/projects/Dafit_Software/") ))
          (which-function-mode)
 	     (gtags-mode t)
+         (if gtags-auto-update
+             (add-hook 'after-save-hook 'gtags-update-hook))
          (subword-mode t)
 	     (diminish 'gtags-mode "Gtgs")
          ;;         (whitespace-mode)
          ;; (require 'doxymacs)
          ;; (doxymacs-mode)
+         ;; (add-to-list 'file-name-handler-alist '("\\`/[a-zA-Z]/" . msys-file-name-handler))
+         ;; (advice-add 'compilation-error-properties :around #'save-match-data-advice)
+         (maybe-cmake-project-hook)
          (message "==================== c-mode-common-hook ====================")
          ))
 
@@ -230,6 +250,8 @@ skeletons I use together with XEmacs."
          (setq grep-find-command '"find . \\( -name \\*.c -o -name \\*.h \\) -print0 | xargs -0 -e grep -n " )
          (font-lock-add-keywords nil
                                  '( ("\\<restrict\\>" . 'font-lock-keyword-face)))
+         (setq comment-start "// " )
+         (setq comment-end "" )
 
          (message "==================== c-mode-hook ====================")
          ))
@@ -265,6 +287,9 @@ skeletons I use together with XEmacs."
          (setq mode-name "C++")
          (message "==================== c++-mode-hook ====================")
          ) )
+
+(setq auto-mode-alist (append '(("\\.c\.gcov$" . text-mode)) auto-mode-alist))
+
 
 (add-hook 'lua-mode-hook
 	  '(lambda ()
@@ -428,10 +453,13 @@ skeletons I use together with XEmacs."
 ;; (setq org-todo-keywords '("TODO" "STARTED" "WAITING" "DONE")) ;; (6)
 ;; (setq org-agenda-include-diary t)                             ;; (7)
 ;; (setq org-agenda-include-all-todo t)
- (setq org-log-done t)
+(setq org-log-done t)
+;;(setq org-default-notes-file (concat org-directory "/notes.org"))
+(define-key global-map "\C-cc" 'org-capture)
+
 
 ;; emacs24 (org-remember-insinuate)
-(define-key global-map "\C-cc" 'org-capture)
+;; (define-key global-map "\C-cr" 'org-remember)
 
 ;; hippie-expand
 ;;expand text trying various ways to find its expansion.
@@ -567,6 +595,7 @@ skeletons I use together with XEmacs."
 ;; menu bar takes only place
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
+(horizontal-scroll-bar-mode 0)
 
 (when (require 'sml-modeline nil 'noerror)
   (sml-modeline-mode 1 ) )
@@ -759,7 +788,7 @@ skeletons I use together with XEmacs."
 
 (autoload 'octave-help "octave-hlp" nil t)
 
-(speedbar-get-focus)
+;;(speedbar-get-focus)
 
 ;; (setq org-latex-to-pdf-process
 ;;   '("xelatex -interaction nonstopmode %f"
@@ -804,11 +833,7 @@ skeletons I use together with XEmacs."
          "#!/bin/bash\n"
          "##############################################################################\n"
          "# @file "(file-name-nondirectory buffer-file-name)"\n"
-         "# This file may not be reproduced, disclosed or used in whole\n"
-         "# or in part without the express written permission of\n"
-         "# Pruftechnik Condition Monitoring GmbH.\n"
-         "#\n"
-         "# (c) 2000 - "( format-time-string "%Y" )" by Pruftechnik AG\n"
+         "#\n#\n"
          "# Time-stamp: <>\n#\n"
          "# Author: "(user-full-name) "\n#\n\n"
          "# Let shell functions inherit ERR trap.  Same as `set -E'.\n"
@@ -823,6 +848,7 @@ skeletons I use together with XEmacs."
          "#  NOTE2: Setting ERR trap does implicit `set -o errexit' or `set -e'.\n"
          "trap quit 1 2 3 15 ERR\n"
          "\n"
+         "readonly THIS=\"${0##*/}\""\n
          "\n"
          "#--- quit() -----------------------------------------------------\n"
          "#  @param $1 integer  (optional) Exit status.  If not set, use `$?'\n"
@@ -860,6 +886,24 @@ skeletons I use together with XEmacs."
 (autopair-global-mode)
 (diminish 'autopair-mode "pr")
 
+(require 'hideshow)
+(require 'sgml-mode)
+(require 'nxml-mode)
+
+(add-to-list 'hs-special-modes-alist
+             '(nxml-mode
+               "<!--\\|<[^/>]*[^/]>"
+               "-->\\|</[^/>]*[^/]>"
+
+               "<!--"
+               sgml-skip-tag-forward
+               nil))
+
+(add-hook 'nxml-mode-hook 'hs-minor-mode)
+
+;; optional key bindings, easier than hs defaults
+(define-key nxml-mode-map (kbd "C-c h") 'hs-toggle-hiding)
+
 ;; (smart-tabs-insinuate 'c 'c++ 'java 'javascript 'cperl 'python
 ;;                        'ruby 'nxml)
 
@@ -880,5 +924,64 @@ skeletons I use together with XEmacs."
 
 (google-this-mode 1)
 (load "~/blog/lisp/gru-website.el")
+;; yang
+(autoload 'yang-mode "yang-mode" "Major mode for editing YANG modules."
+  t)
+(add-to-list 'auto-mode-alist '("\\.yang$" . yang-mode))
+
+(defun my-compilation-mode-hook ()
+  (setq truncate-lines nil) ;; automatically becomes buffer local
+  (set (make-local-variable 'truncate-partial-width-windows) nil))
+(add-hook 'compilation-mode-hook 'my-compilation-mode-hook)
+
+;; http://stackoverflow.com/questions/9656311/conflict-resolution-with-emacs-ediff-how-can-i-take-the-changes-of-both-version
+(defun ediff-copy-both-to-C ()
+  (interactive)
+  (ediff-copy-diff ediff-current-difference nil 'C nil
+                   (concat
+                    (ediff-get-region-contents ediff-current-difference 'A ediff-control-buffer)
+                    (ediff-get-region-contents ediff-current-difference 'B ediff-control-buffer))))
+(defun add-d-to-ediff-mode-map () (define-key ediff-mode-map "d" 'ediff-copy-both-to-C))
+(add-hook 'ediff-keymap-setup-hook 'add-d-to-ediff-mode-map)
+
+(if (fboundp 'google-this-mode)
+    (progn (google-this-mode 1)
+           (diminish 'google-this-mode) ) )
+
+
+
+;; Horizontal splitting really ought to be the default, honestly.
+(setq ediff-split-window-function 'split-window-horizontally)
+(add-to-list 'file-name-handler-alist '("\\`/[a-zA-Z]/" . msys-file-name-handler))
+(advice-add 'compilation-error-properties :around #'save-match-data-advice)
+
+;;Let the frame show the current desktop
+;; https://emacs.stackexchange.com/questions/33708/what-is-missing-to-show-the-desktop-dirname-in-the-frame-title
+( if (stringp 'desktop-dirname)
+    (setq frame-title-format `( ,( file-name-nondirectory (directory-file-name desktop-dirname) )
+				":  %b " ) ) )
+
+(if (fboundp 'elpy-enable)
+    (progn (elpy-enable)
+	   (elpy-use-ipython)
+	   )
+  )
+;; (when (require 'flycheck nil t)
+;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
+
+(if (fboundp 'slack-register-team)
+    (slack-register-team
+     :name "Encelium"
+     :default t
+     :client-id "112111200311.244642769601"
+     :client-secret "2b72a0aa13b5015cd27d11f530f8a5ae" )
+  )
+
+;; (require 'cl)
+;; (require 'todochiku)
+
+(when ( require 'alert nil t )
+  )
 
 (message "personal.el done")
