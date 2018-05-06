@@ -61,7 +61,6 @@
  '(bar-cursor (quote (quote other)))
  '(before-save-hook (quote (time-stamp delete-trailing-whitespace)))
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
- '(browse-url-browser-function (quote browse-url-default-windows-browser))
  '(buffers-menu-max-size nil)
  '(c-basic-offset 4)
  '(c-default-style (quote ((java-mode . "java") (other . "gnu"))))
